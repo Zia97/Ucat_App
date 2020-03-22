@@ -28,7 +28,8 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
-    - UnityEngine.UI.RawImage
+    - UnityEngine.UI.Mask
+    - UnityEngine.UI.ScrollRect
     - UnityEngine.UI.Text
   sceneClasses:
     Assets/Scenes/MainMenu.unity:
@@ -93,6 +94,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
+    - Class: 49
+      Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
     - Class: 104
@@ -106,11 +109,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11362}
     - Class: 114
+      Script: {instanceID: 11676}
+    - Class: 114
       Script: {instanceID: 11776}
     - Class: 114
-      Script: {instanceID: 12186}
+      Script: {instanceID: 11976}
     - Class: 114
-      Script: {instanceID: 12208}
+      Script: {instanceID: 12186}
     - Class: 114
       Script: {instanceID: 12270}
     - Class: 114
@@ -190,7 +195,7 @@ ScriptsOnlyBuild:
     className: Scrollbar
   - hash:
       serializedVersion: 2
-      Hash: d3a29507c15fc45f8d9eeb47f86901f3
+      Hash: 463cb18288b76a8dd5ab77574822eede
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PracticeQuestionControllerGenericScript
@@ -570,4 +575,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/MainMenu.unity
   - Assets/Scenes/PracticeQuestionGeneric.unity
-  playerPath: C:/Users/Qasim/Documents/GitHub/UcatApp/UCATAPP/Builds/07032020.apk
+  playerPath: C:/Users/Qasim/Documents/GitHub/UcatApp/UCATAPP/Builds/22032020.apk
