@@ -8,7 +8,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
-    path: Assets/Scenes/PracticeQuestionGeneric.unity
-    guid: 73ddeeebc72fca546a0f89e2db0b662c
   m_configObjects: {}

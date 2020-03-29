@@ -1,2 +1,0 @@
-C:\Users\Qasim\Documents\GitHub\UcatApp\UCATAPP\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
-C:\Users\Qasim\Documents\GitHub\UcatApp\UCATAPP\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
