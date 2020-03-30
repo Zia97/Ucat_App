@@ -62,8 +62,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\PracticeQuestionControllerGenericScript.cs" />
     <Compile Include="Assets\Scripts\GlobalVariables.cs" />
+    <Compile Include="Assets\Scripts\PracticeQuestionControllerGenericScript.cs" />
+    <Compile Include="Assets\Scripts\QuestionModels\AbstractReasoningQuestion.cs" />
     <Compile Include="Assets\Scripts\SceneLoader.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/Qasim/Documents/GitHub/UcatApp/UCATAPP/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
