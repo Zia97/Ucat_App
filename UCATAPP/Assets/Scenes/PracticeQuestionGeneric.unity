@@ -3582,10 +3582,17 @@ MonoBehaviour:
   HeaderPanelText: {fileID: 1038654181}
   jsonFile: {fileID: 4900000, guid: 135b9fc0b1ec13e40a4b909525ab7c85, type: 3}
   SetsImage: {fileID: 1011126794}
+  QuestionImage: {fileID: 1156536198}
   SetAButton: {fileID: 640830083}
   SetBButton: {fileID: 54408859}
   NeitherButton: {fileID: 631618324}
-  QuestionImage: {fileID: 1156536198}
+  NextButton: {fileID: 571684496}
+  PreviousButton: {fileID: 1300771901}
+  Question1Button: {fileID: 906567418}
+  Question2Button: {fileID: 515562377}
+  Question3Button: {fileID: 67426452}
+  Question4Button: {fileID: 1560453958}
+  Question5Button: {fileID: 98249329}
 --- !u!1 &2130323490
 GameObject:
   m_ObjectHideFlags: 0
