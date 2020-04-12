@@ -1,6 +1,14 @@
-
 UCATAPP/Temp/
+UCATAPP/Library/
 UCATAPP/.vs/UCATAPP/v15/Server/sqlite3/db.lock
 *.ide
 UCATAPP/.vs/UCATAPP/v15/Server/sqlite3/storage.ide-shm
 UCATAPP/.vs/UCATAPP/v15/Server/sqlite3/storage.ide-wal
+UCATAPP/obj/
+*.meta
+UCATAPP/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor/Collab/Views.meta
+
+UCATAPP/Library/SourceAssetDB
+UCATAPP/Library/SourceAssetDB-lock
+*.asset
+UCATAPP/Library/SceneVisibilityState.asset
