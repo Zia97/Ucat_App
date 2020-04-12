@@ -15,3 +15,5 @@ UCATAPP/Library/SceneVisibilityState.asset
 UCATAPP/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache
 UCATAPP/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache
 *.cache
+UCATAPP/Builds
+UCATAPP/Logs
