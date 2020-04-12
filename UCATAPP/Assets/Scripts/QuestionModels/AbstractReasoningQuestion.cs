@@ -11,11 +11,11 @@ namespace Assets.Scripts
         public String setImageUri;
 
         //QuestionNumber:URI:questionAnswer:usersAnswer
-        public Tuple<int, String, String, String> q1;
-        public Tuple<int, String, String, String> q2;
-        public Tuple<int, String, String, String> q3;
-        public Tuple<int, String, String, String> q4;
-        public Tuple<int, String, String, String> q5;
+        public GenericTupleHolder q1;
+        public GenericTupleHolder q2;
+        public GenericTupleHolder q3;
+        public GenericTupleHolder q4;
+        public GenericTupleHolder q5;
 
         public String userQuestion1Answer = "";
         public String userQuestion2Answer = "";
@@ -35,7 +35,7 @@ namespace Assets.Scripts
             setImageUri = _setImageUri;
         }
 
-        public Tuple<int,String,String,String> LoadQuestion(string question)
+        public GenericTupleHolder LoadQuestion(string question)
         {
             switch (question)
             {
@@ -58,51 +58,23 @@ namespace Assets.Scripts
             switch (number)
             {
                 case 1:
-                    q1 = new Tuple<int, string, string, string>(question.Item1, question.Item2, question.Item3, "");
+                    q1 = new GenericTupleHolder(question.Item1, question.Item2, question.Item3, "");
                     break;
                 case 2:
-                   q2 = new Tuple<int, string, string, string>(question.Item1, question.Item2, question.Item3, "");
+                   q2 = new GenericTupleHolder(question.Item1, question.Item2, question.Item3, "");
                     break;
                 case 3:
-                    q3 = new Tuple<int, string, string, string>(question.Item1, question.Item2, question.Item3, "");
+                    q3 = new GenericTupleHolder(question.Item1, question.Item2, question.Item3, "");
                     break;
                 case 4:
-                    q4 = new Tuple<int, string, string, string>(question.Item1, question.Item2, question.Item3, "");
+                    q4 = new GenericTupleHolder(question.Item1, question.Item2, question.Item3, "");
                     break;
                 case 5:
-                    q5 = new Tuple<int, string, string, string>(question.Item1, question.Item2, question.Item3, "");
+                    q5 = new GenericTupleHolder(question.Item1, question.Item2, question.Item3, "");
                     break;
             }
 
         }
 
-
-        public void AnswerSelected(string question, string answer)
-        {
-            switch (question)
-            {
-                case "q1":
-                    question1Answered = true;
-                    q1 = new Tuple<int,string, string, string>(q1.Item1, q1.Item2,q1.Item3,answer);
-                    break;
-                case "q2":
-                    question2Answered = true;
-                    q2 = new Tuple<int,string, string, string>(q2.Item1, q2.Item2, q2.Item3,answer);
-                    break;
-                case "q3":
-                    question3Answered = true;
-                    q3 = new Tuple<int,string, string, string>(q3.Item1, q3.Item2,q3.Item3, answer);
-                    break;
-                case "q4":
-                    question4Answered = true;
-                    q4 = new Tuple<int,string, string, string>(q4.Item1, q4.Item2,q4.Item3, answer);
-                    break;
-                case "q5":
-                    question5Answered = true;
-                    q5 = new Tuple<int,string, string, string>(q5.Item1, q5.Item2, q5.Item3, answer);
-                    break;
-            }
-
-        }
     }
 }

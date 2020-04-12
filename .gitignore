@@ -12,3 +12,6 @@ UCATAPP/Library/SourceAssetDB
 UCATAPP/Library/SourceAssetDB-lock
 *.asset
 UCATAPP/Library/SceneVisibilityState.asset
+UCATAPP/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache
+UCATAPP/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache
+*.cache
