@@ -9,6 +9,8 @@ namespace Assets.Scripts
     class AbstractReasoningQuestion
     {
         public String setImageUri;
+        public String answer;
+        public bool answerClicked = false;
 
         //QuestionNumber:URI:questionAnswer:usersAnswer
         public GenericTupleHolder q1;
@@ -30,9 +32,10 @@ namespace Assets.Scripts
         public bool question5Answered = false;
 
 
-        public AbstractReasoningQuestion(String _setImageUri)
+        public AbstractReasoningQuestion(String _setImageUri, String _answer)
         {
             setImageUri = _setImageUri;
+            answer = _answer;
         }
 
         public GenericTupleHolder LoadQuestion(string question)

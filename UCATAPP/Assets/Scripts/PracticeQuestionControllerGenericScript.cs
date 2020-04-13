@@ -11,6 +11,10 @@ public class PracticeQuestionControllerGenericScript : MonoBehaviour
     public Text HeaderPanelText;
     public Text QuestionCounterText;
     public TextAsset jsonFile;
+    public Text AnswerText;
+
+    public GameObject AnswerPanel;
+    public Button AnswerCloseButton;
 
     public Image SetsImage;
     public Image QuestionImage;
@@ -28,6 +32,7 @@ public class PracticeQuestionControllerGenericScript : MonoBehaviour
     public Button Question4Button;
     public Button Question5Button;
 
+    public Button AnswerButton;
 
     private List<Set> allQuestions;
     private List<AbstractReasoningQuestion> abstractReasoningQuestionsList = new List<AbstractReasoningQuestion>();
@@ -37,17 +42,25 @@ public class PracticeQuestionControllerGenericScript : MonoBehaviour
     private int currentlySelectedSet;
     private int currentlySelectedQuestionInSet;
 
+    private static ColorBlock correctColours;
+    private static ColorBlock incorrectColours;
+
+
 
     // Start is called before the first frame update
     void Start()
     {
         HeaderPanelText.text = GlobalVariables.SelectedPracticeQuestion;
 
+        AnswerPanel.SetActive(false);
+
         addButtonListeners();
 
         SetQuestionList();
 
         InstantiateQuestions();
+
+        initiateToggleColours();
 
         loadInitialSet();
 
@@ -96,7 +109,7 @@ public class PracticeQuestionControllerGenericScript : MonoBehaviour
     {
         foreach (Set s in allQuestions)
         {
-            AbstractReasoningQuestion temp = new AbstractReasoningQuestion(s.resource);
+            AbstractReasoningQuestion temp = new AbstractReasoningQuestion(s.resource, s.answer);
 
             foreach (Questions q in s.questions)
             {
@@ -132,7 +145,7 @@ public class PracticeQuestionControllerGenericScript : MonoBehaviour
 
         SetsImage.sprite = Resources.Load<Sprite>(questionList[questionNumber].setImageUri);
         QuestionImage.sprite = Resources.Load<Sprite>(questionList[questionNumber].q1.imageURI);
-        
+
 
         setUsersSelectedAnswerForButton();
 
@@ -149,6 +162,9 @@ public class PracticeQuestionControllerGenericScript : MonoBehaviour
         Question3Button.onClick.AddListener(Question3ButtonClicked);
         Question4Button.onClick.AddListener(Question4ButtonClicked);
         Question5Button.onClick.AddListener(Question5ButtonClicked);
+
+        AnswerButton.onClick.AddListener(AnswerButtonClicked);
+        AnswerCloseButton.onClick.AddListener(AnswerCloseButtonClicked);
 
         SetAToggle.onValueChanged.AddListener(SetAToggleClicked);
         SetBToggle.onValueChanged.AddListener(SetBToggleClicked);
@@ -186,16 +202,75 @@ public class PracticeQuestionControllerGenericScript : MonoBehaviour
 
     private void resetColours()
     {
-        setColours(false,SetAToggle);
+        setColours(false, SetAToggle);
         setColours(false, SetBToggle);
         setColours(false, NeitherToggle);
     }
 
-    /// <summary>
-    ///set heere
-    /// </summary>
-    /// <param name="isOn"></param>
-    /// <param name="chosenToggle"></param>
+    private void resetButtonColours()
+    {
+        if (!questionList[currentlySelectedSet].answerClicked)
+        {
+            Question1Button.image.color = Color.yellow;
+            Question2Button.image.color = Color.yellow;
+            Question3Button.image.color = Color.yellow;
+            Question4Button.image.color = Color.yellow;
+            Question5Button.image.color = Color.yellow;
+        }
+    }
+
+    private void showAnswerColours()
+    {
+        if (questionList[currentlySelectedSet].answerClicked)
+        {
+
+            if (questionList[currentlySelectedSet].q1.usersAnswer.Equals(questionList[currentlySelectedSet].q1.questionAnswer))
+            {
+                Question1Button.image.color = Color.green;
+            }
+            else
+            {
+                Question1Button.image.color = Color.red;
+            }
+
+            if (questionList[currentlySelectedSet].q2.usersAnswer.Equals(questionList[currentlySelectedSet].q2.questionAnswer))
+            {
+                Question2Button.image.color = Color.green;
+            }
+            else
+            {
+                Question2Button.image.color = Color.red;
+            }
+
+            if (questionList[currentlySelectedSet].q3.usersAnswer.Equals(questionList[currentlySelectedSet].q3.questionAnswer))
+            {
+                Question3Button.image.color = Color.green;
+            }
+            else
+            {
+                Question3Button.image.color = Color.red;
+            }
+
+            if (questionList[currentlySelectedSet].q4.usersAnswer.Equals(questionList[currentlySelectedSet].q4.questionAnswer))
+            {
+                Question4Button.image.color = Color.green;
+            }
+            else
+            {
+                Question4Button.image.color = Color.red;
+            }
+
+            if (questionList[currentlySelectedSet].q5.usersAnswer.Equals(questionList[currentlySelectedSet].q5.questionAnswer))
+            {
+                Question5Button.image.color = Color.green;
+            }
+            else
+            {
+                Question5Button.image.color = Color.red;
+            }
+        }
+    }
+
     private void setColours(bool isOn, Toggle chosenToggle)
     {
         chosenToggle.isOn = isOn;
@@ -216,6 +291,121 @@ public class PracticeQuestionControllerGenericScript : MonoBehaviour
         chosenToggle.colors = cb;
     }
 
+    private void initiateToggleColours()
+    {
+        correctColours.normalColor = Color.green;
+        correctColours.selectedColor = Color.green;
+        correctColours.highlightedColor = Color.green;
+
+        incorrectColours.normalColor = Color.red;
+        incorrectColours.selectedColor = Color.red;
+        incorrectColours.highlightedColor = Color.red;
+    }
+
+    private void setToggleColourCorrect(Toggle chosenToggle)
+    {
+        ColorBlock cb = chosenToggle.colors;
+
+        cb.normalColor = Color.green;
+        cb.selectedColor = Color.green;
+        cb.highlightedColor = Color.green;
+
+        chosenToggle.colors = cb;
+    }
+
+    private void setToggleColourIncorrect(Toggle chosenToggle)
+    {
+        ColorBlock cb = chosenToggle.colors;
+
+        cb.normalColor = Color.red;
+        cb.selectedColor = Color.red;
+        cb.highlightedColor = Color.red;
+
+        chosenToggle.colors = cb;
+    }
+
+
+
+    private void showAnswerOnToggles()
+    {
+        if (questionList[currentlySelectedSet].answerClicked)
+        {
+            switch (currentlySelectedQuestionInSet)
+            {
+                case 1:
+                    if (questionList[currentlySelectedSet].q1.questionAnswer.Equals("SetA"))
+                    {
+                        setToggleColourCorrect(SetAToggle);
+                    }
+                    else if (questionList[currentlySelectedSet].q1.questionAnswer.Equals("SetB"))
+                    {
+                        setToggleColourCorrect(SetBToggle);
+                    }
+                    else if (questionList[currentlySelectedSet].q1.questionAnswer.Equals("Neither"))
+                    {
+                        setToggleColourCorrect(NeitherToggle);
+                    }
+                    break;
+                case 2:
+                    if (questionList[currentlySelectedSet].q2.questionAnswer.Equals("SetA"))
+                    {
+                        setToggleColourCorrect(SetAToggle);
+                    }
+                    else if (questionList[currentlySelectedSet].q2.questionAnswer.Equals("SetB"))
+                    {
+                        setToggleColourCorrect(SetBToggle);
+                    }
+                    else if (questionList[currentlySelectedSet].q2.questionAnswer.Equals("Neither"))
+                    {
+                        setToggleColourCorrect(NeitherToggle);
+                    }
+                    break;
+                case 3:
+                    if (questionList[currentlySelectedSet].q3.questionAnswer.Equals("SetA"))
+                    {
+                        setToggleColourCorrect(SetAToggle);
+                    }
+                    else if (questionList[currentlySelectedSet].q3.questionAnswer.Equals("SetB"))
+                    {
+                        setToggleColourCorrect(SetBToggle);
+                    }
+                    else if (questionList[currentlySelectedSet].q3.questionAnswer.Equals("Neither"))
+                    {
+                        setToggleColourCorrect(NeitherToggle); ;
+                    }
+                    break;
+                case 4:
+                    if (questionList[currentlySelectedSet].q4.questionAnswer.Equals("SetA"))
+                    {
+                        setToggleColourCorrect(SetAToggle);
+                    }
+                    else if (questionList[currentlySelectedSet].q4.questionAnswer.Equals("SetB"))
+                    {
+                        setToggleColourCorrect(SetBToggle);
+                    }
+                    else if (questionList[currentlySelectedSet].q4.questionAnswer.Equals("Neither"))
+                    {
+                        setToggleColourCorrect(NeitherToggle);
+                    }
+                    break;
+                case 5:
+                    if (questionList[currentlySelectedSet].q5.questionAnswer.Equals("SetA"))
+                    {
+                        setToggleColourCorrect(SetAToggle);
+                    }
+                    else if (questionList[currentlySelectedSet].q5.questionAnswer.Equals("SetB"))
+                    {
+                        setToggleColourCorrect(SetBToggle);
+                    }
+                    else if (questionList[currentlySelectedSet].q5.questionAnswer.Equals("Neither"))
+                    {
+                        setToggleColourCorrect(NeitherToggle);
+                    }
+                    break;
+            }
+        }
+    }
+
     #region Button clicks
     private void NextButtonClicked()
     {
@@ -232,9 +422,15 @@ public class PracticeQuestionControllerGenericScript : MonoBehaviour
             loadSet(currentlySelectedSet);
         }
 
+        resetButtonColours();
+
         updateQuestionCounter();
-        
+
         setUsersSelectedAnswerForButton();
+
+        showAnswerColours();
+
+        Question1ButtonClicked();
     }
 
     private void PreviousButtonClicked()
@@ -252,8 +448,15 @@ public class PracticeQuestionControllerGenericScript : MonoBehaviour
             loadSet(currentlySelectedSet);
 
         }
+        resetButtonColours();
+
         updateQuestionCounter();
+
         setUsersSelectedAnswerForButton();
+
+        showAnswerColours();
+
+        Question1ButtonClicked();
 
     }
 
@@ -263,6 +466,10 @@ public class PracticeQuestionControllerGenericScript : MonoBehaviour
         currentlySelectedQuestionInSet = 1;
         QuestionImage.sprite = Resources.Load<Sprite>(questionList[currentlySelectedSet].q1.imageURI);
         setUsersSelectedAnswerForButton();
+        showAnswerOnToggles();
+        highlightWrongAnswer(1);
+
+
     }
 
     private void Question2ButtonClicked()
@@ -271,6 +478,8 @@ public class PracticeQuestionControllerGenericScript : MonoBehaviour
         currentlySelectedQuestionInSet = 2;
         QuestionImage.sprite = Resources.Load<Sprite>(questionList[currentlySelectedSet].q2.imageURI);
         setUsersSelectedAnswerForButton();
+        showAnswerOnToggles();
+        highlightWrongAnswer(2);
     }
 
     private void Question3ButtonClicked()
@@ -279,6 +488,8 @@ public class PracticeQuestionControllerGenericScript : MonoBehaviour
         currentlySelectedQuestionInSet = 3;
         QuestionImage.sprite = Resources.Load<Sprite>(questionList[currentlySelectedSet].q3.imageURI);
         setUsersSelectedAnswerForButton();
+        showAnswerOnToggles();
+        highlightWrongAnswer(3);
     }
 
     private void Question4ButtonClicked()
@@ -287,6 +498,8 @@ public class PracticeQuestionControllerGenericScript : MonoBehaviour
         currentlySelectedQuestionInSet = 4;
         QuestionImage.sprite = Resources.Load<Sprite>(questionList[currentlySelectedSet].q4.imageURI);
         setUsersSelectedAnswerForButton();
+        showAnswerOnToggles();
+        highlightWrongAnswer(4);
     }
 
     private void Question5ButtonClicked()
@@ -295,16 +508,18 @@ public class PracticeQuestionControllerGenericScript : MonoBehaviour
         currentlySelectedQuestionInSet = 5;
         QuestionImage.sprite = Resources.Load<Sprite>(questionList[currentlySelectedSet].q5.imageURI);
         setUsersSelectedAnswerForButton();
+        showAnswerOnToggles();
+        highlightWrongAnswer(5);
     }
 
 
     private void SetAToggleClicked(bool isOn)
     {
         saveAnswer("SetA");
-        setColours(isOn,SetAToggle);
+        setColours(isOn, SetAToggle);
     }
 
-   
+
 
     private void SetBToggleClicked(bool isOn)
     {
@@ -396,6 +611,103 @@ public class PracticeQuestionControllerGenericScript : MonoBehaviour
         }
 
     }
+
+    private void highlightWrongAnswer(int questionNumber)
+    {
+        if (questionList[currentlySelectedSet].answerClicked)
+        {
+            switch (currentlySelectedQuestionInSet)
+            {
+                case 1:
+                    if (questionList[currentlySelectedSet].q1.usersAnswer.Equals("SetA") && !questionList[currentlySelectedSet].q1.questionAnswer.Equals("SetA"))
+                    {
+                        setToggleColourIncorrect(SetAToggle);
+                    }
+                    else if (questionList[currentlySelectedSet].q1.usersAnswer.Equals("SetB") && !questionList[currentlySelectedSet].q1.questionAnswer.Equals("SetB"))
+                    {
+                        setToggleColourIncorrect(SetBToggle);
+                    }
+                    else if (questionList[currentlySelectedSet].q1.usersAnswer.Equals("Neither") && !questionList[currentlySelectedSet].q1.questionAnswer.Equals("Neither"))
+                    {
+                        setToggleColourIncorrect(NeitherToggle);
+                    }
+                    break;
+                case 2:
+                    if (questionList[currentlySelectedSet].q2.usersAnswer.Equals("SetA") && !questionList[currentlySelectedSet].q2.questionAnswer.Equals("SetA"))
+                    {
+                        setToggleColourIncorrect(SetAToggle);
+                    }
+                    else if (questionList[currentlySelectedSet].q2.usersAnswer.Equals("SetB") && !questionList[currentlySelectedSet].q2.questionAnswer.Equals("SetB"))
+                    {
+                        setToggleColourIncorrect(SetBToggle);
+                    }
+                    else if (questionList[currentlySelectedSet].q2.usersAnswer.Equals("Neither") && !questionList[currentlySelectedSet].q2.questionAnswer.Equals("Neither"))
+                    {
+                        setToggleColourIncorrect(NeitherToggle);
+                    }
+                    break;
+                case 3:
+                    if (questionList[currentlySelectedSet].q3.usersAnswer.Equals("SetA") && !questionList[currentlySelectedSet].q3.questionAnswer.Equals("SetA"))
+                    {
+                        setToggleColourIncorrect(SetAToggle);
+                    }
+                    else if (questionList[currentlySelectedSet].q3.usersAnswer.Equals("SetB") && !questionList[currentlySelectedSet].q3.questionAnswer.Equals("SetB"))
+                    {
+                        setToggleColourIncorrect(SetBToggle);
+                    }
+                    else if (questionList[currentlySelectedSet].q3.usersAnswer.Equals("Neither") && !questionList[currentlySelectedSet].q3.questionAnswer.Equals("Neither"))
+                    {
+                        setToggleColourIncorrect(NeitherToggle);
+                    }
+                    break;
+                case 4:
+                    if (questionList[currentlySelectedSet].q4.usersAnswer.Equals("SetA") && !questionList[currentlySelectedSet].q4.questionAnswer.Equals("SetA"))
+                    {
+                        setToggleColourIncorrect(SetAToggle);
+                    }
+                    else if (questionList[currentlySelectedSet].q4.usersAnswer.Equals("SetB") && !questionList[currentlySelectedSet].q4.questionAnswer.Equals("SetB"))
+                    {
+                        setToggleColourIncorrect(SetBToggle);
+                    }
+                    else if (questionList[currentlySelectedSet].q4.usersAnswer.Equals("Neither") && !questionList[currentlySelectedSet].q4.questionAnswer.Equals("Neither"))
+                    {
+                        setToggleColourIncorrect(NeitherToggle);
+                    }
+                    break;
+                case 5:
+                    if (questionList[currentlySelectedSet].q5.usersAnswer.Equals("SetA") && !questionList[currentlySelectedSet].q5.questionAnswer.Equals("SetA"))
+                    {
+                        setToggleColourIncorrect(SetAToggle);
+                    }
+                    else if (questionList[currentlySelectedSet].q5.usersAnswer.Equals("SetB") && !questionList[currentlySelectedSet].q5.questionAnswer.Equals("SetB"))
+                    {
+                        setToggleColourIncorrect(SetBToggle);
+                    }
+                    else if (questionList[currentlySelectedSet].q5.usersAnswer.Equals("Neither") && !questionList[currentlySelectedSet].q5.questionAnswer.Equals("Neither"))
+                    {
+                        setToggleColourIncorrect(NeitherToggle);
+                    }
+                    break;
+            }
+        }
+    }
+
+    private void AnswerButtonClicked()
+    {
+        AnswerPanel.SetActive(true);
+        AnswerText.text = questionList[currentlySelectedSet].answer;
+        questionList[currentlySelectedSet].answerClicked = true;
+
+        showAnswerColours();
+    }
+
+    private void AnswerCloseButtonClicked()
+    {
+        AnswerPanel.SetActive(false);
+        loadSet(currentlySelectedSet);
+        Question1ButtonClicked();
+        showAnswerOnToggles();
+    }
     #endregion
 }
 
@@ -410,6 +722,7 @@ public class Set
 {
     public string resource;
     public List<Questions> questions;
+    public string answer;
 }
 
 [System.Serializable]

@@ -2,6 +2,7 @@
   "allQuestions": [
     {
       "resource": "PracticeQuestions/AbstractReasoning/Q5/Set",
+      "answer": "Set A always has three circles with tangents. Other shapes are irrelevant.\nSet B always has two circles intersected by lines. Other shapes are irrelevant.",
       "questions": [
         {
           "questionNumber": 1,
@@ -32,6 +33,7 @@
     },
     {
       "resource": "PracticeQuestions/AbstractReasoning/Q2/Set",
+      "answer": "Set A always has a circle directly above the triangle.\nSet B always has a circle next to the triangle.",
       "questions": [
         {
           "questionNumber": 1,
