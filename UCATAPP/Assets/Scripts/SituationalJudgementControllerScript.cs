@@ -152,7 +152,7 @@ public class SituationalJudgementControllerScript : MonoBehaviour
             Answer1Toggle.GetComponentInChildren<Text>().text = "A very appropriate thing to do";
             Answer2Toggle.GetComponentInChildren<Text>().text = "Appropriate, but not ideal";
             Answer3Toggle.GetComponentInChildren<Text>().text = "Inappropriate, but not awful";
-            Answer4Toggle.GetComponentInChildren<Text>().text = "A very innapropriate thing to do";
+            Answer4Toggle.GetComponentInChildren<Text>().text = "A very inappropriate thing to do";
         }
     }
 
@@ -339,7 +339,7 @@ public class SituationalJudgementControllerScript : MonoBehaviour
                     {
                         setToggleColourCorrect(Answer3Toggle);
                     }
-                    else if (questionList[currentlySelectedSet].q1.questionAnswer.Equals("Not important at all") || questionList[currentlySelectedSet].q1.questionAnswer.Equals("A very innapropriate thing to do"))
+                    else if (questionList[currentlySelectedSet].q1.questionAnswer.Equals("Not important at all") || questionList[currentlySelectedSet].q1.questionAnswer.Equals("A very inappropriate thing to do"))
                     {
                         setToggleColourCorrect(Answer4Toggle);
                     }
@@ -357,7 +357,7 @@ public class SituationalJudgementControllerScript : MonoBehaviour
                     {
                         setToggleColourCorrect(Answer3Toggle);
                     }
-                    else if (questionList[currentlySelectedSet].q2.questionAnswer.Equals("Not important at all") || questionList[currentlySelectedSet].q2.questionAnswer.Equals("A very innapropriate thing to do"))
+                    else if (questionList[currentlySelectedSet].q2.questionAnswer.Equals("Not important at all") || questionList[currentlySelectedSet].q2.questionAnswer.Equals("A very inappropriate thing to do"))
                     {
                         setToggleColourCorrect(Answer4Toggle);
                     }
@@ -375,7 +375,7 @@ public class SituationalJudgementControllerScript : MonoBehaviour
                     {
                         setToggleColourCorrect(Answer3Toggle);
                     }
-                    else if (questionList[currentlySelectedSet].q3.questionAnswer.Equals("Not important at all") || questionList[currentlySelectedSet].q3.questionAnswer.Equals("A very innapropriate thing to do"))
+                    else if (questionList[currentlySelectedSet].q3.questionAnswer.Equals("Not important at all") || questionList[currentlySelectedSet].q3.questionAnswer.Equals("A very inappropriate thing to do"))
                     {
                         setToggleColourCorrect(Answer4Toggle);
                     }
@@ -393,7 +393,7 @@ public class SituationalJudgementControllerScript : MonoBehaviour
                     {
                         setToggleColourCorrect(Answer3Toggle);
                     }
-                    else if (questionList[currentlySelectedSet].q4.questionAnswer.Equals("Not important at all") || questionList[currentlySelectedSet].q4.questionAnswer.Equals("A very innapropriate thing to do"))
+                    else if (questionList[currentlySelectedSet].q4.questionAnswer.Equals("Not important at all") || questionList[currentlySelectedSet].q4.questionAnswer.Equals("A very inappropriate thing to do"))
                     {
                         setToggleColourCorrect(Answer4Toggle);
                     }
@@ -556,7 +556,7 @@ public class SituationalJudgementControllerScript : MonoBehaviour
         }
         else if (questionList[currentlySelectedSet].labelSet == 2)
         {
-            saveAnswer("A very innapropriate thing to do");
+            saveAnswer("A very inappropriate thing to do");
         }
         setColours(isOn, Answer4Toggle);
     }
@@ -593,7 +593,7 @@ public class SituationalJudgementControllerScript : MonoBehaviour
                 {
                     Answer3ToggleClicked(true);
                 }
-                else if (questionList[currentlySelectedSet].q1.usersAnswer.Equals("Not important at all") || questionList[currentlySelectedSet].q1.usersAnswer.Equals("A very innapropriate thing to do"))
+                else if (questionList[currentlySelectedSet].q1.usersAnswer.Equals("Not important at all") || questionList[currentlySelectedSet].q1.usersAnswer.Equals("A very inappropriate thing to do"))
                 {
                     Answer4ToggleClicked(true);
                 }
@@ -611,7 +611,7 @@ public class SituationalJudgementControllerScript : MonoBehaviour
                 {
                     Answer3ToggleClicked(true);
                 }
-                else if (questionList[currentlySelectedSet].q2.usersAnswer.Equals("Not important at all") || questionList[currentlySelectedSet].q2.usersAnswer.Equals("A very innapropriate thing to do"))
+                else if (questionList[currentlySelectedSet].q2.usersAnswer.Equals("Not important at all") || questionList[currentlySelectedSet].q2.usersAnswer.Equals("A very inappropriate thing to do"))
                 {
                     Answer4ToggleClicked(true);
                 }
@@ -629,7 +629,7 @@ public class SituationalJudgementControllerScript : MonoBehaviour
                 {
                     Answer3ToggleClicked(true);
                 }
-                else if (questionList[currentlySelectedSet].q3.usersAnswer.Equals("Not important at all") || questionList[currentlySelectedSet].q3.usersAnswer.Equals("A very innapropriate thing to do"))
+                else if (questionList[currentlySelectedSet].q3.usersAnswer.Equals("Not important at all") || questionList[currentlySelectedSet].q3.usersAnswer.Equals("A very inappropriate thing to do"))
                 {
                     Answer4ToggleClicked(true);
                 }
@@ -649,7 +649,7 @@ public class SituationalJudgementControllerScript : MonoBehaviour
                     {
                         Answer3ToggleClicked(true);
                     }
-                    else if (questionList[currentlySelectedSet].q4.usersAnswer.Equals("Not important at all") || questionList[currentlySelectedSet].q4.usersAnswer.Equals("A very innapropriate thing to do"))
+                    else if (questionList[currentlySelectedSet].q4.usersAnswer.Equals("Not important at all") || questionList[currentlySelectedSet].q4.usersAnswer.Equals("A very inappropriate thing to do"))
                     {
                         Answer4ToggleClicked(true);
                     }
@@ -759,7 +759,7 @@ public class SituationalJudgementControllerScript : MonoBehaviour
                         {
                             setToggleColourIncorrect(Answer3Toggle);
                         }
-                        else if (questionList[currentlySelectedSet].q1.usersAnswer.Equals("A very innapropriate thing to do") && !questionList[currentlySelectedSet].q1.questionAnswer.Equals("A very innapropriate thing to do"))
+                        else if (questionList[currentlySelectedSet].q1.usersAnswer.Equals("A very inappropriate thing to do") && !questionList[currentlySelectedSet].q1.questionAnswer.Equals("A very inappropriate thing to do"))
                         {
                             setToggleColourIncorrect(Answer4Toggle);
                         }
@@ -777,7 +777,7 @@ public class SituationalJudgementControllerScript : MonoBehaviour
                         {
                             setToggleColourIncorrect(Answer3Toggle);
                         }
-                        else if (questionList[currentlySelectedSet].q2.usersAnswer.Equals("A very innapropriate thing to do") && !questionList[currentlySelectedSet].q2.questionAnswer.Equals("A very innapropriate thing to do"))
+                        else if (questionList[currentlySelectedSet].q2.usersAnswer.Equals("A very inappropriate thing to do") && !questionList[currentlySelectedSet].q2.questionAnswer.Equals("A very inappropriate thing to do"))
                         {
                             setToggleColourIncorrect(Answer4Toggle);
                         }
@@ -795,7 +795,7 @@ public class SituationalJudgementControllerScript : MonoBehaviour
                         {
                             setToggleColourIncorrect(Answer3Toggle);
                         }
-                        else if (questionList[currentlySelectedSet].q3.usersAnswer.Equals("A very innapropriate thing to do") && !questionList[currentlySelectedSet].q3.questionAnswer.Equals("A very innapropriate thing to do"))
+                        else if (questionList[currentlySelectedSet].q3.usersAnswer.Equals("A very inappropriate thing to do") && !questionList[currentlySelectedSet].q3.questionAnswer.Equals("A very inappropriate thing to do"))
                         {
                             setToggleColourIncorrect(Answer4Toggle);
                         }
@@ -813,7 +813,7 @@ public class SituationalJudgementControllerScript : MonoBehaviour
                         {
                             setToggleColourIncorrect(Answer3Toggle);
                         }
-                        else if (questionList[currentlySelectedSet].q4.usersAnswer.Equals("A very innapropriate thing to do") && !questionList[currentlySelectedSet].q4.questionAnswer.Equals("A very innapropriate thing to do"))
+                        else if (questionList[currentlySelectedSet].q4.usersAnswer.Equals("A very inappropriate thing to do") && !questionList[currentlySelectedSet].q4.questionAnswer.Equals("A very inappropriate thing to do"))
                         {
                             setToggleColourIncorrect(Answer4Toggle);
                         }
