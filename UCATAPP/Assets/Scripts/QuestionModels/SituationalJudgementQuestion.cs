@@ -6,39 +6,37 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts
 {
-    class AbstractReasoningQuestion
+    class SituationalJudgementQuestion
     {
-        public String setImageUri;
-        public String answer;
+        public String resource;
+        public int labelSet;
         public bool answerClicked = false;
+        public int questionCount = 0;
 
         //QuestionNumber:URI:questionAnswer:usersAnswer
-        public AbstractReasoningTupleHolder q1;
-        public AbstractReasoningTupleHolder q2;
-        public AbstractReasoningTupleHolder q3;
-        public AbstractReasoningTupleHolder q4;
-        public AbstractReasoningTupleHolder q5;
+        public SituationalJudgementTupleHolder q1;
+        public SituationalJudgementTupleHolder q2;
+        public SituationalJudgementTupleHolder q3;
+        public SituationalJudgementTupleHolder q4;
 
         public String userQuestion1Answer = "";
         public String userQuestion2Answer = "";
         public String userQuestion3Answer = "";
         public String userQuestion4Answer = "";
-        public String userQuestion5Answer = "";
 
         public bool question1Answered = false;
         public bool question2Answered = false;
         public bool question3Answered = false;
         public bool question4Answered = false;
-        public bool question5Answered = false;
 
 
-        public AbstractReasoningQuestion(String _setImageUri, String _answer)
+        public SituationalJudgementQuestion(String _resource, int _labelSet)
         {
-            setImageUri = _setImageUri;
-            answer = _answer;
+            resource = _resource;
+            labelSet = _labelSet;
         }
 
-        public AbstractReasoningTupleHolder LoadQuestion(string question)
+        public SituationalJudgementTupleHolder LoadQuestion(string question)
         {
             switch (question)
             {
@@ -50,8 +48,6 @@ namespace Assets.Scripts
                     return q3;
                 case "q4":
                     return q4;
-                case "q5":
-                    return q5;
             }
             return q1;
         }
@@ -61,19 +57,20 @@ namespace Assets.Scripts
             switch (number)
             {
                 case 1:
-                    q1 = new AbstractReasoningTupleHolder(question.Item1, question.Item2, question.Item3, "");
+                    q1 = new SituationalJudgementTupleHolder(question.Item1, question.Item2, question.Item3, "");
+                    questionCount = 1;
                     break;
                 case 2:
-                   q2 = new AbstractReasoningTupleHolder(question.Item1, question.Item2, question.Item3, "");
+                   q2 = new SituationalJudgementTupleHolder(question.Item1, question.Item2, question.Item3, "");
+                    questionCount = 2;
                     break;
                 case 3:
-                    q3 = new AbstractReasoningTupleHolder(question.Item1, question.Item2, question.Item3, "");
+                    q3 = new SituationalJudgementTupleHolder(question.Item1, question.Item2, question.Item3, "");
+                    questionCount = 3;
                     break;
                 case 4:
-                    q4 = new AbstractReasoningTupleHolder(question.Item1, question.Item2, question.Item3, "");
-                    break;
-                case 5:
-                    q5 = new AbstractReasoningTupleHolder(question.Item1, question.Item2, question.Item3, "");
+                    q4 = new SituationalJudgementTupleHolder(question.Item1, question.Item2, question.Item3, "");
+                    questionCount = 4;
                     break;
             }
 
