@@ -65,8 +65,11 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\AbstractReasoningControllerScript.cs" />
     <Compile Include="Assets\Scripts\GlobalVariables.cs" />
+    <Compile Include="Assets\Scripts\QuantitativeReasoningControllerScript.cs" />
     <Compile Include="Assets\Scripts\QuestionModels\AbstractReasoningQuestion.cs" />
     <Compile Include="Assets\Scripts\QuestionModels\AbstractReasoningTupleHolder.cs" />
+    <Compile Include="Assets\Scripts\QuestionModels\QuantitativeReasoningQuestion.cs" />
+    <Compile Include="Assets\Scripts\QuestionModels\QuantitativeReasoningTupleHolder.cs" />
     <Compile Include="Assets\Scripts\QuestionModels\SituationalJudgementQuestion.cs" />
     <Compile Include="Assets\Scripts\QuestionModels\SituationalJudgementTupleHolder.cs" />
     <Compile Include="Assets\Scripts\QuestionModels\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
