@@ -159,6 +159,7 @@ public class QuantitativeReasoningControllerScript : MonoBehaviour
 
         if (questionList[currentlySelectedSet].hasImage)
         {
+            resourceImage.gameObject.SetActive(true);
             HalfText.text = questionList[currentlySelectedSet].resource;
             resourceImage.sprite = Resources.Load<Sprite>(questionList[currentlySelectedSet].imageUri);
         }
