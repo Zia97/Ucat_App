@@ -105,8 +105,11 @@
     <Compile Include="Assets\Scripts\QuestionModels\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
     <Compile Include="Assets\Scripts\QuestionModels\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\Scripts\QuestionModels\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
+    <Compile Include="Assets\Scripts\QuestionModels\VerbalReasoningQuestion.cs" />
+    <Compile Include="Assets\Scripts\QuestionModels\VerbalReasoningTupleHolder.cs" />
     <Compile Include="Assets\Scripts\SceneLoader.cs" />
     <Compile Include="Assets\Scripts\SituationalJudgementControllerScript.cs" />
+    <Compile Include="Assets\Scripts\VerbalReasoningControllerScript.cs" />
     <None Include="Assets\Scripts\QuestionModels\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\Scripts\QuestionModels\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\Scripts\QuestionModels\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />

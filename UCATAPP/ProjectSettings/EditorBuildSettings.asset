@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/QuantitativeReasoningScene.unity
     guid: 3af0518507aa32146aa8f5db764ae4da
+  - enabled: 1
+    path: Assets/Scenes/VerbalReasoningScene.unity
+    guid: 83200a3a2c696e04482e9ae0419de47d
   m_configObjects: {}
