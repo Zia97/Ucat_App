@@ -64,10 +64,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\AbstractReasoningControllerScript.cs" />
+    <Compile Include="Assets\Scripts\DecisionMakingControllerScript.cs" />
     <Compile Include="Assets\Scripts\GlobalVariables.cs" />
     <Compile Include="Assets\Scripts\QuantitativeReasoningControllerScript.cs" />
     <Compile Include="Assets\Scripts\QuestionModels\AbstractReasoningQuestion.cs" />
     <Compile Include="Assets\Scripts\QuestionModels\AbstractReasoningTupleHolder.cs" />
+    <Compile Include="Assets\Scripts\QuestionModels\DecisionMakingQuestion.cs" />
+    <Compile Include="Assets\Scripts\QuestionModels\DecisionMakingTupleHolder.cs" />
     <Compile Include="Assets\Scripts\QuestionModels\QuantitativeReasoningQuestion.cs" />
     <Compile Include="Assets\Scripts\QuestionModels\QuantitativeReasoningTupleHolder.cs" />
     <Compile Include="Assets\Scripts\QuestionModels\SituationalJudgementQuestion.cs" />
