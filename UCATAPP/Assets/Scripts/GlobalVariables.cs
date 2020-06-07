@@ -13,4 +13,6 @@ public static class GlobalVariables
     public const string VerbalReasoning = "Verbal Reasoning";
     public const string SituationalJudgement = "Situational Judgement";
 
+    public static string SelectedPracticeTest = "";
+
 }

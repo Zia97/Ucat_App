@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DecisionMakingScene.unity
     guid: b80d91e4f45617841a0e059038eee65e
+  - enabled: 1
+    path: Assets/Scenes/PracticeTest.unity
+    guid: 646f3ae6bb0cf1343a1328a83476eac2
   m_configObjects: {}

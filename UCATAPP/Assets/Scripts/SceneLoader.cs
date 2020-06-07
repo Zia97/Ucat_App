@@ -10,6 +10,11 @@ public class SceneLoader : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
     }
+    
+    public void SelectTest(string testNumber)
+    {
+        GlobalVariables.SelectedPracticeTest = testNumber;
+    }
 
     public void SetSelectedPracticeQuestion(string selectedQuestion)
     {
