@@ -53,6 +53,8 @@ public class QuantitativeReasoningControllerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GlobalVariables.selectedExercise = "Practice";
+
         answerPanel.SetActive(false);
 
         HeaderPanelText.text = GlobalVariables.SelectedPracticeQuestion;

@@ -47,6 +47,8 @@ public class VerbalReasoningControllerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GlobalVariables.selectedExercise = "Practice";
+
         HeaderPanelText.text = GlobalVariables.SelectedPracticeQuestion;
 
         addButtonListeners();

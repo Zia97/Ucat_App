@@ -47,6 +47,8 @@ public class SituationalJudgementControllerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GlobalVariables.selectedExercise = "Practice";
+
         HeaderPanelText.text = GlobalVariables.SelectedPracticeQuestion;
 
         addButtonListeners();
@@ -74,13 +76,7 @@ public class SituationalJudgementControllerScript : MonoBehaviour
     {
         TextAsset json = new TextAsset();
 
-        switch (GlobalVariables.SelectedPracticeQuestion)
-        {
-            case GlobalVariables.SituationalJudgement:
-                json = (TextAsset)Resources.Load("PracticeQuestionJSONS/SituationalJudgement/SituationalJudgementQuestions", typeof(TextAsset));
-                break;
-        }
-
+        json = jsonFile;
 
         SJAllQuestions allQuestionsFromJson = JsonUtility.FromJson<SJAllQuestions>(json.text);
         allQuestions = allQuestionsFromJson.allQuestions;

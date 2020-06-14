@@ -50,6 +50,8 @@ public class AbstractReasoningControllerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GlobalVariables.selectedExercise = "Practice";
+
         HeaderPanelText.text = GlobalVariables.SelectedPracticeQuestion;
 
         AnswerPanel.SetActive(false);
@@ -79,25 +81,7 @@ public class AbstractReasoningControllerScript : MonoBehaviour
     {
         TextAsset json = new TextAsset();
 
-        switch (GlobalVariables.SelectedPracticeQuestion)
-        {
-            case GlobalVariables.AbstractReasoning:
-                json = (TextAsset)Resources.Load("PracticeQuestionJSONS/AbstractReasoning/AbstractReasoningQuestions", typeof(TextAsset));
-                break;
-            case GlobalVariables.DecisionMaking:
-                json = (TextAsset)Resources.Load("PracticeQuestionJSONS/AbstractReasoning/DecisionMakingQuestions", typeof(TextAsset));
-                break;
-            case GlobalVariables.QuantitativeReasoning:
-                json = (TextAsset)Resources.Load("PracticeQuestionJSONS/AbstractReasoning/QuantitativeReasoningQuestions", typeof(TextAsset));
-                break;
-            case GlobalVariables.SituationalJudgement:
-                json = (TextAsset)Resources.Load("PracticeQuestionJSONS/AbstractReasoning/SituationalJudgementQuestions", typeof(TextAsset));
-                break;
-            case GlobalVariables.VerbalReasoning:
-                json = (TextAsset)Resources.Load("PracticeQuestionJSONS/AbstractReasoning/VerbalReasoningQuestions", typeof(TextAsset));
-                break;
-        }
-
+        json = jsonFile;
 
         ARAllQuestions allQuestionsFromJson = JsonUtility.FromJson<ARAllQuestions>(json.text);
         allQuestions = allQuestionsFromJson.allQuestions;

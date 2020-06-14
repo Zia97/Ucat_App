@@ -15,4 +15,6 @@ public static class GlobalVariables
 
     public static string SelectedPracticeTest = "";
 
+    public static string selectedExercise = "";
+
 }
