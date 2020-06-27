@@ -42,6 +42,10 @@ public class SituationalJudgementControllerScript : MonoBehaviour
     private static ColorBlock correctColours;
     private static ColorBlock incorrectColours;
 
+    private float timeRemaining = 1560;
+    public bool timerIsRunning = false;
+    public Text timeText;
+
 
 
     // Start is called before the first frame update
@@ -69,7 +73,20 @@ public class SituationalJudgementControllerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (timerIsRunning)
+        {
+            if (timeRemaining > 0)
+            {
+                timeRemaining -= Time.deltaTime;
+                DisplayTime(timeRemaining);
+            }
+            else
+            {
+                Debug.Log("Time has run out!");
+                timeRemaining = 0;
+                timerIsRunning = false;
+            }
+        }
     }
 
     void SetQuestionList()
@@ -81,6 +98,16 @@ public class SituationalJudgementControllerScript : MonoBehaviour
         SJAllQuestions allQuestionsFromJson = JsonUtility.FromJson<SJAllQuestions>(json.text);
         allQuestions = allQuestionsFromJson.allQuestions;
 
+    }
+
+    void DisplayTime(float timeToDisplay)
+    {
+        timeToDisplay += 1;
+
+        float minutes = Mathf.FloorToInt(timeToDisplay / 60);
+        float seconds = Mathf.FloorToInt(timeToDisplay % 60);
+
+        timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
 

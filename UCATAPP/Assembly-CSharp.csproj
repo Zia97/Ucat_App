@@ -113,6 +113,7 @@
     <Compile Include="Assets\Scripts\SceneLoader.cs" />
     <Compile Include="Assets\Scripts\SituationalJudgementControllerScript.cs" />
     <Compile Include="Assets\Scripts\VerbalReasoningControllerScript.cs" />
+    <Compile Include="Assets\TestController.cs" />
     <None Include="Assets\Scripts\QuestionModels\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\Scripts\QuestionModels\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\Scripts\QuestionModels\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
