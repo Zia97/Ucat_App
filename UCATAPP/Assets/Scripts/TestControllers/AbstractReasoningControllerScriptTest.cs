@@ -5,7 +5,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AbstractReasoningControllerScript : MonoBehaviour
+public class AbstractReasoningControllerScriptTest : MonoBehaviour
 {
 
     public Text HeaderPanelText;
@@ -34,6 +34,8 @@ public class AbstractReasoningControllerScript : MonoBehaviour
 
     public Button AnswerButton;
 
+    public Button AbstractReasoningStartButton;
+
     private List<ARSet> allQuestions;
     private List<AbstractReasoningQuestion> abstractReasoningQuestionsList = new List<AbstractReasoningQuestion>();
     private AbstractReasoningQuestion[] questionList;
@@ -46,9 +48,12 @@ public class AbstractReasoningControllerScript : MonoBehaviour
     private static ColorBlock incorrectColours;
 
 
-    private float timeRemaining = 780;
+    private float timeRemaining = 20;  //780
     public bool timerIsRunning = false;
     public Text timeText;
+
+    public GameObject SJInfoPanel;
+    public GameObject AbstractReasoningCanvas;
 
 
 
@@ -91,8 +96,15 @@ public class AbstractReasoningControllerScript : MonoBehaviour
                 Debug.Log("Time has run out!");
                 timeRemaining = 0;
                 timerIsRunning = false;
+                loadSJSection();
             }
         }
+    }
+
+    private void loadSJSection()
+    {
+        AbstractReasoningCanvas.SetActive(false);
+        SJInfoPanel.SetActive(true);
     }
 
     void SetQuestionList()
@@ -169,6 +181,8 @@ public class AbstractReasoningControllerScript : MonoBehaviour
         PreviousButton.onClick.AddListener(PreviousButtonClicked);
         NextButton.onClick.AddListener(NextButtonClicked);
 
+        AbstractReasoningStartButton.onClick.AddListener(AbstractReasoningStartButtonClicked);
+
         Question1Button.onClick.AddListener(Question1ButtonClicked);
         Question2Button.onClick.AddListener(Question2ButtonClicked);
         Question3Button.onClick.AddListener(Question3ButtonClicked);
@@ -182,6 +196,11 @@ public class AbstractReasoningControllerScript : MonoBehaviour
         SetBToggle.onValueChanged.AddListener(SetBToggleClicked);
         NeitherToggle.onValueChanged.AddListener(NeitherToggleClicked);
 
+    }
+
+    private void AbstractReasoningStartButtonClicked()
+    {
+        timerIsRunning = true;
     }
 
     void updateQuestionCounter()
@@ -723,32 +742,3 @@ public class AbstractReasoningControllerScript : MonoBehaviour
     #endregion
 }
 
-
-
-
-
-#region JSON MODELS
-
-[System.Serializable]
-public class ARSet
-{
-    public string resource;
-    public List<ARQuestions> questions;
-    public string answer;
-}
-
-[System.Serializable]
-public class ARAllQuestions
-{
-    public List<ARSet> allQuestions;
-}
-
-[System.Serializable]
-public class ARQuestions
-{
-    public int questionNumber;
-    public string imageURI;
-    public string answer;
-}
-
-#endregion

@@ -5,25 +5,21 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class QuantitativeReasoningControllerScript : MonoBehaviour
+public class VerbalReasoningControllerScriptTest : MonoBehaviour
 {
 
     public Text HeaderPanelText;
     public Text QuestionCounterText;
     public TextAsset jsonFile;
 
-    public Text FullText;
-    public Text HalfText;
+    public Text QuestionText;
     public Text preText;
-
-    public Image resourceImage;
 
 
     public Toggle Answer1Toggle;
     public Toggle Answer2Toggle;
     public Toggle Answer3Toggle;
     public Toggle Answer4Toggle;
-    public Toggle Answer5Toggle;
 
     public Button NextButton;
     public Button PreviousButton;
@@ -33,33 +29,34 @@ public class QuantitativeReasoningControllerScript : MonoBehaviour
     public Button Question3Button;
     public Button Question4Button;
 
+    public Button VerbalReasoningStartButton;
+
     public Button AnswerButton;
 
-    private List<QRSet> allQuestions;
-    private List<QuantitativeReasoningQuestion> QuantitativeReasoningQuestionList = new List<QuantitativeReasoningQuestion>();
-    private QuantitativeReasoningQuestion[] questionList;
+    public GameObject DecisionMakingInfoPanel;
+    public GameObject VerbalReasoningCanvas;
 
+    private List<VRSet> allQuestions;
+    private List<VerbalReasoningQuestion> verbalReasoningQuestionList = new List<VerbalReasoningQuestion>();
+    private VerbalReasoningQuestion[] questionList;
+
+    private Tuple<int, String, String, String> selectedQuestionInSet;
     private int currentlySelectedSet;
     private int currentlySelectedQuestionInSet;
 
     private static ColorBlock correctColours;
     private static ColorBlock incorrectColours;
 
-    public GameObject answerPanel;
-    public Button answerPanelCloseButton;
 
-    private float timeRemaining = 1440;
+    private float timeRemaining = 20; //1260
     public bool timerIsRunning = false;
     public Text timeText;
-
 
 
     // Start is called before the first frame update
     void Start()
     {
         GlobalVariables.selectedExercise = "Practice";
-
-        answerPanel.SetActive(false);
 
         HeaderPanelText.text = GlobalVariables.SelectedPracticeQuestion;
 
@@ -90,11 +87,17 @@ public class QuantitativeReasoningControllerScript : MonoBehaviour
             }
             else
             {
-                Debug.Log("Time has run out!");
                 timeRemaining = 0;
                 timerIsRunning = false;
+                loadDMSection();
             }
         }
+    }
+
+    private void loadDMSection()
+    {
+        VerbalReasoningCanvas.SetActive(false);
+        DecisionMakingInfoPanel.SetActive(true);
     }
 
     void SetQuestionList()
@@ -103,14 +106,13 @@ public class QuantitativeReasoningControllerScript : MonoBehaviour
 
         switch (GlobalVariables.SelectedPracticeQuestion)
         {
-            case GlobalVariables.SituationalJudgement:
-                json = (TextAsset)Resources.Load("PracticeQuestionJSONS/QuantitativeReasoning/QuantitativeReasoningQuestions", typeof(TextAsset));
+            case GlobalVariables.VerbalReasoning:
+                json = (TextAsset)Resources.Load("PracticeQuestionJSONS/VerbalReasoning/VerbalReasoningQuestions", typeof(TextAsset));
                 break;
         }
 
 
-        QRAllQuestions allQuestionsFromJson = JsonUtility.FromJson<QRAllQuestions>(jsonFile.text);
-        Debug.Log(allQuestionsFromJson);
+        VRAllQuestions allQuestionsFromJson = JsonUtility.FromJson<VRAllQuestions>(jsonFile.text);
         allQuestions = allQuestionsFromJson.allQuestions;
 
     }
@@ -128,18 +130,17 @@ public class QuantitativeReasoningControllerScript : MonoBehaviour
 
     void InstantiateQuestions()
     {
-        foreach (QRSet s in allQuestions)
+        foreach (VRSet s in allQuestions)
         {
-            QuantitativeReasoningQuestion temp = new QuantitativeReasoningQuestion(s.resource, s.hasImage, s.imageURI);
+            VerbalReasoningQuestion temp = new VerbalReasoningQuestion(s.resource);
 
-            foreach (QRQuestions q in s.questions)
+            foreach (VRQuestions q in s.questions)
             {
-                Tuple<int, string, string, string> question = new Tuple<int, string, string, string>(q.questionNumber, q.questionText, q.answer, q.answerReasoning);
-                Tuple<string, string, string, string, string> labels = new Tuple<string, string, string, string, string>(q.option1, q.option2, q.option3, q.option4, q.option5);
-                temp.AddQuestion(q.questionNumber, question, labels);
+                Tuple<int, string, string> question = new Tuple<int, string, string>(q.questionNumber, q.questionText, q.answer);
+                temp.AddQuestion(q.questionNumber, question, q.option1,q.option2,q.option3,q.option4);
             }
 
-            QuantitativeReasoningQuestionList.Add(temp);
+            verbalReasoningQuestionList.Add(temp);
         }
     }
 
@@ -148,15 +149,12 @@ public class QuantitativeReasoningControllerScript : MonoBehaviour
         currentlySelectedSet = 0;
         currentlySelectedQuestionInSet = 1;
 
-        questionList = QuantitativeReasoningQuestionList.ToArray();
+        questionList = verbalReasoningQuestionList.ToArray();
 
         resetColours();
 
-        HalfText.text = questionList[0].resource;
-        //  QuestionText.text = questionList[0].resource;
+        QuestionText.text = questionList[0].resource;
         preText.text = questionList[0].q1.questionText;
-
-        loadQuestionResources();
 
         loadQuestionLabels();
 
@@ -167,11 +165,11 @@ public class QuantitativeReasoningControllerScript : MonoBehaviour
 
     void loadSet(int questionNumber)
     {
-        questionList = QuantitativeReasoningQuestionList.ToArray();
+        questionList = verbalReasoningQuestionList.ToArray();
 
         resetColours();
 
-        //  QuestionText.text = questionList[questionNumber].resource;
+        QuestionText.text = questionList[questionNumber].resource;
         preText.text = questionList[questionNumber].q1.questionText;
 
         loadQuestionLabels();
@@ -180,57 +178,92 @@ public class QuantitativeReasoningControllerScript : MonoBehaviour
         setUsersSelectedAnswerForButton();
     }
 
-
-    void loadQuestionResources()
-    {
-        HalfText.text = "";
-        FullText.text = "";
-
-        if (questionList[currentlySelectedSet].hasImage)
-        {
-            resourceImage.gameObject.SetActive(true);
-            HalfText.text = questionList[currentlySelectedSet].resource;
-            resourceImage.sprite = Resources.Load<Sprite>(questionList[currentlySelectedSet].imageUri);
-        }
-        else
-        {
-            resourceImage.gameObject.SetActive(false);
-            FullText.text = questionList[currentlySelectedSet].resource;
-        }
-    }
-
     void loadQuestionLabels()
     {
+        Answer1Toggle.gameObject.SetActive(true);
+        Answer2Toggle.gameObject.SetActive(true);
+        Answer3Toggle.gameObject.SetActive(true);
+        Answer4Toggle.gameObject.SetActive(true);
+       
 
         switch (currentlySelectedQuestionInSet)
         {
             case 1:
                 Answer1Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q1.option1Label;
                 Answer2Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q1.option2Label;
-                Answer3Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q1.option3Label;
-                Answer4Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q1.option4Label;
-                Answer5Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q1.option5Label;
+                if(questionList[currentlySelectedSet].q1.option3Label.Equals(""))
+                {
+
+                    Answer3Toggle.gameObject.SetActive(false);
+                    Answer4Toggle.gameObject.SetActive(false);
+                }
+                else if(!questionList[currentlySelectedSet].q1.option3Label.Equals("")&& questionList[currentlySelectedSet].q1.option4Label.Equals(""))
+                {
+                    Answer4Toggle.gameObject.SetActive(false);
+                    Answer3Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q1.option3Label;
+                }
+                else if(!questionList[currentlySelectedSet].q1.option4Label.Equals(""))
+                {
+                    Answer3Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q1.option3Label;
+                    Answer4Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q1.option4Label;
+                }    
                 break;
             case 2:
                 Answer1Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q2.option1Label;
                 Answer2Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q2.option2Label;
-                Answer3Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q2.option3Label;
-                Answer4Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q2.option4Label;
-                Answer5Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q2.option5Label;
+                if (questionList[currentlySelectedSet].q2.option3Label.Equals(""))
+                {
+                    Answer3Toggle.gameObject.SetActive(false);
+                    Answer4Toggle.gameObject.SetActive(false);
+                }
+                else if (!questionList[currentlySelectedSet].q2.option3Label.Equals("") && questionList[currentlySelectedSet].q2.option4Label.Equals(""))
+                {
+                    Answer4Toggle.gameObject.SetActive(false);
+                    Answer3Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q2.option3Label;
+                }
+                else if (!questionList[currentlySelectedSet].q2.option4Label.Equals(""))
+                {
+                    Answer3Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q2.option3Label;
+                    Answer4Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q2.option4Label;
+                }
                 break;
             case 3:
                 Answer1Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q3.option1Label;
                 Answer2Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q3.option2Label;
-                Answer3Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q3.option3Label;
-                Answer4Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q3.option4Label;
-                Answer5Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q3.option5Label;
+                if (questionList[currentlySelectedSet].q3.option3Label.Equals(""))
+                {
+                    Answer3Toggle.gameObject.SetActive(false);
+                    Answer4Toggle.gameObject.SetActive(false);
+                }
+                else if (!questionList[currentlySelectedSet].q3.option3Label.Equals("") && questionList[currentlySelectedSet].q3.option4Label.Equals(""))
+                {
+                    Answer4Toggle.gameObject.SetActive(false);
+                    Answer3Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q3.option3Label;
+                }
+                else if (!questionList[currentlySelectedSet].q3.option4Label.Equals(""))
+                {
+                    Answer3Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q3.option3Label;
+                    Answer4Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q3.option4Label;
+                }
                 break;
             case 4:
                 Answer1Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q4.option1Label;
                 Answer2Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q4.option2Label;
-                Answer3Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q4.option3Label;
-                Answer4Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q4.option4Label;
-                Answer5Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q4.option5Label;
+                if (questionList[currentlySelectedSet].q4.option3Label.Equals(""))
+                {
+                    Answer3Toggle.gameObject.SetActive(false);
+                    Answer4Toggle.gameObject.SetActive(false);
+                }
+                else if (!questionList[currentlySelectedSet].q4.option3Label.Equals("") && questionList[currentlySelectedSet].q4.option4Label.Equals(""))
+                {
+                    Answer4Toggle.gameObject.SetActive(false);
+                    Answer3Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q4.option3Label;
+                }
+                else if (!questionList[currentlySelectedSet].q4.option4Label.Equals(""))
+                {
+                    Answer3Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q4.option3Label;
+                    Answer4Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q4.option4Label;
+                }
                 break;
         }
     }
@@ -251,13 +284,15 @@ public class QuantitativeReasoningControllerScript : MonoBehaviour
         Answer2Toggle.onValueChanged.AddListener(Answer2ToggleClicked);
         Answer3Toggle.onValueChanged.AddListener(Answer3ToggleClicked);
         Answer4Toggle.onValueChanged.AddListener(Answer4ToggleClicked);
-        Answer5Toggle.onValueChanged.AddListener(Answer5ToggleClicked);
 
-        answerPanelCloseButton.onClick.AddListener(answerPanelCloseButtonClicked);
-
+        VerbalReasoningStartButton.onClick.AddListener(VerbalReasoningStartButtonClicked);
 
     }
 
+    private void VerbalReasoningStartButtonClicked()
+    {
+        timerIsRunning = true;
+    }
 
     void updateQuestionCounter()
     {
@@ -290,7 +325,6 @@ public class QuantitativeReasoningControllerScript : MonoBehaviour
         setColours(false, Answer2Toggle);
         setColours(false, Answer3Toggle);
         setColours(false, Answer4Toggle);
-        setColours(false, Answer5Toggle);
     }
 
     private void resetButtonColours()
@@ -368,7 +402,6 @@ public class QuantitativeReasoningControllerScript : MonoBehaviour
                 }
                 break;
         }
-
     }
 
     private void setColours(bool isOn, Toggle chosenToggle)
@@ -428,7 +461,6 @@ public class QuantitativeReasoningControllerScript : MonoBehaviour
 
     private void showAnswerOnToggles()
     {
-
         switch (currentlySelectedQuestionInSet)
         {
             case 1:
@@ -447,10 +479,6 @@ public class QuantitativeReasoningControllerScript : MonoBehaviour
                         setToggleColourCorrect(Answer3Toggle);
                     }
                     else if (questionList[currentlySelectedSet].q1.questionAnswer.Equals(questionList[currentlySelectedSet].q1.option4Label))
-                    {
-                        setToggleColourCorrect(Answer4Toggle);
-                    }
-                    else if (questionList[currentlySelectedSet].q1.questionAnswer.Equals(questionList[currentlySelectedSet].q1.option5Label))
                     {
                         setToggleColourCorrect(Answer4Toggle);
                     }
@@ -476,10 +504,6 @@ public class QuantitativeReasoningControllerScript : MonoBehaviour
                     {
                         setToggleColourCorrect(Answer4Toggle);
                     }
-                    else if (questionList[currentlySelectedSet].q2.questionAnswer.Equals(questionList[currentlySelectedSet].q2.option5Label))
-                    {
-                        setToggleColourCorrect(Answer4Toggle);
-                    }
                     break;
                 }
                 break;
@@ -499,10 +523,6 @@ public class QuantitativeReasoningControllerScript : MonoBehaviour
                         setToggleColourCorrect(Answer3Toggle);
                     }
                     else if (questionList[currentlySelectedSet].q3.questionAnswer.Equals(questionList[currentlySelectedSet].q3.option4Label))
-                    {
-                        setToggleColourCorrect(Answer4Toggle);
-                    }
-                    else if (questionList[currentlySelectedSet].q3.questionAnswer.Equals(questionList[currentlySelectedSet].q3.option5Label))
                     {
                         setToggleColourCorrect(Answer4Toggle);
                     }
@@ -528,10 +548,6 @@ public class QuantitativeReasoningControllerScript : MonoBehaviour
                     {
                         setToggleColourCorrect(Answer4Toggle);
                     }
-                    else if (questionList[currentlySelectedSet].q4.questionAnswer.Equals(questionList[currentlySelectedSet].q4.option5Label))
-                    {
-                        setToggleColourCorrect(Answer4Toggle);
-                    }
                     break;
                 }
                 break;
@@ -553,8 +569,6 @@ public class QuantitativeReasoningControllerScript : MonoBehaviour
             currentlySelectedSet = 0;
             loadSet(currentlySelectedSet);
         }
-
-        loadQuestionResources();
 
         resetButtonColours();
 
@@ -588,8 +602,6 @@ public class QuantitativeReasoningControllerScript : MonoBehaviour
         }
         resetButtonColours();
 
-        loadQuestionResources();
-
         updateQuestionCounter();
 
         setUsersSelectedAnswerForButton();
@@ -602,11 +614,6 @@ public class QuantitativeReasoningControllerScript : MonoBehaviour
 
         countQuestions();
 
-    }
-
-    private void answerPanelCloseButtonClicked()
-    {
-        answerPanel.SetActive(false);
     }
 
     private void Question1ButtonClicked()
@@ -650,7 +657,7 @@ public class QuantitativeReasoningControllerScript : MonoBehaviour
         preText.text = questionList[currentlySelectedSet].q4.questionText;
         setUsersSelectedAnswerForButton();
         loadQuestionLabels();
-        showAnswerOnToggles();
+        showAnswerOnToggles ();
         highlightWrongAnswer(4);
     }
 
@@ -736,40 +743,16 @@ public class QuantitativeReasoningControllerScript : MonoBehaviour
         setColours(isOn, Answer4Toggle);
     }
 
-    private void Answer5ToggleClicked(bool isOn)
-    {
-        switch (currentlySelectedQuestionInSet)
-        {
-            case 1:
-                saveAnswer(questionList[currentlySelectedSet].q1.option5Label);
-                break;
-            case 2:
-                saveAnswer(questionList[currentlySelectedSet].q2.option5Label);
-                break;
-            case 3:
-                saveAnswer(questionList[currentlySelectedSet].q3.option5Label);
-                break;
-            case 4:
-                saveAnswer(questionList[currentlySelectedSet].q4.option5Label);
-                break;
-        }
-        setColours(isOn, Answer5Toggle);
-    }
-
 
 
     private void countQuestions()
     {
-        if (questionList[currentlySelectedSet].questionCount == 1)
+        if(questionList[currentlySelectedSet].questionCount==3)
         {
-            Question2Button.gameObject.SetActive(false);
-            Question3Button.gameObject.SetActive(false);
             Question4Button.gameObject.SetActive(false);
         }
-        else if (questionList[currentlySelectedSet].questionCount == 4)
+        else if(questionList[currentlySelectedSet].questionCount == 4)
         {
-            Question2Button.gameObject.SetActive(true);
-            Question3Button.gameObject.SetActive(true);
             Question4Button.gameObject.SetActive(true);
         }
     }
@@ -779,6 +762,7 @@ public class QuantitativeReasoningControllerScript : MonoBehaviour
     {
         switch (currentlySelectedQuestionInSet)
         {
+
             case 1:
                 if (questionList[currentlySelectedSet].q1.usersAnswer.Equals(questionList[currentlySelectedSet].q1.option1Label))
                 {
@@ -790,15 +774,19 @@ public class QuantitativeReasoningControllerScript : MonoBehaviour
                 }
                 else if (questionList[currentlySelectedSet].q1.usersAnswer.Equals(questionList[currentlySelectedSet].q1.option3Label))
                 {
-                    Answer3ToggleClicked(true);
+                    if(!questionList[currentlySelectedSet].q1.option3Label.Equals(""))
+                    {
+                        Answer3ToggleClicked(true);
+                    }
+                    
                 }
                 else if (questionList[currentlySelectedSet].q1.usersAnswer.Equals(questionList[currentlySelectedSet].q1.option4Label))
                 {
-                    Answer4ToggleClicked(true);
-                }
-                else if (questionList[currentlySelectedSet].q1.usersAnswer.Equals(questionList[currentlySelectedSet].q1.option5Label))
-                {
-                    Answer5ToggleClicked(true);
+                    if (!questionList[currentlySelectedSet].q1.option4Label.Equals(""))
+                    {
+                        Answer4ToggleClicked(true);
+                    }
+
                 }
                 break;
             case 2:
@@ -812,15 +800,17 @@ public class QuantitativeReasoningControllerScript : MonoBehaviour
                 }
                 else if (questionList[currentlySelectedSet].q2.usersAnswer.Equals(questionList[currentlySelectedSet].q2.option3Label))
                 {
-                    Answer3ToggleClicked(true);
+                    if (!questionList[currentlySelectedSet].q2.option3Label.Equals(""))
+                    {
+                        Answer3ToggleClicked(true);
+                    }
                 }
                 else if (questionList[currentlySelectedSet].q2.usersAnswer.Equals(questionList[currentlySelectedSet].q2.option4Label))
                 {
-                    Answer4ToggleClicked(true);
-                }
-                else if (questionList[currentlySelectedSet].q2.usersAnswer.Equals(questionList[currentlySelectedSet].q2.option5Label))
-                {
-                    Answer5ToggleClicked(true);
+                    if (!questionList[currentlySelectedSet].q2.option4Label.Equals(""))
+                    {
+                        Answer4ToggleClicked(true);
+                    }
                 }
                 break;
             case 3:
@@ -834,15 +824,17 @@ public class QuantitativeReasoningControllerScript : MonoBehaviour
                 }
                 else if (questionList[currentlySelectedSet].q3.usersAnswer.Equals(questionList[currentlySelectedSet].q3.option3Label))
                 {
-                    Answer3ToggleClicked(true);
+                    if (!questionList[currentlySelectedSet].q3.option3Label.Equals(""))
+                    {
+                        Answer3ToggleClicked(true);
+                    }
                 }
                 else if (questionList[currentlySelectedSet].q3.usersAnswer.Equals(questionList[currentlySelectedSet].q3.option4Label))
                 {
-                    Answer4ToggleClicked(true);
-                }
-                else if (questionList[currentlySelectedSet].q3.usersAnswer.Equals(questionList[currentlySelectedSet].q3.option5Label))
-                {
-                    Answer5ToggleClicked(true);
+                    if (!questionList[currentlySelectedSet].q3.option4Label.Equals(""))
+                    {
+                        Answer4ToggleClicked(true);
+                    }
                 }
                 break;
             case 4:
@@ -858,15 +850,17 @@ public class QuantitativeReasoningControllerScript : MonoBehaviour
                     }
                     else if (questionList[currentlySelectedSet].q4.usersAnswer.Equals(questionList[currentlySelectedSet].q4.option3Label))
                     {
-                        Answer3ToggleClicked(true);
+                        if (!questionList[currentlySelectedSet].q4.option3Label.Equals(""))
+                        {
+                            Answer3ToggleClicked(true);
+                        }
                     }
                     else if (questionList[currentlySelectedSet].q4.usersAnswer.Equals(questionList[currentlySelectedSet].q4.option4Label))
                     {
-                        Answer4ToggleClicked(true);
-                    }
-                    else if (questionList[currentlySelectedSet].q4.usersAnswer.Equals(questionList[currentlySelectedSet].q4.option5Label))
-                    {
-                        Answer5ToggleClicked(true);
+                        if (!questionList[currentlySelectedSet].q4.option4Label.Equals(""))
+                        {
+                            Answer4ToggleClicked(true);
+                        }
                     }
                     break;
                 }
@@ -898,10 +892,6 @@ public class QuantitativeReasoningControllerScript : MonoBehaviour
                     {
                         setToggleColourIncorrect(Answer4Toggle);
                     }
-                    else if (questionList[currentlySelectedSet].q1.usersAnswer.Equals(questionList[currentlySelectedSet].q1.option5Label) && !questionList[currentlySelectedSet].q1.questionAnswer.Equals(questionList[currentlySelectedSet].q1.usersAnswer))
-                    {
-                        setToggleColourIncorrect(Answer5Toggle);
-                    }
                     break;
                 }
                 break;
@@ -924,11 +914,6 @@ public class QuantitativeReasoningControllerScript : MonoBehaviour
                     {
                         setToggleColourIncorrect(Answer4Toggle);
                     }
-                    else if (questionList[currentlySelectedSet].q2.usersAnswer.Equals(questionList[currentlySelectedSet].q2.option5Label) && !questionList[currentlySelectedSet].q2.questionAnswer.Equals(questionList[currentlySelectedSet].q2.usersAnswer))
-                    {
-                        setToggleColourIncorrect(Answer5Toggle);
-                    }
-                    break;
                 }
                 break;
             case 3:
@@ -950,11 +935,6 @@ public class QuantitativeReasoningControllerScript : MonoBehaviour
                     {
                         setToggleColourIncorrect(Answer4Toggle);
                     }
-                    else if (questionList[currentlySelectedSet].q3.usersAnswer.Equals(questionList[currentlySelectedSet].q3.option5Label) && !questionList[currentlySelectedSet].q3.questionAnswer.Equals(questionList[currentlySelectedSet].q3.usersAnswer))
-                    {
-                        setToggleColourIncorrect(Answer5Toggle);
-                    }
-                    break;
                 }
                 break;
             case 4:
@@ -976,11 +956,6 @@ public class QuantitativeReasoningControllerScript : MonoBehaviour
                     {
                         setToggleColourIncorrect(Answer4Toggle);
                     }
-                    else if (questionList[currentlySelectedSet].q4.usersAnswer.Equals(questionList[currentlySelectedSet].q4.option5Label) && !questionList[currentlySelectedSet].q4.questionAnswer.Equals(questionList[currentlySelectedSet].q4.usersAnswer))
-                    {
-                        setToggleColourIncorrect(Answer5Toggle);
-                    }
-                    break;
                 }
                 break;
         }
@@ -1003,47 +978,10 @@ public class QuantitativeReasoningControllerScript : MonoBehaviour
                 questionList[currentlySelectedSet].q4.setAnswerClickedTrue();
                 break;
         }
-        answerPanel.SetActive(true);
+        questionList[currentlySelectedSet].answerClicked = true;
         showAnswerColours();
         showAnswerOnToggles();
         highlightWrongAnswer(currentlySelectedQuestionInSet);
     }
     #endregion
 }
-
-
-
-
-
-#region JSON MODELS
-
-[System.Serializable]
-public class QRSet
-{
-    public string resource;
-    public List<QRQuestions> questions;
-    public bool hasImage;
-    public string imageURI;
-}
-
-[System.Serializable]
-public class QRAllQuestions
-{
-    public List<QRSet> allQuestions;
-}
-
-[System.Serializable]
-public class QRQuestions
-{
-    public int questionNumber;
-    public string questionText;
-    public string answer;
-    public string answerReasoning;
-    public string option1;
-    public string option2;
-    public string option3;
-    public string option4;
-    public string option5;
-}
-
-#endregion

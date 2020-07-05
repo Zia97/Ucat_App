@@ -5,7 +5,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DecisionMakingControllerScript : MonoBehaviour
+public class DecisionMakingControllerScriptTest : MonoBehaviour
 {
 
     public Text HeaderPanelText;
@@ -29,6 +29,8 @@ public class DecisionMakingControllerScript : MonoBehaviour
 
     public Button Question1Button;
 
+    public Button DecisionMakingStartButton;
+
     public Button AnswerButton;
 
     private List<DMSet> allQuestions;
@@ -44,9 +46,12 @@ public class DecisionMakingControllerScript : MonoBehaviour
     public GameObject answerPanel;
     public Button answerPanelCloseButton;
 
-    private float timeRemaining = 1860;
+    private float timeRemaining = 20; //1860
     public bool timerIsRunning = false;
     public Text timeText;
+
+    public GameObject QRInfoPanel;
+    public GameObject DecisionMakingCanvas;
 
 
 
@@ -86,9 +91,9 @@ public class DecisionMakingControllerScript : MonoBehaviour
             }
             else
             {
-                Debug.Log("Time has run out!");
                 timeRemaining = 0;
                 timerIsRunning = false;
+                loadDMSection();
             }
         }
     }
@@ -203,6 +208,8 @@ public class DecisionMakingControllerScript : MonoBehaviour
         PreviousButton.onClick.AddListener(PreviousButtonClicked);
         NextButton.onClick.AddListener(NextButtonClicked);
 
+        DecisionMakingStartButton.onClick.AddListener(DecisionMakingStartButtonClicked);
+
         Question1Button.onClick.AddListener(Question1ButtonClicked);
 
         AnswerButton.onClick.AddListener(AnswerButtonClicked);
@@ -215,6 +222,10 @@ public class DecisionMakingControllerScript : MonoBehaviour
         answerPanelCloseButton.onClick.AddListener(answerPanelCloseButtonClicked);
     }
 
+    private void DecisionMakingStartButtonClicked()
+    {
+        timerIsRunning = true;
+    }
 
     void updateQuestionCounter()
     {
@@ -322,6 +333,13 @@ public class DecisionMakingControllerScript : MonoBehaviour
         cb.highlightedColor = Color.red;
 
         chosenToggle.colors = cb;
+    }
+
+
+    private void loadDMSection()
+    {
+        DecisionMakingCanvas.SetActive(false);
+        QRInfoPanel.SetActive(true);
     }
 
 
@@ -555,38 +573,3 @@ public class DecisionMakingControllerScript : MonoBehaviour
     #endregion
 }
 
-
-
-
-
-#region JSON MODELS
-
-[System.Serializable]
-public class DMSet
-{
-    public string resource;
-    public List<DMQuestions> questions;
-    public bool hasImage;
-    public string imageURI;
-}
-
-[System.Serializable]
-public class DMAllQuestions
-{
-    public List<DMSet> allQuestions;
-}
-
-[System.Serializable]
-public class DMQuestions
-{
-    public int questionNumber;
-    public string questionText;
-    public string answer;
-    public string answerReasoning;
-    public string option1;
-    public string option2;
-    public string option3;
-    public string option4;
-}
-
-#endregion

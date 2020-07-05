@@ -80,21 +80,25 @@ public class TestController : MonoBehaviour
     private void SituationalJudgementStartButtonClicked()
     {
         SituationalJudgementInfoPanel.SetActive(false);
+        SituationalJudgementCanvas.SetActive(true);
     }
 
     private void AbstractReasoningStartButtonClicked()
     {
         AbstractReasoningInfoPanel.SetActive(false);
+        AbstractReasoningCanvas.SetActive(true);
     }
 
     private void QuantitativeReasoningStartButtonClicked()
     {
         QuantitativeReasoningInfoPanel.SetActive(false);
+        QuantitativeReasoningCanvas.SetActive(true);
     }
 
     private void DecisionMakingStartButtonClicked()
     {
         DecisionMakingInfoPanel.SetActive(false);
+        DecisionMakingCanvas.SetActive(true);
     }
 
     private void VerbalReasoningStartButtonClicked()

@@ -1451,7 +1451,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 101924276}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 101924273}
+        m_MethodName: 
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &101924276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5501,7 +5512,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 431989674}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ed71d6b4b1771b4f9e950209d1cee4d, type: 3}
+  m_Script: {fileID: 11500000, guid: ae5c2983fda440645adc42a2dd71a40a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   HeaderPanelText: {fileID: 735585398}
@@ -5520,6 +5531,7 @@ MonoBehaviour:
   Question3Button: {fileID: 866004398}
   Question4Button: {fileID: 1123217682}
   AnswerButton: {fileID: 285003432}
+  SJStartButton: {fileID: 0}
   timerIsRunning: 0
   timeText: {fileID: 483137822}
 --- !u!4 &431989676
@@ -10644,7 +10656,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 882699913}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0abb522bb1c5e842912b0bf50d3cba5, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a65d21febd6b214fa3089fbffa4b62a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   HeaderPanelText: {fileID: 1724241229}
@@ -10662,7 +10674,10 @@ MonoBehaviour:
   Question2Button: {fileID: 1700367259}
   Question3Button: {fileID: 210382534}
   Question4Button: {fileID: 1890861779}
+  VerbalReasoningStartButton: {fileID: 101924275}
   AnswerButton: {fileID: 1148518287}
+  DecisionMakingInfoPanel: {fileID: 378483409}
+  VerbalReasoningCanvas: {fileID: 151292465}
   timerIsRunning: 0
   timeText: {fileID: 1007451200}
 --- !u!4 &882699915
@@ -14715,7 +14730,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1266839763}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed59d425c6eac5d419ab393261d6435a, type: 3}
+  m_Script: {fileID: 11500000, guid: 9c97eab4c5ac38242ae415156308f984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   HeaderPanelText: {fileID: 1093062938}
@@ -14732,11 +14747,14 @@ MonoBehaviour:
   NextButton: {fileID: 1427804842}
   PreviousButton: {fileID: 534583119}
   Question1Button: {fileID: 1770658244}
+  DecisionMakingStartButton: {fileID: 1431774085}
   AnswerButton: {fileID: 1595692648}
   answerPanel: {fileID: 225377838}
   answerPanelCloseButton: {fileID: 644479962}
   timerIsRunning: 0
   timeText: {fileID: 1950021276}
+  QRInfoPanel: {fileID: 549034597}
+  DecisionMakingCanvas: {fileID: 1942814037}
 --- !u!4 &1266839765
 Transform:
   m_ObjectHideFlags: 0
@@ -18320,7 +18338,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1501248511}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 156a14b16a47e864f89a35d52bbca9d8, type: 3}
+  m_Script: {fileID: 11500000, guid: 066bbea731a1d634689bd18b23cf14b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   HeaderPanelText: {fileID: 281766652}
@@ -18342,6 +18360,7 @@ MonoBehaviour:
   Question4Button: {fileID: 953227189}
   Question5Button: {fileID: 688746521}
   AnswerButton: {fileID: 1414193455}
+  AbstractReasoningStartButton: {fileID: 762916943}
   timerIsRunning: 0
   timeText: {fileID: 2136753021}
 --- !u!4 &1501248513
@@ -19862,7 +19881,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1636038695}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39266e9d57bd90e4aa7372cbae4c5c50, type: 3}
+  m_Script: {fileID: 11500000, guid: dd49cf05c84c4a243a1b3c10b8ba2463, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   HeaderPanelText: {fileID: 1430867308}
@@ -19883,7 +19902,10 @@ MonoBehaviour:
   Question2Button: {fileID: 77793865}
   Question3Button: {fileID: 505037326}
   Question4Button: {fileID: 315748508}
+  QRStartButton: {fileID: 654213578}
   AnswerButton: {fileID: 305021536}
+  QuantiativeReasoningCanvas: {fileID: 92150911}
+  ARInfoPanel: {fileID: 2009590294}
   answerPanel: {fileID: 1607715321}
   answerPanelCloseButton: {fileID: 1540769049}
   timerIsRunning: 0

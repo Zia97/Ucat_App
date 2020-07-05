@@ -63,10 +63,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\AbstractReasoningControllerScript.cs" />
-    <Compile Include="Assets\Scripts\DecisionMakingControllerScript.cs" />
     <Compile Include="Assets\Scripts\GlobalVariables.cs" />
-    <Compile Include="Assets\Scripts\QuantitativeReasoningControllerScript.cs" />
+    <Compile Include="Assets\Scripts\PracticeControllers\AbstractReasoningControllerScript.cs" />
+    <Compile Include="Assets\Scripts\PracticeControllers\DecisionMakingControllerScript.cs" />
+    <Compile Include="Assets\Scripts\PracticeControllers\QuantitativeReasoningControllerScript.cs" />
+    <Compile Include="Assets\Scripts\PracticeControllers\SituationalJudgementControllerScript.cs" />
+    <Compile Include="Assets\Scripts\PracticeControllers\VerbalReasoningControllerScript.cs" />
     <Compile Include="Assets\Scripts\QuestionModels\AbstractReasoningQuestion.cs" />
     <Compile Include="Assets\Scripts\QuestionModels\AbstractReasoningTupleHolder.cs" />
     <Compile Include="Assets\Scripts\QuestionModels\DecisionMakingQuestion.cs" />
@@ -111,9 +113,12 @@
     <Compile Include="Assets\Scripts\QuestionModels\VerbalReasoningQuestion.cs" />
     <Compile Include="Assets\Scripts\QuestionModels\VerbalReasoningTupleHolder.cs" />
     <Compile Include="Assets\Scripts\SceneLoader.cs" />
-    <Compile Include="Assets\Scripts\SituationalJudgementControllerScript.cs" />
-    <Compile Include="Assets\Scripts\VerbalReasoningControllerScript.cs" />
-    <Compile Include="Assets\TestController.cs" />
+    <Compile Include="Assets\Scripts\TestController.cs" />
+    <Compile Include="Assets\Scripts\TestControllers\AbstractReasoningControllerScriptTest.cs" />
+    <Compile Include="Assets\Scripts\TestControllers\DecisionMakingControllerScriptTest.cs" />
+    <Compile Include="Assets\Scripts\TestControllers\QuantitativeReasoningControllerScriptTest.cs" />
+    <Compile Include="Assets\Scripts\TestControllers\SituationalJudgementControllerScriptTest.cs" />
+    <Compile Include="Assets\Scripts\TestControllers\VerbalReasoningControllerScriptTest.cs" />
     <None Include="Assets\Scripts\QuestionModels\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\Scripts\QuestionModels\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\Scripts\QuestionModels\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />

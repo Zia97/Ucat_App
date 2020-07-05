@@ -5,7 +5,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SituationalJudgementControllerScript : MonoBehaviour
+public class SituationalJudgementControllerScriptTest : MonoBehaviour
 {
 
     public Text HeaderPanelText;
@@ -30,6 +30,8 @@ public class SituationalJudgementControllerScript : MonoBehaviour
     public Button Question4Button;
 
     public Button AnswerButton;
+
+    public Button SJStartButton;
 
     private List<SJSet> allQuestions;
     private List<SituationalJudgementQuestion> situationalJudgementQuestionList = new List<SituationalJudgementQuestion>();
@@ -196,6 +198,13 @@ public class SituationalJudgementControllerScript : MonoBehaviour
         Answer3Toggle.onValueChanged.AddListener(Answer3ToggleClicked);
         Answer4Toggle.onValueChanged.AddListener(Answer4ToggleClicked);
 
+        SJStartButton.onClick.AddListener(SJStartButtonClicked);
+
+    }
+
+    private void SJStartButtonClicked()
+    {
+        timerIsRunning = true;
     }
 
     void updateQuestionCounter()
@@ -856,33 +865,3 @@ public class SituationalJudgementControllerScript : MonoBehaviour
     }
     #endregion
 }
-
-
-
-
-
-#region JSON MODELS
-
-[System.Serializable]
-public class SJSet
-{
-    public string resource;
-    public List<SJQuestions> questions;
-    public int labelSet;
-}
-
-[System.Serializable]
-public class SJAllQuestions
-{
-    public List<SJSet> allQuestions;
-}
-
-[System.Serializable]
-public class SJQuestions
-{
-    public int questionNumber;
-    public string questionText;
-    public string answer;
-}
-
-#endregion
