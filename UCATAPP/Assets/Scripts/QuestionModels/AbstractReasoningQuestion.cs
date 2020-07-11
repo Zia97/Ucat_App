@@ -31,6 +31,8 @@ namespace Assets.Scripts
         public bool question4Answered = false;
         public bool question5Answered = false;
 
+        public bool flagged = false;
+
 
         public AbstractReasoningQuestion(String _setImageUri, String _answer)
         {

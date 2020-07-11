@@ -29,6 +29,8 @@ namespace Assets.Scripts
         public bool question3Answered = false;
         public bool question4Answered = false;
 
+        public bool flagged = false;
+
 
         public SituationalJudgementQuestion(String _resource, int _labelSet)
         {

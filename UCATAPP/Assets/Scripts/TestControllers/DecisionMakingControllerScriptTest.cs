@@ -53,6 +53,8 @@ public class DecisionMakingControllerScriptTest : MonoBehaviour
     public GameObject QRInfoPanel;
     public GameObject DecisionMakingCanvas;
 
+    public Toggle DMQuestionToggle;
+
 
 
     // Start is called before the first frame update
@@ -220,6 +222,8 @@ public class DecisionMakingControllerScriptTest : MonoBehaviour
         Answer4Toggle.onValueChanged.AddListener(Answer4ToggleClicked);
 
         answerPanelCloseButton.onClick.AddListener(answerPanelCloseButtonClicked);
+
+        DMQuestionToggle.onValueChanged.AddListener(DMQuestionToggleClicked);
     }
 
     private void DecisionMakingStartButtonClicked()
@@ -342,6 +346,25 @@ public class DecisionMakingControllerScriptTest : MonoBehaviour
         QRInfoPanel.SetActive(true);
     }
 
+    private void DMQuestionToggleClicked(bool arg0)
+    {
+        questionList[currentlySelectedSet].flagged = arg0;
+    }
+
+    private void selectFlaggedIfFlagged()
+    {
+
+        if (questionList[currentlySelectedSet].flagged)
+        {
+            DMQuestionToggle.isOn = true;
+        }
+        else
+        {
+            DMQuestionToggle.isOn = false;
+        }
+
+    }
+
 
 
     private void showAnswerOnToggles()
@@ -404,6 +427,8 @@ public class DecisionMakingControllerScriptTest : MonoBehaviour
 
         loadQuestionLabels();
 
+        selectFlaggedIfFlagged();
+
     }
 
     private void PreviousButtonClicked()
@@ -434,6 +459,8 @@ public class DecisionMakingControllerScriptTest : MonoBehaviour
         Question1ButtonClicked();
 
         loadQuestionLabels();
+
+        selectFlaggedIfFlagged();
 
     }
 

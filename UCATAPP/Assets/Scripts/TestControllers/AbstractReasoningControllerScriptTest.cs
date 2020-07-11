@@ -55,6 +55,8 @@ public class AbstractReasoningControllerScriptTest : MonoBehaviour
     public GameObject SJInfoPanel;
     public GameObject AbstractReasoningCanvas;
 
+    public Toggle ARQuestionToggle;
+
 
 
     // Start is called before the first frame update
@@ -105,6 +107,25 @@ public class AbstractReasoningControllerScriptTest : MonoBehaviour
     {
         AbstractReasoningCanvas.SetActive(false);
         SJInfoPanel.SetActive(true);
+    }
+
+    private void ARQuestionToggleClicked(bool arg0)
+    {
+        questionList[currentlySelectedSet].flagged = arg0;
+    }
+
+    private void selectFlaggedIfFlagged()
+    {
+
+        if (questionList[currentlySelectedSet].flagged)
+        {
+            ARQuestionToggle.isOn = true;
+        }
+        else
+        {
+            ARQuestionToggle.isOn = false;
+        }
+
     }
 
     void SetQuestionList()
@@ -195,6 +216,8 @@ public class AbstractReasoningControllerScriptTest : MonoBehaviour
         SetAToggle.onValueChanged.AddListener(SetAToggleClicked);
         SetBToggle.onValueChanged.AddListener(SetBToggleClicked);
         NeitherToggle.onValueChanged.AddListener(NeitherToggleClicked);
+
+        ARQuestionToggle.onValueChanged.AddListener(ARQuestionToggleClicked);
 
     }
 
@@ -462,6 +485,8 @@ public class AbstractReasoningControllerScriptTest : MonoBehaviour
         showAnswerColours();
 
         Question1ButtonClicked();
+
+        selectFlaggedIfFlagged();
     }
 
     private void PreviousButtonClicked()
@@ -488,6 +513,8 @@ public class AbstractReasoningControllerScriptTest : MonoBehaviour
         showAnswerColours();
 
         Question1ButtonClicked();
+
+        selectFlaggedIfFlagged();
 
     }
 

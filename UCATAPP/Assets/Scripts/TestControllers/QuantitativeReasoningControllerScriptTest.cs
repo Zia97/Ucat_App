@@ -57,6 +57,8 @@ public class QuantitativeReasoningControllerScriptTest : MonoBehaviour
     public bool timerIsRunning = false;
     public Text timeText;
 
+    public Toggle QRQuestionToggle;
+
 
 
     // Start is called before the first frame update
@@ -128,6 +130,25 @@ public class QuantitativeReasoningControllerScriptTest : MonoBehaviour
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
 
         timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+
+    private void QRQuestionToggleClicked(bool arg0)
+    {
+        questionList[currentlySelectedSet].flagged = arg0;
+    }
+
+    private void selectFlaggedIfFlagged()
+    {
+
+        if (questionList[currentlySelectedSet].flagged)
+        {
+            QRQuestionToggle.isOn = true;
+        }
+        else
+        {
+            QRQuestionToggle.isOn = false;
+        }
+
     }
 
 
@@ -261,6 +282,8 @@ public class QuantitativeReasoningControllerScriptTest : MonoBehaviour
         answerPanelCloseButton.onClick.AddListener(answerPanelCloseButtonClicked);
 
         QRStartButton.onClick.AddListener(QrStartButtonClicked);
+
+        QRQuestionToggle.onValueChanged.AddListener(QRQuestionToggleClicked);
 
 
     }
@@ -587,6 +610,8 @@ public class QuantitativeReasoningControllerScriptTest : MonoBehaviour
         loadQuestionLabels();
 
         countQuestions();
+
+        selectFlaggedIfFlagged();
     }
 
     private void PreviousButtonClicked()
@@ -619,6 +644,8 @@ public class QuantitativeReasoningControllerScriptTest : MonoBehaviour
         loadQuestionLabels();
 
         countQuestions();
+
+        selectFlaggedIfFlagged();
 
     }
 

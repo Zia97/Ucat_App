@@ -28,6 +28,8 @@ namespace Assets.Scripts
         public bool question3Answered = false;
         public bool question4Answered = false;
 
+        public bool flagged = false;
+
 
         public VerbalReasoningQuestion(String _resource)
         {

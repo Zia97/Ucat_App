@@ -48,6 +48,8 @@ public class SituationalJudgementControllerScriptTest : MonoBehaviour
     public bool timerIsRunning = false;
     public Text timeText;
 
+    public Toggle SJQuestionToggle;
+
 
 
     // Start is called before the first frame update
@@ -200,6 +202,8 @@ public class SituationalJudgementControllerScriptTest : MonoBehaviour
 
         SJStartButton.onClick.AddListener(SJStartButtonClicked);
 
+        SJQuestionToggle.onValueChanged.AddListener(SJQuestionToggleClicked);
+
     }
 
     private void SJStartButtonClicked()
@@ -249,6 +253,25 @@ public class SituationalJudgementControllerScriptTest : MonoBehaviour
             Question3Button.image.color = Color.yellow;
             Question4Button.image.color = Color.yellow;
         }
+    }
+
+    private void SJQuestionToggleClicked(bool arg0)
+    {
+        questionList[currentlySelectedSet].flagged = arg0;
+    }
+
+    private void selectFlaggedIfFlagged()
+    {
+
+        if (questionList[currentlySelectedSet].flagged)
+        {
+            SJQuestionToggle.isOn = true;
+        }
+        else
+        {
+            SJQuestionToggle.isOn = false;
+        }
+
     }
 
     private void showAnswerColours()
@@ -463,6 +486,8 @@ public class SituationalJudgementControllerScriptTest : MonoBehaviour
         loadQuestionLabels();
 
         countQuestions();
+
+        selectFlaggedIfFlagged();
     }
 
     private void PreviousButtonClicked()
@@ -493,6 +518,8 @@ public class SituationalJudgementControllerScriptTest : MonoBehaviour
         loadQuestionLabels();
 
         countQuestions();
+
+        selectFlaggedIfFlagged();
 
     }
 

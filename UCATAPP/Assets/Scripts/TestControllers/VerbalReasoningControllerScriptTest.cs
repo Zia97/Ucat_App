@@ -21,6 +21,8 @@ public class VerbalReasoningControllerScriptTest : MonoBehaviour
     public Toggle Answer3Toggle;
     public Toggle Answer4Toggle;
 
+    public Toggle VRQuestionToggle;
+
     public Button NextButton;
     public Button PreviousButton;
 
@@ -286,6 +288,26 @@ public class VerbalReasoningControllerScriptTest : MonoBehaviour
         Answer4Toggle.onValueChanged.AddListener(Answer4ToggleClicked);
 
         VerbalReasoningStartButton.onClick.AddListener(VerbalReasoningStartButtonClicked);
+        VRQuestionToggle.onValueChanged.AddListener(VRQuestionToggleClicked);
+
+    }
+
+    private void VRQuestionToggleClicked(bool arg0)
+    {
+        questionList[currentlySelectedSet].flagged = arg0;
+    }
+
+    private void selectFlaggedIfFlagged()
+    {
+
+        if(questionList[currentlySelectedSet].flagged)
+        {
+            VRQuestionToggle.isOn = true;
+        }
+        else
+        {
+            VRQuestionToggle.isOn = false;
+        }
 
     }
 
@@ -583,6 +605,8 @@ public class VerbalReasoningControllerScriptTest : MonoBehaviour
         loadQuestionLabels();
 
         countQuestions();
+
+        selectFlaggedIfFlagged();
     }
 
     private void PreviousButtonClicked()
@@ -613,6 +637,8 @@ public class VerbalReasoningControllerScriptTest : MonoBehaviour
         loadQuestionLabels();
 
         countQuestions();
+
+        selectFlaggedIfFlagged();
 
     }
 

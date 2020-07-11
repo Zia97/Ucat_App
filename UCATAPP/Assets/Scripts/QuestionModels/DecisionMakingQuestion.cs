@@ -17,6 +17,8 @@ namespace Assets.Scripts
 
         public bool question1Answered = false;
 
+        public bool flagged = false;
+
         public DecisionMakingQuestion(String _resource, bool _hasImage, string _imageUri)
         {
             resource = _resource;

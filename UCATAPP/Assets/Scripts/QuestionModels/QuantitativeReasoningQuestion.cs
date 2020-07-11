@@ -30,6 +30,8 @@ namespace Assets.Scripts
         public bool question3Answered = false;
         public bool question4Answered = false;
 
+        public bool flagged = false;
+
 
         public QuantitativeReasoningQuestion(String _resource, bool _hasImage, string _imageUri)
         {
