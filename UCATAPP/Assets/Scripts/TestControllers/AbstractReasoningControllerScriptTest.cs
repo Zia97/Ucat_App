@@ -48,7 +48,7 @@ public class AbstractReasoningControllerScriptTest : MonoBehaviour
     private static ColorBlock incorrectColours;
 
 
-    private float timeRemaining = 20;  //780
+    private float timeRemaining = 780;  //780
     public bool timerIsRunning = false;
     public Text timeText;
 

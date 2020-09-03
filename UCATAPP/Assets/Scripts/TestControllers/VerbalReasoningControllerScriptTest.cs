@@ -50,7 +50,7 @@ public class VerbalReasoningControllerScriptTest : MonoBehaviour
     private static ColorBlock incorrectColours;
 
 
-    private float timeRemaining = 20; //1260
+    private float timeRemaining = 60; //1260
     public bool timerIsRunning = false;
     public Text timeText;
 

@@ -4751,7 +4751,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &228751549
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5021,7 +5021,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &244616983
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13537,7 +13537,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &713870129
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16232,7 +16232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HeaderPanelText: {fileID: 1724241229}
   QuestionCounterText: {fileID: 1177838916}
-  jsonFile: {fileID: 4900000, guid: e080e430d9fece643ad7fe804a0a62a1, type: 3}
+  jsonFile: {fileID: 4900000, guid: e4e9131e0ae7a1c48b79f9bd1e044f2f, type: 3}
   QuestionText: {fileID: 2125236617}
   preText: {fileID: 961844318}
   Answer1Toggle: {fileID: 1203278940}
@@ -16887,7 +16887,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &934221273
 RectTransform:
   m_ObjectHideFlags: 0
@@ -35070,12 +35070,12 @@ GameObject:
   - component: {fileID: 1858820923}
   - component: {fileID: 1858820922}
   m_Layer: 0
-  m_Name: Panel
+  m_Name: VRReviewPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1858820921
 RectTransform:
   m_ObjectHideFlags: 0
