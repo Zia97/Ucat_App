@@ -17,9 +17,10 @@ namespace Assets.Scripts
         public string option3Label;
         public string option4Label;
         public bool answerClickedinTuple = false;
+        public string totalQuestionNumber = "";
 
 
-        public VerbalReasoningTupleHolder(int _questionNumber, string _questionText, string _questionAnswer, string _usersAnswer, string op1, string op2, string op3, string op4)
+        public VerbalReasoningTupleHolder(int _questionNumber, string _questionText, string _questionAnswer, string _usersAnswer, string op1, string op2, string op3, string op4, string totalQNo)
         {
             questionNumber = _questionNumber;
             questionText = _questionText;
@@ -29,6 +30,7 @@ namespace Assets.Scripts
             option2Label = op2;
             option3Label = op3;
             option4Label = op4;
+            totalQuestionNumber = totalQNo;
         }
 
         public void setAnswerClickedTrue()

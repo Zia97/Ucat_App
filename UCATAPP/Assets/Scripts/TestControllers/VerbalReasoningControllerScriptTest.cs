@@ -12,6 +12,7 @@ public class VerbalReasoningControllerScriptTest : MonoBehaviour
     public Text QuestionCounterText;
     public TextAsset jsonFile;
 
+    public Text totalQuestionText;
     public Text QuestionText;
     public Text preText;
 
@@ -149,7 +150,7 @@ public class VerbalReasoningControllerScriptTest : MonoBehaviour
             foreach (VRQuestions q in s.questions)
             {
                 Tuple<int, string, string> question = new Tuple<int, string, string>(q.questionNumber, q.questionText, q.answer);
-                temp.AddQuestion(q.questionNumber, question, q.option1,q.option2,q.option3,q.option4);
+                temp.AddQuestion(q.questionNumber, question, q.option1,q.option2,q.option3,q.option4,q.totalQNo);
             }
 
             verbalReasoningQuestionList.Add(temp);
@@ -173,6 +174,7 @@ public class VerbalReasoningControllerScriptTest : MonoBehaviour
         setUsersSelectedAnswerForButton();
 
         countQuestions();
+        updateTotalQuestionCounter();
     }
 
     void loadSet(int questionNumber)
@@ -188,6 +190,7 @@ public class VerbalReasoningControllerScriptTest : MonoBehaviour
 
 
         setUsersSelectedAnswerForButton();
+        updateTotalQuestionCounter();
     }
 
     void loadQuestionLabels()
@@ -329,6 +332,30 @@ public class VerbalReasoningControllerScriptTest : MonoBehaviour
     void updateQuestionCounter()
     {
         QuestionCounterText.text = (currentlySelectedSet + 1) + "/" + questionList.Length;
+    }
+
+
+    void updateTotalQuestionCounter()
+    {
+        string temp = "";
+        switch (currentlySelectedQuestionInSet)
+        {
+            case 1:
+                temp = questionList[currentlySelectedSet].q1.totalQuestionNumber;
+                break;
+            case 2:
+                temp = questionList[currentlySelectedSet].q2.totalQuestionNumber;
+                break;
+            case 3:
+                temp = questionList[currentlySelectedSet].q3.totalQuestionNumber;
+                break;
+            case 4:
+                temp = questionList[currentlySelectedSet].q4.totalQuestionNumber;
+                break;
+        }
+        Debug.Log("temp is ");
+        Debug.Log(temp);
+        totalQuestionText.text = temp + "/44";
     }
 
 
@@ -674,6 +701,7 @@ public class VerbalReasoningControllerScriptTest : MonoBehaviour
         setUsersSelectedAnswerForButton();
         showAnswerOnToggles();
         highlightWrongAnswer(1);
+        updateTotalQuestionCounter();
 
     }
 
@@ -686,6 +714,7 @@ public class VerbalReasoningControllerScriptTest : MonoBehaviour
         setUsersSelectedAnswerForButton();
         showAnswerOnToggles();
         highlightWrongAnswer(2);
+        updateTotalQuestionCounter();
     }
 
     private void Question3ButtonClicked()
@@ -697,6 +726,7 @@ public class VerbalReasoningControllerScriptTest : MonoBehaviour
         loadQuestionLabels();
         showAnswerOnToggles();
         highlightWrongAnswer(3);
+        updateTotalQuestionCounter();
     }
 
     private void Question4ButtonClicked()
@@ -708,6 +738,7 @@ public class VerbalReasoningControllerScriptTest : MonoBehaviour
         loadQuestionLabels();
         showAnswerOnToggles ();
         highlightWrongAnswer(4);
+        updateTotalQuestionCounter();
     }
 
 

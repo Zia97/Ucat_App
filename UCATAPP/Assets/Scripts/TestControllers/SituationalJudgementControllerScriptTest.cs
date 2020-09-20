@@ -885,10 +885,10 @@ public class SituationalJudgementControllerScriptTest : MonoBehaviour
 
     private void AnswerButtonClicked()
     {
-        questionList[currentlySelectedSet].answerClicked = true;
-        showAnswerColours();
-        showAnswerOnToggles();
-        highlightWrongAnswer(currentlySelectedQuestionInSet);
+        //questionList[currentlySelectedSet].answerClicked = true;
+        //showAnswerColours();
+        //showAnswerOnToggles();
+        //highlightWrongAnswer(currentlySelectedQuestionInSet);
     }
     #endregion
 }

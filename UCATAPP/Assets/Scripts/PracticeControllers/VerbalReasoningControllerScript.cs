@@ -99,7 +99,7 @@ public class VerbalReasoningControllerScript : MonoBehaviour
             foreach (VRQuestions q in s.questions)
             {
                 Tuple<int, string, string> question = new Tuple<int, string, string>(q.questionNumber, q.questionText, q.answer);
-                temp.AddQuestion(q.questionNumber, question, q.option1,q.option2,q.option3,q.option4);
+                temp.AddQuestion(q.questionNumber, question, q.option1,q.option2,q.option3,q.option4,q.totalQNo);
             }
 
             verbalReasoningQuestionList.Add(temp);
@@ -971,6 +971,7 @@ public class VRQuestions
     public string option2;
     public string option3;
     public string option4;
+    public string totalQNo;
 }
 
 #endregion

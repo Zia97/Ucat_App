@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,6 +31,8 @@ namespace Assets.Scripts
 
         public bool flagged = false;
 
+        public string totalQuestionNumber = "";
+
 
         public VerbalReasoningQuestion(String _resource)
         {
@@ -52,24 +55,24 @@ namespace Assets.Scripts
             return q1;
         }
 
-        public void AddQuestion(int number, Tuple<int, String, String> question, string op1, string op2, string op3, string op4)
+        public void AddQuestion(int number, Tuple<int, String, String> question, string op1, string op2, string op3, string op4, string totalQNo)
         {
             switch (number)
             {
                 case 1:
-                    q1 = new VerbalReasoningTupleHolder(question.Item1, question.Item2, question.Item3, "",op1,op2,op3,op4);
+                    q1 = new VerbalReasoningTupleHolder(question.Item1, question.Item2, question.Item3, "",op1,op2,op3,op4, totalQNo);
                     questionCount = 1;
                     break;
                 case 2:
-                   q2 = new VerbalReasoningTupleHolder(question.Item1, question.Item2, question.Item3, "",op1, op2, op3, op4);
+                   q2 = new VerbalReasoningTupleHolder(question.Item1, question.Item2, question.Item3, "",op1, op2, op3, op4, totalQNo);
                     questionCount = 2;
                     break;
                 case 3:
-                    q3 = new VerbalReasoningTupleHolder(question.Item1, question.Item2, question.Item3, "",op1, op2, op3, op4);
+                    q3 = new VerbalReasoningTupleHolder(question.Item1, question.Item2, question.Item3, "",op1, op2, op3, op4, totalQNo);
                     questionCount = 3;
                     break;
                 case 4:
-                    q4 = new VerbalReasoningTupleHolder(question.Item1, question.Item2, question.Item3, "",op1, op2, op3, op4);
+                    q4 = new VerbalReasoningTupleHolder(question.Item1, question.Item2, question.Item3, "",op1, op2, op3, op4, totalQNo);
                     questionCount = 4;
                     break;
             }

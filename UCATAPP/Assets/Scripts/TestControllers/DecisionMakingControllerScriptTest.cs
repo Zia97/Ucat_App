@@ -104,7 +104,6 @@ public class DecisionMakingControllerScriptTest : MonoBehaviour
     {
 
         DMAllQuestions allQuestionsFromJson = JsonUtility.FromJson<DMAllQuestions>(jsonFile.text);
-        Debug.Log(allQuestionsFromJson);
         allQuestions = allQuestionsFromJson.allQuestions;
 
     }
