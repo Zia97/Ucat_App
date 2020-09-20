@@ -69,7 +69,7 @@ public class SituationalJudgementControllerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-    
+
     }
 
     void SetQuestionList()
@@ -216,48 +216,114 @@ public class SituationalJudgementControllerScript : MonoBehaviour
 
     private void showAnswerColours()
     {
-        if (questionList[currentlySelectedSet].answerClicked)
+
+        switch (currentlySelectedQuestionInSet)
         {
-
-            if (questionList[currentlySelectedSet].q1.usersAnswer.Equals(questionList[currentlySelectedSet].q1.questionAnswer))
-            {
-                Question1Button.image.color = Color.green;
-            }
-            else
-            {
-                Question1Button.image.color = Color.red;
-            }
-
-            if (questionList[currentlySelectedSet].q2.usersAnswer.Equals(questionList[currentlySelectedSet].q2.questionAnswer))
-            {
-                Question2Button.image.color = Color.green;
-            }
-            else
-            {
-                Question2Button.image.color = Color.red;
-            }
-
-            if (questionList[currentlySelectedSet].q3.usersAnswer.Equals(questionList[currentlySelectedSet].q3.questionAnswer))
-            {
-                Question3Button.image.color = Color.green;
-            }
-            else
-            {
-                Question3Button.image.color = Color.red;
-            }
-
-            if(questionList[currentlySelectedSet].questionCount==4)
-            {
-                if (questionList[currentlySelectedSet].q4.usersAnswer.Equals(questionList[currentlySelectedSet].q4.questionAnswer))
+            case 1:
+                if (questionList[currentlySelectedSet].q1.answerClickedinTuple)
                 {
-                    Question4Button.image.color = Color.green;
+                    if (questionList[currentlySelectedSet].q1.usersAnswer.Equals(questionList[currentlySelectedSet].q1.questionAnswer))
+                    {
+                        Question1Button.image.color = Color.green;
+                    }
+                    else
+                    {
+                        Question1Button.image.color = Color.red;
+                    }
+                    break;
                 }
-                else
+                break;
+            case 2:
+                if (questionList[currentlySelectedSet].q2.answerClickedinTuple)
                 {
-                    Question4Button.image.color = Color.red;
+                    if (questionList[currentlySelectedSet].q2.usersAnswer.Equals(questionList[currentlySelectedSet].q2.questionAnswer))
+                    {
+                        Question2Button.image.color = Color.green;
+                    }
+                    else
+                    {
+                        Question2Button.image.color = Color.red;
+                    }
+                    break;
                 }
-            }
+                break;
+            case 3:
+                if (questionList[currentlySelectedSet].q3.answerClickedinTuple)
+                {
+                    if (questionList[currentlySelectedSet].q3.usersAnswer.Equals(questionList[currentlySelectedSet].q3.questionAnswer))
+                    {
+                        Question3Button.image.color = Color.green;
+                    }
+                    else
+                    {
+                        Question3Button.image.color = Color.red;
+                    }
+                    break;
+                }
+                break;
+            case 4:
+                if (questionList[currentlySelectedSet].q4.answerClickedinTuple)
+                {
+                    if (questionList[currentlySelectedSet].questionCount == 4)
+                    {
+                        if (questionList[currentlySelectedSet].q4.usersAnswer.Equals(questionList[currentlySelectedSet].q4.questionAnswer))
+                        {
+                            Question4Button.image.color = Color.green;
+                        }
+                        else
+                        {
+                            Question4Button.image.color = Color.red;
+                        }
+                    }
+                    break;
+                }
+                break;
         }
+
+
+
+        //if (questionList[currentlySelectedSet].answerClicked)
+        //{
+
+        //    if (questionList[currentlySelectedSet].q1.usersAnswer.Equals(questionList[currentlySelectedSet].q1.questionAnswer))
+        //    {
+        //        Question1Button.image.color = Color.green;
+        //    }
+        //    else
+        //    {
+        //        Question1Button.image.color = Color.red;
+        //    }
+
+        //    if (questionList[currentlySelectedSet].q2.usersAnswer.Equals(questionList[currentlySelectedSet].q2.questionAnswer))
+        //    {
+        //        Question2Button.image.color = Color.green;
+        //    }
+        //    else
+        //    {
+        //        Question2Button.image.color = Color.red;
+        //    }
+
+        //    if (questionList[currentlySelectedSet].q3.usersAnswer.Equals(questionList[currentlySelectedSet].q3.questionAnswer))
+        //    {
+        //        Question3Button.image.color = Color.green;
+        //    }
+        //    else
+        //    {
+        //        Question3Button.image.color = Color.red;
+        //    }
+
+        //    if(questionList[currentlySelectedSet].questionCount==4)
+        //    {
+        //        if (questionList[currentlySelectedSet].q4.usersAnswer.Equals(questionList[currentlySelectedSet].q4.questionAnswer))
+        //        {
+        //            Question4Button.image.color = Color.green;
+        //        }
+        //        else
+        //        {
+        //            Question4Button.image.color = Color.red;
+        //        }
+        //    }
+        //}
     }
 
     private void setColours(bool isOn, Toggle chosenToggle)
@@ -317,11 +383,11 @@ public class SituationalJudgementControllerScript : MonoBehaviour
 
     private void showAnswerOnToggles()
     {
-        if (questionList[currentlySelectedSet].answerClicked)
+        switch (currentlySelectedQuestionInSet)
         {
-            switch (currentlySelectedQuestionInSet)
-            {
-                case 1:
+            case 1:
+                if (questionList[currentlySelectedSet].q1.answerClickedinTuple)
+                {
                     if (questionList[currentlySelectedSet].q1.questionAnswer.Equals("Very important") || questionList[currentlySelectedSet].q1.questionAnswer.Equals("A very appropriate thing to do"))
                     {
                         setToggleColourCorrect(Answer1Toggle);
@@ -339,7 +405,11 @@ public class SituationalJudgementControllerScript : MonoBehaviour
                         setToggleColourCorrect(Answer4Toggle);
                     }
                     break;
-                case 2:
+                }
+                break;
+            case 2:
+                if (questionList[currentlySelectedSet].q2.answerClickedinTuple)
+                {
                     if (questionList[currentlySelectedSet].q2.questionAnswer.Equals("Very important") || questionList[currentlySelectedSet].q2.questionAnswer.Equals("A very appropriate thing to do"))
                     {
                         setToggleColourCorrect(Answer1Toggle);
@@ -357,7 +427,11 @@ public class SituationalJudgementControllerScript : MonoBehaviour
                         setToggleColourCorrect(Answer4Toggle);
                     }
                     break;
-                case 3:
+                }
+                break;
+            case 3:
+                if (questionList[currentlySelectedSet].q3.answerClickedinTuple)
+                {
                     if (questionList[currentlySelectedSet].q3.questionAnswer.Equals("Very important") || questionList[currentlySelectedSet].q3.questionAnswer.Equals("A very appropriate thing to do"))
                     {
                         setToggleColourCorrect(Answer1Toggle);
@@ -375,7 +449,11 @@ public class SituationalJudgementControllerScript : MonoBehaviour
                         setToggleColourCorrect(Answer4Toggle);
                     }
                     break;
-                case 4:
+                }
+                break;
+            case 4:
+                if (questionList[currentlySelectedSet].q4.answerClickedinTuple)
+                {
                     if (questionList[currentlySelectedSet].q4.questionAnswer.Equals("Very important") || questionList[currentlySelectedSet].q4.questionAnswer.Equals("A very appropriate thing to do"))
                     {
                         setToggleColourCorrect(Answer1Toggle);
@@ -393,8 +471,10 @@ public class SituationalJudgementControllerScript : MonoBehaviour
                         setToggleColourCorrect(Answer4Toggle);
                     }
                     break;
-            }
+                }
+                break;
         }
+
     }
 
     #region Button clicks
@@ -506,11 +586,11 @@ public class SituationalJudgementControllerScript : MonoBehaviour
 
     private void Answer1ToggleClicked(bool isOn)
     {
-        if(questionList[currentlySelectedSet].labelSet==1)
+        if (questionList[currentlySelectedSet].labelSet == 1)
         {
             saveAnswer("Very important");
         }
-        else if(questionList[currentlySelectedSet].labelSet == 2)
+        else if (questionList[currentlySelectedSet].labelSet == 2)
         {
             saveAnswer("A very appropriate thing to do");
         }
@@ -560,11 +640,11 @@ public class SituationalJudgementControllerScript : MonoBehaviour
 
     private void countQuestions()
     {
-        if(questionList[currentlySelectedSet].questionCount==3)
+        if (questionList[currentlySelectedSet].questionCount == 3)
         {
             Question4Button.gameObject.SetActive(false);
         }
-        else if(questionList[currentlySelectedSet].questionCount == 4)
+        else if (questionList[currentlySelectedSet].questionCount == 4)
         {
             Question4Button.gameObject.SetActive(true);
         }
@@ -656,13 +736,13 @@ public class SituationalJudgementControllerScript : MonoBehaviour
 
     private void highlightWrongAnswer(int questionNumber)
     {
-        if (questionList[currentlySelectedSet].answerClicked)
-        {
-            if(questionList[currentlySelectedSet].labelSet==1)
+            if (questionList[currentlySelectedSet].labelSet == 1)
             {
                 switch (currentlySelectedQuestionInSet)
                 {
                     case 1:
+                    if (questionList[currentlySelectedSet].q1.answerClickedinTuple)
+                    {
                         if (questionList[currentlySelectedSet].q1.usersAnswer.Equals("Very important") && !questionList[currentlySelectedSet].q1.questionAnswer.Equals("Very important"))
                         {
                             setToggleColourIncorrect(Answer1Toggle);
@@ -681,7 +761,11 @@ public class SituationalJudgementControllerScript : MonoBehaviour
                             setToggleColourIncorrect(Answer4Toggle);
                         }
                         break;
+                    }
+                    break;
                     case 2:
+                    if (questionList[currentlySelectedSet].q2.answerClickedinTuple)
+                    {
                         if (questionList[currentlySelectedSet].q2.usersAnswer.Equals("Very important") && !questionList[currentlySelectedSet].q2.questionAnswer.Equals("Very important"))
                         {
                             setToggleColourIncorrect(Answer1Toggle);
@@ -699,7 +783,11 @@ public class SituationalJudgementControllerScript : MonoBehaviour
                             setToggleColourIncorrect(Answer4Toggle);
                         }
                         break;
+                    }
+                    break;
                     case 3:
+                    if (questionList[currentlySelectedSet].q3.answerClickedinTuple)
+                    {
                         if (questionList[currentlySelectedSet].q3.usersAnswer.Equals("Very important") && !questionList[currentlySelectedSet].q3.questionAnswer.Equals("Very important"))
                         {
                             setToggleColourIncorrect(Answer1Toggle);
@@ -717,7 +805,11 @@ public class SituationalJudgementControllerScript : MonoBehaviour
                             setToggleColourIncorrect(Answer4Toggle);
                         }
                         break;
+                    }
+                    break;
                     case 4:
+                    if (questionList[currentlySelectedSet].q4.answerClickedinTuple)
+                    {
                         if (questionList[currentlySelectedSet].q4.usersAnswer.Equals("Very important") && !questionList[currentlySelectedSet].q4.questionAnswer.Equals("Very important"))
                         {
                             setToggleColourIncorrect(Answer1Toggle);
@@ -735,13 +827,17 @@ public class SituationalJudgementControllerScript : MonoBehaviour
                             setToggleColourIncorrect(Answer4Toggle);
                         }
                         break;
+                    }
+                    break;
                 }
             }
-            else if(questionList[currentlySelectedSet].labelSet == 2)
+            else if (questionList[currentlySelectedSet].labelSet == 2)
             {
                 switch (currentlySelectedQuestionInSet)
                 {
                     case 1:
+                    if (questionList[currentlySelectedSet].q1.answerClickedinTuple)
+                    {
                         if (questionList[currentlySelectedSet].q1.usersAnswer.Equals("A very appropriate thing to do") && !questionList[currentlySelectedSet].q1.questionAnswer.Equals("A very appropriate thing to do"))
                         {
                             setToggleColourIncorrect(Answer1Toggle);
@@ -759,7 +855,11 @@ public class SituationalJudgementControllerScript : MonoBehaviour
                             setToggleColourIncorrect(Answer4Toggle);
                         }
                         break;
+                    }
+                    break;
                     case 2:
+                    if (questionList[currentlySelectedSet].q1.answerClickedinTuple)
+                    {
                         if (questionList[currentlySelectedSet].q2.usersAnswer.Equals("A very appropriate thing to do") && !questionList[currentlySelectedSet].q2.questionAnswer.Equals("A very appropriate thing to do"))
                         {
                             setToggleColourIncorrect(Answer1Toggle);
@@ -777,7 +877,11 @@ public class SituationalJudgementControllerScript : MonoBehaviour
                             setToggleColourIncorrect(Answer4Toggle);
                         }
                         break;
+                    }
+                    break;
                     case 3:
+                    if (questionList[currentlySelectedSet].q1.answerClickedinTuple)
+                    {
                         if (questionList[currentlySelectedSet].q3.usersAnswer.Equals("A very appropriate thing to do") && !questionList[currentlySelectedSet].q3.questionAnswer.Equals("A very appropriate thing to do"))
                         {
                             setToggleColourIncorrect(Answer1Toggle);
@@ -795,7 +899,11 @@ public class SituationalJudgementControllerScript : MonoBehaviour
                             setToggleColourIncorrect(Answer4Toggle);
                         }
                         break;
+                    }
+                    break;
                     case 4:
+                    if (questionList[currentlySelectedSet].q1.answerClickedinTuple)
+                    {
                         if (questionList[currentlySelectedSet].q4.usersAnswer.Equals("A very appropriate thing to do") && !questionList[currentlySelectedSet].q4.questionAnswer.Equals("A very appropriate thing to do"))
                         {
                             setToggleColourIncorrect(Answer1Toggle);
@@ -813,15 +921,30 @@ public class SituationalJudgementControllerScript : MonoBehaviour
                             setToggleColourIncorrect(Answer4Toggle);
                         }
                         break;
+                    }
+                    break;
                 }
             }
-            
-        }
     }
 
     private void AnswerButtonClicked()
     {
-        questionList[currentlySelectedSet].answerClicked = true;
+        switch (currentlySelectedQuestionInSet)
+        {
+            case 1:
+                questionList[currentlySelectedSet].q1.setAnswerClickedTrue();
+                break;
+            case 2:
+                questionList[currentlySelectedSet].q2.setAnswerClickedTrue();
+                break;
+            case 3:
+                questionList[currentlySelectedSet].q3.setAnswerClickedTrue();
+                break;
+            case 4:
+                questionList[currentlySelectedSet].q4.setAnswerClickedTrue();
+                break;
+        }
+
         showAnswerColours();
         showAnswerOnToggles();
         highlightWrongAnswer(currentlySelectedQuestionInSet);

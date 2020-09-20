@@ -54,11 +54,21 @@ public class VerbalReasoningControllerScriptTest : MonoBehaviour
     public bool timerIsRunning = false;
     public Text timeText;
 
+    public GameObject VRReviewPanel;
+    public GameObject ReviewFooterPanel;
+
+    public GameObject BaseHeaderPanel;
+    public GameObject BaseQuestionSelectorPanel;
+    public GameObject BaseQuestionsPanel;
+
 
     // Start is called before the first frame update
     void Start()
     {
         GlobalVariables.selectedExercise = "Practice";
+
+        VRReviewPanel.SetActive(false);
+        ReviewFooterPanel.SetActive(false);
 
         HeaderPanelText.text = GlobalVariables.SelectedPracticeQuestion;
 
@@ -585,29 +595,42 @@ public class VerbalReasoningControllerScriptTest : MonoBehaviour
         {
             currentlySelectedSet++;
             loadSet(currentlySelectedSet);
+
+            resetButtonColours();
+
+            updateQuestionCounter();
+
+            setUsersSelectedAnswerForButton();
+
+            showAnswerColours();
+
+            Question1ButtonClicked();
+
+            loadQuestionLabels();
+
+            countQuestions();
+
+            selectFlaggedIfFlagged();
         }
         else
         {
-            currentlySelectedSet = 0;
-            loadSet(currentlySelectedSet);
+            showReviewScreen();
+            //currentlySelectedSet = 0;
+            //loadSet(currentlySelectedSet);
+
+            
         }
-
-        resetButtonColours();
-
-        updateQuestionCounter();
-
-        setUsersSelectedAnswerForButton();
-
-        showAnswerColours();
-
-        Question1ButtonClicked();
-
-        loadQuestionLabels();
-
-        countQuestions();
-
-        selectFlaggedIfFlagged();
     }
+
+    private void showReviewScreen()
+    {
+        VRReviewPanel.SetActive(true);
+        ReviewFooterPanel.SetActive(true);
+        BaseHeaderPanel.SetActive(false);
+        BaseQuestionSelectorPanel.SetActive(false);
+        BaseQuestionsPanel.SetActive(false);
+
+}
 
     private void PreviousButtonClicked()
     {
