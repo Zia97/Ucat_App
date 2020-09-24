@@ -112,6 +112,8 @@
     <Compile Include="Assets\Scripts\QuestionModels\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
     <Compile Include="Assets\Scripts\QuestionModels\VerbalReasoningQuestion.cs" />
     <Compile Include="Assets\Scripts\QuestionModels\VerbalReasoningTupleHolder.cs" />
+    <Compile Include="Assets\Scripts\ReviewScripts\ButtonClickedScript.cs" />
+    <Compile Include="Assets\Scripts\ReviewScripts\VRReviewScript.cs" />
     <Compile Include="Assets\Scripts\SceneLoader.cs" />
     <Compile Include="Assets\Scripts\TestController.cs" />
     <Compile Include="Assets\Scripts\TestControllers\AbstractReasoningControllerScriptTest.cs" />

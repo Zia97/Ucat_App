@@ -66,6 +66,8 @@ public class VerbalReasoningControllerScriptTest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        setSingleton();
+        
         GlobalVariables.selectedExercise = "Practice";
 
         VRReviewPanel.SetActive(false);
@@ -85,6 +87,29 @@ public class VerbalReasoningControllerScriptTest : MonoBehaviour
 
         updateQuestionCounter();
 
+    }
+
+    private static VerbalReasoningControllerScriptTest instance = null;
+
+    // Game Instance Singleton
+    public static VerbalReasoningControllerScriptTest Instance
+    {
+        get
+        {
+            return instance;
+        }
+    }
+
+    void setSingleton()
+    {
+        // if the singleton hasn't been initialized yet
+        if (instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+
+        instance = this;
+        DontDestroyOnLoad(this.gameObject);
     }
 
 
@@ -191,6 +216,46 @@ public class VerbalReasoningControllerScriptTest : MonoBehaviour
 
         setUsersSelectedAnswerForButton();
         updateTotalQuestionCounter();
+    }
+
+    public void loadSetFromReview(int totalQuestionNumber)
+    {
+        currentlySelectedSet = totalQuestionNumber / 4;
+        int remainder = totalQuestionNumber % 4;
+
+        Debug.Log(currentlySelectedSet + " " + remainder);
+
+        loadSet(currentlySelectedSet);
+
+        switch (remainder)
+        {
+            case 0:
+                Question1ButtonClicked();
+                break;
+            case 1:
+                Question2ButtonClicked();
+                break;
+            case 2:
+                Question3ButtonClicked();
+                break;
+            case 3:
+                Question4ButtonClicked();
+                break;
+        }
+
+        updateQuestionCounter();
+
+        setUsersSelectedAnswerForButton();
+
+        showAnswerColours();
+
+        resetButtonColours();
+
+        loadQuestionLabels();
+
+        countQuestions();
+
+        selectFlaggedIfFlagged();
     }
 
     void loadQuestionLabels()
@@ -353,8 +418,6 @@ public class VerbalReasoningControllerScriptTest : MonoBehaviour
                 temp = questionList[currentlySelectedSet].q4.totalQuestionNumber;
                 break;
         }
-        Debug.Log("temp is ");
-        Debug.Log(temp);
         totalQuestionText.text = temp + "/44";
     }
 
