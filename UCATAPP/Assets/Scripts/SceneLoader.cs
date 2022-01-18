@@ -19,5 +19,10 @@ public class SceneLoader : MonoBehaviour
     public void SetSelectedPracticeQuestion(string selectedQuestion)
     {
         GlobalVariables.SelectedPracticeQuestion = selectedQuestion;
+
+        if(selectedQuestion.Equals("VR1"))
+        {
+            SceneManager.LoadScene("VerbalReasoningTimedScene");
+        }
     }
 }

@@ -31,16 +31,15 @@ public class VerbalReasoningControllerScript : MonoBehaviour
 
     public Button AnswerButton;
 
-    private List<VRSet> allQuestions;
+    private List<VRQuestions> allQuestions;
     private List<VerbalReasoningQuestion> verbalReasoningQuestionList = new List<VerbalReasoningQuestion>();
     private VerbalReasoningQuestion[] questionList;
 
     private Tuple<int, String, String, String> selectedQuestionInSet;
-    private int currentlySelectedSet;
-    private int currentlySelectedQuestionInSet;
 
     private static ColorBlock correctColours;
     private static ColorBlock incorrectColours;
+    private int currentlySelectedQuestion;
 
 
 
@@ -59,7 +58,7 @@ public class VerbalReasoningControllerScript : MonoBehaviour
 
         initiateToggleColours();
 
-        loadInitialSet();
+        loadQuestion(0);
 
         updateQuestionCounter();
 
@@ -92,50 +91,25 @@ public class VerbalReasoningControllerScript : MonoBehaviour
 
     void InstantiateQuestions()
     {
-        foreach (VRSet s in allQuestions)
+        foreach (VRQuestions s in allQuestions)
         {
-            VerbalReasoningQuestion temp = new VerbalReasoningQuestion(s.resource);
-
-            foreach (VRQuestions q in s.questions)
-            {
-                Tuple<int, string, string> question = new Tuple<int, string, string>(q.questionNumber, q.questionText, q.answer);
-                temp.AddQuestion(q.questionNumber, question, q.option1,q.option2,q.option3,q.option4,q.totalQNo);
-            }
-
+            VerbalReasoningQuestion temp = new VerbalReasoningQuestion(s.resource, s.questionNumber, s.questionText, s.answer, s.option1, s.option2, s.option3, s.option4);
             verbalReasoningQuestionList.Add(temp);
         }
     }
 
-    void loadInitialSet()
+    void loadQuestion(int questionNumber)
     {
-        currentlySelectedSet = 0;
-        currentlySelectedQuestionInSet = 1;
+        currentlySelectedQuestion = questionNumber;
 
-        questionList = verbalReasoningQuestionList.ToArray();
-
-        resetColours();
-
-        QuestionText.text = questionList[0].resource;
-        preText.text = questionList[0].q1.questionText;
-
-        loadQuestionLabels();
-
-        setUsersSelectedAnswerForButton();
-
-        countQuestions();
-    }
-
-    void loadSet(int questionNumber)
-    {
         questionList = verbalReasoningQuestionList.ToArray();
 
         resetColours();
 
         QuestionText.text = questionList[questionNumber].resource;
-        preText.text = questionList[questionNumber].q1.questionText;
+        preText.text = questionList[questionNumber].questionText;
 
         loadQuestionLabels();
-
 
         setUsersSelectedAnswerForButton();
     }
@@ -146,87 +120,25 @@ public class VerbalReasoningControllerScript : MonoBehaviour
         Answer2Toggle.gameObject.SetActive(true);
         Answer3Toggle.gameObject.SetActive(true);
         Answer4Toggle.gameObject.SetActive(true);
-       
 
-        switch (currentlySelectedQuestionInSet)
+
+        Answer1Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedQuestion].option1Label;
+        Answer2Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedQuestion].option2Label;
+        if (questionList[currentlySelectedQuestion].option3Label.Equals(""))
         {
-            case 1:
-                Answer1Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q1.option1Label;
-                Answer2Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q1.option2Label;
-                if(questionList[currentlySelectedSet].q1.option3Label.Equals(""))
-                {
 
-                    Answer3Toggle.gameObject.SetActive(false);
-                    Answer4Toggle.gameObject.SetActive(false);
-                }
-                else if(!questionList[currentlySelectedSet].q1.option3Label.Equals("")&& questionList[currentlySelectedSet].q1.option4Label.Equals(""))
-                {
-                    Answer4Toggle.gameObject.SetActive(false);
-                    Answer3Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q1.option3Label;
-                }
-                else if(!questionList[currentlySelectedSet].q1.option4Label.Equals(""))
-                {
-                    Answer3Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q1.option3Label;
-                    Answer4Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q1.option4Label;
-                }    
-                break;
-            case 2:
-                Answer1Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q2.option1Label;
-                Answer2Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q2.option2Label;
-                if (questionList[currentlySelectedSet].q2.option3Label.Equals(""))
-                {
-                    Answer3Toggle.gameObject.SetActive(false);
-                    Answer4Toggle.gameObject.SetActive(false);
-                }
-                else if (!questionList[currentlySelectedSet].q2.option3Label.Equals("") && questionList[currentlySelectedSet].q2.option4Label.Equals(""))
-                {
-                    Answer4Toggle.gameObject.SetActive(false);
-                    Answer3Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q2.option3Label;
-                }
-                else if (!questionList[currentlySelectedSet].q2.option4Label.Equals(""))
-                {
-                    Answer3Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q2.option3Label;
-                    Answer4Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q2.option4Label;
-                }
-                break;
-            case 3:
-                Answer1Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q3.option1Label;
-                Answer2Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q3.option2Label;
-                if (questionList[currentlySelectedSet].q3.option3Label.Equals(""))
-                {
-                    Answer3Toggle.gameObject.SetActive(false);
-                    Answer4Toggle.gameObject.SetActive(false);
-                }
-                else if (!questionList[currentlySelectedSet].q3.option3Label.Equals("") && questionList[currentlySelectedSet].q3.option4Label.Equals(""))
-                {
-                    Answer4Toggle.gameObject.SetActive(false);
-                    Answer3Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q3.option3Label;
-                }
-                else if (!questionList[currentlySelectedSet].q3.option4Label.Equals(""))
-                {
-                    Answer3Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q3.option3Label;
-                    Answer4Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q3.option4Label;
-                }
-                break;
-            case 4:
-                Answer1Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q4.option1Label;
-                Answer2Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q4.option2Label;
-                if (questionList[currentlySelectedSet].q4.option3Label.Equals(""))
-                {
-                    Answer3Toggle.gameObject.SetActive(false);
-                    Answer4Toggle.gameObject.SetActive(false);
-                }
-                else if (!questionList[currentlySelectedSet].q4.option3Label.Equals("") && questionList[currentlySelectedSet].q4.option4Label.Equals(""))
-                {
-                    Answer4Toggle.gameObject.SetActive(false);
-                    Answer3Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q4.option3Label;
-                }
-                else if (!questionList[currentlySelectedSet].q4.option4Label.Equals(""))
-                {
-                    Answer3Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q4.option3Label;
-                    Answer4Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedSet].q4.option4Label;
-                }
-                break;
+            Answer3Toggle.gameObject.SetActive(false);
+            Answer4Toggle.gameObject.SetActive(false);
+        }
+        else if (!questionList[currentlySelectedQuestion].option3Label.Equals("") && questionList[currentlySelectedQuestion].option4Label.Equals(""))
+        {
+            Answer4Toggle.gameObject.SetActive(false);
+            Answer3Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedQuestion].option3Label;
+        }
+        else if (!questionList[currentlySelectedQuestion].option4Label.Equals(""))
+        {
+            Answer3Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedQuestion].option3Label;
+            Answer4Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedQuestion].option4Label;
         }
     }
 
@@ -235,44 +147,25 @@ public class VerbalReasoningControllerScript : MonoBehaviour
         PreviousButton.onClick.AddListener(PreviousButtonClicked);
         NextButton.onClick.AddListener(NextButtonClicked);
 
-        Question1Button.onClick.AddListener(Question1ButtonClicked);
-        Question2Button.onClick.AddListener(Question2ButtonClicked);
-        Question3Button.onClick.AddListener(Question3ButtonClicked);
-        Question4Button.onClick.AddListener(Question4ButtonClicked);
-
         AnswerButton.onClick.AddListener(AnswerButtonClicked);
 
         Answer1Toggle.onValueChanged.AddListener(Answer1ToggleClicked);
         Answer2Toggle.onValueChanged.AddListener(Answer2ToggleClicked);
         Answer3Toggle.onValueChanged.AddListener(Answer3ToggleClicked);
         Answer4Toggle.onValueChanged.AddListener(Answer4ToggleClicked);
-
-
     }
 
     void updateQuestionCounter()
     {
-        QuestionCounterText.text = (currentlySelectedSet + 1) + "/" + questionList.Length;
+        QuestionCounterText.text = (currentlySelectedQuestion + 1) + "/" + questionList.Length;
     }
 
 
     void saveAnswer(String selectedAnswer)
     {
-        switch (currentlySelectedQuestionInSet)
-        {
-            case 1:
-                questionList[currentlySelectedSet].q1.usersAnswer = selectedAnswer;
-                break;
-            case 2:
-                questionList[currentlySelectedSet].q2.usersAnswer = selectedAnswer;
-                break;
-            case 3:
-                questionList[currentlySelectedSet].q3.usersAnswer = selectedAnswer;
-                break;
-            case 4:
-                questionList[currentlySelectedSet].q4.usersAnswer = selectedAnswer;
-                break;
-        }
+
+        questionList[currentlySelectedQuestion].usersAnswer = selectedAnswer;
+
     }
 
     private void resetColours()
@@ -285,79 +178,65 @@ public class VerbalReasoningControllerScript : MonoBehaviour
 
     private void resetButtonColours()
     {
-        if (!questionList[currentlySelectedSet].answerClicked)
-        {
-            Question1Button.image.color = Color.yellow;
-            Question2Button.image.color = Color.yellow;
-            Question3Button.image.color = Color.yellow;
-            Question4Button.image.color = Color.yellow;
-        }
+        //if (!questionList[currentlySelectedSet].answerClicked)
+        //{
+        //    Question1Button.image.color = Color.yellow;
+        //    Question2Button.image.color = Color.yellow;
+        //    Question3Button.image.color = Color.yellow;
+        //    Question4Button.image.color = Color.yellow;
+        //}
     }
 
     private void showAnswerColours()
     {
-        switch (currentlySelectedQuestionInSet)
-        {
-            case 1:
-                if (questionList[currentlySelectedSet].q1.answerClickedinTuple)
-                {
-                    if (questionList[currentlySelectedSet].q1.usersAnswer.Equals(questionList[currentlySelectedSet].q1.questionAnswer))
-                    {
-                        Question1Button.image.color = Color.green;
-                    }
-                    else
-                    {
-                        Question1Button.image.color = Color.red;
-                    }
-                    break;
-                }
-                break;
-            case 2:
-                if (questionList[currentlySelectedSet].q2.answerClickedinTuple)
-                {
-                    if (questionList[currentlySelectedSet].q2.usersAnswer.Equals(questionList[currentlySelectedSet].q2.questionAnswer))
-                    {
-                        Question2Button.image.color = Color.green;
-                    }
-                    else
-                    {
-                        Question2Button.image.color = Color.red;
-                    }
-                    break;
-                }
-                break;
-            case 3:
-                if (questionList[currentlySelectedSet].q3.answerClickedinTuple)
-                {
-                    if (questionList[currentlySelectedSet].q3.usersAnswer.Equals(questionList[currentlySelectedSet].q3.questionAnswer))
-                    {
-                        Question3Button.image.color = Color.green;
-                    }
-                    else
-                    {
-                        Question3Button.image.color = Color.red;
-                    }
-                    break;
-                }
-                break;
-            case 4:
-                if (questionList[currentlySelectedSet].q4.answerClickedinTuple)
-                {
-                    if (questionList[currentlySelectedSet].questionCount == 4)
-                    {
-                        if (questionList[currentlySelectedSet].q4.usersAnswer.Equals(questionList[currentlySelectedSet].q4.questionAnswer))
-                        {
-                            Question4Button.image.color = Color.green;
-                        }
-                        else
-                        {
-                            Question4Button.image.color = Color.red;
-                        }
-                    }
-                    break;
-                }
-                break;
-        }
+
+        //    if (questionList[currentlySelectedQuestion].q1.answerClickedinTuple)
+        //{
+        //    if (questionList[currentlySelectedSet].q1.usersAnswer.Equals(questionList[currentlySelectedSet].q1.questionAnswer))
+        //    {
+        //        Question1Button.image.color = Color.green;
+        //    }
+        //    else
+        //    {
+        //        Question1Button.image.color = Color.red;
+        //    }
+        //}
+        //    if (questionList[currentlySelectedSet].q2.answerClickedinTuple)
+        //{
+        //    if (questionList[currentlySelectedSet].q2.usersAnswer.Equals(questionList[currentlySelectedSet].q2.questionAnswer))
+        //    {
+        //        Question2Button.image.color = Color.green;
+        //    }
+        //    else
+        //    {
+        //        Question2Button.image.color = Color.red;
+        //    }
+        //}
+        //    if (questionList[currentlySelectedSet].q3.answerClickedinTuple)
+        //{
+        //    if (questionList[currentlySelectedSet].q3.usersAnswer.Equals(questionList[currentlySelectedSet].q3.questionAnswer))
+        //    {
+        //        Question3Button.image.color = Color.green;
+        //    }
+        //    else
+        //    {
+        //        Question3Button.image.color = Color.red;
+        //    }
+        //}
+        //    if (questionList[currentlySelectedSet].q4.answerClickedinTuple)
+        //{
+        //    if (questionList[currentlySelectedSet].questionCount == 4)
+        //    {
+        //        if (questionList[currentlySelectedSet].q4.usersAnswer.Equals(questionList[currentlySelectedSet].q4.questionAnswer))
+        //        {
+        //            Question4Button.image.color = Color.green;
+        //        }
+        //        else
+        //        {
+        //            Question4Button.image.color = Color.red;
+        //        }
+        //    }
+        //}
     }
 
     private void setColours(bool isOn, Toggle chosenToggle)
@@ -367,9 +246,9 @@ public class VerbalReasoningControllerScript : MonoBehaviour
 
         if (isOn)
         {
-            cb.normalColor = Color.green;
-            cb.selectedColor = Color.green;
-            cb.highlightedColor = Color.green;
+            cb.normalColor = Color.yellow;
+            cb.selectedColor = Color.yellow;
+            cb.highlightedColor = Color.yellow;
         }
         else
         {
@@ -417,97 +296,28 @@ public class VerbalReasoningControllerScript : MonoBehaviour
 
     private void showAnswerOnToggles()
     {
-        switch (currentlySelectedQuestionInSet)
+
+
+        if (questionList[currentlySelectedQuestion].answerClicked)
         {
-            case 1:
-                if (questionList[currentlySelectedSet].q1.answerClickedinTuple)
-                {
-                    if (questionList[currentlySelectedSet].q1.questionAnswer.Equals(questionList[currentlySelectedSet].q1.option1Label))
-                    {
-                        setToggleColourCorrect(Answer1Toggle);
-                    }
-                    else if (questionList[currentlySelectedSet].q1.questionAnswer.Equals(questionList[currentlySelectedSet].q1.option2Label))
-                    {
-                        setToggleColourCorrect(Answer2Toggle);
-                    }
-                    else if (questionList[currentlySelectedSet].q1.questionAnswer.Equals(questionList[currentlySelectedSet].q1.option3Label))
-                    {
-                        setToggleColourCorrect(Answer3Toggle);
-                    }
-                    else if (questionList[currentlySelectedSet].q1.questionAnswer.Equals(questionList[currentlySelectedSet].q1.option4Label))
-                    {
-                        setToggleColourCorrect(Answer4Toggle);
-                    }
-                    break;
-                }
-                break;
-            case 2:
-                if (questionList[currentlySelectedSet].q2.answerClickedinTuple)
-                {
-                    if (questionList[currentlySelectedSet].q2.questionAnswer.Equals(questionList[currentlySelectedSet].q2.option1Label))
-                    {
-                        setToggleColourCorrect(Answer1Toggle);
-                    }
-                    else if (questionList[currentlySelectedSet].q2.questionAnswer.Equals(questionList[currentlySelectedSet].q2.option2Label))
-                    {
-                        setToggleColourCorrect(Answer2Toggle);
-                    }
-                    else if (questionList[currentlySelectedSet].q2.questionAnswer.Equals(questionList[currentlySelectedSet].q2.option3Label))
-                    {
-                        setToggleColourCorrect(Answer3Toggle);
-                    }
-                    else if (questionList[currentlySelectedSet].q2.questionAnswer.Equals(questionList[currentlySelectedSet].q2.option4Label))
-                    {
-                        setToggleColourCorrect(Answer4Toggle);
-                    }
-                    break;
-                }
-                break;
-            case 3:
-                if (questionList[currentlySelectedSet].q3.answerClickedinTuple)
-                {
-                    if (questionList[currentlySelectedSet].q3.questionAnswer.Equals(questionList[currentlySelectedSet].q3.option1Label))
-                    {
-                        setToggleColourCorrect(Answer1Toggle);
-                    }
-                    else if (questionList[currentlySelectedSet].q3.questionAnswer.Equals(questionList[currentlySelectedSet].q3.option2Label))
-                    {
-                        setToggleColourCorrect(Answer2Toggle);
-                    }
-                    else if (questionList[currentlySelectedSet].q3.questionAnswer.Equals(questionList[currentlySelectedSet].q3.option3Label))
-                    {
-                        setToggleColourCorrect(Answer3Toggle);
-                    }
-                    else if (questionList[currentlySelectedSet].q3.questionAnswer.Equals(questionList[currentlySelectedSet].q3.option4Label))
-                    {
-                        setToggleColourCorrect(Answer4Toggle);
-                    }
-                    break;
-                }
-                break;
-            case 4:
-                if (questionList[currentlySelectedSet].q4.answerClickedinTuple)
-                {
-                    if (questionList[currentlySelectedSet].q4.questionAnswer.Equals(questionList[currentlySelectedSet].q4.option1Label))
-                    {
-                        setToggleColourCorrect(Answer1Toggle);
-                    }
-                    else if (questionList[currentlySelectedSet].q4.questionAnswer.Equals(questionList[currentlySelectedSet].q4.option2Label))
-                    {
-                        setToggleColourCorrect(Answer2Toggle);
-                    }
-                    else if (questionList[currentlySelectedSet].q4.questionAnswer.Equals(questionList[currentlySelectedSet].q4.option3Label))
-                    {
-                        setToggleColourCorrect(Answer3Toggle);
-                    }
-                    else if (questionList[currentlySelectedSet].q4.questionAnswer.Equals(questionList[currentlySelectedSet].q4.option4Label))
-                    {
-                        setToggleColourCorrect(Answer4Toggle);
-                    }
-                    break;
-                }
-                break;
+            if (questionList[currentlySelectedQuestion].questionAnswer.Equals(questionList[currentlySelectedQuestion].option1Label))
+            {
+                setToggleColourCorrect(Answer1Toggle);
+            }
+            else if (questionList[currentlySelectedQuestion].questionAnswer.Equals(questionList[currentlySelectedQuestion].option2Label))
+            {
+                setToggleColourCorrect(Answer2Toggle);
+            }
+            else if (questionList[currentlySelectedQuestion].questionAnswer.Equals(questionList[currentlySelectedQuestion].option3Label))
+            {
+                setToggleColourCorrect(Answer3Toggle);
+            }
+            else if (questionList[currentlySelectedQuestion].questionAnswer.Equals(questionList[currentlySelectedQuestion].option4Label))
+            {
+                setToggleColourCorrect(Answer4Toggle);
+            }
         }
+
     }
 
     #region Button clicks
@@ -515,15 +325,15 @@ public class VerbalReasoningControllerScript : MonoBehaviour
     {
         resetColours();
 
-        if (currentlySelectedSet != questionList.Length - 1)
+        if (currentlySelectedQuestion != questionList.Length - 1)
         {
-            currentlySelectedSet++;
-            loadSet(currentlySelectedSet);
+            currentlySelectedQuestion++;
+            loadQuestion(currentlySelectedQuestion);
         }
         else
         {
-            currentlySelectedSet = 0;
-            loadSet(currentlySelectedSet);
+            currentlySelectedQuestion = 0;
+            loadQuestion(currentlySelectedQuestion);
         }
 
         resetButtonColours();
@@ -534,26 +344,22 @@ public class VerbalReasoningControllerScript : MonoBehaviour
 
         showAnswerColours();
 
-        Question1ButtonClicked();
-
         loadQuestionLabels();
-
-        countQuestions();
     }
 
     private void PreviousButtonClicked()
     {
         resetColours();
 
-        if (currentlySelectedSet != 0)
+        if (currentlySelectedQuestion != 0)
         {
-            currentlySelectedSet--;
-            loadSet(currentlySelectedSet);
+            currentlySelectedQuestion--;
+            loadQuestion(currentlySelectedQuestion);
         }
         else
         {
-            currentlySelectedSet = questionList.Length - 1;
-            loadSet(currentlySelectedSet);
+            currentlySelectedQuestion = questionList.Length - 1;
+            loadQuestion(currentlySelectedQuestion);
 
         }
         resetButtonColours();
@@ -564,380 +370,97 @@ public class VerbalReasoningControllerScript : MonoBehaviour
 
         showAnswerColours();
 
-        Question1ButtonClicked();
-
         loadQuestionLabels();
 
-        countQuestions();
-
     }
-
-    private void Question1ButtonClicked()
-    {
-        resetColours();
-        currentlySelectedQuestionInSet = 1;
-        preText.text = questionList[currentlySelectedSet].q1.questionText;
-        loadQuestionLabels();
-        setUsersSelectedAnswerForButton();
-        showAnswerOnToggles();
-        highlightWrongAnswer(1);
-
-    }
-
-    private void Question2ButtonClicked()
-    {
-        resetColours();
-        currentlySelectedQuestionInSet = 2;
-        preText.text = questionList[currentlySelectedSet].q2.questionText;
-        loadQuestionLabels();
-        setUsersSelectedAnswerForButton();
-        showAnswerOnToggles();
-        highlightWrongAnswer(2);
-    }
-
-    private void Question3ButtonClicked()
-    {
-        resetColours();
-        currentlySelectedQuestionInSet = 3;
-        preText.text = questionList[currentlySelectedSet].q3.questionText;
-        setUsersSelectedAnswerForButton();
-        loadQuestionLabels();
-        showAnswerOnToggles();
-        highlightWrongAnswer(3);
-    }
-
-    private void Question4ButtonClicked()
-    {
-        resetColours();
-        currentlySelectedQuestionInSet = 4;
-        preText.text = questionList[currentlySelectedSet].q4.questionText;
-        setUsersSelectedAnswerForButton();
-        loadQuestionLabels();
-        showAnswerOnToggles ();
-        highlightWrongAnswer(4);
-    }
-
-
 
     private void Answer1ToggleClicked(bool isOn)
     {
-        switch (currentlySelectedQuestionInSet)
-        {
-            case 1:
-                saveAnswer(questionList[currentlySelectedSet].q1.option1Label);
-                break;
-            case 2:
-                saveAnswer(questionList[currentlySelectedSet].q2.option1Label);
-                break;
-            case 3:
-                saveAnswer(questionList[currentlySelectedSet].q3.option1Label);
-                break;
-            case 4:
-                saveAnswer(questionList[currentlySelectedSet].q4.option1Label);
-                break;
-        }
+        saveAnswer(questionList[currentlySelectedQuestion].option1Label);
         setColours(isOn, Answer1Toggle);
     }
 
     private void Answer2ToggleClicked(bool isOn)
     {
-        switch (currentlySelectedQuestionInSet)
-        {
-            case 1:
-                saveAnswer(questionList[currentlySelectedSet].q1.option2Label);
-                break;
-            case 2:
-                saveAnswer(questionList[currentlySelectedSet].q2.option2Label);
-                break;
-            case 3:
-                saveAnswer(questionList[currentlySelectedSet].q3.option2Label);
-                break;
-            case 4:
-                saveAnswer(questionList[currentlySelectedSet].q4.option2Label);
-                break;
-        }
+        saveAnswer(questionList[currentlySelectedQuestion].option2Label);
         setColours(isOn, Answer2Toggle);
     }
 
     private void Answer3ToggleClicked(bool isOn)
     {
-        switch (currentlySelectedQuestionInSet)
-        {
-            case 1:
-                saveAnswer(questionList[currentlySelectedSet].q1.option3Label);
-                break;
-            case 2:
-                saveAnswer(questionList[currentlySelectedSet].q2.option3Label);
-                break;
-            case 3:
-                saveAnswer(questionList[currentlySelectedSet].q3.option3Label);
-                break;
-            case 4:
-                saveAnswer(questionList[currentlySelectedSet].q4.option3Label);
-                break;
-        }
+        saveAnswer(questionList[currentlySelectedQuestion].option3Label);
         setColours(isOn, Answer3Toggle);
     }
 
     private void Answer4ToggleClicked(bool isOn)
     {
-        switch (currentlySelectedQuestionInSet)
-        {
-            case 1:
-                saveAnswer(questionList[currentlySelectedSet].q1.option4Label);
-                break;
-            case 2:
-                saveAnswer(questionList[currentlySelectedSet].q2.option4Label);
-                break;
-            case 3:
-                saveAnswer(questionList[currentlySelectedSet].q3.option4Label);
-                break;
-            case 4:
-                saveAnswer(questionList[currentlySelectedSet].q4.option4Label);
-                break;
-        }
+        saveAnswer(questionList[currentlySelectedQuestion].option4Label);
         setColours(isOn, Answer4Toggle);
-    }
-
-
-
-    private void countQuestions()
-    {
-        if(questionList[currentlySelectedSet].questionCount==3)
-        {
-            Question4Button.gameObject.SetActive(false);
-        }
-        else if(questionList[currentlySelectedSet].questionCount == 4)
-        {
-            Question4Button.gameObject.SetActive(true);
-        }
     }
 
 
     private void setUsersSelectedAnswerForButton()
     {
-        switch (currentlySelectedQuestionInSet)
+        if (!string.IsNullOrEmpty(questionList[currentlySelectedQuestion].usersAnswer))
         {
 
-            case 1:
-                if (questionList[currentlySelectedSet].q1.usersAnswer.Equals(questionList[currentlySelectedSet].q1.option1Label))
+            if (questionList[currentlySelectedQuestion].usersAnswer.Equals(questionList[currentlySelectedQuestion].option1Label))
+            {
+                Answer1ToggleClicked(true);
+            }
+            else if (questionList[currentlySelectedQuestion].usersAnswer.Equals(questionList[currentlySelectedQuestion].option2Label))
+            {
+                Answer2ToggleClicked(true);
+            }
+            else if (questionList[currentlySelectedQuestion].usersAnswer.Equals(questionList[currentlySelectedQuestion].option3Label))
+            {
+                if (!questionList[currentlySelectedQuestion].option3Label.Equals(""))
                 {
-                    Answer1ToggleClicked(true);
+                    Answer3ToggleClicked(true);
                 }
-                else if (questionList[currentlySelectedSet].q1.usersAnswer.Equals(questionList[currentlySelectedSet].q1.option2Label))
-                {
-                    Answer2ToggleClicked(true);
-                }
-                else if (questionList[currentlySelectedSet].q1.usersAnswer.Equals(questionList[currentlySelectedSet].q1.option3Label))
-                {
-                    if(!questionList[currentlySelectedSet].q1.option3Label.Equals(""))
-                    {
-                        Answer3ToggleClicked(true);
-                    }
-                    
-                }
-                else if (questionList[currentlySelectedSet].q1.usersAnswer.Equals(questionList[currentlySelectedSet].q1.option4Label))
-                {
-                    if (!questionList[currentlySelectedSet].q1.option4Label.Equals(""))
-                    {
-                        Answer4ToggleClicked(true);
-                    }
 
-                }
-                break;
-            case 2:
-                if (questionList[currentlySelectedSet].q2.usersAnswer.Equals(questionList[currentlySelectedSet].q2.option1Label))
+            }
+            else if (questionList[currentlySelectedQuestion].usersAnswer.Equals(questionList[currentlySelectedQuestion].option4Label))
+            {
+                if (!questionList[currentlySelectedQuestion].option4Label.Equals(""))
                 {
-                    Answer1ToggleClicked(true);
+                    Answer4ToggleClicked(true);
                 }
-                else if (questionList[currentlySelectedSet].q2.usersAnswer.Equals(questionList[currentlySelectedSet].q2.option2Label))
-                {
-                    Answer2ToggleClicked(true);
-                }
-                else if (questionList[currentlySelectedSet].q2.usersAnswer.Equals(questionList[currentlySelectedSet].q2.option3Label))
-                {
-                    if (!questionList[currentlySelectedSet].q2.option3Label.Equals(""))
-                    {
-                        Answer3ToggleClicked(true);
-                    }
-                }
-                else if (questionList[currentlySelectedSet].q2.usersAnswer.Equals(questionList[currentlySelectedSet].q2.option4Label))
-                {
-                    if (!questionList[currentlySelectedSet].q2.option4Label.Equals(""))
-                    {
-                        Answer4ToggleClicked(true);
-                    }
-                }
-                break;
-            case 3:
-                if (questionList[currentlySelectedSet].q3.usersAnswer.Equals(questionList[currentlySelectedSet].q3.option1Label))
-                {
-                    Answer1ToggleClicked(true);
-                }
-                else if (questionList[currentlySelectedSet].q3.usersAnswer.Equals(questionList[currentlySelectedSet].q3.option2Label))
-                {
-                    Answer2ToggleClicked(true);
-                }
-                else if (questionList[currentlySelectedSet].q3.usersAnswer.Equals(questionList[currentlySelectedSet].q3.option3Label))
-                {
-                    if (!questionList[currentlySelectedSet].q3.option3Label.Equals(""))
-                    {
-                        Answer3ToggleClicked(true);
-                    }
-                }
-                else if (questionList[currentlySelectedSet].q3.usersAnswer.Equals(questionList[currentlySelectedSet].q3.option4Label))
-                {
-                    if (!questionList[currentlySelectedSet].q3.option4Label.Equals(""))
-                    {
-                        Answer4ToggleClicked(true);
-                    }
-                }
-                break;
-            case 4:
-                if (questionList[currentlySelectedSet].questionCount == 4)
-                {
-                    if (questionList[currentlySelectedSet].q4.usersAnswer.Equals(questionList[currentlySelectedSet].q4.option1Label))
-                    {
-                        Answer1ToggleClicked(true);
-                    }
-                    else if (questionList[currentlySelectedSet].q4.usersAnswer.Equals(questionList[currentlySelectedSet].q4.option2Label))
-                    {
-                        Answer2ToggleClicked(true);
-                    }
-                    else if (questionList[currentlySelectedSet].q4.usersAnswer.Equals(questionList[currentlySelectedSet].q4.option3Label))
-                    {
-                        if (!questionList[currentlySelectedSet].q4.option3Label.Equals(""))
-                        {
-                            Answer3ToggleClicked(true);
-                        }
-                    }
-                    else if (questionList[currentlySelectedSet].q4.usersAnswer.Equals(questionList[currentlySelectedSet].q4.option4Label))
-                    {
-                        if (!questionList[currentlySelectedSet].q4.option4Label.Equals(""))
-                        {
-                            Answer4ToggleClicked(true);
-                        }
-                    }
-                    break;
-                }
-                break;
+            }
         }
 
     }
 
     private void highlightWrongAnswer(int questionNumber)
     {
-        switch (currentlySelectedQuestionInSet)
+
+        if (questionList[currentlySelectedQuestion].answerClicked)
         {
-            case 1:
-                if (questionList[currentlySelectedSet].q1.answerClickedinTuple)
-                {
-                    if (questionList[currentlySelectedSet].q1.usersAnswer.Equals(questionList[currentlySelectedSet].q1.option1Label) && !questionList[currentlySelectedSet].q1.questionAnswer.Equals(questionList[currentlySelectedSet].q1.usersAnswer))
-                    {
-                        setToggleColourIncorrect(Answer1Toggle);
-                    }
-                    else if (questionList[currentlySelectedSet].q1.usersAnswer.Equals(questionList[currentlySelectedSet].q1.option2Label) && !questionList[currentlySelectedSet].q1.questionAnswer.Equals(questionList[currentlySelectedSet].q1.usersAnswer))
-                    {
-                        setToggleColourIncorrect(Answer2Toggle);
-                    }
-                    else if (questionList[currentlySelectedSet].q1.usersAnswer.Equals(questionList[currentlySelectedSet].q1.option3Label) && !questionList[currentlySelectedSet].q1.questionAnswer.Equals(questionList[currentlySelectedSet].q1.usersAnswer))
-                    {
-                        setToggleColourIncorrect(Answer3Toggle);
-                    }
-                    else if (questionList[currentlySelectedSet].q1.usersAnswer.Equals(questionList[currentlySelectedSet].q1.option4Label) && !questionList[currentlySelectedSet].q1.questionAnswer.Equals(questionList[currentlySelectedSet].q1.usersAnswer))
-                    {
-                        setToggleColourIncorrect(Answer4Toggle);
-                    }
-                    break;
-                }
-                break;
-            case 2:
-                if (questionList[currentlySelectedSet].q2.answerClickedinTuple)
-                {
-                    if (questionList[currentlySelectedSet].q2.usersAnswer.Equals(questionList[currentlySelectedSet].q2.option1Label) && !questionList[currentlySelectedSet].q2.questionAnswer.Equals(questionList[currentlySelectedSet].q2.usersAnswer))
-                    {
-                        setToggleColourIncorrect(Answer1Toggle);
-                    }
-                    else if (questionList[currentlySelectedSet].q2.usersAnswer.Equals(questionList[currentlySelectedSet].q2.option2Label) && !questionList[currentlySelectedSet].q2.questionAnswer.Equals(questionList[currentlySelectedSet].q2.usersAnswer))
-                    {
-                        setToggleColourIncorrect(Answer2Toggle);
-                    }
-                    else if (questionList[currentlySelectedSet].q2.usersAnswer.Equals(questionList[currentlySelectedSet].q2.option3Label) && !questionList[currentlySelectedSet].q2.questionAnswer.Equals(questionList[currentlySelectedSet].q2.usersAnswer))
-                    {
-                        setToggleColourIncorrect(Answer3Toggle);
-                    }
-                    else if (questionList[currentlySelectedSet].q2.usersAnswer.Equals(questionList[currentlySelectedSet].q2.option4Label) && !questionList[currentlySelectedSet].q2.questionAnswer.Equals(questionList[currentlySelectedSet].q2.usersAnswer))
-                    {
-                        setToggleColourIncorrect(Answer4Toggle);
-                    }
-                }
-                break;
-            case 3:
-                if (questionList[currentlySelectedSet].q3.answerClickedinTuple)
-                {
-                    if (questionList[currentlySelectedSet].q3.usersAnswer.Equals(questionList[currentlySelectedSet].q3.option1Label) && !questionList[currentlySelectedSet].q3.questionAnswer.Equals(questionList[currentlySelectedSet].q3.usersAnswer))
-                    {
-                        setToggleColourIncorrect(Answer1Toggle);
-                    }
-                    else if (questionList[currentlySelectedSet].q3.usersAnswer.Equals(questionList[currentlySelectedSet].q3.option2Label) && !questionList[currentlySelectedSet].q3.questionAnswer.Equals(questionList[currentlySelectedSet].q3.usersAnswer))
-                    {
-                        setToggleColourIncorrect(Answer2Toggle);
-                    }
-                    else if (questionList[currentlySelectedSet].q3.usersAnswer.Equals(questionList[currentlySelectedSet].q3.option3Label) && !questionList[currentlySelectedSet].q3.questionAnswer.Equals(questionList[currentlySelectedSet].q3.usersAnswer))
-                    {
-                        setToggleColourIncorrect(Answer3Toggle);
-                    }
-                    else if (questionList[currentlySelectedSet].q3.usersAnswer.Equals(questionList[currentlySelectedSet].q3.option4Label) && !questionList[currentlySelectedSet].q3.questionAnswer.Equals(questionList[currentlySelectedSet].q3.usersAnswer))
-                    {
-                        setToggleColourIncorrect(Answer4Toggle);
-                    }
-                }
-                break;
-            case 4:
-                if (questionList[currentlySelectedSet].q4.answerClickedinTuple)
-                {
-                    if (questionList[currentlySelectedSet].q4.usersAnswer.Equals(questionList[currentlySelectedSet].q4.option1Label) && !questionList[currentlySelectedSet].q4.questionAnswer.Equals(questionList[currentlySelectedSet].q4.usersAnswer))
-                    {
-                        setToggleColourIncorrect(Answer1Toggle);
-                    }
-                    else if (questionList[currentlySelectedSet].q4.usersAnswer.Equals(questionList[currentlySelectedSet].q4.option2Label) && !questionList[currentlySelectedSet].q4.questionAnswer.Equals(questionList[currentlySelectedSet].q4.usersAnswer))
-                    {
-                        setToggleColourIncorrect(Answer2Toggle);
-                    }
-                    else if (questionList[currentlySelectedSet].q4.usersAnswer.Equals(questionList[currentlySelectedSet].q4.option3Label) && !questionList[currentlySelectedSet].q4.questionAnswer.Equals(questionList[currentlySelectedSet].q4.usersAnswer))
-                    {
-                        setToggleColourIncorrect(Answer3Toggle);
-                    }
-                    else if (questionList[currentlySelectedSet].q4.usersAnswer.Equals(questionList[currentlySelectedSet].q4.option4Label) && !questionList[currentlySelectedSet].q4.questionAnswer.Equals(questionList[currentlySelectedSet].q4.usersAnswer))
-                    {
-                        setToggleColourIncorrect(Answer4Toggle);
-                    }
-                }
-                break;
+            if (questionList[currentlySelectedQuestion].usersAnswer.Equals(questionList[currentlySelectedQuestion].option1Label) && !questionList[currentlySelectedQuestion].questionAnswer.Equals(questionList[currentlySelectedQuestion].usersAnswer))
+            {
+                setToggleColourIncorrect(Answer1Toggle);
+            }
+            else if (questionList[currentlySelectedQuestion].usersAnswer.Equals(questionList[currentlySelectedQuestion].option2Label) && !questionList[currentlySelectedQuestion].questionAnswer.Equals(questionList[currentlySelectedQuestion].usersAnswer))
+            {
+                setToggleColourIncorrect(Answer2Toggle);
+            }
+            else if (questionList[currentlySelectedQuestion].usersAnswer.Equals(questionList[currentlySelectedQuestion].option3Label) && !questionList[currentlySelectedQuestion].questionAnswer.Equals(questionList[currentlySelectedQuestion].usersAnswer))
+
+                setToggleColourIncorrect(Answer3Toggle);
+        }
+        else if (questionList[currentlySelectedQuestion].usersAnswer.Equals(questionList[currentlySelectedQuestion].option4Label) && !questionList[currentlySelectedQuestion].questionAnswer.Equals(questionList[currentlySelectedQuestion].usersAnswer))
+        {
+            setToggleColourIncorrect(Answer4Toggle);
         }
     }
 
     private void AnswerButtonClicked()
     {
-        switch (currentlySelectedQuestionInSet)
-        {
-            case 1:
-                questionList[currentlySelectedSet].q1.setAnswerClickedTrue();
-                break;
-            case 2:
-                questionList[currentlySelectedSet].q2.setAnswerClickedTrue();
-                break;
-            case 3:
-                questionList[currentlySelectedSet].q3.setAnswerClickedTrue();
-                break;
-            case 4:
-                questionList[currentlySelectedSet].q4.setAnswerClickedTrue();
-                break;
-        }
-        questionList[currentlySelectedSet].answerClicked = true;
+        questionList[currentlySelectedQuestion].setAnswerClickedTrue();
+        questionList[currentlySelectedQuestion].answerClicked = true;
         showAnswerColours();
         showAnswerOnToggles();
-        highlightWrongAnswer(currentlySelectedQuestionInSet);
+        highlightWrongAnswer(currentlySelectedQuestion);
     }
     #endregion
 }
@@ -949,21 +472,15 @@ public class VerbalReasoningControllerScript : MonoBehaviour
 #region JSON MODELS
 
 [System.Serializable]
-public class VRSet
-{
-    public string resource;
-    public List<VRQuestions> questions;
-}
-
-[System.Serializable]
 public class VRAllQuestions
 {
-    public List<VRSet> allQuestions;
+    public List<VRQuestions> allQuestions;
 }
 
 [System.Serializable]
 public class VRQuestions
 {
+    public string resource;
     public int questionNumber;
     public string questionText;
     public string answer;
@@ -971,7 +488,6 @@ public class VRQuestions
     public string option2;
     public string option3;
     public string option4;
-    public string totalQNo;
 }
 
 #endregion

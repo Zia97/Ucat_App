@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PracticeTest.unity
     guid: 646f3ae6bb0cf1343a1328a83476eac2
+  - enabled: 1
+    path: Assets/Scenes/VerbalReasoningTimedScene.unity
+    guid: cf6a41143ad679145a9a3a268add645c
   m_configObjects: {}

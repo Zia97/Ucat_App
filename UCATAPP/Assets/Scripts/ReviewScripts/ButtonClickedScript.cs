@@ -33,6 +33,6 @@ public class ButtonClickedScript : MonoBehaviour
         BaseHeaderPanel.SetActive(true);
         BaseQuestionSelectorPanel.SetActive(true);
         BaseQuestionsPanel.SetActive(true);
-        VerbalReasoningControllerScriptTest.Instance.loadSetFromReview(questionNumber);
+        VerbalReasoningControllerScriptTest.Instance.loadQuestionFromReview(questionNumber);
     }
 }
