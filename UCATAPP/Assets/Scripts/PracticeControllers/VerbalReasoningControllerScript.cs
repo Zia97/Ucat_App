@@ -257,6 +257,7 @@ public class VerbalReasoningControllerScript : MonoBehaviour
             cb.highlightedColor = Color.white;
         }
         chosenToggle.colors = cb;
+        
     }
 
     private void initiateToggleColours()
