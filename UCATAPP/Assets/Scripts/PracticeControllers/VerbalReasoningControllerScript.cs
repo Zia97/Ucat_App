@@ -40,6 +40,7 @@ public class VerbalReasoningControllerScript : MonoBehaviour
     private static ColorBlock correctColours;
     private static ColorBlock incorrectColours;
     private int currentlySelectedQuestion;
+    private int numberOfAnswerOptions;
 
 
 
@@ -126,17 +127,19 @@ public class VerbalReasoningControllerScript : MonoBehaviour
         Answer2Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedQuestion].option2Label;
         if (questionList[currentlySelectedQuestion].option3Label.Equals(""))
         {
-
+            numberOfAnswerOptions = 2;
             Answer3Toggle.gameObject.SetActive(false);
             Answer4Toggle.gameObject.SetActive(false);
         }
         else if (!questionList[currentlySelectedQuestion].option3Label.Equals("") && questionList[currentlySelectedQuestion].option4Label.Equals(""))
         {
             Answer4Toggle.gameObject.SetActive(false);
+            numberOfAnswerOptions = 3;
             Answer3Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedQuestion].option3Label;
         }
         else if (!questionList[currentlySelectedQuestion].option4Label.Equals(""))
         {
+            numberOfAnswerOptions = 4;
             Answer3Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedQuestion].option3Label;
             Answer4Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedQuestion].option4Label;
         }
@@ -176,67 +179,19 @@ public class VerbalReasoningControllerScript : MonoBehaviour
         setColours(false, Answer4Toggle);
     }
 
-    private void resetButtonColours()
-    {
-        //if (!questionList[currentlySelectedSet].answerClicked)
-        //{
-        //    Question1Button.image.color = Color.yellow;
-        //    Question2Button.image.color = Color.yellow;
-        //    Question3Button.image.color = Color.yellow;
-        //    Question4Button.image.color = Color.yellow;
-        //}
-    }
-
     private void showAnswerColours()
     {
-
-        //    if (questionList[currentlySelectedQuestion].q1.answerClickedinTuple)
-        //{
-        //    if (questionList[currentlySelectedSet].q1.usersAnswer.Equals(questionList[currentlySelectedSet].q1.questionAnswer))
-        //    {
-        //        Question1Button.image.color = Color.green;
-        //    }
-        //    else
-        //    {
-        //        Question1Button.image.color = Color.red;
-        //    }
-        //}
-        //    if (questionList[currentlySelectedSet].q2.answerClickedinTuple)
-        //{
-        //    if (questionList[currentlySelectedSet].q2.usersAnswer.Equals(questionList[currentlySelectedSet].q2.questionAnswer))
-        //    {
-        //        Question2Button.image.color = Color.green;
-        //    }
-        //    else
-        //    {
-        //        Question2Button.image.color = Color.red;
-        //    }
-        //}
-        //    if (questionList[currentlySelectedSet].q3.answerClickedinTuple)
-        //{
-        //    if (questionList[currentlySelectedSet].q3.usersAnswer.Equals(questionList[currentlySelectedSet].q3.questionAnswer))
-        //    {
-        //        Question3Button.image.color = Color.green;
-        //    }
-        //    else
-        //    {
-        //        Question3Button.image.color = Color.red;
-        //    }
-        //}
-        //    if (questionList[currentlySelectedSet].q4.answerClickedinTuple)
-        //{
-        //    if (questionList[currentlySelectedSet].questionCount == 4)
-        //    {
-        //        if (questionList[currentlySelectedSet].q4.usersAnswer.Equals(questionList[currentlySelectedSet].q4.questionAnswer))
-        //        {
-        //            Question4Button.image.color = Color.green;
-        //        }
-        //        else
-        //        {
-        //            Question4Button.image.color = Color.red;
-        //        }
-        //    }
-        //}
+        if (questionList[currentlySelectedQuestion].answerClicked)
+        {
+            if (questionList[currentlySelectedQuestion].usersAnswer.Equals(questionList[currentlySelectedQuestion].questionAnswer))
+            {
+                Question1Button.image.color = Color.green;
+            }
+            else
+            {
+                Question1Button.image.color = Color.red;
+            }
+        }
     }
 
     private void setColours(bool isOn, Toggle chosenToggle)
@@ -297,8 +252,6 @@ public class VerbalReasoningControllerScript : MonoBehaviour
 
     private void showAnswerOnToggles()
     {
-
-
         if (questionList[currentlySelectedQuestion].answerClicked)
         {
             if (questionList[currentlySelectedQuestion].questionAnswer.Equals(questionList[currentlySelectedQuestion].option1Label))
@@ -337,8 +290,6 @@ public class VerbalReasoningControllerScript : MonoBehaviour
             loadQuestion(currentlySelectedQuestion);
         }
 
-        resetButtonColours();
-
         updateQuestionCounter();
 
         setUsersSelectedAnswerForButton();
@@ -363,7 +314,6 @@ public class VerbalReasoningControllerScript : MonoBehaviour
             loadQuestion(currentlySelectedQuestion);
 
         }
-        resetButtonColours();
 
         updateQuestionCounter();
 

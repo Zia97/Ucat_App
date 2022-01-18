@@ -84,6 +84,8 @@ public class VerbalReasoningControllerScriptTest : MonoBehaviour
 
         updateQuestionCounter();
 
+        timerIsRunning = true;
+
     }
 
     private static VerbalReasoningControllerScriptTest instance = null;
