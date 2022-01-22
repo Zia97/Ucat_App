@@ -175,6 +175,18 @@ public class VerbalReasoningControllerScriptTest : MonoBehaviour
                 Button bt1 = GameObject.Find("Q" + qNumber + "Button").GetComponent<Button>();
                 bt1.GetComponent<Image>().color = Color.white;
             }
+
+            if (!questionList[i].flagged)
+            {
+                int qNumber = i + 1;
+                GameObject.Find("Q" + qNumber + "Button").GetComponentInChildren<Toggle>().isOn = true;
+                
+            }
+            else
+            {
+                int qNumber = i + 1;
+                GameObject.Find("Q" + qNumber + "Button").GetComponentInChildren<Toggle>().isOn = false;
+            }
         }
     }
 
@@ -297,8 +309,7 @@ public class VerbalReasoningControllerScriptTest : MonoBehaviour
         Answer3Toggle.onValueChanged.AddListener(Answer3ToggleClicked);
         Answer4Toggle.onValueChanged.AddListener(Answer4ToggleClicked);
 
-        //VerbalReasoningStartButton.onClick.AddListener(VerbalReasoningStartButtonClicked);
-        //VRQuestionToggle.onValueChanged.AddListener(VRQuestionToggleClicked);
+        VRQuestionToggle.onValueChanged.AddListener(VRQuestionToggleClicked);
 
     }
 
