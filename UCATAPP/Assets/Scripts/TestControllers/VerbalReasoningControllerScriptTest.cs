@@ -38,6 +38,7 @@ public class VerbalReasoningControllerScriptTest : MonoBehaviour
 
     public GameObject DecisionMakingInfoPanel;
     public GameObject VerbalReasoningCanvas;
+    public GameObject ReviewCanvas;
 
     private List<VRQuestions> allQuestions;
     private List<VerbalReasoningQuestion> verbalReasoningQuestionList = new List<VerbalReasoningQuestion>();
@@ -126,15 +127,55 @@ public class VerbalReasoningControllerScriptTest : MonoBehaviour
             {
                 timeRemaining = 0;
                 timerIsRunning = false;
-                loadDMSection();
+                loadReviewCanvas();
             }
         }
     }
 
-    private void loadDMSection()
+    private void loadReviewCanvas()
     {
         VerbalReasoningCanvas.SetActive(false);
-        DecisionMakingInfoPanel.SetActive(true);
+        ReviewCanvas.SetActive(true);
+        setReviewButtonColours();
+        setReviewButtonBehaviour();
+    }
+
+    private void setReviewButtonBehaviour()
+    {
+        for (int i = 0; i <= questionList.Length - 1; i++)
+        {
+            int qNumber = i + 1;
+            int num = i;
+            GameObject.Find("Q" + qNumber + "Button").GetComponent<Button>().onClick.AddListener(delegate { reviewButtonClicked(num);});
+
+        }
+    }
+
+    void reviewButtonClicked(int idx_)
+    {
+        loadQuestionFromReview(idx_);
+    }
+
+    private void setReviewButtonColours()
+    {
+        ColorBlock cb = new ColorBlock();
+        cb.normalColor = Color.yellow;
+
+        for (int i = 0; i <= questionList.Length - 1; i++)
+        {
+            if (!questionList[i].answerClicked)
+            {
+                int qNumber = i + 1;
+                Button bt1 = GameObject.Find("Q" + qNumber + "Button").GetComponent<Button>();
+                bt1.GetComponent<Image>().color = Color.yellow;
+            }
+            else
+            {
+                int qNumber = i + 1;
+                Button bt1 = GameObject.Find("Q" + qNumber + "Button").GetComponent<Button>();
+                bt1.GetComponent<Image>().color = Color.white;
+            }
+        }
     }
 
     void SetQuestionList()
@@ -194,6 +235,12 @@ public class VerbalReasoningControllerScriptTest : MonoBehaviour
 
     public void loadQuestionFromReview(int selectedQuestion)
     {
+        print("selected question is " + selectedQuestion);
+
+        VerbalReasoningCanvas.SetActive(true);
+
+        ReviewCanvas.SetActive(false);
+
         loadQuestion(selectedQuestion);
 
         currentlySelectedQuestion = selectedQuestion;
@@ -309,8 +356,8 @@ public class VerbalReasoningControllerScriptTest : MonoBehaviour
 
     void saveAnswer(String selectedAnswer)
     {
-
         questionList[currentlySelectedQuestion].usersAnswer = selectedAnswer;
+        questionList[currentlySelectedQuestion].answerClicked = true;
 
     }
 
@@ -573,9 +620,8 @@ public class VerbalReasoningControllerScriptTest : MonoBehaviour
         }
         else
         {
-            showReviewScreen();
-            //currentlySelectedQuestion = 0;
-            //loadSet(currentlySelectedSet);
+            //showReviewScreen();
+            loadReviewCanvas();
         }
     }
 
@@ -621,6 +667,7 @@ public class VerbalReasoningControllerScriptTest : MonoBehaviour
     private void Answer1ToggleClicked(bool isOn)
     {
         saveAnswer(questionList[currentlySelectedQuestion].option1Label);
+
         setColours(isOn, Answer1Toggle);
     }
 
