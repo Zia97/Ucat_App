@@ -27,8 +27,6 @@ public class DecisionMakingControllerScript : MonoBehaviour
     public Button NextButton;
     public Button PreviousButton;
 
-    public Button Question1Button;
-
     public Button AnswerButton;
 
     private List<DMSet> allQuestions;
@@ -176,8 +174,6 @@ public class DecisionMakingControllerScript : MonoBehaviour
         PreviousButton.onClick.AddListener(PreviousButtonClicked);
         NextButton.onClick.AddListener(NextButtonClicked);
 
-        Question1Button.onClick.AddListener(Question1ButtonClicked);
-
         AnswerButton.onClick.AddListener(AnswerButtonClicked);
 
         Answer1Toggle.onValueChanged.AddListener(Answer1ToggleClicked);
@@ -212,37 +208,6 @@ public class DecisionMakingControllerScript : MonoBehaviour
         setColours(false, Answer4Toggle);
     }
 
-    private void resetButtonColours()
-    {
-        if (!questionList[currentlySelectedSet].answerClicked)
-        {
-            Question1Button.image.color = Color.yellow;
-
-        }
-    }
-
-    private void showAnswerColours()
-    {
-        switch (currentlySelectedQuestionInSet)
-        {
-            case 1:
-                if (questionList[currentlySelectedSet].q1.answerClickedinTuple)
-                {
-                    if (questionList[currentlySelectedSet].q1.usersAnswer.Equals(questionList[currentlySelectedSet].q1.questionAnswer))
-                    {
-                        Question1Button.image.color = Color.green;
-                    }
-                    else
-                    {
-                        Question1Button.image.color = Color.red;
-                    }
-                    break;
-                }
-                break;
-        }
-
-    }
-
     private void setColours(bool isOn, Toggle chosenToggle)
     {
         chosenToggle.isOn = isOn;
@@ -250,9 +215,10 @@ public class DecisionMakingControllerScript : MonoBehaviour
 
         if (isOn)
         {
-            cb.normalColor = Color.green;
-            cb.selectedColor = Color.green;
-            cb.highlightedColor = Color.green;
+           cb.normalColor = Color.yellow;
+            cb.selectedColor = Color.yellow;
+            cb.highlightedColor = Color.yellow;
+   
         }
         else
         {
@@ -346,13 +312,9 @@ public class DecisionMakingControllerScript : MonoBehaviour
 
         loadQuestionResources();
 
-        resetButtonColours();
-
         updateQuestionCounter();
 
         setUsersSelectedAnswerForButton();
-
-        showAnswerColours();
 
         Question1ButtonClicked();
 
@@ -375,15 +337,12 @@ public class DecisionMakingControllerScript : MonoBehaviour
             loadSet(currentlySelectedSet);
 
         }
-        resetButtonColours();
 
         loadQuestionResources();
 
         updateQuestionCounter();
 
         setUsersSelectedAnswerForButton();
-
-        showAnswerColours();
 
         Question1ButtonClicked();
 
@@ -519,8 +478,6 @@ public class DecisionMakingControllerScript : MonoBehaviour
                 questionList[currentlySelectedSet].q1.setAnswerClickedTrue();
                 break;
         }
-        answerPanel.SetActive(true);
-        showAnswerColours();
         showAnswerOnToggles();
         highlightWrongAnswer(currentlySelectedQuestionInSet);
     }

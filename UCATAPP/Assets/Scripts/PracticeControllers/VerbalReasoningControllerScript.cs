@@ -24,10 +24,6 @@ public class VerbalReasoningControllerScript : MonoBehaviour
     public Button NextButton;
     public Button PreviousButton;
 
-    public Button Question1Button;
-    public Button Question2Button;
-    public Button Question3Button;
-    public Button Question4Button;
 
     public Button AnswerButton;
 
@@ -179,21 +175,6 @@ public class VerbalReasoningControllerScript : MonoBehaviour
         setColours(false, Answer4Toggle);
     }
 
-    private void showAnswerColours()
-    {
-        if (questionList[currentlySelectedQuestion].answerClicked)
-        {
-            if (questionList[currentlySelectedQuestion].usersAnswer.Equals(questionList[currentlySelectedQuestion].questionAnswer))
-            {
-                Question1Button.image.color = Color.green;
-            }
-            else
-            {
-                Question1Button.image.color = Color.red;
-            }
-        }
-    }
-
     private void setColours(bool isOn, Toggle chosenToggle)
     {
         chosenToggle.isOn = isOn;
@@ -294,9 +275,12 @@ public class VerbalReasoningControllerScript : MonoBehaviour
 
         setUsersSelectedAnswerForButton();
 
-        showAnswerColours();
-
         loadQuestionLabels();
+
+        if (questionList[currentlySelectedQuestion].answerClicked){
+            showAnswerOnToggles();
+            highlightWrongAnswer(currentlySelectedQuestion);
+        }
     }
 
     private void PreviousButtonClicked()
@@ -319,9 +303,13 @@ public class VerbalReasoningControllerScript : MonoBehaviour
 
         setUsersSelectedAnswerForButton();
 
-        showAnswerColours();
-
         loadQuestionLabels();
+
+        if (questionList[currentlySelectedQuestion].answerClicked)
+        {
+            showAnswerOnToggles();
+            highlightWrongAnswer(currentlySelectedQuestion);
+        }
 
     }
 
@@ -409,7 +397,6 @@ public class VerbalReasoningControllerScript : MonoBehaviour
     {
         questionList[currentlySelectedQuestion].setAnswerClickedTrue();
         questionList[currentlySelectedQuestion].answerClicked = true;
-        showAnswerColours();
         showAnswerOnToggles();
         highlightWrongAnswer(currentlySelectedQuestion);
     }

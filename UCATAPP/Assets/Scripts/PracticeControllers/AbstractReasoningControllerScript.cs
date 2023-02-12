@@ -261,9 +261,9 @@ public class AbstractReasoningControllerScript : MonoBehaviour
 
         if (isOn)
         {
-            cb.normalColor = Color.green;
-            cb.selectedColor = Color.green;
-            cb.highlightedColor = Color.green;
+            cb.normalColor = Color.yellow;
+            cb.selectedColor = Color.yellow;
+            cb.highlightedColor = Color.yellow;
         }
         else
         {
