@@ -31,12 +31,9 @@ public class VerbalReasoningControllerScript : MonoBehaviour
     private List<VerbalReasoningQuestion> verbalReasoningQuestionList = new List<VerbalReasoningQuestion>();
     private VerbalReasoningQuestion[] questionList;
 
-    private Tuple<int, String, String, String> selectedQuestionInSet;
-
     private static ColorBlock correctColours;
     private static ColorBlock incorrectColours;
     private int currentlySelectedQuestion;
-    private int numberOfAnswerOptions;
 
 
 
@@ -68,6 +65,7 @@ public class VerbalReasoningControllerScript : MonoBehaviour
 
     }
 
+    //Serializes the questions from the json file to objects
     void SetQuestionList()
     {
         TextAsset json = new TextAsset();
@@ -85,7 +83,7 @@ public class VerbalReasoningControllerScript : MonoBehaviour
 
     }
 
-
+    //Creates actual verbal reasoning question objects from the list loaded from the json
     void InstantiateQuestions()
     {
         foreach (VRQuestions s in allQuestions)
@@ -103,8 +101,8 @@ public class VerbalReasoningControllerScript : MonoBehaviour
 
         resetColours();
 
-        QuestionText.text = questionList[questionNumber].resource;
-        preText.text = questionList[questionNumber].questionText;
+        QuestionText.text = questionList[currentlySelectedQuestion].resource;
+        preText.text = questionList[currentlySelectedQuestion].questionText;
 
         loadQuestionLabels();
 
@@ -396,7 +394,6 @@ public class VerbalReasoningControllerScript : MonoBehaviour
     private void AnswerButtonClicked()
     {
         questionList[currentlySelectedQuestion].setAnswerClickedTrue();
-        questionList[currentlySelectedQuestion].answerClicked = true;
         showAnswerOnToggles();
         highlightWrongAnswer(currentlySelectedQuestion);
     }
