@@ -121,19 +121,16 @@ public class VerbalReasoningControllerScript : MonoBehaviour
         Answer2Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedQuestion].option2Label;
         if (questionList[currentlySelectedQuestion].option3Label.Equals(""))
         {
-            numberOfAnswerOptions = 2;
             Answer3Toggle.gameObject.SetActive(false);
             Answer4Toggle.gameObject.SetActive(false);
         }
         else if (!questionList[currentlySelectedQuestion].option3Label.Equals("") && questionList[currentlySelectedQuestion].option4Label.Equals(""))
         {
             Answer4Toggle.gameObject.SetActive(false);
-            numberOfAnswerOptions = 3;
             Answer3Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedQuestion].option3Label;
         }
         else if (!questionList[currentlySelectedQuestion].option4Label.Equals(""))
         {
-            numberOfAnswerOptions = 4;
             Answer3Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedQuestion].option3Label;
             Answer4Toggle.GetComponentInChildren<Text>().text = questionList[currentlySelectedQuestion].option4Label;
         }
