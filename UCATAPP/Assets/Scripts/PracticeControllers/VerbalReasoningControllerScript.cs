@@ -362,7 +362,6 @@ public class VerbalReasoningControllerScript : MonoBehaviour
                 }
             }
         }
-
     }
 
     private void highlightWrongAnswer(int questionNumber)
