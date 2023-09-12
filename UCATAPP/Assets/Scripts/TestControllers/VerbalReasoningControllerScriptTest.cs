@@ -12,7 +12,7 @@ public class VerbalReasoningControllerScriptTest : MonoBehaviour
     public Text QuestionCounterText;
     public TextAsset jsonFile;
 
-    public Text totalQuestionText;
+    //public Text totalQuestionText;
     public Text QuestionText;
     public Text preText;
 
@@ -61,6 +61,11 @@ public class VerbalReasoningControllerScriptTest : MonoBehaviour
     public GameObject BaseHeaderPanel;
     public GameObject BaseQuestionSelectorPanel;
     public GameObject BaseQuestionsPanel;
+
+    public void DestroySingleton()
+    {
+        Destroy(this.gameObject);
+    }
 
 
     // Start is called before the first frame update
@@ -179,13 +184,13 @@ public class VerbalReasoningControllerScriptTest : MonoBehaviour
             if (!questionList[i].flagged)
             {
                 int qNumber = i + 1;
-                GameObject.Find("Q" + qNumber + "Button").GetComponentInChildren<Toggle>().isOn = true;
+                GameObject.Find("Q" + qNumber + "Button").GetComponentInChildren<Toggle>().isOn = false;
                 
             }
             else
             {
                 int qNumber = i + 1;
-                GameObject.Find("Q" + qNumber + "Button").GetComponentInChildren<Toggle>().isOn = false;
+                GameObject.Find("Q" + qNumber + "Button").GetComponentInChildren<Toggle>().isOn = true;
             }
         }
     }

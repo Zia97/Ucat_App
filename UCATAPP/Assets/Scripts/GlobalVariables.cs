@@ -14,6 +14,11 @@ public static class GlobalVariables
     public const string SituationalJudgement = "Situational Judgement";
 
     public static string SelectedPracticeTest = "";
+    public const string VerbalReasoningScene = "VerbalReasoningTimedScene";
+    public const string DecisionMakingScene = "DecisionMakingTimedScene";
+    public const string AbstractReasoningScene = "AbstractReasoningTimedScene";
+    public const string SituationalJudgementScene = "SituationalJudgementTimedScene";
+    public const string QuantitativeReasoningScene = "QuantitativeReasoningTimedScene";
 
     public static string selectedExercise = "";
 
