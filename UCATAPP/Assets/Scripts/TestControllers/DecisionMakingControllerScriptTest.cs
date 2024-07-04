@@ -27,11 +27,11 @@ public class DecisionMakingControllerScriptTest : MonoBehaviour
     public Button NextButton;
     public Button PreviousButton;
 
-    public Button Question1Button;
+    //public Button Question1Button;
 
     public Button DecisionMakingStartButton;
 
-    public Button AnswerButton;
+    //public Button AnswerButton;
 
     private List<DMSet> allQuestions;
     private List<DecisionMakingQuestion> DecisionMakingQuestionsList = new List<DecisionMakingQuestion>();
@@ -43,8 +43,8 @@ public class DecisionMakingControllerScriptTest : MonoBehaviour
     private static ColorBlock correctColours;
     private static ColorBlock incorrectColours;
 
-    public GameObject answerPanel;
-    public Button answerPanelCloseButton;
+    //public GameObject answerPanel;
+    //public Button answerPanelCloseButton;
 
     private float timeRemaining = 20; //1860
     public bool timerIsRunning = false;
@@ -62,7 +62,7 @@ public class DecisionMakingControllerScriptTest : MonoBehaviour
     {
         GlobalVariables.selectedExercise = "Practice";
 
-        answerPanel.SetActive(false);
+        //answerPanel.SetActive(false);
 
         HeaderPanelText.text = GlobalVariables.SelectedPracticeQuestion;
 
@@ -78,6 +78,7 @@ public class DecisionMakingControllerScriptTest : MonoBehaviour
 
         updateQuestionCounter();
 
+        timerIsRunning = true;
     }
 
 
@@ -211,16 +212,16 @@ public class DecisionMakingControllerScriptTest : MonoBehaviour
 
         DecisionMakingStartButton.onClick.AddListener(DecisionMakingStartButtonClicked);
 
-        Question1Button.onClick.AddListener(Question1ButtonClicked);
+        //Question1Button.onClick.AddListener(Question1ButtonClicked);
 
-        AnswerButton.onClick.AddListener(AnswerButtonClicked);
+        //AnswerButton.onClick.AddListener(AnswerButtonClicked);
 
         Answer1Toggle.onValueChanged.AddListener(Answer1ToggleClicked);
         Answer2Toggle.onValueChanged.AddListener(Answer2ToggleClicked);
         Answer3Toggle.onValueChanged.AddListener(Answer3ToggleClicked);
         Answer4Toggle.onValueChanged.AddListener(Answer4ToggleClicked);
 
-        answerPanelCloseButton.onClick.AddListener(answerPanelCloseButtonClicked);
+        //answerPanelCloseButton.onClick.AddListener(answerPanelCloseButtonClicked);
 
         DMQuestionToggle.onValueChanged.AddListener(DMQuestionToggleClicked);
     }
@@ -242,6 +243,7 @@ public class DecisionMakingControllerScriptTest : MonoBehaviour
         {
             case 1:
                 questionList[currentlySelectedSet].q1.usersAnswer = selectedAnswer;
+                questionList[currentlySelectedSet].answerClicked = true;
                 break;
         }
     }
@@ -254,36 +256,36 @@ public class DecisionMakingControllerScriptTest : MonoBehaviour
         setColours(false, Answer4Toggle);
     }
 
-    private void resetButtonColours()
-    {
-        if (!questionList[currentlySelectedSet].answerClicked)
-        {
-            Question1Button.image.color = Color.yellow;
+    //private void resetButtonColours()
+    //{
+    //    if (!questionList[currentlySelectedSet].answerClicked)
+    //    {
+    //        Question1Button.image.color = Color.yellow;
 
-        }
-    }
+    //    }
+    //}
 
-    private void showAnswerColours()
-    {
-        switch (currentlySelectedQuestionInSet)
-        {
-            case 1:
-                if (questionList[currentlySelectedSet].q1.answerClickedinTuple)
-                {
-                    if (questionList[currentlySelectedSet].q1.usersAnswer.Equals(questionList[currentlySelectedSet].q1.questionAnswer))
-                    {
-                        Question1Button.image.color = Color.green;
-                    }
-                    else
-                    {
-                        Question1Button.image.color = Color.red;
-                    }
-                    break;
-                }
-                break;
-        }
+    //private void showAnswerColours()
+    //{
+    //    switch (currentlySelectedQuestionInSet)
+    //    {
+    //        case 1:
+    //            if (questionList[currentlySelectedSet].q1.answerClickedinTuple)
+    //            {
+    //                if (questionList[currentlySelectedSet].q1.usersAnswer.Equals(questionList[currentlySelectedSet].q1.questionAnswer))
+    //                {
+    //                    Question1Button.image.color = Color.green;
+    //                }
+    //                else
+    //                {
+    //                    Question1Button.image.color = Color.red;
+    //                }
+    //                break;
+    //            }
+    //            break;
+    //    }
 
-    }
+    //}
 
     private void setColours(bool isOn, Toggle chosenToggle)
     {
@@ -292,9 +294,9 @@ public class DecisionMakingControllerScriptTest : MonoBehaviour
 
         if (isOn)
         {
-            cb.normalColor = Color.green;
-            cb.selectedColor = Color.green;
-            cb.highlightedColor = Color.green;
+            cb.normalColor = Color.yellow;
+            cb.selectedColor = Color.yellow;
+            cb.highlightedColor = Color.yellow;
         }
         else
         {
@@ -341,9 +343,116 @@ public class DecisionMakingControllerScriptTest : MonoBehaviour
 
     private void loadDMSection()
     {
-        DecisionMakingCanvas.SetActive(false);
-        QRInfoPanel.SetActive(true);
+        DecisionMakingCanvas.SetActive(true);
+        QRInfoPanel.SetActive(false);
+        setReviewButtonColours();
+        setReviewButtonBehaviour();
     }
+
+    private void setReviewButtonBehaviour()
+    {
+        for (int i = 0; i <= questionList.Length - 1; i++)
+        {
+            int qNumber = i + 1;
+            int num = i;
+            GameObject.Find("Q" + qNumber + "Button").GetComponent<Button>().onClick.AddListener(delegate { reviewButtonClicked(num); });
+
+        }
+    }
+
+    void reviewButtonClicked(int idx_)
+    {
+        loadQuestionFromReview(idx_);
+    }
+
+    private void setReviewButtonColours()
+    {
+        ColorBlock cb = new ColorBlock();
+        cb.normalColor = Color.yellow;
+
+        for (int i = 0; i <= questionList.Length - 1; i++)
+        {
+            if (!questionList[i].answerClicked)
+            {
+                int qNumber = i + 1;
+                Button bt1 = GameObject.Find("Q" + qNumber + "Button").GetComponent<Button>();
+                bt1.GetComponent<Image>().color = Color.yellow;
+            }
+            else
+            {
+                int qNumber = i + 1;
+                Button bt1 = GameObject.Find("Q" + qNumber + "Button").GetComponent<Button>();
+                bt1.GetComponent<Image>().color = Color.white;
+            }
+
+            if (!questionList[i].flagged)
+            {
+                int qNumber = i + 1;
+                GameObject.Find("Q" + qNumber + "Button").GetComponentInChildren<Toggle>().isOn = false;
+
+            }
+            else
+            {
+                int qNumber = i + 1;
+                GameObject.Find("Q" + qNumber + "Button").GetComponentInChildren<Toggle>().isOn = true;
+            }
+        }
+    }
+
+    public void loadQuestionFromReview(int selectedQuestion)
+    {
+        print("selected question is " + selectedQuestion);
+
+        QRInfoPanel.SetActive(true);
+
+        DecisionMakingCanvas.SetActive(false);
+
+        //loadQuestion(selectedQuestion);
+        currentlySelectedSet = selectedQuestion;
+
+        loadSet(currentlySelectedSet);
+
+        loadQuestionResources();
+
+        //currentlySelectedQuestion = selectedQuestion;
+
+        updateQuestionCounter();
+
+        setUsersSelectedAnswerForButton();
+
+        //showAnswerColours();
+
+        //resetButtonColours();
+
+        //Question1ButtonClicked();
+
+        loadQuestionLabels();
+
+        selectFlaggedIfFlagged();
+    }
+
+    void loadQuestion(int questionNumber)
+    {
+        currentlySelectedQuestionInSet = questionNumber;
+
+        questionList = DecisionMakingQuestionsList.ToArray();
+
+        resetColours();
+        if (questionList[currentlySelectedSet].hasImage)
+        {
+            resourceImage.gameObject.SetActive(true);
+            HalfText.text = questionList[questionNumber].resource;
+            //preText.text = questionList[questionNumber].questionText;
+            resourceImage.sprite = Resources.Load<Sprite>(questionList[currentlySelectedSet].imageUri);
+        }
+
+        loadQuestionLabels();
+
+
+        setUsersSelectedAnswerForButton();
+        //updateTotalQuestionCounter();
+    }
+
 
     private void DMQuestionToggleClicked(bool arg0)
     {
@@ -363,8 +472,6 @@ public class DecisionMakingControllerScriptTest : MonoBehaviour
         }
 
     }
-
-
 
     private void showAnswerOnToggles()
     {
@@ -408,19 +515,20 @@ public class DecisionMakingControllerScriptTest : MonoBehaviour
         }
         else
         {
-            currentlySelectedSet = 0;
-            loadSet(currentlySelectedSet);
+            //currentlySelectedSet = 0;
+            //loadSet(currentlySelectedSet);
+            loadDMSection();
         }
 
         loadQuestionResources();
 
-        resetButtonColours();
+        //resetButtonColours();
 
         updateQuestionCounter();
 
         setUsersSelectedAnswerForButton();
 
-        showAnswerColours();
+        //showAnswerColours();
 
         Question1ButtonClicked();
 
@@ -441,11 +549,11 @@ public class DecisionMakingControllerScriptTest : MonoBehaviour
         }
         else
         {
-            currentlySelectedSet = questionList.Length - 1;
-            loadSet(currentlySelectedSet);
-
+            //currentlySelectedSet = questionList.Length - 1;
+            //loadSet(currentlySelectedSet);
+            
         }
-        resetButtonColours();
+        //resetButtonColours();
 
         loadQuestionResources();
 
@@ -453,7 +561,7 @@ public class DecisionMakingControllerScriptTest : MonoBehaviour
 
         setUsersSelectedAnswerForButton();
 
-        showAnswerColours();
+        //showAnswerColours();
 
         Question1ButtonClicked();
 
@@ -463,10 +571,10 @@ public class DecisionMakingControllerScriptTest : MonoBehaviour
 
     }
 
-    private void answerPanelCloseButtonClicked()
-    {
-        answerPanel.SetActive(false);
-    }
+    //private void answerPanelCloseButtonClicked()
+    //{
+    //    answerPanel.SetActive(false);
+    //}
 
     private void Question1ButtonClicked()
     {
@@ -524,8 +632,6 @@ public class DecisionMakingControllerScriptTest : MonoBehaviour
         }
         setColours(isOn, Answer4Toggle);
     }
-
-
 
     private void setUsersSelectedAnswerForButton()
     {
@@ -591,8 +697,8 @@ public class DecisionMakingControllerScriptTest : MonoBehaviour
                 questionList[currentlySelectedSet].q1.setAnswerClickedTrue();
                 break;
         }
-        answerPanel.SetActive(true);
-        showAnswerColours();
+        //answerPanel.SetActive(true);
+        //showAnswerColours();
         showAnswerOnToggles();
         highlightWrongAnswer(currentlySelectedQuestionInSet);
     }

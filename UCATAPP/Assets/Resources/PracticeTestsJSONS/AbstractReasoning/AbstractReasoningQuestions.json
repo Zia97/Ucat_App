@@ -61,6 +61,1494 @@
           "answer": "Neither"
         }
       ]
+    },
+    {
+      "resource": "PracticeQuestions/AbstractReasoning/Q5/Set",
+      "answer": "Set A always has three circles with tangents. Other shapes are irrelevant.\nSet B always has two circles intersected by lines. Other shapes are irrelevant.",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q1",
+          "answer": "Neither"
+        },
+        {
+          "questionNumber": 2,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q2",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 3,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q3",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 4,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q4",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 5,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q5",
+          "answer": "SetB"
+        }
+      ]
+    },
+    {
+      "resource": "PracticeQuestions/AbstractReasoning/Q2/Set",
+      "answer": "Set A always has a circle directly above the triangle.\nSet B always has a circle next to the triangle.",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q1",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 2,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q2",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 3,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q3",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 4,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q4",
+          "answer": "Neither"
+        },
+        {
+          "questionNumber": 5,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q5",
+          "answer": "Neither"
+        }
+      ]
+    },
+    {
+      "resource": "PracticeQuestions/AbstractReasoning/Q5/Set",
+      "answer": "Set A always has three circles with tangents. Other shapes are irrelevant.\nSet B always has two circles intersected by lines. Other shapes are irrelevant.",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q1",
+          "answer": "Neither"
+        },
+        {
+          "questionNumber": 2,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q2",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 3,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q3",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 4,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q4",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 5,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q5",
+          "answer": "SetB"
+        }
+      ]
+    },
+    {
+      "resource": "PracticeQuestions/AbstractReasoning/Q2/Set",
+      "answer": "Set A always has a circle directly above the triangle.\nSet B always has a circle next to the triangle.",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q1",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 2,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q2",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 3,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q3",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 4,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q4",
+          "answer": "Neither"
+        },
+        {
+          "questionNumber": 5,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q5",
+          "answer": "Neither"
+        }
+      ]
+    },
+    {
+      "resource": "PracticeQuestions/AbstractReasoning/Q5/Set",
+      "answer": "Set A always has three circles with tangents. Other shapes are irrelevant.\nSet B always has two circles intersected by lines. Other shapes are irrelevant.",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q1",
+          "answer": "Neither"
+        },
+        {
+          "questionNumber": 2,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q2",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 3,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q3",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 4,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q4",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 5,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q5",
+          "answer": "SetB"
+        }
+      ]
+    },
+    {
+      "resource": "PracticeQuestions/AbstractReasoning/Q2/Set",
+      "answer": "Set A always has a circle directly above the triangle.\nSet B always has a circle next to the triangle.",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q1",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 2,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q2",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 3,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q3",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 4,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q4",
+          "answer": "Neither"
+        },
+        {
+          "questionNumber": 5,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q5",
+          "answer": "Neither"
+        }
+      ]
+    },
+    {
+      "resource": "PracticeQuestions/AbstractReasoning/Q5/Set",
+      "answer": "Set A always has three circles with tangents. Other shapes are irrelevant.\nSet B always has two circles intersected by lines. Other shapes are irrelevant.",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q1",
+          "answer": "Neither"
+        },
+        {
+          "questionNumber": 2,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q2",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 3,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q3",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 4,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q4",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 5,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q5",
+          "answer": "SetB"
+        }
+      ]
+    },
+    {
+      "resource": "PracticeQuestions/AbstractReasoning/Q2/Set",
+      "answer": "Set A always has a circle directly above the triangle.\nSet B always has a circle next to the triangle.",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q1",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 2,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q2",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 3,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q3",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 4,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q4",
+          "answer": "Neither"
+        },
+        {
+          "questionNumber": 5,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q5",
+          "answer": "Neither"
+        }
+      ]
+    },
+    {
+      "resource": "PracticeQuestions/AbstractReasoning/Q5/Set",
+      "answer": "Set A always has three circles with tangents. Other shapes are irrelevant.\nSet B always has two circles intersected by lines. Other shapes are irrelevant.",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q1",
+          "answer": "Neither"
+        },
+        {
+          "questionNumber": 2,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q2",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 3,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q3",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 4,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q4",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 5,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q5",
+          "answer": "SetB"
+        }
+      ]
+    },
+    {
+      "resource": "PracticeQuestions/AbstractReasoning/Q2/Set",
+      "answer": "Set A always has a circle directly above the triangle.\nSet B always has a circle next to the triangle.",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q1",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 2,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q2",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 3,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q3",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 4,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q4",
+          "answer": "Neither"
+        },
+        {
+          "questionNumber": 5,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q5",
+          "answer": "Neither"
+        }
+      ]
+    },
+    {
+      "resource": "PracticeQuestions/AbstractReasoning/Q5/Set",
+      "answer": "Set A always has three circles with tangents. Other shapes are irrelevant.\nSet B always has two circles intersected by lines. Other shapes are irrelevant.",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q1",
+          "answer": "Neither"
+        },
+        {
+          "questionNumber": 2,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q2",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 3,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q3",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 4,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q4",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 5,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q5",
+          "answer": "SetB"
+        }
+      ]
+    },
+    {
+      "resource": "PracticeQuestions/AbstractReasoning/Q2/Set",
+      "answer": "Set A always has a circle directly above the triangle.\nSet B always has a circle next to the triangle.",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q1",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 2,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q2",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 3,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q3",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 4,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q4",
+          "answer": "Neither"
+        },
+        {
+          "questionNumber": 5,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q5",
+          "answer": "Neither"
+        }
+      ]
+    },
+    {
+      "resource": "PracticeQuestions/AbstractReasoning/Q5/Set",
+      "answer": "Set A always has three circles with tangents. Other shapes are irrelevant.\nSet B always has two circles intersected by lines. Other shapes are irrelevant.",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q1",
+          "answer": "Neither"
+        },
+        {
+          "questionNumber": 2,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q2",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 3,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q3",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 4,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q4",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 5,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q5",
+          "answer": "SetB"
+        }
+      ]
+    },
+    {
+      "resource": "PracticeQuestions/AbstractReasoning/Q2/Set",
+      "answer": "Set A always has a circle directly above the triangle.\nSet B always has a circle next to the triangle.",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q1",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 2,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q2",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 3,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q3",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 4,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q4",
+          "answer": "Neither"
+        },
+        {
+          "questionNumber": 5,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q5",
+          "answer": "Neither"
+        }
+      ]
+    },
+    {
+      "resource": "PracticeQuestions/AbstractReasoning/Q5/Set",
+      "answer": "Set A always has three circles with tangents. Other shapes are irrelevant.\nSet B always has two circles intersected by lines. Other shapes are irrelevant.",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q1",
+          "answer": "Neither"
+        },
+        {
+          "questionNumber": 2,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q2",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 3,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q3",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 4,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q4",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 5,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q5",
+          "answer": "SetB"
+        }
+      ]
+    },
+    {
+      "resource": "PracticeQuestions/AbstractReasoning/Q2/Set",
+      "answer": "Set A always has a circle directly above the triangle.\nSet B always has a circle next to the triangle.",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q1",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 2,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q2",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 3,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q3",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 4,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q4",
+          "answer": "Neither"
+        },
+        {
+          "questionNumber": 5,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q5",
+          "answer": "Neither"
+        }
+      ]
+    },
+    {
+      "resource": "PracticeQuestions/AbstractReasoning/Q5/Set",
+      "answer": "Set A always has three circles with tangents. Other shapes are irrelevant.\nSet B always has two circles intersected by lines. Other shapes are irrelevant.",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q1",
+          "answer": "Neither"
+        },
+        {
+          "questionNumber": 2,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q2",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 3,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q3",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 4,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q4",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 5,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q5",
+          "answer": "SetB"
+        }
+      ]
+    },
+    {
+      "resource": "PracticeQuestions/AbstractReasoning/Q2/Set",
+      "answer": "Set A always has a circle directly above the triangle.\nSet B always has a circle next to the triangle.",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q1",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 2,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q2",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 3,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q3",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 4,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q4",
+          "answer": "Neither"
+        },
+        {
+          "questionNumber": 5,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q5",
+          "answer": "Neither"
+        }
+      ]
+    },
+    {
+      "resource": "PracticeQuestions/AbstractReasoning/Q5/Set",
+      "answer": "Set A always has three circles with tangents. Other shapes are irrelevant.\nSet B always has two circles intersected by lines. Other shapes are irrelevant.",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q1",
+          "answer": "Neither"
+        },
+        {
+          "questionNumber": 2,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q2",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 3,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q3",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 4,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q4",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 5,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q5",
+          "answer": "SetB"
+        }
+      ]
+    },
+    {
+      "resource": "PracticeQuestions/AbstractReasoning/Q2/Set",
+      "answer": "Set A always has a circle directly above the triangle.\nSet B always has a circle next to the triangle.",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q1",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 2,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q2",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 3,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q3",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 4,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q4",
+          "answer": "Neither"
+        },
+        {
+          "questionNumber": 5,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q5",
+          "answer": "Neither"
+        }
+      ]
+    },
+    {
+      "resource": "PracticeQuestions/AbstractReasoning/Q5/Set",
+      "answer": "Set A always has three circles with tangents. Other shapes are irrelevant.\nSet B always has two circles intersected by lines. Other shapes are irrelevant.",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q1",
+          "answer": "Neither"
+        },
+        {
+          "questionNumber": 2,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q2",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 3,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q3",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 4,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q4",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 5,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q5",
+          "answer": "SetB"
+        }
+      ]
+    },
+    {
+      "resource": "PracticeQuestions/AbstractReasoning/Q2/Set",
+      "answer": "Set A always has a circle directly above the triangle.\nSet B always has a circle next to the triangle.",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q1",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 2,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q2",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 3,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q3",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 4,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q4",
+          "answer": "Neither"
+        },
+        {
+          "questionNumber": 5,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q5",
+          "answer": "Neither"
+        }
+      ]
+    },
+    {
+      "resource": "PracticeQuestions/AbstractReasoning/Q5/Set",
+      "answer": "Set A always has three circles with tangents. Other shapes are irrelevant.\nSet B always has two circles intersected by lines. Other shapes are irrelevant.",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q1",
+          "answer": "Neither"
+        },
+        {
+          "questionNumber": 2,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q2",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 3,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q3",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 4,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q4",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 5,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q5",
+          "answer": "SetB"
+        }
+      ]
+    },
+    {
+      "resource": "PracticeQuestions/AbstractReasoning/Q2/Set",
+      "answer": "Set A always has a circle directly above the triangle.\nSet B always has a circle next to the triangle.",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q1",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 2,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q2",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 3,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q3",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 4,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q4",
+          "answer": "Neither"
+        },
+        {
+          "questionNumber": 5,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q5",
+          "answer": "Neither"
+        }
+      ]
+    },
+    {
+      "resource": "PracticeQuestions/AbstractReasoning/Q5/Set",
+      "answer": "Set A always has three circles with tangents. Other shapes are irrelevant.\nSet B always has two circles intersected by lines. Other shapes are irrelevant.",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q1",
+          "answer": "Neither"
+        },
+        {
+          "questionNumber": 2,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q2",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 3,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q3",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 4,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q4",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 5,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q5",
+          "answer": "SetB"
+        }
+      ]
+    },
+    {
+      "resource": "PracticeQuestions/AbstractReasoning/Q2/Set",
+      "answer": "Set A always has a circle directly above the triangle.\nSet B always has a circle next to the triangle.",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q1",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 2,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q2",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 3,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q3",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 4,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q4",
+          "answer": "Neither"
+        },
+        {
+          "questionNumber": 5,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q5",
+          "answer": "Neither"
+        }
+      ]
+    },
+    {
+      "resource": "PracticeQuestions/AbstractReasoning/Q5/Set",
+      "answer": "Set A always has three circles with tangents. Other shapes are irrelevant.\nSet B always has two circles intersected by lines. Other shapes are irrelevant.",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q1",
+          "answer": "Neither"
+        },
+        {
+          "questionNumber": 2,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q2",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 3,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q3",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 4,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q4",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 5,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q5",
+          "answer": "SetB"
+        }
+      ]
+    },
+    {
+      "resource": "PracticeQuestions/AbstractReasoning/Q2/Set",
+      "answer": "Set A always has a circle directly above the triangle.\nSet B always has a circle next to the triangle.",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q1",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 2,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q2",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 3,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q3",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 4,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q4",
+          "answer": "Neither"
+        },
+        {
+          "questionNumber": 5,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q5",
+          "answer": "Neither"
+        }
+      ]
+    },
+    {
+      "resource": "PracticeQuestions/AbstractReasoning/Q5/Set",
+      "answer": "Set A always has three circles with tangents. Other shapes are irrelevant.\nSet B always has two circles intersected by lines. Other shapes are irrelevant.",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q1",
+          "answer": "Neither"
+        },
+        {
+          "questionNumber": 2,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q2",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 3,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q3",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 4,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q4",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 5,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q5",
+          "answer": "SetB"
+        }
+      ]
+    },
+    {
+      "resource": "PracticeQuestions/AbstractReasoning/Q2/Set",
+      "answer": "Set A always has a circle directly above the triangle.\nSet B always has a circle next to the triangle.",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q1",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 2,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q2",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 3,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q3",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 4,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q4",
+          "answer": "Neither"
+        },
+        {
+          "questionNumber": 5,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q5",
+          "answer": "Neither"
+        }
+      ]
+    },
+    {
+      "resource": "PracticeQuestions/AbstractReasoning/Q5/Set",
+      "answer": "Set A always has three circles with tangents. Other shapes are irrelevant.\nSet B always has two circles intersected by lines. Other shapes are irrelevant.",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q1",
+          "answer": "Neither"
+        },
+        {
+          "questionNumber": 2,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q2",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 3,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q3",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 4,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q4",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 5,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q5",
+          "answer": "SetB"
+        }
+      ]
+    },
+    {
+      "resource": "PracticeQuestions/AbstractReasoning/Q2/Set",
+      "answer": "Set A always has a circle directly above the triangle.\nSet B always has a circle next to the triangle.",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q1",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 2,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q2",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 3,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q3",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 4,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q4",
+          "answer": "Neither"
+        },
+        {
+          "questionNumber": 5,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q5",
+          "answer": "Neither"
+        }
+      ]
+    },
+    {
+      "resource": "PracticeQuestions/AbstractReasoning/Q5/Set",
+      "answer": "Set A always has three circles with tangents. Other shapes are irrelevant.\nSet B always has two circles intersected by lines. Other shapes are irrelevant.",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q1",
+          "answer": "Neither"
+        },
+        {
+          "questionNumber": 2,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q2",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 3,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q3",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 4,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q4",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 5,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q5",
+          "answer": "SetB"
+        }
+      ]
+    },
+    {
+      "resource": "PracticeQuestions/AbstractReasoning/Q2/Set",
+      "answer": "Set A always has a circle directly above the triangle.\nSet B always has a circle next to the triangle.",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q1",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 2,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q2",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 3,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q3",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 4,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q4",
+          "answer": "Neither"
+        },
+        {
+          "questionNumber": 5,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q5",
+          "answer": "Neither"
+        }
+      ]
+    },
+    {
+      "resource": "PracticeQuestions/AbstractReasoning/Q5/Set",
+      "answer": "Set A always has three circles with tangents. Other shapes are irrelevant.\nSet B always has two circles intersected by lines. Other shapes are irrelevant.",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q1",
+          "answer": "Neither"
+        },
+        {
+          "questionNumber": 2,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q2",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 3,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q3",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 4,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q4",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 5,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q5",
+          "answer": "SetB"
+        }
+      ]
+    },
+    {
+      "resource": "PracticeQuestions/AbstractReasoning/Q2/Set",
+      "answer": "Set A always has a circle directly above the triangle.\nSet B always has a circle next to the triangle.",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q1",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 2,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q2",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 3,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q3",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 4,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q4",
+          "answer": "Neither"
+        },
+        {
+          "questionNumber": 5,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q5",
+          "answer": "Neither"
+        }
+      ]
+    },
+    {
+      "resource": "PracticeQuestions/AbstractReasoning/Q5/Set",
+      "answer": "Set A always has three circles with tangents. Other shapes are irrelevant.\nSet B always has two circles intersected by lines. Other shapes are irrelevant.",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q1",
+          "answer": "Neither"
+        },
+        {
+          "questionNumber": 2,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q2",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 3,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q3",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 4,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q4",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 5,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q5",
+          "answer": "SetB"
+        }
+      ]
+    },
+    {
+      "resource": "PracticeQuestions/AbstractReasoning/Q2/Set",
+      "answer": "Set A always has a circle directly above the triangle.\nSet B always has a circle next to the triangle.",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q1",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 2,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q2",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 3,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q3",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 4,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q4",
+          "answer": "Neither"
+        },
+        {
+          "questionNumber": 5,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q5",
+          "answer": "Neither"
+        }
+      ]
+    },
+    {
+      "resource": "PracticeQuestions/AbstractReasoning/Q5/Set",
+      "answer": "Set A always has three circles with tangents. Other shapes are irrelevant.\nSet B always has two circles intersected by lines. Other shapes are irrelevant.",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q1",
+          "answer": "Neither"
+        },
+        {
+          "questionNumber": 2,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q2",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 3,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q3",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 4,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q4",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 5,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q5",
+          "answer": "SetB"
+        }
+      ]
+    },
+    {
+      "resource": "PracticeQuestions/AbstractReasoning/Q2/Set",
+      "answer": "Set A always has a circle directly above the triangle.\nSet B always has a circle next to the triangle.",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q1",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 2,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q2",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 3,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q3",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 4,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q4",
+          "answer": "Neither"
+        },
+        {
+          "questionNumber": 5,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q5",
+          "answer": "Neither"
+        }
+      ]
+    },
+    {
+      "resource": "PracticeQuestions/AbstractReasoning/Q5/Set",
+      "answer": "Set A always has three circles with tangents. Other shapes are irrelevant.\nSet B always has two circles intersected by lines. Other shapes are irrelevant.",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q1",
+          "answer": "Neither"
+        },
+        {
+          "questionNumber": 2,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q2",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 3,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q3",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 4,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q4",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 5,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q5",
+          "answer": "SetB"
+        }
+      ]
+    },
+    {
+      "resource": "PracticeQuestions/AbstractReasoning/Q2/Set",
+      "answer": "Set A always has a circle directly above the triangle.\nSet B always has a circle next to the triangle.",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q1",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 2,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q2",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 3,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q3",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 4,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q4",
+          "answer": "Neither"
+        },
+        {
+          "questionNumber": 5,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q5",
+          "answer": "Neither"
+        }
+      ]
+    },
+    {
+      "resource": "PracticeQuestions/AbstractReasoning/Q5/Set",
+      "answer": "Set A always has three circles with tangents. Other shapes are irrelevant.\nSet B always has two circles intersected by lines. Other shapes are irrelevant.",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q1",
+          "answer": "Neither"
+        },
+        {
+          "questionNumber": 2,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q2",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 3,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q3",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 4,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q4",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 5,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q5",
+          "answer": "SetB"
+        }
+      ]
+    },
+    {
+      "resource": "PracticeQuestions/AbstractReasoning/Q2/Set",
+      "answer": "Set A always has a circle directly above the triangle.\nSet B always has a circle next to the triangle.",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q1",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 2,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q2",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 3,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q3",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 4,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q4",
+          "answer": "Neither"
+        },
+        {
+          "questionNumber": 5,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q5",
+          "answer": "Neither"
+        }
+      ]
+    },
+    {
+      "resource": "PracticeQuestions/AbstractReasoning/Q5/Set",
+      "answer": "Set A always has three circles with tangents. Other shapes are irrelevant.\nSet B always has two circles intersected by lines. Other shapes are irrelevant.",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q1",
+          "answer": "Neither"
+        },
+        {
+          "questionNumber": 2,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q2",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 3,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q3",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 4,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q4",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 5,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q5",
+          "answer": "SetB"
+        }
+      ]
+    },
+    {
+      "resource": "PracticeQuestions/AbstractReasoning/Q2/Set",
+      "answer": "Set A always has a circle directly above the triangle.\nSet B always has a circle next to the triangle.",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q1",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 2,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q2",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 3,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q3",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 4,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q4",
+          "answer": "Neither"
+        },
+        {
+          "questionNumber": 5,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q5",
+          "answer": "Neither"
+        }
+      ]
+    },
+    {
+      "resource": "PracticeQuestions/AbstractReasoning/Q5/Set",
+      "answer": "Set A always has three circles with tangents. Other shapes are irrelevant.\nSet B always has two circles intersected by lines. Other shapes are irrelevant.",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q1",
+          "answer": "Neither"
+        },
+        {
+          "questionNumber": 2,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q2",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 3,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q3",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 4,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q4",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 5,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q5/Q5",
+          "answer": "SetB"
+        }
+      ]
+    },
+    {
+      "resource": "PracticeQuestions/AbstractReasoning/Q2/Set",
+      "answer": "Set A always has a circle directly above the triangle.\nSet B always has a circle next to the triangle.",
+      "questions": [
+        {
+          "questionNumber": 1,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q1",
+          "answer": "SetA"
+        },
+        {
+          "questionNumber": 2,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q2",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 3,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q3",
+          "answer": "SetB"
+        },
+        {
+          "questionNumber": 4,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q4",
+          "answer": "Neither"
+        },
+        {
+          "questionNumber": 5,
+          "imageURI": "PracticeQuestions/AbstractReasoning/Q2/Q5",
+          "answer": "Neither"
+        }
+      ]
     }
 
   ]

@@ -24,7 +24,7 @@ public class SituationalJudgementControllerScriptTest : MonoBehaviour
     public Button NextButton;
     public Button PreviousButton;
 
-    public Button AnswerButton;
+    //public Button AnswerButton;
 
     public Button SJStartButton;
 
@@ -41,6 +41,8 @@ public class SituationalJudgementControllerScriptTest : MonoBehaviour
     public bool timerIsRunning = false;
     public Text timeText;
 
+    public GameObject SJCanvas;
+    public GameObject ReviewCanvas;
     public Toggle SJQuestionToggle;
 
 
@@ -64,6 +66,7 @@ public class SituationalJudgementControllerScriptTest : MonoBehaviour
 
         updateQuestionCounter();
 
+        timerIsRunning = true;
     }
 
 
@@ -130,7 +133,7 @@ public class SituationalJudgementControllerScriptTest : MonoBehaviour
 
         loadQuestionLabels();
 
-        setUsersSelectedAnswerForButton();
+        //setUsersSelectedAnswerForButton();
     }
 
     void loadQuestion(int questionNumber)
@@ -144,7 +147,7 @@ public class SituationalJudgementControllerScriptTest : MonoBehaviour
 
         loadQuestionLabels();
 
-        setUsersSelectedAnswerForButton();
+        //setUsersSelectedAnswerForButton();
     }
 
     void loadQuestionLabels()
@@ -170,7 +173,7 @@ public class SituationalJudgementControllerScriptTest : MonoBehaviour
         PreviousButton.onClick.AddListener(PreviousButtonClicked);
         NextButton.onClick.AddListener(NextButtonClicked);
 
-        AnswerButton.onClick.AddListener(AnswerButtonClicked);
+        //AnswerButton.onClick.AddListener(AnswerButtonClicked);
 
         Answer1Toggle.onValueChanged.AddListener(Answer1ToggleClicked);
         Answer2Toggle.onValueChanged.AddListener(Answer2ToggleClicked);
@@ -196,6 +199,7 @@ public class SituationalJudgementControllerScriptTest : MonoBehaviour
     void saveAnswer(String selectedAnswer)
     {
         questionList[currentlySelectedQuestion].usersAnswer = selectedAnswer;
+        questionList[currentlySelectedQuestion].answerClicked = true;
     }
 
     private void resetColours()
@@ -234,9 +238,9 @@ public class SituationalJudgementControllerScriptTest : MonoBehaviour
 
         if (isOn)
         {
-            cb.normalColor = Color.green;
-            cb.selectedColor = Color.green;
-            cb.highlightedColor = Color.green;
+            cb.normalColor = Color.yellow;
+            cb.selectedColor = Color.yellow;
+            cb.highlightedColor = Color.yellow;
         }
         else
         {
@@ -302,6 +306,93 @@ public class SituationalJudgementControllerScriptTest : MonoBehaviour
         }
     }
 
+    public void loadSJState() // Review Canvas
+    {
+        SJCanvas.SetActive(false);
+        ReviewCanvas.SetActive(true);
+        setReviewButtonColours();
+        setReviewButtonBehaviour();
+    }
+
+    private void setReviewButtonBehaviour()
+    {
+        for (int i = 0; i <= questionList.Length - 1; i++)
+        {
+            int qNumber = i + 1;
+            int num = i;
+            GameObject.Find("Q" + qNumber + "Button").GetComponent<Button>().onClick.AddListener(delegate { reviewButtonClicked(num); });
+
+        }
+    }
+
+    void reviewButtonClicked(int idx_)
+    {
+        loadQuestionFromReview(idx_);
+    }
+
+    public void loadQuestionFromReview(int selectedQuestion)
+    {
+        print("selected question is " + selectedQuestion);
+
+        SJCanvas.SetActive(true);
+
+        ReviewCanvas.SetActive(false);
+
+        currentlySelectedQuestion = selectedQuestion;
+
+        loadQuestion(selectedQuestion);
+
+        //currentlySelectedQuestion = selectedQuestion;
+
+        updateQuestionCounter();
+
+        //setUsersSelectedAnswerForButton();
+
+        //showAnswerColours();
+
+        //resetButtonColours();
+
+        //Question1ButtonClicked();
+
+        loadQuestionLabels();
+
+        selectFlaggedIfFlagged();
+    }
+
+    private void setReviewButtonColours()
+    {
+        ColorBlock cb = new ColorBlock();
+        cb.normalColor = Color.yellow;
+
+        for (int i = 0; i <= questionList.Length - 1; i++)
+        {
+            if (!questionList[i].answerClicked)
+            {
+                int qNumber = i + 1;
+                Button bt1 = GameObject.Find("Q" + qNumber + "Button").GetComponent<Button>();
+                bt1.GetComponent<Image>().color = Color.yellow;
+            }
+            else
+            {
+                int qNumber = i + 1;
+                Button bt1 = GameObject.Find("Q" + qNumber + "Button").GetComponent<Button>();
+                bt1.GetComponent<Image>().color = Color.white;
+            }
+
+            if (!questionList[i].flagged)
+            {
+                int qNumber = i + 1;
+                GameObject.Find("Q" + qNumber + "Button").GetComponentInChildren<Toggle>().isOn = false;
+
+            }
+            else
+            {
+                int qNumber = i + 1;
+                GameObject.Find("Q" + qNumber + "Button").GetComponentInChildren<Toggle>().isOn = true;
+            }
+        }
+    }
+
     #region Button clicks
     private void NextButtonClicked()
     {
@@ -314,15 +405,16 @@ public class SituationalJudgementControllerScriptTest : MonoBehaviour
         }
         else
         {
-            currentlySelectedQuestion = 0;
-            loadQuestion(currentlySelectedQuestion);
+            //currentlySelectedQuestion = 0;
+            //loadQuestion(currentlySelectedQuestion);
+            loadSJState();
         }
 
         //resetButtonColours();
 
         updateQuestionCounter();
 
-        setUsersSelectedAnswerForButton();
+        //setUsersSelectedAnswerForButton();
 
         loadQuestionLabels();
 
@@ -338,17 +430,17 @@ public class SituationalJudgementControllerScriptTest : MonoBehaviour
             currentlySelectedQuestion--;
             loadQuestion(currentlySelectedQuestion);
         }
-        else
-        {
-            currentlySelectedQuestion = questionList.Length - 1;
-            loadQuestion(currentlySelectedQuestion);
+        //else
+        //{
+        //    currentlySelectedQuestion = questionList.Length - 1;
+        //    loadQuestion(currentlySelectedQuestion);
 
-        }
+        //}
        // resetButtonColours();
 
         updateQuestionCounter();
 
-        setUsersSelectedAnswerForButton();
+        //setUsersSelectedAnswerForButton();
 
        // showAnswerColours();
 
@@ -411,26 +503,26 @@ public class SituationalJudgementControllerScriptTest : MonoBehaviour
         setColours(isOn, Answer4Toggle);
     }
 
-    private void setUsersSelectedAnswerForButton()
-    {
-        if (questionList[currentlySelectedQuestion].usersAnswer.Equals("Very important") || questionList[currentlySelectedQuestion].usersAnswer.Equals("A very appropriate thing to do"))
-        {
-            Answer1ToggleClicked(true);
-        }
-        else if (questionList[currentlySelectedQuestion].usersAnswer.Equals("Important") || questionList[currentlySelectedQuestion].usersAnswer.Equals("Appropriate, but not ideal"))
-        {
-            Answer2ToggleClicked(true);
-        }
-        else if (questionList[currentlySelectedQuestion].usersAnswer.Equals("Of minor importance") || questionList[currentlySelectedQuestion].usersAnswer.Equals("Inappropriate, but not awful"))
-        {
-            Answer3ToggleClicked(true);
-        }
-        else if (questionList[currentlySelectedQuestion].usersAnswer.Equals("Not important at all") || questionList[currentlySelectedQuestion].usersAnswer.Equals("A very inappropriate thing to do"))
-        {
-            Answer4ToggleClicked(true);
-        }
+    //private void setUsersSelectedAnswerForButton()
+    //{
+    //    if (questionList[currentlySelectedQuestion].usersAnswer.Equals("Very important") || questionList[currentlySelectedQuestion].usersAnswer.Equals("A very appropriate thing to do"))
+    //    {
+    //        Answer1ToggleClicked(true);
+    //    }
+    //    else if (questionList[currentlySelectedQuestion].usersAnswer.Equals("Important") || questionList[currentlySelectedQuestion].usersAnswer.Equals("Appropriate, but not ideal"))
+    //    {
+    //        Answer2ToggleClicked(true);
+    //    }
+    //    else if (questionList[currentlySelectedQuestion].usersAnswer.Equals("Of minor importance") || questionList[currentlySelectedQuestion].usersAnswer.Equals("Inappropriate, but not awful"))
+    //    {
+    //        Answer3ToggleClicked(true);
+    //    }
+    //    else if (questionList[currentlySelectedQuestion].usersAnswer.Equals("Not important at all") || questionList[currentlySelectedQuestion].usersAnswer.Equals("A very inappropriate thing to do"))
+    //    {
+    //        Answer4ToggleClicked(true);
+    //    }
 
-    }
+    //}
 
     private void highlightWrongAnswer(int questionNumber)
     {

@@ -11,10 +11,10 @@ public class AbstractReasoningControllerScriptTest : MonoBehaviour
     public Text HeaderPanelText;
     public Text QuestionCounterText;
     public TextAsset jsonFile;
-    public Text AnswerText;
 
-    public GameObject AnswerPanel;
-    public Button AnswerCloseButton;
+    //public Text AnswerText;
+    //public GameObject AnswerPanel;
+    //public Button AnswerCloseButton;
 
     public Image SetsImage;
     public Image QuestionImage;
@@ -32,7 +32,7 @@ public class AbstractReasoningControllerScriptTest : MonoBehaviour
     public Button Question4Button;
     public Button Question5Button;
 
-    public Button AnswerButton;
+    //public Button AnswerButton;
 
     public Button AbstractReasoningStartButton;
 
@@ -66,7 +66,7 @@ public class AbstractReasoningControllerScriptTest : MonoBehaviour
 
         HeaderPanelText.text = GlobalVariables.SelectedPracticeQuestion;
 
-        AnswerPanel.SetActive(false);
+        //AnswerPanel.SetActive(false);
 
         addButtonListeners();
 
@@ -80,6 +80,7 @@ public class AbstractReasoningControllerScriptTest : MonoBehaviour
 
         updateQuestionCounter();
 
+        timerIsRunning = true;
     }
 
 
@@ -105,8 +106,109 @@ public class AbstractReasoningControllerScriptTest : MonoBehaviour
 
     private void loadSJSection()
     {
-        AbstractReasoningCanvas.SetActive(false);
+        AbstractReasoningCanvas.SetActive(true);
+        SJInfoPanel.SetActive(false);
+        setReviewButtonColours();
+        setReviewButtonBehaviour();
+    }
+
+    private void setReviewButtonBehaviour()
+    {
+        for (int i = 0; i <= questionList.Length - 1; i++)
+        {
+            int qNumber = i + 1;
+            int num = i;
+            GameObject.Find("Q" + qNumber + "Button").GetComponent<Button>().onClick.AddListener(delegate { reviewButtonClicked(num); });
+
+        }
+    }
+
+    void reviewButtonClicked(int idx_)
+    {
+        loadQuestionFromReview(idx_);
+    }
+
+    public void loadQuestionFromReview(int selectedQuestion)
+    {
+        print("selected question is " + selectedQuestion);
+
         SJInfoPanel.SetActive(true);
+
+        AbstractReasoningCanvas.SetActive(false);
+
+        currentlySelectedSet = selectedQuestion;
+
+        loadSet(currentlySelectedSet);
+
+        //loadQuestion(selectedQuestion);
+
+        //currentlySelectedQuestion = selectedQuestion;
+
+        updateQuestionCounter();
+
+        setUsersSelectedAnswerForButton();
+
+        showAnswerColours();
+
+        //Question1ButtonClicked();
+
+        //resetButtonColours();
+
+        //loadQuestionLabels();
+
+        selectFlaggedIfFlagged();
+    }
+
+    void loadQuestion(int questionNumber)
+    {
+        //currentlySelectedQuestion = questionNumber;
+
+        //questionList = verbalReasoningQuestionList.ToArray();
+
+        //resetColours();
+
+        //QuestionText.text = questionList[questionNumber].resource;
+        //preText.text = questionList[questionNumber].questionText;
+
+        //loadQuestionLabels();
+
+
+        ////setUsersSelectedAnswerForButton();
+        //updateTotalQuestionCounter();
+    }
+
+    private void setReviewButtonColours()
+    {
+        ColorBlock cb = new ColorBlock();
+        cb.normalColor = Color.yellow;
+
+        for (int i = 0; i <= questionList.Length - 1; i++)
+        {
+            if (!questionList[i].answerClicked)
+            {
+                int qNumber = i + 1;
+                Button bt1 = GameObject.Find("Q" + qNumber + "Button").GetComponent<Button>();
+                bt1.GetComponent<Image>().color = Color.yellow;
+            }
+            else
+            {
+                int qNumber = i + 1;
+                Button bt1 = GameObject.Find("Q" + qNumber + "Button").GetComponent<Button>();
+                bt1.GetComponent<Image>().color = Color.white;
+            }
+
+            if (!questionList[i].flagged)
+            {
+                int qNumber = i + 1;
+                GameObject.Find("Q" + qNumber + "Button").GetComponentInChildren<Toggle>().isOn = false;
+
+            }
+            else
+            {
+                int qNumber = i + 1;
+                GameObject.Find("Q" + qNumber + "Button").GetComponentInChildren<Toggle>().isOn = true;
+            }
+        }
     }
 
     private void ARQuestionToggleClicked(bool arg0)
@@ -178,7 +280,6 @@ public class AbstractReasoningControllerScriptTest : MonoBehaviour
         SetsImage.sprite = Resources.Load<Sprite>(questionList[0].setImageUri);
         QuestionImage.sprite = Resources.Load<Sprite>(questionList[0].q1.imageURI);
 
-
         setUsersSelectedAnswerForButton();
     }
 
@@ -210,13 +311,14 @@ public class AbstractReasoningControllerScriptTest : MonoBehaviour
         Question4Button.onClick.AddListener(Question4ButtonClicked);
         Question5Button.onClick.AddListener(Question5ButtonClicked);
 
-        AnswerButton.onClick.AddListener(AnswerButtonClicked);
-        AnswerCloseButton.onClick.AddListener(AnswerCloseButtonClicked);
+        //AnswerButton.onClick.AddListener(AnswerButtonClicked);
+        //AnswerCloseButton.onClick.AddListener(AnswerCloseButtonClicked);
 
         SetAToggle.onValueChanged.AddListener(SetAToggleClicked);
         SetBToggle.onValueChanged.AddListener(SetBToggleClicked);
         NeitherToggle.onValueChanged.AddListener(NeitherToggleClicked);
 
+        // TODO: remove comment
         ARQuestionToggle.onValueChanged.AddListener(ARQuestionToggleClicked);
 
     }
@@ -238,18 +340,23 @@ public class AbstractReasoningControllerScriptTest : MonoBehaviour
         {
             case 1:
                 questionList[currentlySelectedSet].q1.usersAnswer = selectedAnswer;
+                questionList[currentlySelectedSet].answerClicked = true;
                 break;
             case 2:
                 questionList[currentlySelectedSet].q2.usersAnswer = selectedAnswer;
+                questionList[currentlySelectedSet].answerClicked = true;
                 break;
             case 3:
                 questionList[currentlySelectedSet].q3.usersAnswer = selectedAnswer;
+                questionList[currentlySelectedSet].answerClicked = true;
                 break;
             case 4:
                 questionList[currentlySelectedSet].q4.usersAnswer = selectedAnswer;
+                questionList[currentlySelectedSet].answerClicked = true;
                 break;
             case 5:
                 questionList[currentlySelectedSet].q5.usersAnswer = selectedAnswer;
+                questionList[currentlySelectedSet].answerClicked = true;
                 break;
         }
     }
@@ -332,9 +439,9 @@ public class AbstractReasoningControllerScriptTest : MonoBehaviour
 
         if (isOn)
         {
-            cb.normalColor = Color.green;
-            cb.selectedColor = Color.green;
-            cb.highlightedColor = Color.green;
+            cb.normalColor = Color.yellow;
+            cb.selectedColor = Color.yellow;
+            cb.highlightedColor = Color.yellow;
         }
         else
         {
@@ -472,8 +579,9 @@ public class AbstractReasoningControllerScriptTest : MonoBehaviour
         }
         else
         {
-            currentlySelectedSet = 0;
-            loadSet(currentlySelectedSet);
+            //currentlySelectedSet = 0;
+            //loadSet(currentlySelectedSet);
+            loadSJSection();
         }
 
         resetButtonColours();
@@ -498,12 +606,12 @@ public class AbstractReasoningControllerScriptTest : MonoBehaviour
             currentlySelectedSet--;
             loadSet(currentlySelectedSet);
         }
-        else
-        {
-            currentlySelectedSet = questionList.Length - 1;
-            loadSet(currentlySelectedSet);
+        //else
+        //{
+        //    currentlySelectedSet = questionList.Length - 1;
+        //    loadSet(currentlySelectedSet);
 
-        }
+        //}
         resetButtonColours();
 
         updateQuestionCounter();
@@ -524,8 +632,8 @@ public class AbstractReasoningControllerScriptTest : MonoBehaviour
         currentlySelectedQuestionInSet = 1;
         QuestionImage.sprite = Resources.Load<Sprite>(questionList[currentlySelectedSet].q1.imageURI);
         setUsersSelectedAnswerForButton();
-        showAnswerOnToggles();
-        highlightWrongAnswer(1);
+        //showAnswerOnToggles();
+        //highlightWrongAnswer(1);
 
 
     }
@@ -536,8 +644,8 @@ public class AbstractReasoningControllerScriptTest : MonoBehaviour
         currentlySelectedQuestionInSet = 2;
         QuestionImage.sprite = Resources.Load<Sprite>(questionList[currentlySelectedSet].q2.imageURI);
         setUsersSelectedAnswerForButton();
-        showAnswerOnToggles();
-        highlightWrongAnswer(2);
+        //showAnswerOnToggles();
+        //highlightWrongAnswer(2);
     }
 
     private void Question3ButtonClicked()
@@ -546,8 +654,8 @@ public class AbstractReasoningControllerScriptTest : MonoBehaviour
         currentlySelectedQuestionInSet = 3;
         QuestionImage.sprite = Resources.Load<Sprite>(questionList[currentlySelectedSet].q3.imageURI);
         setUsersSelectedAnswerForButton();
-        showAnswerOnToggles();
-        highlightWrongAnswer(3);
+        //showAnswerOnToggles();
+        //highlightWrongAnswer(3);
     }
 
     private void Question4ButtonClicked()
@@ -556,8 +664,8 @@ public class AbstractReasoningControllerScriptTest : MonoBehaviour
         currentlySelectedQuestionInSet = 4;
         QuestionImage.sprite = Resources.Load<Sprite>(questionList[currentlySelectedSet].q4.imageURI);
         setUsersSelectedAnswerForButton();
-        showAnswerOnToggles();
-        highlightWrongAnswer(4);
+        //showAnswerOnToggles();
+        //highlightWrongAnswer(4);
     }
 
     private void Question5ButtonClicked()
@@ -566,8 +674,8 @@ public class AbstractReasoningControllerScriptTest : MonoBehaviour
         currentlySelectedQuestionInSet = 5;
         QuestionImage.sprite = Resources.Load<Sprite>(questionList[currentlySelectedSet].q5.imageURI);
         setUsersSelectedAnswerForButton();
-        showAnswerOnToggles();
-        highlightWrongAnswer(5);
+        //showAnswerOnToggles();
+        //highlightWrongAnswer(5);
     }
 
 
@@ -750,22 +858,22 @@ public class AbstractReasoningControllerScriptTest : MonoBehaviour
         }
     }
 
-    private void AnswerButtonClicked()
-    {
-        AnswerPanel.SetActive(true);
-        AnswerText.text = questionList[currentlySelectedSet].answer;
-        questionList[currentlySelectedSet].answerClicked = true;
+    //private void AnswerButtonClicked()
+    //{
+    //    AnswerPanel.SetActive(true);
+    //    AnswerText.text = questionList[currentlySelectedSet].answer;
+    //    questionList[currentlySelectedSet].answerClicked = true;
 
-        showAnswerColours();
-    }
+    //    showAnswerColours();
+    //}
 
-    private void AnswerCloseButtonClicked()
-    {
-        AnswerPanel.SetActive(false);
-        loadSet(currentlySelectedSet);
-        Question1ButtonClicked();
-        showAnswerOnToggles();
-    }
+    //private void AnswerCloseButtonClicked()
+    //{
+    //    AnswerPanel.SetActive(false);
+    //    loadSet(currentlySelectedSet);
+    //    Question1ButtonClicked();
+    //    showAnswerOnToggles();
+    //}
     #endregion
 }
 
