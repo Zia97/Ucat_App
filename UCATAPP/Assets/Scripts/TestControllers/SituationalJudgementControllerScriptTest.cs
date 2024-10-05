@@ -45,7 +45,10 @@ public class SituationalJudgementControllerScriptTest : MonoBehaviour
     public GameObject ReviewCanvas;
     public Toggle SJQuestionToggle;
 
-
+    public void ShowReviewPanel()
+    {
+        loadSJState();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -115,7 +118,7 @@ public class SituationalJudgementControllerScriptTest : MonoBehaviour
     {
         foreach (SJQuestions s in allQuestions)
         {
-            SituationalJudgementQuestion sjQuestion = new SituationalJudgementQuestion(s.resource, s.questionNumber, s.questionText, s.answer, s.labelSet);
+            SituationalJudgementQuestion sjQuestion = new SituationalJudgementQuestion(s.resource, s.questionNumber, s.questionText, s.answerReasoning, s.answer, s.labelSet);
             situationalJudgementQuestionList.Add(sjQuestion);
         }
     }

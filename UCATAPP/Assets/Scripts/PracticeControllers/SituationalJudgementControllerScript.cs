@@ -1,7 +1,6 @@
 ﻿using Assets.Scripts;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +14,9 @@ public class SituationalJudgementControllerScript : MonoBehaviour
     public Text QuestionText;
     public Text preText;
 
+    public Text answerText;
+    public GameObject answerPanel;
+    public Button answerPanelCloseButton;
 
     public Toggle Answer1Toggle;
     public Toggle Answer2Toggle;
@@ -43,6 +45,8 @@ public class SituationalJudgementControllerScript : MonoBehaviour
         GlobalVariables.selectedExercise = "Practice";
 
         HeaderPanelText.text = GlobalVariables.SelectedPracticeQuestion;
+
+        answerPanel.SetActive(false);
 
         addButtonListeners();
 
@@ -79,7 +83,7 @@ public class SituationalJudgementControllerScript : MonoBehaviour
     {
         foreach (SJQuestions s in allQuestions)
         {
-            SituationalJudgementQuestion sjQuestion = new SituationalJudgementQuestion(s.resource, s.questionNumber, s.questionText, s.answer, s.labelSet);
+            SituationalJudgementQuestion sjQuestion = new SituationalJudgementQuestion(s.resource, s.questionNumber, s.questionText, s.answerReasoning, s.answer, s.labelSet);
             situationalJudgementQuestionList.Add(sjQuestion);
         }
     }
@@ -135,11 +139,18 @@ public class SituationalJudgementControllerScript : MonoBehaviour
 
         AnswerButton.onClick.AddListener(AnswerButtonClicked);
 
+        answerPanelCloseButton.onClick.AddListener(answerPanelCloseButtonClicked);
+
         Answer1Toggle.onValueChanged.AddListener(Answer1ToggleClicked);
         Answer2Toggle.onValueChanged.AddListener(Answer2ToggleClicked);
         Answer3Toggle.onValueChanged.AddListener(Answer3ToggleClicked);
         Answer4Toggle.onValueChanged.AddListener(Answer4ToggleClicked);
 
+    }
+
+    private void answerPanelCloseButtonClicked()
+    {
+        answerPanel.SetActive(false);
     }
 
     void updateQuestionCounter()
@@ -443,6 +454,8 @@ public class SituationalJudgementControllerScript : MonoBehaviour
     {
         questionList[currentlySelectedQuestion].answerClicked = true;
         highlightWrongAnswer(currentlySelectedQuestion);
+        answerText.text = questionList[currentlySelectedQuestion].answerReasoning;
+        answerPanel.SetActive(true);
         showAnswerOnToggles();
     }
     #endregion
@@ -466,6 +479,7 @@ public class SJQuestions
     public int questionNumber;
     public string resource;
     public string questionText;
+    public string answerReasoning;
     public string answer;
     public int labelSet;
 }

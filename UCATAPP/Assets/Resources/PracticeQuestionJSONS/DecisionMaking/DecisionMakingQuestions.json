@@ -8,7 +8,7 @@
         {
           "questionNumber": 1,
           "questionText": "Based on the diagram, which statement is true about all the cars that were owned by the people John interviewed?",
-          "answerReasoning":"",
+          "answerReasoning":"Set A always has three circles with tangents. Other shapes are irrelevant.\nSet B always has two circles intersected by lines. Other shapes are irrelevant.",
           "answer": "Some of the cars with parking sensors also have 2 doors. ",
           "option1":"Some of the cars with parking sensors also have 2 doors. ",
           "option2":"All of the cars with parking sensors have two doors",
@@ -25,7 +25,7 @@
         {
           "questionNumber": 1,
           "questionText": "If the number of employees that only walked or only took the bus was the same, how many employees only walked?",
-          "answerReasoning":"",
+          "answerReasoning":"Set A always has three circles with tangents. Other shapes are irrelevant.\nSet B always has two circles intersected by lines. Other shapes are irrelevant.",
           "answer": "14",
           "option1":"28",
           "option2":"14",

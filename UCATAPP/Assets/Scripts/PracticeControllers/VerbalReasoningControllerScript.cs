@@ -15,6 +15,9 @@ public class VerbalReasoningControllerScript : MonoBehaviour
     public Text QuestionText;
     public Text preText;
 
+    public GameObject AnswerPanel;
+    public Text AnswerText;
+    public Button AnswerCloseButton;
 
     public Toggle Answer1Toggle;
     public Toggle Answer2Toggle;
@@ -44,6 +47,8 @@ public class VerbalReasoningControllerScript : MonoBehaviour
 
         HeaderPanelText.text = GlobalVariables.SelectedPracticeQuestion;
 
+        AnswerPanel.SetActive(false);
+
         addButtonListeners();
 
         SetQuestionList();
@@ -57,7 +62,6 @@ public class VerbalReasoningControllerScript : MonoBehaviour
         updateQuestionCounter();
 
     }
-
 
     // Update is called once per frame
     void Update()
@@ -88,7 +92,7 @@ public class VerbalReasoningControllerScript : MonoBehaviour
     {
         foreach (VRQuestions s in allQuestions)
         {
-            VerbalReasoningQuestion temp = new VerbalReasoningQuestion(s.resource, s.questionNumber, s.questionText, s.answer, s.option1, s.option2, s.option3, s.option4);
+            VerbalReasoningQuestion temp = new VerbalReasoningQuestion(s.resource, s.questionNumber, s.questionText, s.answeringReason, s.answer, s.option1, s.option2, s.option3, s.option4);
             verbalReasoningQuestionList.Add(temp);
         }
     }
@@ -142,6 +146,8 @@ public class VerbalReasoningControllerScript : MonoBehaviour
         NextButton.onClick.AddListener(NextButtonClicked);
 
         AnswerButton.onClick.AddListener(AnswerButtonClicked);
+
+        AnswerCloseButton.onClick.AddListener(AnswerCloseButtonClicked);
 
         Answer1Toggle.onValueChanged.AddListener(Answer1ToggleClicked);
         Answer2Toggle.onValueChanged.AddListener(Answer2ToggleClicked);
@@ -378,20 +384,29 @@ public class VerbalReasoningControllerScript : MonoBehaviour
                 setToggleColourIncorrect(Answer2Toggle);
             }
             else if (questionList[currentlySelectedQuestion].usersAnswer.Equals(questionList[currentlySelectedQuestion].option3Label) && !questionList[currentlySelectedQuestion].questionAnswer.Equals(questionList[currentlySelectedQuestion].usersAnswer))
-
+            {
                 setToggleColourIncorrect(Answer3Toggle);
+            }
+            else if (questionList[currentlySelectedQuestion].usersAnswer.Equals(questionList[currentlySelectedQuestion].option4Label) && !questionList[currentlySelectedQuestion].questionAnswer.Equals(questionList[currentlySelectedQuestion].usersAnswer))
+            {
+                setToggleColourIncorrect(Answer4Toggle);
+            }
         }
-        else if (questionList[currentlySelectedQuestion].usersAnswer.Equals(questionList[currentlySelectedQuestion].option4Label) && !questionList[currentlySelectedQuestion].questionAnswer.Equals(questionList[currentlySelectedQuestion].usersAnswer))
-        {
-            setToggleColourIncorrect(Answer4Toggle);
-        }
+        
     }
 
     private void AnswerButtonClicked()
     {
+        AnswerPanel.SetActive(true);
+        AnswerText.text = questionList[currentlySelectedQuestion].answeringReason;
         questionList[currentlySelectedQuestion].setAnswerClickedTrue();
         showAnswerOnToggles();
         highlightWrongAnswer(currentlySelectedQuestion);
+    }
+
+    private void AnswerCloseButtonClicked()
+    {
+        AnswerPanel.SetActive(false);
     }
     #endregion
 }
@@ -414,6 +429,7 @@ public class VRQuestions
     public string resource;
     public int questionNumber;
     public string questionText;
+    public string answeringReason;
     public string answer;
     public string option1;
     public string option2;

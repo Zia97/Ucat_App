@@ -1,7 +1,6 @@
 ﻿using Assets.Scripts;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -37,6 +36,7 @@ public class QuantitativeReasoningControllerScript : MonoBehaviour
     private static ColorBlock correctColours;
     private static ColorBlock incorrectColours;
 
+    public Text answerText;
     public GameObject answerPanel;
     public Button answerPanelCloseButton;
 
@@ -418,6 +418,7 @@ public class QuantitativeReasoningControllerScript : MonoBehaviour
     private void AnswerButtonClicked()
     {
         questionList[currentlySelectedQuestion].answerClicked = true;
+        answerText.text = questionList[currentlySelectedQuestion].answerReasoning;
         answerPanel.SetActive(true);
         showAnswerOnToggles();
         highlightWrongAnswer(currentlySelectedQuestion);

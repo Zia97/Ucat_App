@@ -57,7 +57,10 @@ public class AbstractReasoningControllerScriptTest : MonoBehaviour
 
     public Toggle ARQuestionToggle;
 
-
+    public void ShowReviewPanel()
+    {
+        loadSJSection();
+    }
 
     // Start is called before the first frame update
     void Start()

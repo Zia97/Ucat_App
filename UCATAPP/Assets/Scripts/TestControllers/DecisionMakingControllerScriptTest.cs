@@ -55,7 +55,10 @@ public class DecisionMakingControllerScriptTest : MonoBehaviour
 
     public Toggle DMQuestionToggle;
 
-
+    public void ShowReviewPanel()
+    {
+        loadDMSection();
+    }
 
     // Start is called before the first frame update
     void Start()

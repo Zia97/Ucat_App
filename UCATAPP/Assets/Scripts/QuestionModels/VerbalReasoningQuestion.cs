@@ -11,6 +11,7 @@ namespace Assets.Scripts
         public string resource;
         public int questionNumber;
         public string questionText;
+        public string answeringReason;
         public string questionAnswer;
         public string usersAnswer;
         public string option1Label;
@@ -22,11 +23,12 @@ namespace Assets.Scripts
         public bool flagged;
 
 
-        public VerbalReasoningQuestion(string _resource, int _questionNumber, string _questionText, string _questionAnswer, string op1, string op2, string op3, string op4)
+        public VerbalReasoningQuestion(string _resource, int _questionNumber, string _questionText, string _answeringReason, string _questionAnswer, string op1, string op2, string op3, string op4)
         {
             resource = _resource;
             questionNumber = _questionNumber;
             questionText = _questionText;
+            answeringReason = _answeringReason;
             questionAnswer = _questionAnswer;
             option1Label = op1;
             option2Label = op2;

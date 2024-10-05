@@ -5,6 +5,7 @@
 			"labelSet": 1,
 			"resource": "Emily, the medical student, has a feedback session with her supervisor in the afternoon. Some time before the meeting, she becomes aware of a valuable teach-in session that will be going on simultaneously. Emma knows the teach-in will cover topics she is unfamiliar with and would be valuable to her.\n\nHow Important to take into consideration are the following factors for the student when considering how to respond to the situation?",
 			"questionText": "The importance of the feedback from her supervisor",
+			"answerReasoning": "Set A always has three circles with tangents. Other shapes are irrelevant.\nSet B always has two circles intersected by lines. Other shapes are irrelevant.",
 			"answer": "Very important"
 		},
 		{
@@ -12,6 +13,7 @@
 			"labelSet": 1,
 			"resource": "Emily, the medical student, has a feedback session with her supervisor in the afternoon. Some time before the meeting, she becomes aware of a valuable teach-in session that will be going on simultaneously. Emma knows the teach-in will cover topics she is unfamiliar with and would be valuable to her.\n\nHow Important to take into consideration are the following factors for the student when considering how to respond to the situation?",
 			"questionText": "That other opportunities may arise to extend her learning",
+			"answerReasoning": "Set A always has three circles with tangents. Other shapes are irrelevant.\nSet B always has two circles intersected by lines. Other shapes are irrelevant.",
 			"answer": "Very important"
 		},
 		{
@@ -19,6 +21,7 @@
 			"labelSet": 1,
 			"resource": "Emily, the medical student, has a feedback session with her supervisor in the afternoon. Some time before the meeting, she becomes aware of a valuable teach-in session that will be going on simultaneously. Emma knows the teach-in will cover topics she is unfamiliar with and would be valuable to her.\n\nHow Important to take into consideration are the following factors for the student when considering how to respond to the situation?",
 			"questionText": "Her supervisor's view on whether she should attend this class",
+			"answerReasoning": "Set A always has three circles with tangents. Other shapes are irrelevant.\nSet B always has two circles intersected by lines. Other shapes are irrelevant.",
 			"answer": "Important"
 		},
 		{
@@ -26,6 +29,7 @@
 			"labelSet": 2,
 			"resource": "Max is a trainee doctor on a ward. A senior nurse asks Max to carry out a basic procedure on a patient who is in a great deal of pain. Max is comfortable and confident carrying out the procedure, however the patient remarks that she is worried that Max may be unable to perform it. Nobody else is available to carry out the procedure.\n\nRate the following responses that Max could give:",
 			"questionText": "I have carried out this procedure many times, don’t worry",
+			"answerReasoning": "Set A always has three circles with tangents. Other shapes are irrelevant.\nSet B always has two circles intersected by lines. Other shapes are irrelevant.",
 			"answer": "Appropriate, but not ideal"
 		},
 		{
@@ -33,6 +37,7 @@
 			"labelSet": 2,
 			"resource": "Max is a trainee doctor on a ward. A senior nurse asks Max to carry out a basic procedure on a patient who is in a great deal of pain. Max is comfortable and confident carrying out the procedure, however the patient remarks that she is worried that Max may be unable to perform it. Nobody else is available to carry out the procedure.\n\nRate the following responses that Max could give:",
 			"questionText": "Would you prefer if I found somebody else to carry this out",
+			"answerReasoning": "Set A always has three circles with tangents. Other shapes are irrelevant.\nSet B always has two circles intersected by lines. Other shapes are irrelevant.",
 			"answer": "Inappropriate, but not awful"
 		},
 		{
@@ -40,6 +45,7 @@
 			"labelSet": 2,
 			"resource": "Max is a trainee doctor on a ward. A senior nurse asks Max to carry out a basic procedure on a patient who is in a great deal of pain. Max is comfortable and confident carrying out the procedure, however the patient remarks that she is worried that Max may be unable to perform it. Nobody else is available to carry out the procedure.\n\nRate the following responses that Max could give:",
 			"questionText": "I understand, please tell me what you are worried about",
+			"answerReasoning": "Set A always has three circles with tangents. Other shapes are irrelevant.\nSet B always has two circles intersected by lines. Other shapes are irrelevant.",
 			"answer": "A very appropriate thing to do"
 		},
 		{
@@ -47,6 +53,7 @@
 			"labelSet": 2,
 			"resource": "Max is a trainee doctor on a ward. A senior nurse asks Max to carry out a basic procedure on a patient who is in a great deal of pain. Max is comfortable and confident carrying out the procedure, however the patient remarks that she is worried that Max may be unable to perform it. Nobody else is available to carry out the procedure.\n\nRate the following responses that Max could give:",
 			"questionText": "I am the only colleague available right now, if you would prefer someone else to carry this procedure out, there may be a delay",
+			"answerReasoning": "Set A always has three circles with tangents. Other shapes are irrelevant.\nSet B always has two circles intersected by lines. Other shapes are irrelevant.",
 			"answer": "Appropriate, but not ideal"
 		}
 	]

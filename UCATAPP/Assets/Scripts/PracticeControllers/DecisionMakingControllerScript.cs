@@ -1,7 +1,6 @@
 ﻿using Assets.Scripts;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -39,6 +38,7 @@ public class DecisionMakingControllerScript : MonoBehaviour
     private static ColorBlock correctColours;
     private static ColorBlock incorrectColours;
 
+    public Text answerText;
     public GameObject answerPanel;
     public Button answerPanelCloseButton;
 
@@ -478,6 +478,9 @@ public class DecisionMakingControllerScript : MonoBehaviour
                 questionList[currentlySelectedSet].q1.setAnswerClickedTrue();
                 break;
         }
+
+        answerPanel.SetActive(true);
+        answerText.text = allQuestions[currentlySelectedSet].questions[0].answerReasoning;
         showAnswerOnToggles();
         highlightWrongAnswer(currentlySelectedQuestionInSet);
     }

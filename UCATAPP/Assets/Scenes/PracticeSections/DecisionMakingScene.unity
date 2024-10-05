@@ -1855,7 +1855,7 @@ GameObject:
   - component: {fileID: 820586141}
   - component: {fileID: 820586140}
   m_Layer: 0
-  m_Name: Text
+  m_Name: AnswerText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3926,5 +3926,6 @@ MonoBehaviour:
   NextButton: {fileID: 571684496}
   PreviousButton: {fileID: 1300771901}
   AnswerButton: {fileID: 703517441}
+  answerText: {fileID: 820586140}
   answerPanel: {fileID: 760796830}
   answerPanelCloseButton: {fileID: 1645138592}

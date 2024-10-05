@@ -62,6 +62,11 @@ public class VerbalReasoningControllerScriptTest : MonoBehaviour
     public GameObject BaseQuestionSelectorPanel;
     public GameObject BaseQuestionsPanel;
 
+    public void ShowReviewPanel()
+    {
+        loadReviewCanvas();
+    }
+
     public void DestroySingleton()
     {
         Destroy(this.gameObject);
@@ -227,7 +232,7 @@ public class VerbalReasoningControllerScriptTest : MonoBehaviour
     {
         foreach (VRQuestions s in allQuestions)
         {
-            VerbalReasoningQuestion temp = new VerbalReasoningQuestion(s.resource, s.questionNumber, s.questionText, s.answer, s.option1, s.option2, s.option3, s.option4);
+            VerbalReasoningQuestion temp = new VerbalReasoningQuestion(s.resource, s.questionNumber, s.questionText, s.answeringReason, s.answer, s.option1, s.option2, s.option3, s.option4);
             verbalReasoningQuestionList.Add(temp);
         }
     }

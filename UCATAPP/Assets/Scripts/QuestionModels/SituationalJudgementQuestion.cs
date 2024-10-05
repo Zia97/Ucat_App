@@ -14,6 +14,7 @@ namespace Assets.Scripts
         public bool answerClicked = false;
 
         public string questionText;
+        public string answerReasoning;
         public string questionAnswer;
         public string usersAnswer;
         public int labelSet;
@@ -22,10 +23,11 @@ namespace Assets.Scripts
         public bool flagged = false;
 
 
-        public SituationalJudgementQuestion(String _resource, int _questionNumber, String _questionText, String _answer, int _labelSet)
+        public SituationalJudgementQuestion(String _resource, int _questionNumber, String _questionText, string _answerReasoning, String _answer, int _labelSet)
         {
             resource = _resource;
             questionText = _questionText;
+            answerReasoning = _answerReasoning;
             questionNumber = _questionNumber;
             questionAnswer = _answer;
             labelSet = _labelSet;
