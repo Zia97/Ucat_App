@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Qasim\\Documents\\GitHub\\Ucat_App\\UCATAPP\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8076A388-C985-84E1-90B8-2FBA0CA77E69}|Assembly-CSharp.csproj|c:\\users\\qasim\\documents\\github\\ucat_app\\ucatapp\\assets\\scripts\\playgamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8076A388-C985-84E1-90B8-2FBA0CA77E69}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playgamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36C963F2-3F25-1873-2BEB-0F436D799AF1}|Google.Play.Games.Editor.csproj|c:\\users\\qasim\\documents\\github\\ucat_app\\ucatapp\\assets\\googleplaygames\\com.google.play.games\\editor\\gpgsstrings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36C963F2-3F25-1873-2BEB-0F436D799AF1}|Google.Play.Games.Editor.csproj|solutionrelative:assets\\googleplaygames\\com.google.play.games\\editor\\gpgsstrings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PlayGameManager.cs",
+              "DocumentMoniker": "C:\\Users\\Qasim\\Documents\\GitHub\\Ucat_App\\UCATAPP\\Assets\\Scripts\\PlayGameManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PlayGameManager.cs",
+              "ToolTip": "C:\\Users\\Qasim\\Documents\\GitHub\\Ucat_App\\UCATAPP\\Assets\\Scripts\\PlayGameManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PlayGameManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwBsAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-12T19:37:23.192Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GPGSStrings.cs",
+              "DocumentMoniker": "C:\\Users\\Qasim\\Documents\\GitHub\\Ucat_App\\UCATAPP\\Assets\\GooglePlayGames\\com.google.play.games\\Editor\\GPGSStrings.cs",
+              "RelativeDocumentMoniker": "Assets\\GooglePlayGames\\com.google.play.games\\Editor\\GPGSStrings.cs",
+              "ToolTip": "C:\\Users\\Qasim\\Documents\\GitHub\\Ucat_App\\UCATAPP\\Assets\\GooglePlayGames\\com.google.play.games\\Editor\\GPGSStrings.cs",
+              "RelativeToolTip": "Assets\\GooglePlayGames\\com.google.play.games\\Editor\\GPGSStrings.cs",
+              "ViewState": "AgIAAGsAAAAAAAAAAAAmwIMAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-12T18:37:30.064Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
