@@ -1,7 +1,11 @@
 ﻿using Assets.Scripts;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
+using System.Threading.Tasks;
+using Unity.Services.CloudSave;
+using Unity.Services.Core;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -38,10 +42,11 @@ public class VerbalReasoningControllerScript : MonoBehaviour
     private static ColorBlock incorrectColours;
     private int currentlySelectedQuestion;
 
+    private List<UserSaveDataModel> userSaveDataModels = new List<UserSaveDataModel>();
 
 
     // Start is called before the first frame update
-    void Start()
+    private async Task Start()
     {
         GlobalVariables.selectedExercise = "Practice";
 
@@ -53,21 +58,17 @@ public class VerbalReasoningControllerScript : MonoBehaviour
 
         SetQuestionList();
 
-        InstantiateQuestions();
+        await InstantiateQuestions();
 
         initiateToggleColours();
 
         loadQuestion(0);
 
         updateQuestionCounter();
-
     }
 
     // Update is called once per frame
-    void Update()
-    {
-
-    }
+    void Update() {}
 
     //Serializes the questions from the json file to objects
     void SetQuestionList()
@@ -81,20 +82,72 @@ public class VerbalReasoningControllerScript : MonoBehaviour
                 break;
         }
 
-
         VRAllQuestions allQuestionsFromJson = JsonUtility.FromJson<VRAllQuestions>(jsonFile.text);
         allQuestions = allQuestionsFromJson.allQuestions;
 
     }
 
     //Creates actual verbal reasoning question objects from the list loaded from the json
-    void InstantiateQuestions()
+    private async Task InstantiateQuestions()
     {
-        foreach (VRQuestions s in allQuestions)
+        Dictionary<int, UserSaveDataModel> userAnswers = new Dictionary<int, UserSaveDataModel>();
+
+        if (!UnityServices.State.Equals(ServicesInitializationState.Initialized))
         {
-            VerbalReasoningQuestion temp = new VerbalReasoningQuestion(s.resource, s.questionNumber, s.questionText, s.answeringReason, s.answer, s.option1, s.option2, s.option3, s.option4);
-            verbalReasoningQuestionList.Add(temp);
+            await UnityServices.InitializeAsync();
         }
+
+        try
+        {
+            var cloudData = await CloudSaveService.Instance.Data.LoadAsync(new HashSet<string> { "VerbalReasoningAnsweredQuestions" });
+
+            if (cloudData != null && cloudData.TryGetValue("VerbalReasoningAnsweredQuestions", out string jsonData) && !string.IsNullOrEmpty(jsonData))
+            {
+                Debug.Log("Cloud Data: " + jsonData);
+
+                //UserSaveDataModelListWrapper existingDataWrapper = JsonUtility.FromJson<UserSaveDataModelListWrapper>(jsonData);
+                //if (existingDataWrapper != null && existingDataWrapper.userSaveDataModels != null)
+                //{
+                //    foreach (var userData in existingDataWrapper.userSaveDataModels)
+                //    {
+                //        userAnswers[userData.questionNumber] = userData;
+                //    }
+                //}
+            }
+            else
+            {
+                Debug.Log("No data found for key 'VerbalReasoningAnsweredQuestions'.");
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Failed to load data from cloud: " + e.Message);
+        }
+
+        if (allQuestions != null)
+        {
+            foreach (VRQuestions s in allQuestions)
+            {
+                if (s != null)
+                {
+                    // Add check to load user data and see if the question has already been answered 
+                    VerbalReasoningQuestion temp = new VerbalReasoningQuestion(s.resource, s.questionNumber, s.questionText, s.answeringReason, s.answer, s.option1, s.option2, s.option3, s.option4);
+
+                    if (userAnswers.ContainsKey(s.questionNumber))
+                    {
+                        UserSaveDataModel userData = userAnswers[s.questionNumber];
+                        if (userData != null)
+                        {
+                            temp.setUserAnswer(userData.usersAnswer);
+                            temp.setAnswerClickedTrue();
+                        }
+                    }
+
+                    verbalReasoningQuestionList.Add(temp);
+                }
+            }
+        }
+
     }
 
     void loadQuestion(int questionNumber)
@@ -163,9 +216,66 @@ public class VerbalReasoningControllerScript : MonoBehaviour
 
     void saveAnswer(String selectedAnswer)
     {
-
         questionList[currentlySelectedQuestion].usersAnswer = selectedAnswer;
+    }
 
+    private async Task SaveUserAnswerToCloud()
+    {
+        UserSaveDataModel savedAnswer = new UserSaveDataModel.Builder()
+        .SetQuestionNumber(currentlySelectedQuestion)
+        .SetUsersAnswer(questionList[currentlySelectedQuestion].usersAnswer)
+        .Build();
+
+        userSaveDataModels.Add(savedAnswer);
+
+        // Load existing data
+        Dictionary<string, string> cloudData = null;
+        try
+        {
+            cloudData = await CloudSaveService.Instance.Data.LoadAsync(new HashSet<string> { "VerbalReasoningAnsweredQuestions" });
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Failed to load data from cloud: " + e.Message);
+            cloudData = new Dictionary<string, string>();
+        }
+
+        List<UserSaveDataModel> existingUserData = new List<UserSaveDataModel>();
+
+        if (cloudData != null && cloudData.TryGetValue("VerbalReasoningAnsweredQuestions", out string jsonData) && !string.IsNullOrEmpty(jsonData))
+        {
+            try
+            {
+                UserSaveDataModelListWrapper existingDataWrapper = JsonUtility.FromJson<UserSaveDataModelListWrapper>(jsonData);
+                if (existingDataWrapper != null && existingDataWrapper.userSavedAnswers != null)
+                {
+                    // Need to overrwite answer if usre changes and saves 
+                    existingUserData = existingDataWrapper.userSavedAnswers;
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("Failed to parse JSON data: " + e.Message);
+            }
+        }
+
+        // Update the list with new data
+        existingUserData.AddRange(userSaveDataModels);
+
+        UserSaveDataModelListWrapper userSaveDataModelListWrapper = new UserSaveDataModelListWrapper { userSavedAnswers = existingUserData };
+
+        // Serialize the updated list
+        string updatedJsonData = JsonUtility.ToJson(userSaveDataModelListWrapper);
+        Dictionary<string, object> data = new Dictionary<string, object> { { "VerbalReasoningAnsweredQuestions", updatedJsonData } };
+
+        try
+        {
+            await CloudSaveService.Instance.Data.Player.SaveAsync(data);
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Failed to save user data to cloud: " + e.Message);
+        }
     }
 
     private void resetColours()
@@ -194,7 +304,7 @@ public class VerbalReasoningControllerScript : MonoBehaviour
             cb.highlightedColor = Color.white;
         }
         chosenToggle.colors = cb;
-        
+
     }
 
     private void initiateToggleColours()
@@ -278,7 +388,8 @@ public class VerbalReasoningControllerScript : MonoBehaviour
 
         loadQuestionLabels();
 
-        if (questionList[currentlySelectedQuestion].answerClicked){
+        if (questionList[currentlySelectedQuestion].answerClicked)
+        {
             showAnswerOnToggles();
             highlightWrongAnswer(currentlySelectedQuestion);
         }
@@ -392,11 +503,12 @@ public class VerbalReasoningControllerScript : MonoBehaviour
                 setToggleColourIncorrect(Answer4Toggle);
             }
         }
-        
+
     }
 
     private void AnswerButtonClicked()
     {
+        SaveUserAnswerToCloud();
         AnswerPanel.SetActive(true);
         AnswerText.text = questionList[currentlySelectedQuestion].answeringReason;
         questionList[currentlySelectedQuestion].setAnswerClickedTrue();
@@ -416,6 +528,12 @@ public class VerbalReasoningControllerScript : MonoBehaviour
 
 
 #region JSON MODELS
+
+[System.Serializable]
+public class UserSaveDataModelListWrapper
+{
+    public List<UserSaveDataModel> userSavedAnswers;
+}
 
 [System.Serializable]
 public class VRAllQuestions

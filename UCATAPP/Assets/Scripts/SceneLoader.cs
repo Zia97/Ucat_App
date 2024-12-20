@@ -23,23 +23,18 @@ public class SceneLoader : MonoBehaviour
         switch (selectedQuestion)
         {
             case "VR1":
-            case "VR2":
                 SceneManager.LoadScene(GlobalVariables.VerbalReasoningScene);
                 break;
             case "DM1":
-            case "DM2":
                 SceneManager.LoadScene(GlobalVariables.DecisionMakingScene);
                 break;
             case "AR1":
-            case "AR2":
                 SceneManager.LoadScene(GlobalVariables.AbstractReasoningScene);
                 break;
             case "SJ1":
-            case "SJ2":
                 SceneManager.LoadScene(GlobalVariables.SituationalJudgementScene);
                 break;
             case "QR1":
-            case "QR2":
                 SceneManager.LoadScene(GlobalVariables.QuantitativeReasoningScene);
                 break;
             default:

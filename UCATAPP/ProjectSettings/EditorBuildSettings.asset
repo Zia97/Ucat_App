@@ -26,22 +26,23 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PracticeSections/DecisionMakingScene.unity
     guid: 7b6b67530da42f344aaacdbe8d99fe3a
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Menu/PracticeTest.unity
     guid: ba5cdb5516f355145894d1c3708431a9
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TimedTests/VerbalReasoningTimedScene.unity
     guid: 938d0c4417e2655458cff56a43e94bf6
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TimedTests/DecisionMakingTimedScene.unity
     guid: 622a236fbdcf87546bc7262a6aee3b58
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TimedTests/AbstractReasoningTimedScene.unity
     guid: aaa72bc31cf667442aa3769d718771ac
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TimedTests/SituationalJudgementTimedScene.unity
     guid: 77c8ec97c3230194982c5f036f76fe43
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TimedTests/QuantitativeReasoningTimedScene.unity
     guid: 6b8f227495e7a1f49ad6ccb0445332de
   m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0
