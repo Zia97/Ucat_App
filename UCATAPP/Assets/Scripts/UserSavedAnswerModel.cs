@@ -1,10 +1,10 @@
 [System.Serializable]
-public class UserSaveDataModel
+public class UserSavedAnswerModel
 {
     public int questionNumber;
     public string usersAnswer;
 
-    private UserSaveDataModel() { }
+    private UserSavedAnswerModel() { }
 
     public class Builder
     {
@@ -23,9 +23,9 @@ public class UserSaveDataModel
             return this;
         }
 
-        public UserSaveDataModel Build()
+        public UserSavedAnswerModel Build()
         {
-            return new UserSaveDataModel
+            return new UserSavedAnswerModel
             {
                 questionNumber = this.questionNumber,
                 usersAnswer = this.usersAnswer

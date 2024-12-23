@@ -42,7 +42,7 @@ public class VerbalReasoningControllerScript : MonoBehaviour
     private static ColorBlock incorrectColours;
     private int currentlySelectedQuestion;
 
-    private List<UserSaveDataModel> userSaveDataModels = new List<UserSaveDataModel>();
+    private List<UserSavedAnswerModel> userSaveDataModels = new List<UserSavedAnswerModel>();
 
 
     // Start is called before the first frame update
@@ -60,11 +60,11 @@ public class VerbalReasoningControllerScript : MonoBehaviour
 
         await InstantiateQuestions();
 
-        initiateToggleColours();
-
         loadQuestion(0);
 
         updateQuestionCounter();
+
+        initiateToggleColours();
     }
 
     // Update is called once per frame
@@ -90,7 +90,7 @@ public class VerbalReasoningControllerScript : MonoBehaviour
     //Creates actual verbal reasoning question objects from the list loaded from the json
     private async Task InstantiateQuestions()
     {
-        Dictionary<int, UserSaveDataModel> userAnswers = new Dictionary<int, UserSaveDataModel>();
+        Dictionary<int, UserSavedAnswerModel> userAnswers = new Dictionary<int, UserSavedAnswerModel>();
 
         if (!UnityServices.State.Equals(ServicesInitializationState.Initialized))
         {
@@ -103,16 +103,14 @@ public class VerbalReasoningControllerScript : MonoBehaviour
 
             if (cloudData != null && cloudData.TryGetValue("VerbalReasoningAnsweredQuestions", out string jsonData) && !string.IsNullOrEmpty(jsonData))
             {
-                Debug.Log("Cloud Data: " + jsonData);
-
-                //UserSaveDataModelListWrapper existingDataWrapper = JsonUtility.FromJson<UserSaveDataModelListWrapper>(jsonData);
-                //if (existingDataWrapper != null && existingDataWrapper.userSaveDataModels != null)
-                //{
-                //    foreach (var userData in existingDataWrapper.userSaveDataModels)
-                //    {
-                //        userAnswers[userData.questionNumber] = userData;
-                //    }
-                //}
+                UserSaveDataModelListWrapper existingDataWrapper = JsonUtility.FromJson<UserSaveDataModelListWrapper>(jsonData);
+                if (existingDataWrapper != null && existingDataWrapper.userSavedAnswers != null)
+                {
+                    foreach (var savedAnswer in existingDataWrapper.userSavedAnswers)
+                    {
+                        userAnswers.Add(savedAnswer.questionNumber, savedAnswer);
+                    }
+                }
             }
             else
             {
@@ -131,23 +129,22 @@ public class VerbalReasoningControllerScript : MonoBehaviour
                 if (s != null)
                 {
                     // Add check to load user data and see if the question has already been answered 
-                    VerbalReasoningQuestion temp = new VerbalReasoningQuestion(s.resource, s.questionNumber, s.questionText, s.answeringReason, s.answer, s.option1, s.option2, s.option3, s.option4);
+                    VerbalReasoningQuestion question = new VerbalReasoningQuestion(s.resource, s.questionNumber, s.questionText, s.answeringReason, s.answer, s.option1, s.option2, s.option3, s.option4);
 
                     if (userAnswers.ContainsKey(s.questionNumber))
                     {
-                        UserSaveDataModel userData = userAnswers[s.questionNumber];
+                        UserSavedAnswerModel userData = userAnswers[s.questionNumber];
                         if (userData != null)
                         {
-                            temp.setUserAnswer(userData.usersAnswer);
-                            temp.setAnswerClickedTrue();
+                            question.setUserAnswer(userData.usersAnswer);
+                            question.setAnswerClickedTrue();
                         }
                     }
 
-                    verbalReasoningQuestionList.Add(temp);
+                    verbalReasoningQuestionList.Add(question);
                 }
             }
         }
-
     }
 
     void loadQuestion(int questionNumber)
@@ -164,6 +161,12 @@ public class VerbalReasoningControllerScript : MonoBehaviour
         loadQuestionLabels();
 
         setUsersSelectedAnswerForButton();
+
+        if (questionList[currentlySelectedQuestion].answerClicked)
+        {
+            showAnswerOnToggles();
+            highlightWrongAnswer(currentlySelectedQuestion);
+        }
     }
 
     void loadQuestionLabels()
@@ -221,10 +224,11 @@ public class VerbalReasoningControllerScript : MonoBehaviour
 
     private async Task SaveUserAnswerToCloud()
     {
-        UserSaveDataModel savedAnswer = new UserSaveDataModel.Builder()
-        .SetQuestionNumber(currentlySelectedQuestion)
-        .SetUsersAnswer(questionList[currentlySelectedQuestion].usersAnswer)
-        .Build();
+        UserSavedAnswerModel savedAnswer = new UserSavedAnswerModel.Builder()
+            //need to add 1 to question number as questions dont start from 0 
+            .SetQuestionNumber(currentlySelectedQuestion+1)
+            .SetUsersAnswer(questionList[currentlySelectedQuestion].usersAnswer)
+            .Build();
 
         userSaveDataModels.Add(savedAnswer);
 
@@ -240,7 +244,7 @@ public class VerbalReasoningControllerScript : MonoBehaviour
             cloudData = new Dictionary<string, string>();
         }
 
-        List<UserSaveDataModel> existingUserData = new List<UserSaveDataModel>();
+        List<UserSavedAnswerModel> existingUserData = new List<UserSavedAnswerModel>();
 
         if (cloudData != null && cloudData.TryGetValue("VerbalReasoningAnsweredQuestions", out string jsonData) && !string.IsNullOrEmpty(jsonData))
         {
@@ -249,7 +253,6 @@ public class VerbalReasoningControllerScript : MonoBehaviour
                 UserSaveDataModelListWrapper existingDataWrapper = JsonUtility.FromJson<UserSaveDataModelListWrapper>(jsonData);
                 if (existingDataWrapper != null && existingDataWrapper.userSavedAnswers != null)
                 {
-                    // Need to overrwite answer if usre changes and saves 
                     existingUserData = existingDataWrapper.userSavedAnswers;
                 }
             }
@@ -259,8 +262,21 @@ public class VerbalReasoningControllerScript : MonoBehaviour
             }
         }
 
-        // Update the list with new data
-        existingUserData.AddRange(userSaveDataModels);
+        // Update the list with new data, overwriting existing answers
+        foreach (var newUserAnswer in userSaveDataModels)
+        {
+            var existingAnswer = existingUserData.Find(answer => answer.questionNumber == newUserAnswer.questionNumber);
+            if (existingAnswer != null)
+            {
+                // Overwrite the existing answer
+                existingAnswer.usersAnswer = newUserAnswer.usersAnswer;
+            }
+            else
+            {
+                // Add new answer
+                existingUserData.Add(newUserAnswer);
+            }
+        }
 
         UserSaveDataModelListWrapper userSaveDataModelListWrapper = new UserSaveDataModelListWrapper { userSavedAnswers = existingUserData };
 
@@ -532,7 +548,7 @@ public class VerbalReasoningControllerScript : MonoBehaviour
 [System.Serializable]
 public class UserSaveDataModelListWrapper
 {
-    public List<UserSaveDataModel> userSavedAnswers;
+    public List<UserSavedAnswerModel> userSavedAnswers;
 }
 
 [System.Serializable]
