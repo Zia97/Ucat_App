@@ -132,7 +132,6 @@ public class DecisionMakingControllerScript : MonoBehaviour
 
         loadQuestionLabels();
 
-
         setUsersSelectedAnswerForButton();
     }
 

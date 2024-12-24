@@ -2,6 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
+using Unity.Services.CloudSave;
+using Unity.Services.Core;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -44,10 +47,11 @@ public class AbstractReasoningControllerScript : MonoBehaviour
 
     private static ColorBlock correctColours;
     private static ColorBlock incorrectColours;
+    private List<UserSavedAnswerModel> userSaveDataModels = new List<UserSavedAnswerModel>();
 
 
     // Start is called before the first frame update
-    void Start()
+    private async Task Start()
     {
         GlobalVariables.selectedExercise = "Practice";
 
@@ -59,7 +63,7 @@ public class AbstractReasoningControllerScript : MonoBehaviour
 
         SetQuestionList();
 
-        InstantiateQuestions();
+        await InstantiateQuestions();
 
         initiateToggleColours();
 
@@ -69,13 +73,11 @@ public class AbstractReasoningControllerScript : MonoBehaviour
 
     }
 
-
     // Update is called once per frame
-    void Update()
-    {
-      
-    }
+    void Update(){}
 
+
+    // Set the question list from the JSON file
     void SetQuestionList()
     {
         TextAsset json = new TextAsset();
@@ -84,23 +86,70 @@ public class AbstractReasoningControllerScript : MonoBehaviour
 
         ARAllQuestions allQuestionsFromJson = JsonUtility.FromJson<ARAllQuestions>(json.text);
         allQuestions = allQuestionsFromJson.allQuestions;
-
     }
 
-
-    void InstantiateQuestions()
+    // Instantiate the questions from the JSON file
+    private async Task InstantiateQuestions()
     {
-        foreach (ARSet s in allQuestions)
+        Dictionary<int, UserSavedAnswerModel> userAnswers = new Dictionary<int, UserSavedAnswerModel>();
+
+        if (!UnityServices.State.Equals(ServicesInitializationState.Initialized))
         {
-            AbstractReasoningQuestion temp = new AbstractReasoningQuestion(s.resource, s.answer);
+            await UnityServices.InitializeAsync();
+        }
 
-            foreach (ARQuestions q in s.questions)
+        try
+        {
+            var cloudData = await CloudSaveService.Instance.Data.LoadAsync(new HashSet<string> { "AbstractReasoningAnsweredQuestions" });
+
+            if (cloudData != null && cloudData.TryGetValue("AbstractReasoningAnsweredQuestions", out string jsonData) && !string.IsNullOrEmpty(jsonData))
             {
-                Tuple<int, string, string> question = new Tuple<int, string, string>(q.questionNumber, q.imageURI, q.answer);
-                temp.AddQuestion(q.questionNumber, question);
+                UserSaveDataModelListWrapper existingDataWrapper = JsonUtility.FromJson<UserSaveDataModelListWrapper>(jsonData);
+                if (existingDataWrapper != null && existingDataWrapper.userSavedAnswers != null)
+                {
+                    foreach (var savedAnswer in existingDataWrapper.userSavedAnswers)
+                    {
+                        userAnswers.Add(savedAnswer.questionNumber, savedAnswer);
+                    }
+                }
             }
+            else
+            {
+                Debug.Log("No data found for key 'AbstractReasoningAnsweredQuestions'.");
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Failed to load data from cloud: " + e.Message);
+        }
 
-            abstractReasoningQuestionsList.Add(temp);
+        if (allQuestions != null)
+        {
+            foreach (ARSet s in allQuestions)
+            {
+                AbstractReasoningQuestion temp = new AbstractReasoningQuestion(s.resource, s.questionAnswerReasoning);
+
+                String usersAnswer = "";
+
+                foreach (ARQuestions q in s.questions)
+                {
+
+                    if (userAnswers.ContainsKey(q.underlyingQN))
+                    {
+                        UserSavedAnswerModel userData = userAnswers[q.underlyingQN];
+                        if (userData != null)
+                        {
+                            usersAnswer = userData.usersAnswer;
+                        }
+                    }
+
+                    Tuple<int, int, string, string, string> question = new Tuple<int, int, string, string, string>(q.questionNumber, q.underlyingQN, q.imageURI, q.questionAnswer, usersAnswer);
+                    temp.AddQuestion(q.questionNumber, question);
+
+                }
+
+                abstractReasoningQuestionsList.Add(temp);
+            }
         }
     }
 
@@ -114,10 +163,13 @@ public class AbstractReasoningControllerScript : MonoBehaviour
         resetColours();
 
         SetsImage.sprite = Resources.Load<Sprite>(questionList[0].setImageUri);
-        QuestionImage.sprite = Resources.Load<Sprite>(questionList[0].q1.imageURI);
-
+        QuestionImage.sprite = Resources.Load<Sprite>(questionList[0].questions[1].imageURI);
 
         setUsersSelectedAnswerForButton();
+
+        showAnswerColours();
+
+        Question1ButtonClicked();
     }
 
     void loadSet(int questionNumber)
@@ -127,7 +179,7 @@ public class AbstractReasoningControllerScript : MonoBehaviour
         resetColours();
 
         SetsImage.sprite = Resources.Load<Sprite>(questionList[questionNumber].setImageUri);
-        QuestionImage.sprite = Resources.Load<Sprite>(questionList[questionNumber].q1.imageURI);
+        QuestionImage.sprite = Resources.Load<Sprite>(questionList[questionNumber].questions[1].imageURI);
 
 
         setUsersSelectedAnswerForButton();
@@ -163,24 +215,8 @@ public class AbstractReasoningControllerScript : MonoBehaviour
 
     void saveAnswer(String selectedAnswer)
     {
-        switch (currentlySelectedQuestionInSet)
-        {
-            case 1:
-                questionList[currentlySelectedSet].q1.usersAnswer = selectedAnswer;
-                break;
-            case 2:
-                questionList[currentlySelectedSet].q2.usersAnswer = selectedAnswer;
-                break;
-            case 3:
-                questionList[currentlySelectedSet].q3.usersAnswer = selectedAnswer;
-                break;
-            case 4:
-                questionList[currentlySelectedSet].q4.usersAnswer = selectedAnswer;
-                break;
-            case 5:
-                questionList[currentlySelectedSet].q5.usersAnswer = selectedAnswer;
-                break;
-        }
+        var question = questionList[currentlySelectedSet].questions[currentlySelectedQuestionInSet - 1];
+        question.usersAnswer = selectedAnswer;
     }
 
     private void resetColours()
@@ -206,51 +242,23 @@ public class AbstractReasoningControllerScript : MonoBehaviour
     {
         if (questionList[currentlySelectedSet].answerClicked)
         {
+            SetButtonColor(Question1Button, questionList[currentlySelectedSet].questions[0]);
+            SetButtonColor(Question2Button, questionList[currentlySelectedSet].questions[1]);
+            SetButtonColor(Question3Button, questionList[currentlySelectedSet].questions[2]);
+            SetButtonColor(Question4Button, questionList[currentlySelectedSet].questions[3]);
+            SetButtonColor(Question5Button, questionList[currentlySelectedSet].questions[4]);
+        }
+    }
 
-            if (questionList[currentlySelectedSet].q1.usersAnswer.Equals(questionList[currentlySelectedSet].q1.questionAnswer))
-            {
-                Question1Button.image.color = Color.green;
-            }
-            else
-            {
-                Question1Button.image.color = Color.red;
-            }
-
-            if (questionList[currentlySelectedSet].q2.usersAnswer.Equals(questionList[currentlySelectedSet].q2.questionAnswer))
-            {
-                Question2Button.image.color = Color.green;
-            }
-            else
-            {
-                Question2Button.image.color = Color.red;
-            }
-
-            if (questionList[currentlySelectedSet].q3.usersAnswer.Equals(questionList[currentlySelectedSet].q3.questionAnswer))
-            {
-                Question3Button.image.color = Color.green;
-            }
-            else
-            {
-                Question3Button.image.color = Color.red;
-            }
-
-            if (questionList[currentlySelectedSet].q4.usersAnswer.Equals(questionList[currentlySelectedSet].q4.questionAnswer))
-            {
-                Question4Button.image.color = Color.green;
-            }
-            else
-            {
-                Question4Button.image.color = Color.red;
-            }
-
-            if (questionList[currentlySelectedSet].q5.usersAnswer.Equals(questionList[currentlySelectedSet].q5.questionAnswer))
-            {
-                Question5Button.image.color = Color.green;
-            }
-            else
-            {
-                Question5Button.image.color = Color.red;
-            }
+    private void SetButtonColor(Button button, AbstractReasoningTupleHolder question)
+    {
+        if (question.usersAnswer.Equals(question.questionAnswer))
+        {
+            button.image.color = Color.green;
+        }
+        else
+        {
+            button.image.color = Color.red;
         }
     }
 
@@ -307,85 +315,28 @@ public class AbstractReasoningControllerScript : MonoBehaviour
         chosenToggle.colors = cb;
     }
 
-
-
     private void showAnswerOnToggles()
     {
         if (questionList[currentlySelectedSet].answerClicked)
         {
-            switch (currentlySelectedQuestionInSet)
-            {
-                case 1:
-                    if (questionList[currentlySelectedSet].q1.questionAnswer.Equals("SetA"))
-                    {
-                        setToggleColourCorrect(SetAToggle);
-                    }
-                    else if (questionList[currentlySelectedSet].q1.questionAnswer.Equals("SetB"))
-                    {
-                        setToggleColourCorrect(SetBToggle);
-                    }
-                    else if (questionList[currentlySelectedSet].q1.questionAnswer.Equals("Neither"))
-                    {
-                        setToggleColourCorrect(NeitherToggle);
-                    }
-                    break;
-                case 2:
-                    if (questionList[currentlySelectedSet].q2.questionAnswer.Equals("SetA"))
-                    {
-                        setToggleColourCorrect(SetAToggle);
-                    }
-                    else if (questionList[currentlySelectedSet].q2.questionAnswer.Equals("SetB"))
-                    {
-                        setToggleColourCorrect(SetBToggle);
-                    }
-                    else if (questionList[currentlySelectedSet].q2.questionAnswer.Equals("Neither"))
-                    {
-                        setToggleColourCorrect(NeitherToggle);
-                    }
-                    break;
-                case 3:
-                    if (questionList[currentlySelectedSet].q3.questionAnswer.Equals("SetA"))
-                    {
-                        setToggleColourCorrect(SetAToggle);
-                    }
-                    else if (questionList[currentlySelectedSet].q3.questionAnswer.Equals("SetB"))
-                    {
-                        setToggleColourCorrect(SetBToggle);
-                    }
-                    else if (questionList[currentlySelectedSet].q3.questionAnswer.Equals("Neither"))
-                    {
-                        setToggleColourCorrect(NeitherToggle); ;
-                    }
-                    break;
-                case 4:
-                    if (questionList[currentlySelectedSet].q4.questionAnswer.Equals("SetA"))
-                    {
-                        setToggleColourCorrect(SetAToggle);
-                    }
-                    else if (questionList[currentlySelectedSet].q4.questionAnswer.Equals("SetB"))
-                    {
-                        setToggleColourCorrect(SetBToggle);
-                    }
-                    else if (questionList[currentlySelectedSet].q4.questionAnswer.Equals("Neither"))
-                    {
-                        setToggleColourCorrect(NeitherToggle);
-                    }
-                    break;
-                case 5:
-                    if (questionList[currentlySelectedSet].q5.questionAnswer.Equals("SetA"))
-                    {
-                        setToggleColourCorrect(SetAToggle);
-                    }
-                    else if (questionList[currentlySelectedSet].q5.questionAnswer.Equals("SetB"))
-                    {
-                        setToggleColourCorrect(SetBToggle);
-                    }
-                    else if (questionList[currentlySelectedSet].q5.questionAnswer.Equals("Neither"))
-                    {
-                        setToggleColourCorrect(NeitherToggle);
-                    }
-                    break;
-            }
+            var question = questionList[currentlySelectedSet].questions[currentlySelectedQuestionInSet - 1];
+            SetToggleColorBasedOnAnswer(question.questionAnswer);
+        }
+    }
+
+    private void SetToggleColorBasedOnAnswer(string answer)
+    {
+        if (answer.Equals("SetA"))
+        {
+            setToggleColourCorrect(SetAToggle);
+        }
+        else if (answer.Equals("SetB"))
+        {
+            setToggleColourCorrect(SetBToggle);
+        }
+        else if (answer.Equals("Neither"))
+        {
+            setToggleColourCorrect(NeitherToggle);
         }
     }
 
@@ -443,65 +394,46 @@ public class AbstractReasoningControllerScript : MonoBehaviour
 
     }
 
-    private void Question1ButtonClicked()
+    private void QuestionButtonClicked(int questionIndex, string imageUri)
     {
         resetColours();
-        currentlySelectedQuestionInSet = 1;
-        QuestionImage.sprite = Resources.Load<Sprite>(questionList[currentlySelectedSet].q1.imageURI);
+        currentlySelectedQuestionInSet = questionIndex;
+        QuestionImage.sprite = Resources.Load<Sprite>(imageUri);
         setUsersSelectedAnswerForButton();
         showAnswerOnToggles();
-        highlightWrongAnswer(1);
+        highlightWrongAnswer(questionIndex);
+    }
 
-
+    private void Question1ButtonClicked()
+    {
+        QuestionButtonClicked(1, questionList[currentlySelectedSet].questions[0].imageURI);
     }
 
     private void Question2ButtonClicked()
     {
-        resetColours();
-        currentlySelectedQuestionInSet = 2;
-        QuestionImage.sprite = Resources.Load<Sprite>(questionList[currentlySelectedSet].q2.imageURI);
-        setUsersSelectedAnswerForButton();
-        showAnswerOnToggles();
-        highlightWrongAnswer(2);
+        QuestionButtonClicked(2, questionList[currentlySelectedSet].questions[1].imageURI);
     }
 
     private void Question3ButtonClicked()
     {
-        resetColours();
-        currentlySelectedQuestionInSet = 3;
-        QuestionImage.sprite = Resources.Load<Sprite>(questionList[currentlySelectedSet].q3.imageURI);
-        setUsersSelectedAnswerForButton();
-        showAnswerOnToggles();
-        highlightWrongAnswer(3);
+        QuestionButtonClicked(3, questionList[currentlySelectedSet].questions[2].imageURI);
     }
 
     private void Question4ButtonClicked()
     {
-        resetColours();
-        currentlySelectedQuestionInSet = 4;
-        QuestionImage.sprite = Resources.Load<Sprite>(questionList[currentlySelectedSet].q4.imageURI);
-        setUsersSelectedAnswerForButton();
-        showAnswerOnToggles();
-        highlightWrongAnswer(4);
+        QuestionButtonClicked(4, questionList[currentlySelectedSet].questions[3].imageURI);
     }
 
     private void Question5ButtonClicked()
     {
-        resetColours();
-        currentlySelectedQuestionInSet = 5;
-        QuestionImage.sprite = Resources.Load<Sprite>(questionList[currentlySelectedSet].q5.imageURI);
-        setUsersSelectedAnswerForButton();
-        showAnswerOnToggles();
-        highlightWrongAnswer(5);
+        QuestionButtonClicked(5, questionList[currentlySelectedSet].questions[4].imageURI);
     }
-
 
     private void SetAToggleClicked(bool isOn)
     {
         saveAnswer("SetA");
         setColours(isOn, SetAToggle);
     }
-
 
 
     private void SetBToggleClicked(bool isOn)
@@ -519,168 +451,33 @@ public class AbstractReasoningControllerScript : MonoBehaviour
 
     private void setUsersSelectedAnswerForButton()
     {
-        switch (currentlySelectedQuestionInSet)
-        {
-            case 1:
-                if (questionList[currentlySelectedSet].q1.usersAnswer.Equals("SetA"))
-                {
-                    SetAToggleClicked(true);
-                }
-                else if (questionList[currentlySelectedSet].q1.usersAnswer.Equals("SetB"))
-                {
-                    SetBToggleClicked(true);
-                }
-                else if (questionList[currentlySelectedSet].q1.usersAnswer.Equals("Neither"))
-                {
-                    NeitherToggleClicked(true);
-                }
-                break;
-            case 2:
-                if (questionList[currentlySelectedSet].q2.usersAnswer.Equals("SetA"))
-                {
-                    SetAToggleClicked(true);
-                }
-                else if (questionList[currentlySelectedSet].q2.usersAnswer.Equals("SetB"))
-                {
-                    SetBToggleClicked(true);
-                }
-                else if (questionList[currentlySelectedSet].q2.usersAnswer.Equals("Neither"))
-                {
-                    NeitherToggleClicked(true);
-                }
-                break;
-            case 3:
-                if (questionList[currentlySelectedSet].q3.usersAnswer.Equals("SetA"))
-                {
-                    SetAToggleClicked(true);
-                }
-                else if (questionList[currentlySelectedSet].q3.usersAnswer.Equals("SetB"))
-                {
-                    SetBToggleClicked(true);
-                }
-                else if (questionList[currentlySelectedSet].q3.usersAnswer.Equals("Neither"))
-                {
-                    NeitherToggleClicked(true);
-                }
-                break;
-            case 4:
-                if (questionList[currentlySelectedSet].q4.usersAnswer.Equals("SetA"))
-                {
-                    SetAToggleClicked(true);
-                }
-                else if (questionList[currentlySelectedSet].q4.usersAnswer.Equals("SetB"))
-                {
-                    SetBToggleClicked(true);
-                }
-                else if (questionList[currentlySelectedSet].q4.usersAnswer.Equals("Neither"))
-                {
-                    NeitherToggleClicked(true);
-                }
-                break;
-            case 5:
-                if (questionList[currentlySelectedSet].q5.usersAnswer.Equals("SetA"))
-                {
-                    SetAToggleClicked(true);
-                }
-                else if (questionList[currentlySelectedSet].q5.usersAnswer.Equals("SetB"))
-                {
-                    SetBToggleClicked(true);
-                }
-                else if (questionList[currentlySelectedSet].q5.usersAnswer.Equals("Neither"))
-                {
-                    NeitherToggleClicked(true);
-                }
-                break;
-        }
-
+        var question = questionList[currentlySelectedSet].questions[currentlySelectedQuestionInSet - 1];
+        Debug.Log("Question number: " + question.underlyingQn + " User answer: " + question.usersAnswer);
+        SetToggleBasedOnAnswer(question.usersAnswer);
     }
 
-    private void highlightWrongAnswer(int questionNumber)
+    private void SetToggleBasedOnAnswer(string answer)
     {
-        if (questionList[currentlySelectedSet].answerClicked)
+        if (answer.Equals("SetA"))
         {
-            switch (currentlySelectedQuestionInSet)
-            {
-                case 1:
-                    if (questionList[currentlySelectedSet].q1.usersAnswer.Equals("SetA") && !questionList[currentlySelectedSet].q1.questionAnswer.Equals("SetA"))
-                    {
-                        setToggleColourIncorrect(SetAToggle);
-                    }
-                    else if (questionList[currentlySelectedSet].q1.usersAnswer.Equals("SetB") && !questionList[currentlySelectedSet].q1.questionAnswer.Equals("SetB"))
-                    {
-                        setToggleColourIncorrect(SetBToggle);
-                    }
-                    else if (questionList[currentlySelectedSet].q1.usersAnswer.Equals("Neither") && !questionList[currentlySelectedSet].q1.questionAnswer.Equals("Neither"))
-                    {
-                        setToggleColourIncorrect(NeitherToggle);
-                    }
-                    break;
-                case 2:
-                    if (questionList[currentlySelectedSet].q2.usersAnswer.Equals("SetA") && !questionList[currentlySelectedSet].q2.questionAnswer.Equals("SetA"))
-                    {
-                        setToggleColourIncorrect(SetAToggle);
-                    }
-                    else if (questionList[currentlySelectedSet].q2.usersAnswer.Equals("SetB") && !questionList[currentlySelectedSet].q2.questionAnswer.Equals("SetB"))
-                    {
-                        setToggleColourIncorrect(SetBToggle);
-                    }
-                    else if (questionList[currentlySelectedSet].q2.usersAnswer.Equals("Neither") && !questionList[currentlySelectedSet].q2.questionAnswer.Equals("Neither"))
-                    {
-                        setToggleColourIncorrect(NeitherToggle);
-                    }
-                    break;
-                case 3:
-                    if (questionList[currentlySelectedSet].q3.usersAnswer.Equals("SetA") && !questionList[currentlySelectedSet].q3.questionAnswer.Equals("SetA"))
-                    {
-                        setToggleColourIncorrect(SetAToggle);
-                    }
-                    else if (questionList[currentlySelectedSet].q3.usersAnswer.Equals("SetB") && !questionList[currentlySelectedSet].q3.questionAnswer.Equals("SetB"))
-                    {
-                        setToggleColourIncorrect(SetBToggle);
-                    }
-                    else if (questionList[currentlySelectedSet].q3.usersAnswer.Equals("Neither") && !questionList[currentlySelectedSet].q3.questionAnswer.Equals("Neither"))
-                    {
-                        setToggleColourIncorrect(NeitherToggle);
-                    }
-                    break;
-                case 4:
-                    if (questionList[currentlySelectedSet].q4.usersAnswer.Equals("SetA") && !questionList[currentlySelectedSet].q4.questionAnswer.Equals("SetA"))
-                    {
-                        setToggleColourIncorrect(SetAToggle);
-                    }
-                    else if (questionList[currentlySelectedSet].q4.usersAnswer.Equals("SetB") && !questionList[currentlySelectedSet].q4.questionAnswer.Equals("SetB"))
-                    {
-                        setToggleColourIncorrect(SetBToggle);
-                    }
-                    else if (questionList[currentlySelectedSet].q4.usersAnswer.Equals("Neither") && !questionList[currentlySelectedSet].q4.questionAnswer.Equals("Neither"))
-                    {
-                        setToggleColourIncorrect(NeitherToggle);
-                    }
-                    break;
-                case 5:
-                    if (questionList[currentlySelectedSet].q5.usersAnswer.Equals("SetA") && !questionList[currentlySelectedSet].q5.questionAnswer.Equals("SetA"))
-                    {
-                        setToggleColourIncorrect(SetAToggle);
-                    }
-                    else if (questionList[currentlySelectedSet].q5.usersAnswer.Equals("SetB") && !questionList[currentlySelectedSet].q5.questionAnswer.Equals("SetB"))
-                    {
-                        setToggleColourIncorrect(SetBToggle);
-                    }
-                    else if (questionList[currentlySelectedSet].q5.usersAnswer.Equals("Neither") && !questionList[currentlySelectedSet].q5.questionAnswer.Equals("Neither"))
-                    {
-                        setToggleColourIncorrect(NeitherToggle);
-                    }
-                    break;
-            }
+            SetAToggleClicked(true);
+        }
+        else if (answer.Equals("SetB"))
+        {
+            SetBToggleClicked(true);
+        }
+        else if (answer.Equals("Neither"))
+        {
+            NeitherToggleClicked(true);
         }
     }
 
     private void AnswerButtonClicked()
     {
+        SaveUserAnswerToCloud();
         AnswerPanel.SetActive(true);
-        AnswerText.text = questionList[currentlySelectedSet].answer;
+        AnswerText.text = questionList[currentlySelectedSet].questionAnswerReasoning;
         questionList[currentlySelectedSet].answerClicked = true;
-
         showAnswerColours();
     }
 
@@ -691,11 +488,113 @@ public class AbstractReasoningControllerScript : MonoBehaviour
         Question1ButtonClicked();
         showAnswerOnToggles();
     }
+
+    private void highlightWrongAnswer(int questionNumber)
+    {
+        if (questionList[currentlySelectedSet].answerClicked)
+        {
+            var question = questionList[currentlySelectedSet].questions[currentlySelectedQuestionInSet - 1];
+            HighlightIncorrectAnswer(question.usersAnswer, question.questionAnswer);
+        }
+    }
+
+    private void HighlightIncorrectAnswer(string userAnswer, string correctAnswer)
+    {
+        if (userAnswer.Equals("SetA") && !userAnswer.Equals(correctAnswer))
+        {
+            setToggleColourIncorrect(SetAToggle);
+        }
+        else if (userAnswer.Equals("SetB") && !userAnswer.Equals(correctAnswer))
+        {
+            setToggleColourIncorrect(SetBToggle);
+        }
+        else if (userAnswer.Equals("Neither") && !userAnswer.Equals(correctAnswer))
+        {
+            setToggleColourIncorrect(NeitherToggle);
+        }
+    }
+
+    private async Task SaveUserAnswerToCloud()
+    {
+        foreach (var question in questionList[currentlySelectedSet].questions)
+        {
+            UserSavedAnswerModel savedAnswer = new UserSavedAnswerModel.Builder()
+                .SetQuestionNumber(question.underlyingQn)
+                .SetUsersAnswer(question.usersAnswer)
+                .Build();
+
+            userSaveDataModels.Add(savedAnswer);
+
+            Debug.Log("Saving usam Question number: " + question.underlyingQn + " User answer: " + question.usersAnswer);
+        }
+
+        // Load existing data
+        Dictionary<string, string> cloudData = null;
+        try
+        {
+            cloudData = await CloudSaveService.Instance.Data.LoadAsync(new HashSet<string> { "AbstractReasoningAnsweredQuestions" });
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Failed to load data from cloud: " + e.Message);
+            cloudData = new Dictionary<string, string>();
+        }
+
+        List<UserSavedAnswerModel> existingUserData = new List<UserSavedAnswerModel>();
+
+        if (cloudData != null && cloudData.TryGetValue("AbstractReasoningAnsweredQuestions", out string jsonData) && !string.IsNullOrEmpty(jsonData))
+        {
+            try
+            {
+                UserSaveDataModelListWrapper existingDataWrapper = JsonUtility.FromJson<UserSaveDataModelListWrapper>(jsonData);
+                if (existingDataWrapper != null && existingDataWrapper.userSavedAnswers != null)
+                {
+                    existingUserData = existingDataWrapper.userSavedAnswers;
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("Failed to parse JSON data: " + e.Message);
+            }
+        }
+
+        // Update the list with new data, overwriting existing answers
+        foreach (var newUserAnswer in userSaveDataModels)
+        {
+            var existingAnswer = existingUserData.Find(answer => answer.questionNumber == newUserAnswer.questionNumber);
+            if (existingAnswer != null)
+            {
+                // Overwrite the existing answer
+                existingAnswer.usersAnswer = newUserAnswer.usersAnswer;
+            }
+            else
+            {
+                // Add new answer
+                existingUserData.Add(newUserAnswer);
+            }
+            Debug.Log("Saving user answer: " + newUserAnswer.questionNumber + " " + newUserAnswer.usersAnswer);
+        }
+
+        UserSaveDataModelListWrapper userSaveDataModelListWrapper = new UserSaveDataModelListWrapper { userSavedAnswers = existingUserData };
+
+        // Serialize the updated list
+        string updatedJsonData = JsonUtility.ToJson(userSaveDataModelListWrapper);
+        Dictionary<string, object> data = new Dictionary<string, object> { { "AbstractReasoningAnsweredQuestions", updatedJsonData } };
+
+        Debug.Log("Saving user data to cloud: " + updatedJsonData);
+
+        try
+        {
+            await CloudSaveService.Instance.Data.Player.SaveAsync(data);
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Failed to save user data to cloud: " + e.Message);
+        }
+    }
+
     #endregion
 }
-
-
-
 
 
 #region JSON MODELS
@@ -705,7 +604,7 @@ public class ARSet
 {
     public string resource;
     public List<ARQuestions> questions;
-    public string answer;
+    public string questionAnswerReasoning;
 }
 
 [System.Serializable]
@@ -718,8 +617,9 @@ public class ARAllQuestions
 public class ARQuestions
 {
     public int questionNumber;
+    public int underlyingQN;
     public string imageURI;
-    public string answer;
+    public string questionAnswer;
 }
 
 #endregion
