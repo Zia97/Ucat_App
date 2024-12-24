@@ -4,50 +4,39 @@ namespace Assets.Scripts
 {
     class DecisionMakingQuestion
     {
-        public String resource;
-        public bool hasImage;
-        public bool answerClicked = false;
-        public int questionCount = 0;
-        public string imageUri;
+        public string Resource { get; private set; }
+        public bool HasImage { get; private set; }
+        public bool AnswerClicked { get; private set; } = false;
+        public string ImageURI { get; private set; }
+        public int QuestionNumber { get; private set; }
+        public string QuestionText { get; private set; }
+        public string QuestionAnswer { get; private set; }
+        public string AnswerReasoning { get; private set; }
+        public string Option1 { get; private set; }
+        public string Option2 { get; private set; }
+        public string Option3 { get; private set; }
+        public string Option4 { get; private set; }
 
-        //QuestionNumber:URI:questionAnswer:usersAnswer
-        public DecisionMakingTupleHolder q1;
+        // QuestionNumber:URI:questionAnswer:usersAnswer
+        public string UserAnswer { get; set; } = "";
 
-        public String userQuestion1Answer = "";
+        public bool QuestionAnswered { get; set; } = false;
 
-        public bool question1Answered = false;
+        public bool Flagged { get; set; } = false;
 
-        public bool flagged = false;
-
-        public DecisionMakingQuestion(String _resource, bool _hasImage, string _imageUri)
+        public DecisionMakingQuestion(string resource, bool hasImage, string imageUri, int questionNumber, string questionText, string answer, string answerReasoning, string option1, string option2, string option3, string option4)
         {
-            resource = _resource;
-            hasImage = _hasImage;
-            imageUri = _imageUri;
+            Resource = resource;
+            HasImage = hasImage;
+            ImageURI = imageUri;
+            QuestionNumber = questionNumber;
+            QuestionText = questionText;
+            QuestionAnswer = answer;
+            AnswerReasoning = answerReasoning;
+            Option1 = option1;
+            Option2 = option2;
+            Option3 = option3;
+            Option4 = option4;
         }
-
-        public DecisionMakingTupleHolder LoadQuestion(string question)
-        {
-            switch (question)
-            {
-                case "q1":
-                    return q1;
-            
-            }
-            return q1;
-        }
-
-        public void AddQuestion(int number, Tuple<int, String, String,String> question, Tuple<String,String,String,String> labels)
-        {
-            switch (number)
-            {
-                case 1:
-                    q1 = new DecisionMakingTupleHolder(question.Item1, question.Item2, question.Item3, question.Item4,"", labels.Item1,labels.Item2,labels.Item3,labels.Item4);
-                    questionCount = 1;
-                    break;
-            }
-
-        }
-
     }
 }
