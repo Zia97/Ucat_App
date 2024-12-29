@@ -6,7 +6,7 @@ namespace Assets.Scripts
     {
         public string Resource { get; private set; }
         public bool HasImage { get; private set; }
-        public bool AnswerClicked { get; private set; } = false;
+        public bool AnswerClicked { get; set; } = false;
         public string ImageURI { get; private set; }
         public int QuestionNumber { get; private set; }
         public string QuestionText { get; private set; }

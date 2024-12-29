@@ -17,7 +17,7 @@
       "resource":"50 employees were asked about how they travelled to work each day. \n8 took the train only \n14 took the bus and the train",
       "hasImage":false,
       "imageURI":"",
-	  "questionNumber": 1,
+	  "questionNumber": 2,
       "questionText": "If the number of employees that only walked or only took the bus was the same, how many employees only walked?",
       "answerReasoning":"Set A always has three circles with tangents. Other shapes are irrelevant.\nSet B always has two circles intersected by lines. Other shapes are irrelevant.",
       "questionAnswer": "14",
