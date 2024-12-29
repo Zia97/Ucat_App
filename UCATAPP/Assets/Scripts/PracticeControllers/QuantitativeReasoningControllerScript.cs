@@ -1,6 +1,9 @@
 ﻿using Assets.Scripts;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Unity.Services.CloudSave;
+using Unity.Services.Core;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -32,6 +35,9 @@ public class QuantitativeReasoningControllerScript : MonoBehaviour
     private List<QRQuestion> allQuestions;
     private List<QuantitativeReasoningQuestion> QuantitativeReasoningQuestionList = new List<QuantitativeReasoningQuestion>();
     private QuantitativeReasoningQuestion[] questionList;
+    private List<UserSavedAnswerModel> userSaveDataModels = new List<UserSavedAnswerModel>();
+    private String QuantitativeReasoningAnsweredQuestions = "QuantitativeReasoningAnsweredQuestions";
+
 
     private static ColorBlock correctColours;
     private static ColorBlock incorrectColours;
@@ -46,7 +52,7 @@ public class QuantitativeReasoningControllerScript : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    private async Task Start()
     {
         GlobalVariables.selectedExercise = "Practice";
 
@@ -58,7 +64,7 @@ public class QuantitativeReasoningControllerScript : MonoBehaviour
 
         SetQuestionList();
 
-        InstantiateQuestions();
+        await InstantiateQuestions();
 
         initiateToggleColours();
 
@@ -90,14 +96,67 @@ public class QuantitativeReasoningControllerScript : MonoBehaviour
 
     }
 
-    void InstantiateQuestions()
+    //Creates actual decision making question objects from the list loaded from the json
+    private async Task InstantiateQuestions()
     {
-        foreach (QRQuestion s in allQuestions)
+        Dictionary<int, UserSavedAnswerModel> userAnswers = new Dictionary<int, UserSavedAnswerModel>();
+
+        if (!UnityServices.State.Equals(ServicesInitializationState.Initialized))
         {
-            QuantitativeReasoningQuestion question = new QuantitativeReasoningQuestion(s.resource, s.hasImage, s.imageURI, s.questionNumber, s.questionText, s.answerReasoning, s.answer, s.option1, s.option2, s.option3, s.option4, s.option5);
-            QuantitativeReasoningQuestionList.Add(question);
+            await UnityServices.InitializeAsync();
+        }
+
+        try
+        {
+            var cloudData = await CloudSaveService.Instance.Data.LoadAsync(new HashSet<string> { QuantitativeReasoningAnsweredQuestions });
+
+            if (cloudData != null && cloudData.TryGetValue(QuantitativeReasoningAnsweredQuestions, out string jsonData) && !string.IsNullOrEmpty(jsonData))
+            {
+                UserSaveDataModelListWrapper existingDataWrapper = JsonUtility.FromJson<UserSaveDataModelListWrapper>(jsonData);
+                if (existingDataWrapper != null && existingDataWrapper.userSavedAnswers != null)
+                {
+                    foreach (var savedAnswer in existingDataWrapper.userSavedAnswers)
+                    {
+                        userAnswers.Add(savedAnswer.questionNumber, savedAnswer);
+                    }
+                }
+            }
+            else
+            {
+                Debug.Log("No data found for key 'QuantitativeReasoningAnsweredQuestions'.");
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Failed to load data from cloud: " + e.Message);
+        }
+
+        if (allQuestions != null)
+        {
+            foreach (QRQuestion s in allQuestions)
+            {
+                if (s != null)
+                {
+                    // Add check to load user data and see if the question has already been answered 
+                    QuantitativeReasoningQuestion question = new QuantitativeReasoningQuestion(s.resource, s.hasImage, s.imageURI, s.questionNumber, s.questionText, s.answerReasoning, s.answer, s.option1, s.option2, s.option3, s.option4, s.option5);
+
+                    if (userAnswers.ContainsKey(s.questionNumber))
+                    {
+                        UserSavedAnswerModel userData = userAnswers[s.questionNumber];
+                        if (userData != null)
+                        {
+                            question.userAnswer = userData.usersAnswer;
+                            question.answerClicked = true;
+                        }
+                    }
+
+                    QuantitativeReasoningQuestionList.Add(question);
+                }
+            }
         }
     }
+
+
 
     void loadQuestion(int questionNumber)
     {
@@ -118,6 +177,12 @@ public class QuantitativeReasoningControllerScript : MonoBehaviour
         setUsersSelectedAnswerForButton();
 
         loadQuestionLabels();
+
+        if (questionList[currentlySelectedQuestion].answerClicked)
+        {
+            showAnswerOnToggles();
+            highlightWrongAnswer(currentlySelectedQuestion);
+        }
     }
 
 
@@ -265,6 +330,78 @@ public class QuantitativeReasoningControllerScript : MonoBehaviour
             {
                 setToggleColourCorrect(Answer4Toggle);
             }
+        }
+    }
+    
+    private async Task SaveUserAnswerToCloud()
+    {
+        UserSavedAnswerModel savedAnswer = new UserSavedAnswerModel.Builder()
+            //need to add 1 to question number as questions dont start from 0 
+            .SetQuestionNumber(currentlySelectedQuestion + 1)
+            .SetUsersAnswer(questionList[currentlySelectedQuestion].userAnswer)
+            .Build();
+
+        userSaveDataModels.Add(savedAnswer);
+
+        // Load existing data
+        Dictionary<string, string> cloudData = null;
+        try
+        {
+            cloudData = await CloudSaveService.Instance.Data.LoadAsync(new HashSet<string> { QuantitativeReasoningAnsweredQuestions });
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Failed to load data from cloud: " + e.Message);
+            cloudData = new Dictionary<string, string>();
+        }
+
+        List<UserSavedAnswerModel> existingUserData = new List<UserSavedAnswerModel>();
+
+        if (cloudData != null && cloudData.TryGetValue(QuantitativeReasoningAnsweredQuestions, out string jsonData) && !string.IsNullOrEmpty(jsonData))
+        {
+            try
+            {
+                UserSaveDataModelListWrapper existingDataWrapper = JsonUtility.FromJson<UserSaveDataModelListWrapper>(jsonData);
+                if (existingDataWrapper != null && existingDataWrapper.userSavedAnswers != null)
+                {
+                    existingUserData = existingDataWrapper.userSavedAnswers;
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("Failed to parse JSON data: " + e.Message);
+            }
+        }
+
+        // Update the list with new data, overwriting existing answers
+        foreach (var newUserAnswer in userSaveDataModels)
+        {
+            var existingAnswer = existingUserData.Find(answer => answer.questionNumber == newUserAnswer.questionNumber);
+            if (existingAnswer != null)
+            {
+                // Overwrite the existing answer
+                existingAnswer.usersAnswer = newUserAnswer.usersAnswer;
+            }
+            else
+            {
+                // Add new answer
+                existingUserData.Add(newUserAnswer);
+            }
+        }
+
+        UserSaveDataModelListWrapper userSaveDataModelListWrapper = new UserSaveDataModelListWrapper { userSavedAnswers = existingUserData };
+
+        // Serialize the updated list
+        string updatedJsonData = JsonUtility.ToJson(userSaveDataModelListWrapper);
+        Dictionary<string, object> data = new Dictionary<string, object> { { QuantitativeReasoningAnsweredQuestions , updatedJsonData } };
+
+        try
+        {
+            await CloudSaveService.Instance.Data.Player.SaveAsync(data);
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Failed to save user data to cloud: " + e.Message);
         }
     }
 
@@ -417,6 +554,7 @@ public class QuantitativeReasoningControllerScript : MonoBehaviour
 
     private void AnswerButtonClicked()
     {
+        SaveUserAnswerToCloud();
         questionList[currentlySelectedQuestion].answerClicked = true;
         answerText.text = questionList[currentlySelectedQuestion].answerReasoning;
         answerPanel.SetActive(true);

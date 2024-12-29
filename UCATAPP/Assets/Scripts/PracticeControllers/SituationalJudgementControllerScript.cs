@@ -1,6 +1,9 @@
 ﻿using Assets.Scripts;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Unity.Services.CloudSave;
+using Unity.Services.Core;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +16,8 @@ public class SituationalJudgementControllerScript : MonoBehaviour
 
     public Text QuestionText;
     public Text preText;
+
+    private String SituationalJudgementAnsweredQuestions = "SituationalJudgementAnsweredQuestions";
 
     public Text answerText;
     public GameObject answerPanel;
@@ -31,6 +36,8 @@ public class SituationalJudgementControllerScript : MonoBehaviour
     private List<SJQuestions> allQuestions;
     private List<SituationalJudgementQuestion> situationalJudgementQuestionList = new List<SituationalJudgementQuestion>();
     private SituationalJudgementQuestion[] questionList;
+    private List<UserSavedAnswerModel> userSaveDataModels = new List<UserSavedAnswerModel>();
+
 
     private int currentlySelectedQuestion;
 
@@ -40,7 +47,7 @@ public class SituationalJudgementControllerScript : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    private async Task Start()
     {
         GlobalVariables.selectedExercise = "Practice";
 
@@ -52,11 +59,11 @@ public class SituationalJudgementControllerScript : MonoBehaviour
 
         SetQuestionList();
 
-        InstantiateQuestions();
+        await InstantiateQuestions();
 
         initiateToggleColours();
 
-        loadInitialQuestion();
+        loadQuestion(0);
 
         updateQuestionCounter();
     }
@@ -79,27 +86,136 @@ public class SituationalJudgementControllerScript : MonoBehaviour
 
     }
 
-    void InstantiateQuestions()
+    //Creates actual decision making question objects from the list loaded from the json
+    private async Task InstantiateQuestions()
     {
-        foreach (SJQuestions s in allQuestions)
+        Dictionary<int, UserSavedAnswerModel> userAnswers = new Dictionary<int, UserSavedAnswerModel>();
+
+        if (!UnityServices.State.Equals(ServicesInitializationState.Initialized))
         {
-            SituationalJudgementQuestion sjQuestion = new SituationalJudgementQuestion(s.resource, s.questionNumber, s.questionText, s.answerReasoning, s.answer, s.labelSet);
-            situationalJudgementQuestionList.Add(sjQuestion);
+            await UnityServices.InitializeAsync();
+        }
+
+        try
+        {
+            var cloudData = await CloudSaveService.Instance.Data.LoadAsync(new HashSet<string> { SituationalJudgementAnsweredQuestions });
+
+            if (cloudData != null && cloudData.TryGetValue(SituationalJudgementAnsweredQuestions, out string jsonData) && !string.IsNullOrEmpty(jsonData))
+            {
+                UserSaveDataModelListWrapper existingDataWrapper = JsonUtility.FromJson<UserSaveDataModelListWrapper>(jsonData);
+                if (existingDataWrapper != null && existingDataWrapper.userSavedAnswers != null)
+                {
+                    foreach (var savedAnswer in existingDataWrapper.userSavedAnswers)
+                    {
+                        userAnswers.Add(savedAnswer.questionNumber, savedAnswer);
+                    }
+                }
+            }
+            else
+            {
+                Debug.Log("No data found for key 'SituationalJudgementAnsweredQuestions'.");
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Failed to load data from cloud: " + e.Message);
+        }
+
+        if (allQuestions != null)
+        {
+            foreach (SJQuestions s in allQuestions)
+            {
+                if (s != null)
+                {
+                    // Add check to load user data and see if the question has already been answered 
+                    SituationalJudgementQuestion sjQuestion = new SituationalJudgementQuestion(s.resource, s.questionNumber, s.questionText, s.answerReasoning, s.answer, s.labelSet);
+
+                    if (userAnswers.ContainsKey(s.questionNumber))
+                    {
+                        UserSavedAnswerModel userData = userAnswers[s.questionNumber];
+                        if (userData != null)
+                        {
+                            sjQuestion.usersAnswer = userData.usersAnswer;
+                            sjQuestion.answerClicked = true;
+                        }
+                    }
+
+                    situationalJudgementQuestionList.Add(sjQuestion);
+                }
+            }
         }
     }
 
-    void loadInitialQuestion()
+    private async Task SaveUserAnswerToCloud()
     {
-        currentlySelectedQuestion = 0;
+        UserSavedAnswerModel savedAnswer = new UserSavedAnswerModel.Builder()
+            //need to add 1 to question number as questions dont start from 0 
+            .SetQuestionNumber(currentlySelectedQuestion + 1)
+            .SetUsersAnswer(questionList[currentlySelectedQuestion].usersAnswer)
+            .Build();
 
-        questionList = situationalJudgementQuestionList.ToArray();
+        userSaveDataModels.Add(savedAnswer);
 
-        resetColours();
+        // Load existing data
+        Dictionary<string, string> cloudData = null;
+        try
+        {
+            cloudData = await CloudSaveService.Instance.Data.LoadAsync(new HashSet<string> { SituationalJudgementAnsweredQuestions });
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Failed to load data from cloud: " + e.Message);
+            cloudData = new Dictionary<string, string>();
+        }
 
-        QuestionText.text = questionList[0].resource;
-        preText.text = questionList[0].questionText;
+        List<UserSavedAnswerModel> existingUserData = new List<UserSavedAnswerModel>();
 
-        loadQuestionLabels();
+        if (cloudData != null && cloudData.TryGetValue("SituationalJudgementAnsweredQuestions", out string jsonData) && !string.IsNullOrEmpty(jsonData))
+        {
+            try
+            {
+                UserSaveDataModelListWrapper existingDataWrapper = JsonUtility.FromJson<UserSaveDataModelListWrapper>(jsonData);
+                if (existingDataWrapper != null && existingDataWrapper.userSavedAnswers != null)
+                {
+                    existingUserData = existingDataWrapper.userSavedAnswers;
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("Failed to parse JSON data: " + e.Message);
+            }
+        }
+
+        // Update the list with new data, overwriting existing answers
+        foreach (var newUserAnswer in userSaveDataModels)
+        {
+            var existingAnswer = existingUserData.Find(answer => answer.questionNumber == newUserAnswer.questionNumber);
+            if (existingAnswer != null)
+            {
+                // Overwrite the existing answer
+                existingAnswer.usersAnswer = newUserAnswer.usersAnswer;
+            }
+            else
+            {
+                // Add new answer
+                existingUserData.Add(newUserAnswer);
+            }
+        }
+
+        UserSaveDataModelListWrapper userSaveDataModelListWrapper = new UserSaveDataModelListWrapper { userSavedAnswers = existingUserData };
+
+        // Serialize the updated list
+        string updatedJsonData = JsonUtility.ToJson(userSaveDataModelListWrapper);
+        Dictionary<string, object> data = new Dictionary<string, object> { { "SituationalJudgementAnsweredQuestions", updatedJsonData } };
+
+        try
+        {
+            await CloudSaveService.Instance.Data.Player.SaveAsync(data);
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Failed to save user data to cloud: " + e.Message);
+        }
     }
 
     void loadQuestion(int questionNumber)
@@ -112,6 +228,12 @@ public class SituationalJudgementControllerScript : MonoBehaviour
         preText.text = questionList[questionNumber].questionText;
 
         loadQuestionLabels();
+
+        if (questionList[currentlySelectedQuestion].answerClicked)
+        {
+            showAnswerOnToggles();
+            highlightWrongAnswer(currentlySelectedQuestion);
+        }
     }
 
     void loadQuestionLabels()
@@ -452,6 +574,7 @@ public class SituationalJudgementControllerScript : MonoBehaviour
 
     private void AnswerButtonClicked()
     {
+        SaveUserAnswerToCloud();
         questionList[currentlySelectedQuestion].answerClicked = true;
         highlightWrongAnswer(currentlySelectedQuestion);
         answerText.text = questionList[currentlySelectedQuestion].answerReasoning;
