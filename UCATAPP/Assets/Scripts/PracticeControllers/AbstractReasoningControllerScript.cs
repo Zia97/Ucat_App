@@ -49,6 +49,7 @@ public class AbstractReasoningControllerScript : MonoBehaviour
     private static ColorBlock incorrectColours;
     private List<UserSavedAnswerModel> userSaveDataModels = new List<UserSavedAnswerModel>();
 
+    private SwipeDetector swipeDetector;
 
     // Start is called before the first frame update
     private async Task Start()
@@ -70,6 +71,10 @@ public class AbstractReasoningControllerScript : MonoBehaviour
         loadInitialSet();
 
         updateQuestionCounter();
+
+        swipeDetector = gameObject.AddComponent<SwipeDetector>();
+        swipeDetector.OnSwipeLeft += SwipeLeft;
+        swipeDetector.OnSwipeRight += SwipeRight;
 
     }
 
@@ -594,6 +599,18 @@ public class AbstractReasoningControllerScript : MonoBehaviour
     }
 
     #endregion
+
+    private void SwipeRight()
+    {
+        Debug.Log("Swiped Right!");
+        PreviousButtonClicked();
+    }
+
+    private void SwipeLeft()
+    {
+        Debug.Log("Swiped Left!");
+        NextButtonClicked();
+    }
 }
 
 

@@ -45,6 +45,8 @@ public class DecisionMakingControllerScript : MonoBehaviour
     public GameObject answerPanel;
     public Button answerPanelCloseButton;
 
+    private SwipeDetector swipeDetector;
+
 
 
     // Start is called before the first frame update
@@ -67,6 +69,10 @@ public class DecisionMakingControllerScript : MonoBehaviour
         loadQuestion(0);
 
         updateQuestionCounter();
+
+        swipeDetector = gameObject.AddComponent<SwipeDetector>();
+        swipeDetector.OnSwipeLeft += SwipeLeft;
+        swipeDetector.OnSwipeRight += SwipeRight;
 
     }
 
@@ -544,6 +550,19 @@ public class DecisionMakingControllerScript : MonoBehaviour
         highlightWrongAnswer(currentlySelectedQuestion);
     }
     #endregion
+
+    private void SwipeRight()
+    {
+        Debug.Log("Swiped Right!");
+        PreviousButtonClicked();
+    }
+
+    private void SwipeLeft()
+    {
+        Debug.Log("Swiped Left!");
+        NextButtonClicked();
+    }
+    
 }
 
 

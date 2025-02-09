@@ -48,7 +48,7 @@ public class QuantitativeReasoningControllerScript : MonoBehaviour
 
     private int currentlySelectedQuestion;
 
-
+    private SwipeDetector swipeDetector;
 
 
     // Start is called before the first frame update
@@ -72,6 +72,9 @@ public class QuantitativeReasoningControllerScript : MonoBehaviour
 
         updateQuestionCounter();
 
+        swipeDetector = gameObject.AddComponent<SwipeDetector>();
+        swipeDetector.OnSwipeLeft += SwipeLeft;
+        swipeDetector.OnSwipeRight += SwipeRight;
     }
 
 
@@ -562,6 +565,19 @@ public class QuantitativeReasoningControllerScript : MonoBehaviour
         highlightWrongAnswer(currentlySelectedQuestion);
     }
     #endregion
+
+    private void SwipeRight()
+    {
+        Debug.Log("Swiped Right!");
+        PreviousButtonClicked();
+    }
+
+    private void SwipeLeft()
+    {
+        Debug.Log("Swiped Left!");
+        NextButtonClicked();
+    }
+
 }
 
 

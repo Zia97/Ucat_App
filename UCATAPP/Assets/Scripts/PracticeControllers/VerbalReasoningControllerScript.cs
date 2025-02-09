@@ -44,6 +44,8 @@ public class VerbalReasoningControllerScript : MonoBehaviour
 
     private List<UserSavedAnswerModel> userSaveDataModels = new List<UserSavedAnswerModel>();
 
+    private SwipeDetector swipeDetector;
+
 
     // Start is called before the first frame update
     private async Task Start()
@@ -65,10 +67,17 @@ public class VerbalReasoningControllerScript : MonoBehaviour
         updateQuestionCounter();
 
         initiateToggleColours();
+
+        swipeDetector = gameObject.AddComponent<SwipeDetector>();
+        swipeDetector.OnSwipeLeft += SwipeLeft;
+        swipeDetector.OnSwipeRight += SwipeRight;
     }
 
     // Update is called once per frame
-    void Update() {}
+    void Update() {
+
+    }
+
 
     //Serializes the questions from the json file to objects
     void SetQuestionList()
@@ -537,6 +546,18 @@ public class VerbalReasoningControllerScript : MonoBehaviour
         AnswerPanel.SetActive(false);
     }
     #endregion
+
+    private void SwipeRight()
+    {
+        Debug.Log("Swiped Right!");
+        PreviousButtonClicked();
+    }
+
+    private void SwipeLeft()
+    {
+        Debug.Log("Swiped Left!");
+        NextButtonClicked();
+    }
 }
 
 

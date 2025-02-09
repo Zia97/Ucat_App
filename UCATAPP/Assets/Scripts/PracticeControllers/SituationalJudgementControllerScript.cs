@@ -44,6 +44,7 @@ public class SituationalJudgementControllerScript : MonoBehaviour
     private static ColorBlock correctColours;
     private static ColorBlock incorrectColours;
 
+    private SwipeDetector swipeDetector;
 
 
     // Start is called before the first frame update
@@ -66,6 +67,10 @@ public class SituationalJudgementControllerScript : MonoBehaviour
         loadQuestion(0);
 
         updateQuestionCounter();
+
+        swipeDetector = gameObject.AddComponent<SwipeDetector>();
+        swipeDetector.OnSwipeLeft += SwipeLeft;
+        swipeDetector.OnSwipeRight += SwipeRight;
     }
 
 
@@ -582,6 +587,18 @@ public class SituationalJudgementControllerScript : MonoBehaviour
         showAnswerOnToggles();
     }
     #endregion
+
+    private void SwipeRight()
+    {
+        Debug.Log("Swiped Right!");
+        PreviousButtonClicked();
+    }
+
+    private void SwipeLeft()
+    {
+        Debug.Log("Swiped Left!");
+        NextButtonClicked();
+    }
 }
 
 
