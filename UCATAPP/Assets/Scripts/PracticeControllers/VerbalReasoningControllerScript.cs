@@ -8,6 +8,8 @@ using Unity.Services.CloudSave;
 using Unity.Services.Core;
 using UnityEngine;
 using UnityEngine.UI;
+using TankAndHealerStudioAssets;
+
 
 public class VerbalReasoningControllerScript : MonoBehaviour
 {
@@ -20,6 +22,7 @@ public class VerbalReasoningControllerScript : MonoBehaviour
     public Text preText;
 
     public GameObject AnswerPanel;
+    public GameObject ChatPanel;
     public Text AnswerText;
     public Button AnswerCloseButton;
 
@@ -33,6 +36,7 @@ public class VerbalReasoningControllerScript : MonoBehaviour
 
 
     public Button AnswerButton;
+    public Button ChatButton;
 
     private List<VRQuestions> allQuestions;
     private List<VerbalReasoningQuestion> verbalReasoningQuestionList = new List<VerbalReasoningQuestion>();
@@ -46,15 +50,23 @@ public class VerbalReasoningControllerScript : MonoBehaviour
 
     private SwipeDetector swipeDetector;
 
+    public UltimateChatBox chatBox;
+
 
     // Start is called before the first frame update
     private async Task Start()
     {
+        chatBox.Enable();
+        chatBox.EnableInputField();
+        chatBox.OnInputFieldSubmitted += OnInputFieldSubmitted;
+
+
         GlobalVariables.selectedExercise = "Practice";
 
         HeaderPanelText.text = GlobalVariables.SelectedPracticeQuestion;
 
         AnswerPanel.SetActive(false);
+        ChatPanel.SetActive(false);
 
         addButtonListeners();
 
@@ -76,6 +88,52 @@ public class VerbalReasoningControllerScript : MonoBehaviour
     // Update is called once per frame
     void Update() {
 
+        if (ChatPanel.activeSelf)
+        {
+            chatBox.InputField.interactable = true;
+        }
+        //if (chatBox.isActiveAndEnabled)
+        //{
+        //    print("Chatbox is active and enabled");
+        //}
+
+        //if(chatBox.InputField.IsActive())
+        //{
+        //    print("Input field is active");
+        //}
+        //else
+        //{
+        //    print("Input field is not active");
+        //}
+        //if (ChatPanel.activeSelf)
+        //{
+        //    chatBox.EnableInputField();
+        //}
+        //if (Input.GetKeyDown(KeyCode.Slash))
+        //{
+        //    // Enable the input field of the chat box with a default value of /.
+        //    chatBox.EnableInputField("/");
+        //}
+        //// Else if the Return key has been pressed and the input field is NOT currently enabled...
+        //else if (Input.GetKeyDown(KeyCode.Return) && !chatBox.InputFieldEnabled)
+        //{
+        //    // Enable the input field.
+        //    chatBox.EnableInputField();
+        //}
+    }
+
+    public void OnInputFieldSubmitted(string message)
+    {
+        chatBox.RegisterChat("You", message);
+        //if(chatBox.InputField.IsActive())
+        //{
+        //    print("Input field is active after submit");
+        //}
+        //else
+        //{
+        //    print("Input field is not active after submit");
+        //}
+        //chatBox.EnableInputField();
     }
 
 
@@ -211,6 +269,7 @@ public class VerbalReasoningControllerScript : MonoBehaviour
         NextButton.onClick.AddListener(NextButtonClicked);
 
         AnswerButton.onClick.AddListener(AnswerButtonClicked);
+        ChatButton.onClick.AddListener(ChatButtonClicked);
 
         AnswerCloseButton.onClick.AddListener(AnswerCloseButtonClicked);
 
@@ -508,25 +567,28 @@ public class VerbalReasoningControllerScript : MonoBehaviour
 
     private void highlightWrongAnswer(int questionNumber)
     {
-
         if (questionList[currentlySelectedQuestion].answerClicked)
         {
-            if (questionList[currentlySelectedQuestion].usersAnswer.Equals(questionList[currentlySelectedQuestion].option1Label) && !questionList[currentlySelectedQuestion].questionAnswer.Equals(questionList[currentlySelectedQuestion].usersAnswer))
+            if (!string.IsNullOrWhiteSpace(questionList[currentlySelectedQuestion].usersAnswer))
             {
-                setToggleColourIncorrect(Answer1Toggle);
+                if (questionList[currentlySelectedQuestion].usersAnswer.Equals(questionList[currentlySelectedQuestion].option1Label) && !questionList[currentlySelectedQuestion].questionAnswer.Equals(questionList[currentlySelectedQuestion].usersAnswer))
+                {
+                    setToggleColourIncorrect(Answer1Toggle);
+                }
+                else if (questionList[currentlySelectedQuestion].usersAnswer.Equals(questionList[currentlySelectedQuestion].option2Label) && !questionList[currentlySelectedQuestion].questionAnswer.Equals(questionList[currentlySelectedQuestion].usersAnswer))
+                {
+                    setToggleColourIncorrect(Answer2Toggle);
+                }
+                else if (questionList[currentlySelectedQuestion].usersAnswer.Equals(questionList[currentlySelectedQuestion].option3Label) && !questionList[currentlySelectedQuestion].questionAnswer.Equals(questionList[currentlySelectedQuestion].usersAnswer))
+                {
+                    setToggleColourIncorrect(Answer3Toggle);
+                }
+                else if (questionList[currentlySelectedQuestion].usersAnswer.Equals(questionList[currentlySelectedQuestion].option4Label) && !questionList[currentlySelectedQuestion].questionAnswer.Equals(questionList[currentlySelectedQuestion].usersAnswer))
+                {
+                    setToggleColourIncorrect(Answer4Toggle);
+                }
             }
-            else if (questionList[currentlySelectedQuestion].usersAnswer.Equals(questionList[currentlySelectedQuestion].option2Label) && !questionList[currentlySelectedQuestion].questionAnswer.Equals(questionList[currentlySelectedQuestion].usersAnswer))
-            {
-                setToggleColourIncorrect(Answer2Toggle);
-            }
-            else if (questionList[currentlySelectedQuestion].usersAnswer.Equals(questionList[currentlySelectedQuestion].option3Label) && !questionList[currentlySelectedQuestion].questionAnswer.Equals(questionList[currentlySelectedQuestion].usersAnswer))
-            {
-                setToggleColourIncorrect(Answer3Toggle);
-            }
-            else if (questionList[currentlySelectedQuestion].usersAnswer.Equals(questionList[currentlySelectedQuestion].option4Label) && !questionList[currentlySelectedQuestion].questionAnswer.Equals(questionList[currentlySelectedQuestion].usersAnswer))
-            {
-                setToggleColourIncorrect(Answer4Toggle);
-            }
+     
         }
 
     }
@@ -540,6 +602,16 @@ public class VerbalReasoningControllerScript : MonoBehaviour
         showAnswerOnToggles();
         highlightWrongAnswer(currentlySelectedQuestion);
     }
+
+    private void ChatButtonClicked()
+    {
+        if (ChatPanel != null)
+        {
+            ChatPanel.SetActive(!ChatPanel.activeSelf);
+        }
+
+    }
+
 
     private void AnswerCloseButtonClicked()
     {
