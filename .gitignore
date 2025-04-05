@@ -15,3 +15,10 @@
 *.key
 secrets.json
 .DS_Store
+# Ignore Firebase binaries
+Assets/firebase/Plugins/x86_64/FirebaseCppApp-12_8_0.bundle
+Assets/firebase/Plugins/x86_64/FirebaseCppApp-12_8_0.so
+
+# Ignore large design files
+Assets/icons/simple icon.psd
+

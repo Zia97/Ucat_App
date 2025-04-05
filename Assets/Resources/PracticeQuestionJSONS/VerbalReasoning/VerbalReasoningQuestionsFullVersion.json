@@ -1,0 +1,884 @@
+﻿{
+	"allQuestions": [
+		{
+			"resource": "Both Josh and Matt believe football has helped their health and mental wellbeing, and are among the 12 million people playing grassroots football in England. With over eight million of them being adults, we’ve sought to understand the social and economic value of the adult grassroots game, in which no-one is paid to play and no-one pays to watch. In what is the largest study of this type to date for a National Governing Body in the UK, we canvassed approximately 9000 participants to provide a nationally-representative sample that allows for robust statistical analysis.",
+			"questionNumber": 1,
+			"questionText": "Grassroots football results in no financial gain for any party involved",
+			"answer": "Can't tell",
+			"option1": "True",
+			"option2": "False",
+			"option3": "Can't tell",
+			"option4": ""
+		},
+		{
+			"resource": "Both Josh and Matt believe football has helped their health and mental wellbeing, and are among the 12 million people playing grassroots football in England. With over eight million of them being adults, we’ve sought to understand the social and economic value of the adult grassroots game, in which no-one is paid to play and no-one pays to watch. In what is the largest study of this type to date for a National Governing Body in the UK, we canvassed approximately 9000 participants to provide a nationally-representative sample that allows for robust statistical analysis.",
+			"questionNumber": 2,
+			"questionText": "The most amount of people surveyed for a study performed by a national governing body is 9000",
+			"answer": "True",
+			"option1": "True",
+			"option2": "False",
+			"option3": "Can't tell",
+			"option4": ""
+		},
+		{
+			"resource": "Both Josh and Matt believe football has helped their health and mental wellbeing, and are among the 12 million people playing grassroots football in England. With over eight million of them being adults, we’ve sought to understand the social and economic value of the adult grassroots game, in which no-one is paid to play and no-one pays to watch. In what is the largest study of this type to date for a National Governing Body in the UK, we canvassed approximately 9000 participants to provide a nationally-representative sample that allows for robust statistical analysis.",
+			"questionNumber": 3,
+			"questionText": "Less than two thirds of grassroot footballers are adults",
+			"answer": "False",
+			"option1": "True",
+			"option2": "False",
+			"option3": "Can't tell",
+			"option4": ""
+		},
+		{
+			"resource": "Both Josh and Matt believe football has helped their health and mental wellbeing, and are among the 12 million people playing grassroots football in England. With over eight million of them being adults, we’ve sought to understand the social and economic value of the adult grassroots game, in which no-one is paid to play and no-one pays to watch. In what is the largest study of this type to date for a National Governing Body in the UK, we canvassed approximately 9000 participants to provide a nationally-representative sample that allows for robust statistical analysis.",
+			"questionNumber": 4,
+			"questionText": "There is a social benefit to playing grassroots football",
+			"answer": "Can't tell",
+			"option1": "True",
+			"option2": "False",
+			"option3": "Can't tell",
+			"option4": ""
+		},
+		{
+			"resource": "A new study found that people who drank more than 1 sugar-sweetened drink each day were likely to see levels of fats in their blood change for the worse. While that can raise the risk of a heart attack and stroke, it does not mean that fizzy drinks directly cause heart attacks.\n\nResearchers looked at the diets of 6,370 middle-aged adults in the US. They followed them over a minimum of 4 years and maximum 23 years. People had blood tests every 4 years to measure cholesterol and triglycerides (a type of fat that can block arteries)",
+			"questionNumber": 5,
+			"questionText": "Which statement is best supported by the body of text:",
+			"answer": "Drinking fizzy drinks that have sugar can contribute towards having a heart attack",
+			"option1": "Adults in the US are more likely to have a heart problem",
+			"option2": "Having 1 sugar-sweetened drink each day is not bad for you",
+			"option3": "Drinking fizzy drinks that have sugar can contribute towards having a heart attack",
+			"option4": "Blood tests are the best way to measure the health of your heart"
+		},
+		{
+			"resource": "A new study found that people who drank more than 1 sugar-sweetened drink each day were likely to see levels of fats in their blood change for the worse. While that can raise the risk of a heart attack and stroke, it does not mean that fizzy drinks directly cause heart attacks.\n\nResearchers looked at the diets of 6,370 middle-aged adults in the US. They followed them over a minimum of 4 years and maximum 23 years. People had blood tests every 4 years to measure cholesterol and triglycerides (a type of fat that can block arteries)",
+			"questionNumber": 6,
+			"questionText": "It can be concluded from the body of text that the author:",
+			"answer": "Has no particular bias in this instance",
+			"option1": "Is against you drinking fizzy drinks",
+			"option2": "Has no particular bias in this instance",
+			"option3": "Is a researcher",
+			"option4": "Is based in the US"
+		},
+		{
+			"resource": "A new study found that people who drank more than 1 sugar-sweetened drink each day were likely to see levels of fats in their blood change for the worse. While that can raise the risk of a heart attack and stroke, it does not mean that fizzy drinks directly cause heart attacks.\n\nResearchers looked at the diets of 6,370 middle-aged adults in the US. They followed them over a minimum of 4 years and maximum 23 years. People had blood tests every 4 years to measure cholesterol and triglycerides (a type of fat that can block arteries)",
+			"questionNumber": 7,
+			"questionText": "Which statement is least likely to be true?",
+			"answer": "The researchers followed participants for an average of 13.5 years",
+			"option1": "Drinking multiple fizzy drinks a day can lead to heart problems",
+			"option2": "The researchers followed participants for an average of 13.5 years",
+			"option3": "Having more than one sugar sweetened drink impacted levels of fat in the heart",
+			"option4": "There have been previous studies on this topic"
+		},
+		{
+			"resource": "A new study found that people who drank more than 1 sugar-sweetened drink each day were likely to see levels of fats in their blood change for the worse. While that can raise the risk of a heart attack and stroke, it does not mean that fizzy drinks directly cause heart attacks.\n\nResearchers looked at the diets of 6,370 middle-aged adults in the US. They followed them over a minimum of 4 years and maximum 23 years. People had blood tests every 4 years to measure cholesterol and triglycerides (a type of fat that can block arteries)",
+			"questionNumber": 8,
+			"questionText": "'For the worse' as mentioned in the context of the text is most likely to mean:",
+			"answer": "Increase in the levels of fat in the blood",
+			"option1": "Worse types of fat in the blood",
+			"option2": "Higher peaks and troughs of levels of fat",
+			"option3": "Decrease of levels of fat in the blood",
+			"option4": "Increase in the levels of fat in the blood"
+		},
+		{
+			"resource": "The internet traces its origins to the ARPAnet, created by the US Defence Department’s Advanced Research Projects Agency in the 1960s. Many other networks were developed - some by commercial companies, some in different countries - but they couldn’t easily talk to one another.\n\nVint Cerf and Bob Kahn developed TCP/IP, ’A Protocol for Packet Network Interconnection’ (in 1974), to connect different networks. The internet was thus a ’network of networks’, although the Internet Protocol (IP) came to dominate networking.\n\nAt the end of 1969, there were only four computers on ARPAnet, and they were all at US universities. This grew to 5,000 internet hosts in 1986, after which the number of users grew rapidly into the millions and then hundreds of millions",
+			"questionNumber": 9,
+			"questionText": "One of the problems the internet had in its early years was",
+			"answer": "It wasn’t easy for it to talk to other networks",
+			"option1": "It was created by the US Defence Department",
+			"option2": "It wasn’t easy for it to talk to other networks",
+			"option3": "It wasn’t created for commercial purposes",
+			"option4": "There were only four computers that supported it"
+		},
+		{
+			"resource": "The internet traces its origins to the ARPAnet, created by the US Defence Department’s Advanced Research Projects Agency in the 1960s. Many other networks were developed - some by commercial companies, some in different countries - but they couldn’t easily talk to one another.\n\nVint Cerf and Bob Kahn developed TCP/IP, ’A Protocol for Packet Network Interconnection’ (in 1974), to connect different networks. The internet was thus a ’network of networks’, although the Internet Protocol (IP) came to dominate networking.\n\nAt the end of 1969, there were only four computers on ARPAnet, and they were all at US universities. This grew to 5,000 internet hosts in 1986, after which the number of users grew rapidly into the millions and then hundreds of millions",
+			"questionNumber": 10,
+			"questionText": "From the text, one can infer that: ",
+			"answer": "The Development of TCP/IP helped to spread the use of the internet",
+			"option1": "Commercial companies developed different networks using ARPAnet as a model",
+			"option2": "Vint Cerf and Bob Kahn worked for the US Defence Department",
+			"option3": "The Development of TCP/IP helped to spread the use of the internet",
+			"option4": "The internet was neither useful nor popular prior to 1986"
+		},
+		{
+			"resource": "The internet traces its origins to the ARPAnet, created by the US Defence Department’s Advanced Research Projects Agency in the 1960s. Many other networks were developed - some by commercial companies, some in different countries - but they couldn’t easily talk to one another.\n\nVint Cerf and Bob Kahn developed TCP/IP, ’A Protocol for Packet Network Interconnection’ (in 1974), to connect different networks. The internet was thus a ’network of networks’, although the Internet Protocol (IP) came to dominate networking.\n\nAt the end of 1969, there were only four computers on ARPAnet, and they were all at US universities. This grew to 5,000 internet hosts in 1986, after which the number of users grew rapidly into the millions and then hundreds of millions",
+			"questionNumber": 11,
+			"questionText": "The passage claims that the internet we use today:",
+			"answer": "Comes from America",
+			"option1": "Comes from America",
+			"option2": "Could’ve come from another country ",
+			"option3": "Was only capable of being used in America during the 1960’s",
+			"option4": "Had its origins in commercial development"
+		},
+		{
+			"resource": "The internet traces its origins to the ARPAnet, created by the US Defence Department’s Advanced Research Projects Agency in the 1960s. Many other networks were developed - some by commercial companies, some in different countries - but they couldn’t easily talk to one another.\n\nVint Cerf and Bob Kahn developed TCP/IP, ’A Protocol for Packet Network Interconnection’ (in 1974), to connect different networks. The internet was thus a ’network of networks’, although the Internet Protocol (IP) came to dominate networking.\n\nAt the end of 1969, there were only four computers on ARPAnet, and they were all at US universities. This grew to 5,000 internet hosts in 1986, after which the number of users grew rapidly into the millions and then hundreds of millions",
+			"questionNumber": 12,
+			"questionText": "Which of the following statements is true:",
+			"answer": "The first rendition of the internet was developed and used in the 1960’s",
+			"option1": "The first rendition of the internet was developed and used in the 1960’s",
+			"option2": "The 1970’s was when the internet became usable",
+			"option3": "Between the 1960’s and the 1980’s was the time period which most people started using the internet",
+			"option4": "Only an American could use the internet up until the creation of the TCP/IP"
+		},
+		{
+			"resource": "By far the most popular explanation of lift is Bernoulli’s theorem, a principle identified by Swiss mathematician Daniel Bernoulli in his 1738 treatise, Hydrodynamica. Bernoulli came from a family of mathematicians. His father, Johann, made contributions to the calculus, and his Uncle Jakob coined the term “integral.” Many of Daniel Bernoulli’s contributions had to do with fluid flow: Air is a fluid, and the theorem associated with his name is commonly expressed in terms of fluid dynamics. Stated simply, Bernoulli’s law says that the pressure of a fluid decreases as its velocity increases, and vice versa. \n\nBernoulli’s theorem attempts to explain lift as a consequence of the curved upper surface of an airfoil, the technical name for an airplane wing. Because of this curvature, the idea goes, air traveling across the top of the wing moves faster than the air moving along the wing’s bottom surface, which is flat. Bernoulli’s theorem says that the increased speed atop the wing is associated with a region of lower pressure there, which is lift",
+			"questionNumber": 13,
+			"questionText": "The Bernoulli family: ",
+			"answer": "Had made contributions to academia in different fields",
+			"option1": "Had made contributions to theories of ‘lift’ prior to Daniel",
+			"option2": "Jointly contributed towards the treatise, Hydrodynamica",
+			"option3": "Had made no academic contributions prior to Daniel",
+			"option4": "Had made contributions to academia in different fields"
+		},
+		{
+			"resource": "By far the most popular explanation of lift is Bernoulli’s theorem, a principle identified by Swiss mathematician Daniel Bernoulli in his 1738 treatise, Hydrodynamica. Bernoulli came from a family of mathematicians. His father, Johann, made contributions to the calculus, and his Uncle Jakob coined the term “integral.” Many of Daniel Bernoulli’s contributions had to do with fluid flow: Air is a fluid, and the theorem associated with his name is commonly expressed in terms of fluid dynamics. Stated simply, Bernoulli’s law says that the pressure of a fluid decreases as its velocity increases, and vice versa. \n\nBernoulli’s theorem attempts to explain lift as a consequence of the curved upper surface of an airfoil, the technical name for an airplane wing. Because of this curvature, the idea goes, air traveling across the top of the wing moves faster than the air moving along the wing’s bottom surface, which is flat. Bernoulli’s theorem says that the increased speed atop the wing is associated with a region of lower pressure there, which is lift",
+			"questionNumber": 14,
+			"questionText": "Bernoulli’s law describes:",
+			"answer": "There’s an inverse relationship between the pressure of a fluid and it’s velocity",
+			"option1": "An increase in pressure of a fluid results in an equal increase in the velocity",
+			"option2": "Decreasing the velocity of a fluid does not necessarily result in a fall of it’s pressure",
+			"option3": "There’s an inverse relationship between the pressure of a fluid and it’s velocity",
+			"option4": "If a fluid moves faster, it will cause objects to lift"
+		},
+		{
+			"resource": "By far the most popular explanation of lift is Bernoulli’s theorem, a principle identified by Swiss mathematician Daniel Bernoulli in his 1738 treatise, Hydrodynamica. Bernoulli came from a family of mathematicians. His father, Johann, made contributions to the calculus, and his Uncle Jakob coined the term “integral.” Many of Daniel Bernoulli’s contributions had to do with fluid flow: Air is a fluid, and the theorem associated with his name is commonly expressed in terms of fluid dynamics. Stated simply, Bernoulli’s law says that the pressure of a fluid decreases as its velocity increases, and vice versa. \n\nBernoulli’s theorem attempts to explain lift as a consequence of the curved upper surface of an airfoil, the technical name for an airplane wing. Because of this curvature, the idea goes, air traveling across the top of the wing moves faster than the air moving along the wing’s bottom surface, which is flat. Bernoulli’s theorem says that the increased speed atop the wing is associated with a region of lower pressure there, which is lift",
+			"questionNumber": 15,
+			"questionText": "Which of the following statements is true according to the text:",
+			"answer": "The higher speed on top of an aeroplane wing is owed to the decreased amount of pressure",
+			"option1": "In order for an object to lift, there must be a curved surface involved",
+			"option2": "Air travelling across the top of the wing must move faster than the air below the wing, in order for lift",
+			"option3": "The higher speed on top of an aeroplane wing is owed to the decreased amount of pressure",
+			"option4": "All of Daniel Bernoulli’s academic contributions have been to do with fluid flow"
+		},
+		{
+			"resource": "By far the most popular explanation of lift is Bernoulli’s theorem, a principle identified by Swiss mathematician Daniel Bernoulli in his 1738 treatise, Hydrodynamica. Bernoulli came from a family of mathematicians. His father, Johann, made contributions to the calculus, and his Uncle Jakob coined the term “integral.” Many of Daniel Bernoulli’s contributions had to do with fluid flow: Air is a fluid, and the theorem associated with his name is commonly expressed in terms of fluid dynamics. Stated simply, Bernoulli’s law says that the pressure of a fluid decreases as its velocity increases, and vice versa. \n\nBernoulli’s theorem attempts to explain lift as a consequence of the curved upper surface of an airfoil, the technical name for an airplane wing. Because of this curvature, the idea goes, air traveling across the top of the wing moves faster than the air moving along the wing’s bottom surface, which is flat. Bernoulli’s theorem says that the increased speed atop the wing is associated with a region of lower pressure there, which is lift",
+			"questionNumber": 16,
+			"questionText": "What causes aeroplanes to take off?",
+			"answer": "Air travelling across the top of the wing, being quicker than the air moving along the wing’s bottom surface",
+			"option1": "Air travelling across the top of the wing, being quicker than the air moving along the wing’s bottom surface",
+			"option2": "The curvature of the airfoil",
+			"option3": "The speed of the air pushing against the floor",
+			"option4": "The engines"
+		},
+		{
+			"resource": "When we lose rainforests, we lose an important natural resource. Tropical rainforests are centers of biodiversity, holding an estimated half of the world’s plants and animals, many of which have yet to be catalogued (some scientists estimate that it’s two-thirds of the world's plants). Rainforests produce, store, and filter water, protecting against soil erosion, floods, and drought.\n\nMany of the plants found in rainforests are being used to make medicine, including anti-cancer drugs, along with beauty products and foods. One drug under development for treating HIV, Calanolide A, is derived from a tree discovered on Malaysian Borneo. And Brazil nut trees refuse to grow anywhere but in undisturbed sections of the Amazon rainforest. There, the trees are pollinated by bees that also visit orchids, and their seeds are spread by agoutis, small tree mammals. Rainforests are also home to endangered or protected animals such as the Sumatran rhino, orangutans, and jaguars.",
+			"questionNumber": 17,
+			"questionText": "Based on the article it can be inferred that:",
+			"answer": "Without rainforests there would be more floods and drought",
+			"option1": "There are more animals and plants in the rainforest that can be discovered",
+			"option2": "The plants in the rainforest have healing properties",
+			"option3": "Without rainforests there would be more floods and drought",
+			"option4": "All animals in the rainforest are either endangered or protected"
+		},
+		{
+			"resource": "When we lose rainforests, we lose an important natural resource. Tropical rainforests are centers of biodiversity, holding an estimated half of the world’s plants and animals, many of which have yet to be catalogued (some scientists estimate that it’s two-thirds of the world's plants). Rainforests produce, store, and filter water, protecting against soil erosion, floods, and drought.\n\nMany of the plants found in rainforests are being used to make medicine, including anti-cancer drugs, along with beauty products and foods. One drug under development for treating HIV, Calanolide A, is derived from a tree discovered on Malaysian Borneo. And Brazil nut trees refuse to grow anywhere but in undisturbed sections of the Amazon rainforest. There, the trees are pollinated by bees that also visit orchids, and their seeds are spread by agoutis, small tree mammals. Rainforests are also home to endangered or protected animals such as the Sumatran rhino, orangutans, and jaguars.",
+			"questionNumber": 18,
+			"questionText": "According to the article:",
+			"answer": "Rainforests are the home to one in two of the world’s animals and plants",
+			"option1": "Rainforests don’t just store water, they also consume it",
+			"option2": "Rainforests produce natural medicines",
+			"option3": "Rainforests are the home to one in two of the world’s animals and plants",
+			"option4": "Brazil nut trees can only grow in rainforest conditions"
+		},
+		{
+			"resource": "When we lose rainforests, we lose an important natural resource. Tropical rainforests are centers of biodiversity, holding an estimated half of the world’s plants and animals, many of which have yet to be catalogued (some scientists estimate that it’s two-thirds of the world's plants). Rainforests produce, store, and filter water, protecting against soil erosion, floods, and drought.\n\nMany of the plants found in rainforests are being used to make medicine, including anti-cancer drugs, along with beauty products and foods. One drug under development for treating HIV, Calanolide A, is derived from a tree discovered on Malaysian Borneo. And Brazil nut trees refuse to grow anywhere but in undisturbed sections of the Amazon rainforest. There, the trees are pollinated by bees that also visit orchids, and their seeds are spread by agoutis, small tree mammals. Rainforests are also home to endangered or protected animals such as the Sumatran rhino, orangutans, and jaguars.",
+			"questionNumber": 19,
+			"questionText": "Which of the following statements are false:",
+			"answer": "The rainforest does not contribute towards the beauty industry",
+			"option1": "Calanolide A comes from the Malaysian Borneo",
+			"option2": "Brazil nut trees grow in population thanks to the animals of the rainforest",
+			"option3": "Jaguars are neither protected nor endangered",
+			"option4": "The rainforest does not contribute towards the beauty industry"
+		},
+		{
+			"resource": "When we lose rainforests, we lose an important natural resource. Tropical rainforests are centers of biodiversity, holding an estimated half of the world’s plants and animals, many of which have yet to be catalogued (some scientists estimate that it’s two-thirds of the world's plants). Rainforests produce, store, and filter water, protecting against soil erosion, floods, and drought.\n\nMany of the plants found in rainforests are being used to make medicine, including anti-cancer drugs, along with beauty products and foods. One drug under development for treating HIV, Calanolide A, is derived from a tree discovered on Malaysian Borneo. And Brazil nut trees refuse to grow anywhere but in undisturbed sections of the Amazon rainforest. There, the trees are pollinated by bees that also visit orchids, and their seeds are spread by agoutis, small tree mammals. Rainforests are also home to endangered or protected animals such as the Sumatran rhino, orangutans, and jaguars.",
+			"questionNumber": 20,
+			"questionText": "Tropical rainforests definitely hold:",
+			"answer": "Tropical rainforests definitely",
+			"option1": "Air travelling across the top of the wing, being quicker than the air moving along the wing’s bottom surface",
+			"option2": "The curvature of the airfoil",
+			"option3": "The speed of the air pushing against the floor",
+			"option4": "The engines"
+		},
+		{
+			"resource": "A free trade agreement (FTA) is defined by the World Trade Organisation as an agreement between countries that removes tariffs and other restrictions on “substantially all” goods traded between them. These agreements differ from customs unions in that countries remove tariffs on goods traded between them but do not adopt the same tariffs on goods imported from other countries. FTAs require complex rules that define whether a good produced in one FTA partner is eligible for tariff-free treatment in another. These “rules of origin” prevent valuable parts such as engines and high-tech components that are made outside an FTA from being slipped into a high external tariff FTA partner from a low external tariff FTA partner. Modern FTAs sometimes remove barriers for trading services and the sectors covered vary according to the economic relationships between the countries involved",
+			"questionNumber": 21,
+			"questionText": " A free trade agreement is defined as:",
+			"answer": "The removal of all restrictions between a set of countries to allow nearly all goods to be traded between them",
+			"option1": "The removal of all restrictions between a set of countries to allow nearly all goods to be traded between them",
+			"option2": "The removal of tariffs and other blockers on nearly all goods and services traded between two countries",
+			"option3": "An agreement between countries regarding which goods may be accessible as part of a trade agreement",
+			"option4": "The removal of all tariffs on substantially all goods traded between two countries"
+		},
+		{
+			"resource": "A free trade agreement (FTA) is defined by the World Trade Organisation as an agreement between countries that removes tariffs and other restrictions on “substantially all” goods traded between them. These agreements differ from customs unions in that countries remove tariffs on goods traded between them but do not adopt the same tariffs on goods imported from other countries. FTAs require complex rules that define whether a good produced in one FTA partner is eligible for tariff-free treatment in another. These “rules of origin” prevent valuable parts such as engines and high-tech components that are made outside an FTA from being slipped into a high external tariff FTA partner from a low external tariff FTA partner. Modern FTAs sometimes remove barriers for trading services and the sectors covered vary according to the economic relationships between the countries involved",
+			"questionNumber": 22,
+			"questionText": "What is the difference between modern and traditional FTAs:",
+			"answer": "Services can also be traded under FTAs",
+			"option1": "The type of FTA used depends on the countries involved",
+			"option2": "Modern FTAs focus on specific sectors, Traditional FTAs range over many different parts of the economy",
+			"option3": "Economic relationships influence modern FTAs but have little to do with more traditional FTAs ",
+			"option4": "Services can also be traded under FTAs"
+		},
+		{
+			"resource": "A free trade agreement (FTA) is defined by the World Trade Organisation as an agreement between countries that removes tariffs and other restrictions on “substantially all” goods traded between them. These agreements differ from customs unions in that countries remove tariffs on goods traded between them but do not adopt the same tariffs on goods imported from other countries. FTAs require complex rules that define whether a good produced in one FTA partner is eligible for tariff-free treatment in another. These “rules of origin” prevent valuable parts such as engines and high-tech components that are made outside an FTA from being slipped into a high external tariff FTA partner from a low external tariff FTA partner. Modern FTAs sometimes remove barriers for trading services and the sectors covered vary according to the economic relationships between the countries involved",
+			"questionNumber": 23,
+			"questionText": "What is the difference between a FTA and a customs union:",
+			"answer": "Customs unions impose common external tariffs on external parties",
+			"option1": "FTAs remove all tariffs between countries, customs union do not",
+			"option2": "FTAs are between two countries, FTAs can include any number of countries",
+			"option3": "Customs unions impose common external tariffs on external parties",
+			"option4": "Customs unions set the same tariffs for countries outside the agreement"
+		},
+		{
+			"resource": "A free trade agreement (FTA) is defined by the World Trade Organisation as an agreement between countries that removes tariffs and other restrictions on “substantially all” goods traded between them. These agreements differ from customs unions in that countries remove tariffs on goods traded between them but do not adopt the same tariffs on goods imported from other countries. FTAs require complex rules that define whether a good produced in one FTA partner is eligible for tariff-free treatment in another. These “rules of origin” prevent valuable parts such as engines and high-tech components that are made outside an FTA from being slipped into a high external tariff FTA partner from a low external tariff FTA partner. Modern FTAs sometimes remove barriers for trading services and the sectors covered vary according to the economic relationships between the countries involved",
+			"questionNumber": 24,
+			"questionText": "Rules of origin are made in order to avoid:",
+			"answer": "Prevent objects ending up in high external tariff FTA partners, coming from low external tariff FTA partners",
+			"option1": "Objects moving from a high external tariff FTA partner to a low external tariff FTA partner",
+			"option2": "Prevent high-value goods being made outside an FTA and being traded in",
+			"option3": "High value objects moving from an area with a FTA in place to an area without one",
+			"option4": "Prevent objects ending up in high external tariff FTA partners, coming from low external tariff FTA partners"
+		},
+		{
+			"resource": "Treating the symptoms and supporting your immune system is the best first course of action to get you feeling better faster. Everyone’s experience of a cold is slightly different from the next person’s, and there are so many options in the cold and flu aisle at the drugstore. How do you know which symptom remedies are right for you? \n\nThe key is to find what works best for you personally, for your symptoms, whether it’s over-the-counter cold and flu remedies or soothing herbal tea. If, for example, you experience bad sinus pressure when you have an upper respiratory infection, a decongestant like pseudoephedrine or a nasal sinus rinse might be good to have on hand. If it’s coughing that usually makes your life miserable during a head or chest cold, you could try inhaling hot steam from the sink or shower a few times a day to help break things up. \n\nYour immune system’s job is to eradicate viral and bacterial infections from your body. It’s very effective as long as you provide it with the proper support. The best way to do that is to rest. Being stressed out or not getting enough sleep releases hormones that suppress your immune system",
+			"questionNumber": 25,
+			"questionText": "The best thing to do as soon as you get ill is:",
+			"answer": "Treat your symptoms",
+			"option1": "Treat your symptoms",
+			"option2": "Go to bed and rest",
+			"option3": "Speak to a doctor",
+			"option4": "Visit the drugstore and find the remedy"
+		},
+		{
+			"resource": "Treating the symptoms and supporting your immune system is the best first course of action to get you feeling better faster. Everyone’s experience of a cold is slightly different from the next person’s, and there are so many options in the cold and flu aisle at the drugstore. How do you know which symptom remedies are right for you? \n\nThe key is to find what works best for you personally, for your symptoms, whether it’s over-the-counter cold and flu remedies or soothing herbal tea. If, for example, you experience bad sinus pressure when you have an upper respiratory infection, a decongestant like pseudoephedrine or a nasal sinus rinse might be good to have on hand. If it’s coughing that usually makes your life miserable during a head or chest cold, you could try inhaling hot steam from the sink or shower a few times a day to help break things up. \n\nYour immune system’s job is to eradicate viral and bacterial infections from your body. It’s very effective as long as you provide it with the proper support. The best way to do that is to rest. Being stressed out or not getting enough sleep releases hormones that suppress your immune system",
+			"questionNumber": 26,
+			"questionText": "What can be inferred from the text:",
+			"answer": "The cold can affect people differently",
+			"option1": "There are different remedies available for different illnesses",
+			"option2": "The cold can affect people differently",
+			"option3": "A weak immune system may mean you need help fighting off a cold",
+			"option4": "How you feel is the biggest factor in getting rid of an illness"
+		},
+		{
+			"resource": "Treating the symptoms and supporting your immune system is the best first course of action to get you feeling better faster. Everyone’s experience of a cold is slightly different from the next person’s, and there are so many options in the cold and flu aisle at the drugstore. How do you know which symptom remedies are right for you? \n\nThe key is to find what works best for you personally, for your symptoms, whether it’s over-the-counter cold and flu remedies or soothing herbal tea. If, for example, you experience bad sinus pressure when you have an upper respiratory infection, a decongestant like pseudoephedrine or a nasal sinus rinse might be good to have on hand. If it’s coughing that usually makes your life miserable during a head or chest cold, you could try inhaling hot steam from the sink or shower a few times a day to help break things up. \n\nYour immune system’s job is to eradicate viral and bacterial infections from your body. It’s very effective as long as you provide it with the proper support. The best way to do that is to rest. Being stressed out or not getting enough sleep releases hormones that suppress your immune system",
+			"questionNumber": 27,
+			"questionText": "What are the two illnesses referenced in the text:",
+			"answer": "Upper respiratory infection and head or chest cold",
+			"option1": "Cold and flu",
+			"option2": "Viral and bacterial infections",
+			"option3": "Flu and infections",
+			"option4": "Upper respiratory infection and head or chest cold"
+		},
+		{
+			"resource": "Treating the symptoms and supporting your immune system is the best first course of action to get you feeling better faster. Everyone’s experience of a cold is slightly different from the next person’s, and there are so many options in the cold and flu aisle at the drugstore. How do you know which symptom remedies are right for you? \n\nThe key is to find what works best for you personally, for your symptoms, whether it’s over-the-counter cold and flu remedies or soothing herbal tea. If, for example, you experience bad sinus pressure when you have an upper respiratory infection, a decongestant like pseudoephedrine or a nasal sinus rinse might be good to have on hand. If it’s coughing that usually makes your life miserable during a head or chest cold, you could try inhaling hot steam from the sink or shower a few times a day to help break things up. \n\nYour immune system’s job is to eradicate viral and bacterial infections from your body. It’s very effective as long as you provide it with the proper support. The best way to do that is to rest. Being stressed out or not getting enough sleep releases hormones that suppress your immune system",
+			"questionNumber": 28,
+			"questionText": "The best way to help your immune system is:",
+			"answer": "Rest",
+			"option1": "Take the relevant treatments",
+			"option2": "Don’t get stressed out",
+			"option3": "Get medicine from the store",
+			"option4": "Rest"
+		},
+		{
+			"resource": "The classically trained Édouard Manet (1832–1883) straddled Realism and Impressionism. He influenced the Impressionists and was, in turn, influenced by them. In the 1860s, the Impressionists began meeting near Manet’s studio at Café Guerbois. He was the unofficial head of the twice-weekly meetings, which included Monet, Renoir, Degas, Alfred Sisley, Émile Zola, and sometimes Paul Cézanne, Camille Pissarro, and others. \n\nWhat was the bridge between Realism and Impressionism? It was Manet’s new approach to painting, his innovations with color and brushwork. \n\nEarlier artists began painting their canvases with a layer of dark, usually brown, paint and then built layers of paint on top of it. Of course, they had to wait for each layer to dry before adding the next one. Finally, they glazed the painting to give the surface a smooth finish. This process could take weeks or months. Obviously, the models couldn’t pose all that time, so painters frequently added layers without the model present.\n\nAs a Realist, Manet preferred to paint from life — in other words, with his model in front of him. He did this by completing his paintings in one sitting. How did he achieve this high-speed efficiency? By not painting in layers and not glazing the final product. That meant he had to choose the perfect color right off the bat because there were no layers to fall back on. When he made a mistake, he scraped off the paint, down to the bare canvas, and then repainted that area.",
+			"questionNumber": 29,
+			"questionText": "Manet layered and glazed his paintings in one sitting?",
+			"answer": "False",
+			"option1": "True",
+			"option2": "False",
+			"option3": "",
+			"option4": ""
+		},
+		{
+			"resource": "The classically trained Édouard Manet (1832–1883) straddled Realism and Impressionism. He influenced the Impressionists and was, in turn, influenced by them. In the 1860s, the Impressionists began meeting near Manet’s studio at Café Guerbois. He was the unofficial head of the twice-weekly meetings, which included Monet, Renoir, Degas, Alfred Sisley, Émile Zola, and sometimes Paul Cézanne, Camille Pissarro, and others. \n\nWhat was the bridge between Realism and Impressionism? It was Manet’s new approach to painting, his innovations with color and brushwork. \n\nEarlier artists began painting their canvases with a layer of dark, usually brown, paint and then built layers of paint on top of it. Of course, they had to wait for each layer to dry before adding the next one. Finally, they glazed the painting to give the surface a smooth finish. This process could take weeks or months. Obviously, the models couldn’t pose all that time, so painters frequently added layers without the model present.\n\nAs a Realist, Manet preferred to paint from life — in other words, with his model in front of him. He did this by completing his paintings in one sitting. How did he achieve this high-speed efficiency? By not painting in layers and not glazing the final product. That meant he had to choose the perfect color right off the bat because there were no layers to fall back on. When he made a mistake, he scraped off the paint, down to the bare canvas, and then repainted that area.",
+			"questionNumber": 30,
+			"questionText": "The process of layering and glazing paintings could take months?",
+			"answer": "True",
+			"option1": "True",
+			"option2": "False",
+			"option3": "",
+			"option4": ""
+		},
+		{
+			"resource": "The classically trained Édouard Manet (1832–1883) straddled Realism and Impressionism. He influenced the Impressionists and was, in turn, influenced by them. In the 1860s, the Impressionists began meeting near Manet’s studio at Café Guerbois. He was the unofficial head of the twice-weekly meetings, which included Monet, Renoir, Degas, Alfred Sisley, Émile Zola, and sometimes Paul Cézanne, Camille Pissarro, and others. \n\nWhat was the bridge between Realism and Impressionism? It was Manet’s new approach to painting, his innovations with color and brushwork. \n\nEarlier artists began painting their canvases with a layer of dark, usually brown, paint and then built layers of paint on top of it. Of course, they had to wait for each layer to dry before adding the next one. Finally, they glazed the painting to give the surface a smooth finish. This process could take weeks or months. Obviously, the models couldn’t pose all that time, so painters frequently added layers without the model present.\n\nAs a Realist, Manet preferred to paint from life — in other words, with his model in front of him. He did this by completing his paintings in one sitting. How did he achieve this high-speed efficiency? By not painting in layers and not glazing the final product. That meant he had to choose the perfect color right off the bat because there were no layers to fall back on. When he made a mistake, he scraped off the paint, down to the bare canvas, and then repainted that area.",
+			"questionNumber": 31,
+			"questionText": "Manet was the unofficial head of fortnightly meetings between painters?",
+			"answer": "False",
+			"option1": "True",
+			"option2": "False",
+			"option3": "",
+			"option4": ""
+		},
+		{
+			"resource": "The classically trained Édouard Manet (1832–1883) straddled Realism and Impressionism. He influenced the Impressionists and was, in turn, influenced by them. In the 1860s, the Impressionists began meeting near Manet’s studio at Café Guerbois. He was the unofficial head of the twice-weekly meetings, which included Monet, Renoir, Degas, Alfred Sisley, Émile Zola, and sometimes Paul Cézanne, Camille Pissarro, and others. \n\nWhat was the bridge between Realism and Impressionism? It was Manet’s new approach to painting, his innovations with color and brushwork. \n\nEarlier artists began painting their canvases with a layer of dark, usually brown, paint and then built layers of paint on top of it. Of course, they had to wait for each layer to dry before adding the next one. Finally, they glazed the painting to give the surface a smooth finish. This process could take weeks or months. Obviously, the models couldn’t pose all that time, so painters frequently added layers without the model present.\n\nAs a Realist, Manet preferred to paint from life — in other words, with his model in front of him. He did this by completing his paintings in one sitting. How did he achieve this high-speed efficiency? By not painting in layers and not glazing the final product. That meant he had to choose the perfect color right off the bat because there were no layers to fall back on. When he made a mistake, he scraped off the paint, down to the bare canvas, and then repainted that area.",
+			"questionNumber": 32,
+			"questionText": "The layers of paint used by earlier artists tended to be brown?",
+			"answer": "False",
+			"option1": "True",
+			"option2": "False",
+			"option3": "",
+			"option4": ""
+		},
+		{
+			"resource": "Space is yet another factor to consider when growing plants. Both the roots and foliage (leaves) need room to grow. Without enough room, plants can become stunted or too small. Overcrowded plants are also more likely to suffer from diseases since airflow may be limited.\n\nPenultimately, plants require time. They do not grow overnight. It takes time and patience to grow plants, some more so than others. Most plants require a particular number of days, months, or even years to produce flowers and fruit.",
+			"questionNumber": 33,
+			"questionText": "What is one of the disadvantages of growing plants in small pots?",
+			"answer": "The plants may not grow to their full potential",
+			"option1": "The plants may suffer from disease",
+			"option2": "The plants may not grow to their full potential",
+			"option3": "The plants may not access the correct amount of nutrients",
+			"option4": "The plants may not access the correct amount of air"
+		},
+		{
+			"resource": "Space is yet another factor to consider when growing plants. Both the roots and foliage (leaves) need room to grow. Without enough room, plants can become stunted or too small. Overcrowded plants are also more likely to suffer from diseases since airflow may be limited.\n\nPenultimately, plants require time. They do not grow overnight. It takes time and patience to grow plants, some more so than others. Most plants require a particular number of days, months, or even years to produce flowers and fruit.",
+			"questionNumber": 34,
+			"questionText": "From the text one can infer that:",
+			"answer": "Someone who is impatient may struggle with growing plants",
+			"option1": "Overcrowded plants are less likely to grow",
+			"option2": "It is impossible for the plant to grow if either the roots or the foliage has no space to grow",
+			"option3": "Someone who is impatient may struggle with growing plants",
+			"option4": "A single type of plant can take a different amount of time to grow"
+		},
+		{
+			"resource": "Space is yet another factor to consider when growing plants. Both the roots and foliage (leaves) need room to grow. Without enough room, plants can become stunted or too small. Overcrowded plants are also more likely to suffer from diseases since airflow may be limited.\n\nPenultimately, plants require time. They do not grow overnight. It takes time and patience to grow plants, some more so than others. Most plants require a particular number of days, months, or even years to produce flowers and fruit.",
+			"questionNumber": 35,
+			"questionText": "Where in the full body of text can you expect this extract:",
+			"answer": "False",
+			"option1": "Opening paragraphs",
+			"option2": "Concluding paragraph",
+			"option3": "Towards the end",
+			"option4": "Towards the middle"
+		},
+		{
+			"resource": "Space is yet another factor to consider when growing plants. Both the roots and foliage (leaves) need room to grow. Without enough room, plants can become stunted or too small. Overcrowded plants are also more likely to suffer from diseases since airflow may be limited.\n\nPenultimately, plants require time. They do not grow overnight. It takes time and patience to grow plants, some more so than others. Most plants require a particular number of days, months, or even years to produce flowers and fruit.",
+			"questionNumber": 36,
+			"questionText": "The text states that:",
+			"answer": "Overcrowded plants are more likely to contract disease",
+			"option1": "Overcrowded plants are more likely to contract disease",
+			"option2": "Plants without leaves are likely to do better without space",
+			"option3": "Space is crucial the growth of plants",
+			"option4": "All plants need time to grow"
+		},
+		{
+			"resource": "The Ottoman empire was centered in present-day Turkey, and extended its influence into southeastern Europe as well as the Middle East. Europe was only temporarily able to resist their advance: the turning point came at the Battle of Varna in 1444 when a European coalition army failed to stop the Turkish advance. Only Constantinople (Istanbul) remained in Byzantine hands and its conquest in 1453 seemed inevitable after Varna. The Turks subsequently established an empire in Anatolia and southeastern Europe which lasted until the early twentieth century.\n\nAlthough the Ottoman Empire is not considered a European kingdom per se, Ottoman expansion had a profound impact on a continent already stunned by the calamities of the fourteenth and fifteenth centuries and the Ottoman Turks must, therefore, be considered in any study of Europe in the late Middle Ages. The ease with which the Ottoman Empire achieved military victories led Western Europeans to fear that ongoing Ottoman success would collapse the political and social infrastructure of the West and bring about the downfall of Christendom. Such a momentous threat could not be ignored and the Europeans mounted crusades against the Ottomans in 1366, 1396, and 1444, but to no avail. The Ottomans continued to conquer new territories.",
+			"questionNumber": 37,
+			"questionText": "The empire had established a foothold in Europe for roughly:",
+			"answer": "500 years",
+			"option1": "400 years",
+			"option2": "500 years",
+			"option3": "600 years",
+			"option4": "300 years"
+		},
+		{
+			"resource": "The Ottoman empire was centered in present-day Turkey, and extended its influence into southeastern Europe as well as the Middle East. Europe was only temporarily able to resist their advance: the turning point came at the Battle of Varna in 1444 when a European coalition army failed to stop the Turkish advance. Only Constantinople (Istanbul) remained in Byzantine hands and its conquest in 1453 seemed inevitable after Varna. The Turks subsequently established an empire in Anatolia and southeastern Europe which lasted until the early twentieth century.\n\nAlthough the Ottoman Empire is not considered a European kingdom per se, Ottoman expansion had a profound impact on a continent already stunned by the calamities of the fourteenth and fifteenth centuries and the Ottoman Turks must, therefore, be considered in any study of Europe in the late Middle Ages. The ease with which the Ottoman Empire achieved military victories led Western Europeans to fear that ongoing Ottoman success would collapse the political and social infrastructure of the West and bring about the downfall of Christendom. Such a momentous threat could not be ignored and the Europeans mounted crusades against the Ottomans in 1366, 1396, and 1444, but to no avail. The Ottomans continued to conquer new territories.",
+			"questionNumber": 38,
+			"questionText": "According to the text, The battle of Varna was:",
+			"answer": "Years before the invasion of Constantinople",
+			"option1": "The invasion of Constantinople",
+			"option2": "Years before the invasion of Constantinople",
+			"option3": "A crusade",
+			"option4": "Took place in 1444 and ended in 1453"
+		},
+		{
+			"resource": "The Ottoman empire was centered in present-day Turkey, and extended its influence into southeastern Europe as well as the Middle East. Europe was only temporarily able to resist their advance: the turning point came at the Battle of Varna in 1444 when a European coalition army failed to stop the Turkish advance. Only Constantinople (Istanbul) remained in Byzantine hands and its conquest in 1453 seemed inevitable after Varna. The Turks subsequently established an empire in Anatolia and southeastern Europe which lasted until the early twentieth century.\n\nAlthough the Ottoman Empire is not considered a European kingdom per se, Ottoman expansion had a profound impact on a continent already stunned by the calamities of the fourteenth and fifteenth centuries and the Ottoman Turks must, therefore, be considered in any study of Europe in the late Middle Ages. The ease with which the Ottoman Empire achieved military victories led Western Europeans to fear that ongoing Ottoman success would collapse the political and social infrastructure of the West and bring about the downfall of Christendom. Such a momentous threat could not be ignored and the Europeans mounted crusades against the Ottomans in 1366, 1396, and 1444, but to no avail. The Ottomans continued to conquer new territories.",
+			"questionNumber": 39,
+			"questionText": "The empire achieved victories so easily that:",
+			"answer": "Europeans believed it would lead to the fall of Christendom",
+			"option1": "Europeans worried that it would lead to global domination",
+			"option2": "They should be considered in any study of European middle ages",
+			"option3": "Europeans mounted several crusades against them",
+			"option4": "Europeans believed it would lead to the fall of Christendom"
+		},
+		{
+			"resource": "The Ottoman empire was centered in present-day Turkey, and extended its influence into southeastern Europe as well as the Middle East. Europe was only temporarily able to resist their advance: the turning point came at the Battle of Varna in 1444 when a European coalition army failed to stop the Turkish advance. Only Constantinople (Istanbul) remained in Byzantine hands and its conquest in 1453 seemed inevitable after Varna. The Turks subsequently established an empire in Anatolia and southeastern Europe which lasted until the early twentieth century.\n\nAlthough the Ottoman Empire is not considered a European kingdom per se, Ottoman expansion had a profound impact on a continent already stunned by the calamities of the fourteenth and fifteenth centuries and the Ottoman Turks must, therefore, be considered in any study of Europe in the late Middle Ages. The ease with which the Ottoman Empire achieved military victories led Western Europeans to fear that ongoing Ottoman success would collapse the political and social infrastructure of the West and bring about the downfall of Christendom. Such a momentous threat could not be ignored and the Europeans mounted crusades against the Ottomans in 1366, 1396, and 1444, but to no avail. The Ottomans continued to conquer new territories.",
+			"questionNumber": 40,
+			"questionText": "The final battle which the text references Europeans fighting against the Ottoman empire",
+			"answer": "1444",
+			"option1": "1396",
+			"option2": "1366",
+			"option3": "1444",
+			"option4": "1453"
+		},
+		{
+			"resource": "In the 1600s, an English physicist and mathematician named Isaac Newton was sitting under an apple tree -- or so the legend tells us. Apparently, an apple fell on his head, and he started wondering why the apple was attracted to the ground in the first place.\n\nNewton publicized his Theory of Universal Gravitation in the 1680s. It basically set forth the idea that gravity was a predictable force that acts on all matter in the universe, and is a function of both mass and distance. The theory states that each particle of matter attracts every other particle (for instance, the particles of 'Earth' and the particles of 'you') with a force that is directly proportional to the product of their masses and inversely proportional to the square of the distance between them. The force of gravity acting on an object is also that object's weight. When you step on a scale, the scale reads how much gravity is acting on your body. ",
+			"questionNumber": 41,
+			"questionText": "Newton publicised his Theory of Universal Gravitation: ",
+			"answer": "20 years before the 18th century",
+			"option1": "During the period of Enlightnement",
+			"option2": "20 years before the 18th century",
+			"option3": "During the 16th century",
+			"option4": "At the age of 80"
+		},
+		{
+			"resource": "In the 1600s, an English physicist and mathematician named Isaac Newton was sitting under an apple tree -- or so the legend tells us. Apparently, an apple fell on his head, and he started wondering why the apple was attracted to the ground in the first place.\n\nNewton publicized his Theory of Universal Gravitation in the 1680s. It basically set forth the idea that gravity was a predictable force that acts on all matter in the universe, and is a function of both mass and distance. The theory states that each particle of matter attracts every other particle (for instance, the particles of 'Earth' and the particles of 'you') with a force that is directly proportional to the product of their masses and inversely proportional to the square of the distance between them. The force of gravity acting on an object is also that object's weight. When you step on a scale, the scale reads how much gravity is acting on your body. ",
+			"questionNumber": 42,
+			"questionText": "According to the text, when you step on a scale:",
+			"answer": "When you step on a scale, your particles attract the particles of the scale",
+			"option1": "When you step on a scale, your particles attract the particles of the scale",
+			"option2": "The force of gravity acts on you",
+			"option3": "The scale reads how much gravity is pulling you down",
+			"option4": "The scale reads your weight"
+		},
+		{
+			"resource": "In the 1600s, an English physicist and mathematician named Isaac Newton was sitting under an apple tree -- or so the legend tells us. Apparently, an apple fell on his head, and he started wondering why the apple was attracted to the ground in the first place.\n\nNewton publicized his Theory of Universal Gravitation in the 1680s. It basically set forth the idea that gravity was a predictable force that acts on all matter in the universe, and is a function of both mass and distance. The theory states that each particle of matter attracts every other particle (for instance, the particles of 'Earth' and the particles of 'you') with a force that is directly proportional to the product of their masses and inversely proportional to the square of the distance between them. The force of gravity acting on an object is also that object's weight. When you step on a scale, the scale reads how much gravity is acting on your body. ",
+			"questionNumber": 43,
+			"questionText": "According to Newton:",
+			"answer": "Gravity is a function of both mass and distance",
+			"option1": "Gravity is an unpredictable force that varies depending on where you are in the universe",
+			"option2": "Gravity caused the apple to fall on his head",
+			"option3": "The amount of gravity acting on an object is also the mass of the object",
+			"option4": "Gravity is a function of both mass and distance"
+		},
+		{
+			"resource": "In the 1600s, an English physicist and mathematician named Isaac Newton was sitting under an apple tree -- or so the legend tells us. Apparently, an apple fell on his head, and he started wondering why the apple was attracted to the ground in the first place.\n\nNewton publicized his Theory of Universal Gravitation in the 1680s. It basically set forth the idea that gravity was a predictable force that acts on all matter in the universe, and is a function of both mass and distance. The theory states that each particle of matter attracts every other particle (for instance, the particles of 'Earth' and the particles of 'you') with a force that is directly proportional to the product of their masses and inversely proportional to the square of the distance between them. The force of gravity acting on an object is also that object's weight. When you step on a scale, the scale reads how much gravity is acting on your body. ",
+			"questionNumber": 44,
+			"questionText": "‘Or so the legend tells us’ means:",
+			"answer": "It is a famous story",
+			"option1": "It is highly likely that this is true",
+			"option2": "It is highly unlikely that this is true",
+			"option3": "It is a famous story",
+			"option4": "The author doesn’t believe this story"
+		},
+		{
+			"resource": "Nonetheless, the cloud of that extraordinary day will surely hang over the players in yellow and green tomorrow. Hours before the final at the Stade de France, Ronaldo suffered a mysterious seizure and was whisked to hospital and out of the starting line-up. Then he made an apparently miraculous recovery and was hastily returned to the team sheet, only to underperform in Brazil's heaviest defeat in 68 years of World Cups. Not surprisingly, the match soon transcended its sporting importance to become one of the resonant events in the country's contemporary history.\n\nWhereas the world's media soon moved on to other subjects, Brazil's did not. Within weeks, a lawyer began a civil action in a Rio court, demanding explanations. Concurrently, the Rio regional medical council started a professional ethics action against the two team medics (they were both unanimously absolved).\n\nBut the most detailed investigation happened in Brazil's national congress. And because the main protagonists all gave testimony, the public was offered unprecedented insight into what really went on behind the scenes on the day of the final. The details that emerged were riveting.",
+			"questionNumber": 45,
+			"questionText": "According to the text Brazil’s worst defeat:",
+			"answer": "Occurred during a final",
+			"option1": "Came at the hands of France",
+			"option2": "Caused a civil action in Rio",
+			"option3": "Occurred during a final",
+			"option4": "Took place in Paris"
+		},
+		{
+			"resource": "Nonetheless, the cloud of that extraordinary day will surely hang over the players in yellow and green tomorrow. Hours before the final at the Stade de France, Ronaldo suffered a mysterious seizure and was whisked to hospital and out of the starting line-up. Then he made an apparently miraculous recovery and was hastily returned to the team sheet, only to underperform in Brazil's heaviest defeat in 68 years of World Cups. Not surprisingly, the match soon transcended its sporting importance to become one of the resonant events in the country's contemporary history.\n\nWhereas the world's media soon moved on to other subjects, Brazil's did not. Within weeks, a lawyer began a civil action in a Rio court, demanding explanations. Concurrently, the Rio regional medical council started a professional ethics action against the two team medics (they were both unanimously absolved).\n\nBut the most detailed investigation happened in Brazil's national congress. And because the main protagonists all gave testimony, the public was offered unprecedented insight into what really went on behind the scenes on the day of the final. The details that emerged were riveting.",
+			"questionNumber": 46,
+			"questionText": "The Rio regional medical council investigation produced which of the following outcomes:",
+			"answer": "Both medics were investigated and considered innocent",
+			"option1": "Both medics were investigated and considered guilty",
+			"option2": "Both medics were investigated and considered innocent",
+			"option3": "Both were acquitted without investigation",
+			"option4": "A report, which provided insight for the national congress investigation"
+		},
+		{
+			"resource": "Nonetheless, the cloud of that extraordinary day will surely hang over the players in yellow and green tomorrow. Hours before the final at the Stade de France, Ronaldo suffered a mysterious seizure and was whisked to hospital and out of the starting line-up. Then he made an apparently miraculous recovery and was hastily returned to the team sheet, only to underperform in Brazil's heaviest defeat in 68 years of World Cups. Not surprisingly, the match soon transcended its sporting importance to become one of the resonant events in the country's contemporary history.\n\nWhereas the world's media soon moved on to other subjects, Brazil's did not. Within weeks, a lawyer began a civil action in a Rio court, demanding explanations. Concurrently, the Rio regional medical council started a professional ethics action against the two team medics (they were both unanimously absolved).\n\nBut the most detailed investigation happened in Brazil's national congress. And because the main protagonists all gave testimony, the public was offered unprecedented insight into what really went on behind the scenes on the day of the final. The details that emerged were riveting.",
+			"questionNumber": 47,
+			"questionText": "Which of the following statements can be inferred from the text:",
+			"answer": "Ronaldo gave a testimony to the national congress",
+			"option1": "Ronaldo gave a testimony to the national congress",
+			"option2": "After the event, other events occurred in the world which diverted global attention",
+			"option3": "Brazil wore yellow and green during the match",
+			"option4": "Ronaldo’s recovery was a miracle"
+		},
+		{
+			"resource": "Nonetheless, the cloud of that extraordinary day will surely hang over the players in yellow and green tomorrow. Hours before the final at the Stade de France, Ronaldo suffered a mysterious seizure and was whisked to hospital and out of the starting line-up. Then he made an apparently miraculous recovery and was hastily returned to the team sheet, only to underperform in Brazil's heaviest defeat in 68 years of World Cups. Not surprisingly, the match soon transcended its sporting importance to become one of the resonant events in the country's contemporary history.\n\nWhereas the world's media soon moved on to other subjects, Brazil's did not. Within weeks, a lawyer began a civil action in a Rio court, demanding explanations. Concurrently, the Rio regional medical council started a professional ethics action against the two team medics (they were both unanimously absolved).\n\nBut the most detailed investigation happened in Brazil's national congress. And because the main protagonists all gave testimony, the public was offered unprecedented insight into what really went on behind the scenes on the day of the final. The details that emerged were riveting.",
+			"questionNumber": 48,
+			"questionText": "How many professions are mentioned in the text:",
+			"answer": "4",
+			"option1": "1",
+			"option2": "2",
+			"option3": "3",
+			"option4": "4"
+		},
+		{
+			"resource": "According to a 2010 article in Scientific American, the memory capacity of the human brain was reported to have the equivalent of 2.5 petabytes of memory capacity. As a number, a 'petabyte' means 1024 terabytes or a million gigabytes, so the average adult human brain has the ability to store the equivalent of 2.5 million gigabytes digital memory.\n\nTo put that in perspective, according to Computerworld, Yahoo – the Internet giant – has created a specially-built 2.0 petabyte 'data warehouse'. Yahoo uses the immense information storage capacity of this data warehouse to analyze the behavior of its half-a-billion monthly visitors. 'It is not only the world’s single-largest database, but also the busiest', the magazine reported.\n\nBy comparison, the IRS’s own massive data warehouse, which keeps track of 300-plus million Americans and many more million businesses, has the capacity of 150 terabytes of memory. Yet Yahoo’s 2.0 petabyte computational center, which can process 24 billion 'events' a day, is a full 20 percent smaller than the capacity of a single human brain.",
+			"questionNumber": 49,
+			"questionText": "How many Terabytes can the brain store:",
+			"answer": "2560",
+			"option1": "1024",
+			"option2": "2048",
+			"option3": "2.5 million",
+			"option4": "2560"
+		},
+		{
+			"resource": "According to a 2010 article in Scientific American, the memory capacity of the human brain was reported to have the equivalent of 2.5 petabytes of memory capacity. As a number, a 'petabyte' means 1024 terabytes or a million gigabytes, so the average adult human brain has the ability to store the equivalent of 2.5 million gigabytes digital memory.\n\nTo put that in perspective, according to Computerworld, Yahoo – the Internet giant – has created a specially-built 2.0 petabyte 'data warehouse'. Yahoo uses the immense information storage capacity of this data warehouse to analyze the behavior of its half-a-billion monthly visitors. 'It is not only the world’s single-largest database, but also the busiest', the magazine reported.\n\nBy comparison, the IRS’s own massive data warehouse, which keeps track of 300-plus million Americans and many more million businesses, has the capacity of 150 terabytes of memory. Yet Yahoo’s 2.0 petabyte computational center, which can process 24 billion 'events' a day, is a full 20 percent smaller than the capacity of a single human brain.",
+			"questionNumber": 50,
+			"questionText": "Which of the following statements is true about the Yahoo 2.0 petabyte data warehouse:",
+			"answer": "It’s not as fast as the brain",
+			"option1": "It has the capacity to process 15 billion 'events' a day",
+			"option2": "It’s needed to allow their half-a-billion monthly visitors access.",
+			"option3": "It’s not as fast as the brain",
+			"option4": "Has the ability to store 2.5 million gigabytes digital memory."
+		},
+		{
+			"resource": "According to a 2010 article in Scientific American, the memory capacity of the human brain was reported to have the equivalent of 2.5 petabytes of memory capacity. As a number, a 'petabyte' means 1024 terabytes or a million gigabytes, so the average adult human brain has the ability to store the equivalent of 2.5 million gigabytes digital memory.\n\nTo put that in perspective, according to Computerworld, Yahoo – the Internet giant – has created a specially-built 2.0 petabyte 'data warehouse'. Yahoo uses the immense information storage capacity of this data warehouse to analyze the behavior of its half-a-billion monthly visitors. 'It is not only the world’s single-largest database, but also the busiest', the magazine reported.\n\nBy comparison, the IRS’s own massive data warehouse, which keeps track of 300-plus million Americans and many more million businesses, has the capacity of 150 terabytes of memory. Yet Yahoo’s 2.0 petabyte computational center, which can process 24 billion 'events' a day, is a full 20 percent smaller than the capacity of a single human brain.",
+			"questionNumber": 51,
+			"questionText": "Who has written the above text:",
+			"answer": "None of the above",
+			"option1": "Computerworld",
+			"option2": "Scientific American",
+			"option3": "Yahoo",
+			"option4": "None of the above"
+		},
+		{
+			"resource": "According to a 2010 article in Scientific American, the memory capacity of the human brain was reported to have the equivalent of 2.5 petabytes of memory capacity. As a number, a 'petabyte' means 1024 terabytes or a million gigabytes, so the average adult human brain has the ability to store the equivalent of 2.5 million gigabytes digital memory.\n\nTo put that in perspective, according to Computerworld, Yahoo – the Internet giant – has created a specially-built 2.0 petabyte 'data warehouse'. Yahoo uses the immense information storage capacity of this data warehouse to analyze the behavior of its half-a-billion monthly visitors. 'It is not only the world’s single-largest database, but also the busiest', the magazine reported.\n\nBy comparison, the IRS’s own massive data warehouse, which keeps track of 300-plus million Americans and many more million businesses, has the capacity of 150 terabytes of memory. Yet Yahoo’s 2.0 petabyte computational center, which can process 24 billion 'events' a day, is a full 20 percent smaller than the capacity of a single human brain.",
+			"questionNumber": 52,
+			"questionText": "The capacity of IRS’s data warehouse is:",
+			"answer": "Over 20% smaller than a human brain",
+			"option1": "20% smaller than a human brain.",
+			"option2": "Over 20% smaller than a human brain",
+			"option3": "The same size as a human brain",
+			"option4": "Can’t say from the text"
+		},
+		{
+			"resource": "Wheels are the archetype of a primitive, caveman-level technology. But in fact, they're so ingenious that it took until 3500 B.C. for someone to invent them. By that time — it was the Bronze Age — humans were already casting metal alloys, constructing canals and sailboats, and even designing complex musical instruments such as harps.\n\nThe tricky thing about the wheel is not conceiving of a cylinder rolling on its edge. It's figuring out how to connect a stable, stationary platform to that cylinder. To make a fixed axle with revolving wheels, the ends of the axle had to be nearly perfectly smooth and round, as did the holes in the center of the wheels; otherwise, there would be too much friction between these components for the wheels to turn. Furthermore, the axles had to fit snugly inside the wheels' holes, but not too snugly — they had to be free to rotate.",
+			"questionNumber": 53,
+			"questionText": "The text indicates that:",
+			"answer": "The hardest part of inventing the wheel was the wheels’ holes",
+			"option1": "The wheel is considered an invention of the caveman",
+			"option2": "People had been trying to invent the wheel for ages before 3500 BC",
+			"option3": "Designing a harp is more difficult than designing the wheel",
+			"option4": "The hardest part of inventing the wheel was the wheels’ holes"
+		},
+		{
+			"resource": "Wheels are the archetype of a primitive, caveman-level technology. But in fact, they're so ingenious that it took until 3500 B.C. for someone to invent them. By that time — it was the Bronze Age — humans were already casting metal alloys, constructing canals and sailboats, and even designing complex musical instruments such as harps.\n\nThe tricky thing about the wheel is not conceiving of a cylinder rolling on its edge. It's figuring out how to connect a stable, stationary platform to that cylinder. To make a fixed axle with revolving wheels, the ends of the axle had to be nearly perfectly smooth and round, as did the holes in the center of the wheels; otherwise, there would be too much friction between these components for the wheels to turn. Furthermore, the axles had to fit snugly inside the wheels' holes, but not too snugly — they had to be free to rotate.",
+			"questionNumber": 54,
+			"questionText": "What does the word ‘conceiving’ mean in the context it is used:",
+			"answer": "Imagining",
+			"option1": "Creating",
+			"option2": "Giving",
+			"option3": "Imagining",
+			"option4": "Finding useful"
+		},
+		{
+			"resource": "Wheels are the archetype of a primitive, caveman-level technology. But in fact, they're so ingenious that it took until 3500 B.C. for someone to invent them. By that time — it was the Bronze Age — humans were already casting metal alloys, constructing canals and sailboats, and even designing complex musical instruments such as harps.\n\nThe tricky thing about the wheel is not conceiving of a cylinder rolling on its edge. It's figuring out how to connect a stable, stationary platform to that cylinder. To make a fixed axle with revolving wheels, the ends of the axle had to be nearly perfectly smooth and round, as did the holes in the center of the wheels; otherwise, there would be too much friction between these components for the wheels to turn. Furthermore, the axles had to fit snugly inside the wheels' holes, but not too snugly — they had to be free to rotate.",
+			"questionNumber": 55,
+			"questionText": "The most difficult aspect of creating the wheel was:",
+			"answer": "Attaching a platform to it",
+			"option1": "The axle",
+			"option2": "The wheels’ holes",
+			"option3": "Attaching a platform to it",
+			"option4": "None of the above"
+		},
+		{
+			"resource": "Wheels are the archetype of a primitive, caveman-level technology. But in fact, they're so ingenious that it took until 3500 B.C. for someone to invent them. By that time — it was the Bronze Age — humans were already casting metal alloys, constructing canals and sailboats, and even designing complex musical instruments such as harps.\n\nThe tricky thing about the wheel is not conceiving of a cylinder rolling on its edge. It's figuring out how to connect a stable, stationary platform to that cylinder. To make a fixed axle with revolving wheels, the ends of the axle had to be nearly perfectly smooth and round, as did the holes in the center of the wheels; otherwise, there would be too much friction between these components for the wheels to turn. Furthermore, the axles had to fit snugly inside the wheels' holes, but not too snugly — they had to be free to rotate.",
+			"questionNumber": 56,
+			"questionText": "In the Bronze Age humans began:",
+			"answer": "Designing harps",
+			"option1": "Designing harps",
+			"option2": "Developing from being cavemen",
+			"option3": "Conceiving of wheel-like objects",
+			"option4": "None of the above"
+		},
+		{
+			"resource": "While the sun shines almost equally in all parts of the earth, the equator is exposed to a high amount of direct sunlight than the poles. While the sun is directly overhead at the equator, it is slightly slanted at the poles. The earth is tilted 23.5 degrees on its axis and remains tilted throughout the year. Half the year the northern hemisphere is tilted away from the sun while the southern hemisphere is tilted towards the sun and vice versa in the other half of the year. Thus, the polar regions spend half the year pointed away from the sun. Thus, the sun rays cover a large area due to the tilt and also do not hit all the areas with the same angle and intensity. While the sun rays hit the poles at an angle, the same amount of sun rays hit the equator regions more directly and in a more concentrated manner.\n\nSo, if the same amount of light rays fall on two different surfaces. On one surface, the light rays are directly overhead and concentrated in a specific area while on the other surface the light rays reach the surface from a slightly slanted angle and spread over a larger area. The effect is that the area that directly receives light rays over a small area is likely to be hotter than the surface that receives light 'indirectly' over a large area. The area that receives direct light rays is the equator while the other surface that receives light rays 'indirectly' is the polar region.",
+			"questionNumber": 57,
+			"questionText": "The northern hemisphere is tilted towards the sun for half the year:",
+			"answer": "True",
+			"option1": "True",
+			"option2": "False",
+			"option3": "",
+			"option4": ""
+		},
+		{
+			"resource": "While the sun shines almost equally in all parts of the earth, the equator is exposed to a high amount of direct sunlight than the poles. While the sun is directly overhead at the equator, it is slightly slanted at the poles. The earth is tilted 23.5 degrees on its axis and remains tilted throughout the year. Half the year the northern hemisphere is tilted away from the sun while the southern hemisphere is tilted towards the sun and vice versa in the other half of the year. Thus, the polar regions spend half the year pointed away from the sun. Thus, the sun rays cover a large area due to the tilt and also do not hit all the areas with the same angle and intensity. While the sun rays hit the poles at an angle, the same amount of sun rays hit the equator regions more directly and in a more concentrated manner.\n\nSo, if the same amount of light rays fall on two different surfaces. On one surface, the light rays are directly overhead and concentrated in a specific area while on the other surface the light rays reach the surface from a slightly slanted angle and spread over a larger area. The effect is that the area that directly receives light rays over a small area is likely to be hotter than the surface that receives light 'indirectly' over a large area. The area that receives direct light rays is the equator while the other surface that receives light rays 'indirectly' is the polar region.",
+			"questionNumber": 58,
+			"questionText": "The equator is hotter due to increased rays:",
+			"answer": "True",
+			"option1": "True",
+			"option2": "False",
+			"option3": "",
+			"option4": ""
+		},
+		{
+			"resource": "While the sun shines almost equally in all parts of the earth, the equator is exposed to a high amount of direct sunlight than the poles. While the sun is directly overhead at the equator, it is slightly slanted at the poles. The earth is tilted 23.5 degrees on its axis and remains tilted throughout the year. Half the year the northern hemisphere is tilted away from the sun while the southern hemisphere is tilted towards the sun and vice versa in the other half of the year. Thus, the polar regions spend half the year pointed away from the sun. Thus, the sun rays cover a large area due to the tilt and also do not hit all the areas with the same angle and intensity. While the sun rays hit the poles at an angle, the same amount of sun rays hit the equator regions more directly and in a more concentrated manner.\n\nSo, if the same amount of light rays fall on two different surfaces. On one surface, the light rays are directly overhead and concentrated in a specific area while on the other surface the light rays reach the surface from a slightly slanted angle and spread over a larger area. The effect is that the area that directly receives light rays over a small area is likely to be hotter than the surface that receives light 'indirectly' over a large area. The area that receives direct light rays is the equator while the other surface that receives light rays 'indirectly' is the polar region.",
+			"questionNumber": 59,
+			"questionText": "The tilt of the poles means sun rays are spread more:",
+			"answer": "True",
+			"option1": "True",
+			"option2": "False",
+			"option3": "",
+			"option4": ""
+		},
+		{
+			"resource": "While the sun shines almost equally in all parts of the earth, the equator is exposed to a high amount of direct sunlight than the poles. While the sun is directly overhead at the equator, it is slightly slanted at the poles. The earth is tilted 23.5 degrees on its axis and remains tilted throughout the year. Half the year the northern hemisphere is tilted away from the sun while the southern hemisphere is tilted towards the sun and vice versa in the other half of the year. Thus, the polar regions spend half the year pointed away from the sun. Thus, the sun rays cover a large area due to the tilt and also do not hit all the areas with the same angle and intensity. While the sun rays hit the poles at an angle, the same amount of sun rays hit the equator regions more directly and in a more concentrated manner.\n\nSo, if the same amount of light rays fall on two different surfaces. On one surface, the light rays are directly overhead and concentrated in a specific area while on the other surface the light rays reach the surface from a slightly slanted angle and spread over a larger area. The effect is that the area that directly receives light rays over a small area is likely to be hotter than the surface that receives light 'indirectly' over a large area. The area that receives direct light rays is the equator while the other surface that receives light rays 'indirectly' is the polar region.",
+			"questionNumber": 60,
+			"questionText": "The sun is not directly over the equator:",
+			"answer": "False",
+			"option1": "True",
+			"option2": "False",
+			"option3": "",
+			"option4": ""
+		},
+		{
+			"resource": "Before understanding the use of a constitution we must understand what the principal divide regarding the use of the term constitution has to do with its reference to either certain functions (however achieved) or a certain form (whatever its function). The constitution in the first connotation comprises those elements (e.g., laws, theories, and interpretations) that perform what are traditionally understood as 'constitutional' functions. The constitution in the second connotation refers to the formal written charter, a form that is now nearly universal among modern states.\n\nTo understand the first conceptualisation, that of constitution-as-function, we should clarify what scholars view to be the traditional purposes of constitutions. A central idea here is the limitation of government power. Constitutions generate a set of inviolable principles and more specific provisions to which future law and government activity more generally must conform. This function, commonly termed constitutionalism, is vital to the functioning of democracy. Without a commitment to higher law, the state can operate for the short-term benefit of those in power or the current majority. Those who find themselves out of power may find that they are virtually unprotected, which in turn may make them more likely to resort to extra-constitutional means of securing power. By limiting the scope of government and precommitting politicians to respect certain limits, constitutions make government possible.",
+			"questionNumber": 61,
+			"questionText": "What benefit of constitutions is highlighted by the text:",
+			"answer": "A higher law for government to abide by",
+			"option1": "It’s ability to comprise laws, theories and interpretations",
+			"option2": "Protection of non-elected groups.",
+			"option3": "A higher law for government to abide by",
+			"option4": "Meet the criteria of a functioning democracy"
+		},
+		{
+			"resource": "Before understanding the use of a constitution we must understand what the principal divide regarding the use of the term constitution has to do with its reference to either certain functions (however achieved) or a certain form (whatever its function). The constitution in the first connotation comprises those elements (e.g., laws, theories, and interpretations) that perform what are traditionally understood as 'constitutional' functions. The constitution in the second connotation refers to the formal written charter, a form that is now nearly universal among modern states.\n\nTo understand the first conceptualisation, that of constitution-as-function, we should clarify what scholars view to be the traditional purposes of constitutions. A central idea here is the limitation of government power. Constitutions generate a set of inviolable principles and more specific provisions to which future law and government activity more generally must conform. This function, commonly termed constitutionalism, is vital to the functioning of democracy. Without a commitment to higher law, the state can operate for the short-term benefit of those in power or the current majority. Those who find themselves out of power may find that they are virtually unprotected, which in turn may make them more likely to resort to extra-constitutional means of securing power. By limiting the scope of government and precommitting politicians to respect certain limits, constitutions make government possible.",
+			"questionNumber": 62,
+			"questionText": "The constitution in its first connotation, as inferred in the text:",
+			"answer": "May not necessarily be codified",
+			"option1": "May not necessarily be codified",
+			"option2": "Is not universal among modern states",
+			"option3": "Is universal among modern states",
+			"option4": "Has few forms"
+		},
+		{
+			"resource": "Before understanding the use of a constitution we must understand what the principal divide regarding the use of the term constitution has to do with its reference to either certain functions (however achieved) or a certain form (whatever its function). The constitution in the first connotation comprises those elements (e.g., laws, theories, and interpretations) that perform what are traditionally understood as 'constitutional' functions. The constitution in the second connotation refers to the formal written charter, a form that is now nearly universal among modern states.\n\nTo understand the first conceptualisation, that of constitution-as-function, we should clarify what scholars view to be the traditional purposes of constitutions. A central idea here is the limitation of government power. Constitutions generate a set of inviolable principles and more specific provisions to which future law and government activity more generally must conform. This function, commonly termed constitutionalism, is vital to the functioning of democracy. Without a commitment to higher law, the state can operate for the short-term benefit of those in power or the current majority. Those who find themselves out of power may find that they are virtually unprotected, which in turn may make them more likely to resort to extra-constitutional means of securing power. By limiting the scope of government and precommitting politicians to respect certain limits, constitutions make government possible.",
+			"questionNumber": 63,
+			"questionText": "The term ‘extra-constitutional’ means:",
+			"answer": "Outside of the constitution",
+			"option1": "On top of the constitution",
+			"option2": "In line with the constitution",
+			"option3": "Outside of the constitution",
+			"option4": "None of the above"
+		},
+		{
+			"resource": "Before understanding the use of a constitution we must understand what the principal divide regarding the use of the term constitution has to do with its reference to either certain functions (however achieved) or a certain form (whatever its function). The constitution in the first connotation comprises those elements (e.g., laws, theories, and interpretations) that perform what are traditionally understood as 'constitutional' functions. The constitution in the second connotation refers to the formal written charter, a form that is now nearly universal among modern states.\n\nTo understand the first conceptualisation, that of constitution-as-function, we should clarify what scholars view to be the traditional purposes of constitutions. A central idea here is the limitation of government power. Constitutions generate a set of inviolable principles and more specific provisions to which future law and government activity more generally must conform. This function, commonly termed constitutionalism, is vital to the functioning of democracy. Without a commitment to higher law, the state can operate for the short-term benefit of those in power or the current majority. Those who find themselves out of power may find that they are virtually unprotected, which in turn may make them more likely to resort to extra-constitutional means of securing power. By limiting the scope of government and precommitting politicians to respect certain limits, constitutions make government possible.",
+			"questionNumber": 64,
+			"questionText": "Based on this extract, what is the topic of the article:",
+			"answer": "The different uses of the term ‘constitution’",
+			"option1": "What the constitution is made up of",
+			"option2": "How constitutions manifest themselves",
+			"option3": "The different uses of the term ‘constitution’",
+			"option4": "Distinguishing factors between the two connotations of constitution"
+		},
+		{
+			"resource": "Prevent information overload. Information overload is a serious problem. It prevents users from making decisions or taking action because they feel they have too much information to consume. There are some simple ways to minimize information overload. One common technique is chunking — breaking content into smaller chunks to help users understand and process it better. A checkout form is a perfect example. Display, at most, five to seven input fields at a time and break down the checkout into pages — progressively disclosing fields as necessary.\n\nMinimize long content sections that have a lot of detail. In line with the point about information overload, try to avoid long blocks of text if the website isn’t geared to major information consumption. For example, if you need to provide details about a service or product, try to reveal details step-by-step. Write in small, scannable segments to facilitate discovery. According to Robert Gunning’s book “How to Take the Fog Out of Business Writing,” for comfortable reading, most sentences should be 20 words or less.",
+			"questionNumber": 65,
+			"questionText": "According to the text, one of the ways to minimise information overload is:",
+			"answer": "Breaking content down into smaller pieces",
+			"option1": "Revealing details step-by-step",
+			"option2": "Using sentences that are 20 words or less",
+			"option3": "Breaking content down into smaller pieces",
+			"option4": "None of the above"
+		},
+		{
+			"resource": "Prevent information overload. Information overload is a serious problem. It prevents users from making decisions or taking action because they feel they have too much information to consume. There are some simple ways to minimize information overload. One common technique is chunking — breaking content into smaller chunks to help users understand and process it better. A checkout form is a perfect example. Display, at most, five to seven input fields at a time and break down the checkout into pages — progressively disclosing fields as necessary.\n\nMinimize long content sections that have a lot of detail. In line with the point about information overload, try to avoid long blocks of text if the website isn’t geared to major information consumption. For example, if you need to provide details about a service or product, try to reveal details step-by-step. Write in small, scannable segments to facilitate discovery. According to Robert Gunning’s book “How to Take the Fog Out of Business Writing,” for comfortable reading, most sentences should be 20 words or less.",
+			"questionNumber": 66,
+			"questionText": "As per Robert Gunning:",
+			"answer": "20 words is the maximum amount in a sentence to facilitate easy reading.",
+			"option1": "Business writing can be foggy",
+			"option2": "Sentences that are too short can create an uncomfortable read",
+			"option3": "Details should be revealed in smaller segments",
+			"option4": "20 words is the maximum amount in a sentence to facilitate easy reading."
+		},
+		{
+			"resource": "Prevent information overload. Information overload is a serious problem. It prevents users from making decisions or taking action because they feel they have too much information to consume. There are some simple ways to minimize information overload. One common technique is chunking — breaking content into smaller chunks to help users understand and process it better. A checkout form is a perfect example. Display, at most, five to seven input fields at a time and break down the checkout into pages — progressively disclosing fields as necessary.\n\nMinimize long content sections that have a lot of detail. In line with the point about information overload, try to avoid long blocks of text if the website isn’t geared to major information consumption. For example, if you need to provide details about a service or product, try to reveal details step-by-step. Write in small, scannable segments to facilitate discovery. According to Robert Gunning’s book “How to Take the Fog Out of Business Writing,” for comfortable reading, most sentences should be 20 words or less.",
+			"questionNumber": 67,
+			"questionText": "What are Checkout forms, according to the text:",
+			"answer": "A great example of chunking",
+			"option1": "Input fields",
+			"option2": "A great example of chunking",
+			"option3": "Forms which only display information as necessary",
+			"option4": "A web function that allows customers to purchase goods/services"
+		},
+		{
+			"resource": "Prevent information overload. Information overload is a serious problem. It prevents users from making decisions or taking action because they feel they have too much information to consume. There are some simple ways to minimize information overload. One common technique is chunking — breaking content into smaller chunks to help users understand and process it better. A checkout form is a perfect example. Display, at most, five to seven input fields at a time and break down the checkout into pages — progressively disclosing fields as necessary.\n\nMinimize long content sections that have a lot of detail. In line with the point about information overload, try to avoid long blocks of text if the website isn’t geared to major information consumption. For example, if you need to provide details about a service or product, try to reveal details step-by-step. Write in small, scannable segments to facilitate discovery. According to Robert Gunning’s book “How to Take the Fog Out of Business Writing,” for comfortable reading, most sentences should be 20 words or less.",
+			"questionNumber": 68,
+			"questionText": "What is wrong with having long blocks of text?",
+			"answer": "It makes taking in the information more difficult",
+			"option1": "Stops people from taking action.",
+			"option2": "It makes the text boring and less aesthetically pleasing",
+			"option3": "It creates curiosity around the topic for the reader",
+			"option4": "It makes taking in the information more difficult"
+		},
+		{
+			"resource": "According to Dr. Michael Baird, chief science officer of DNA Diagnostics Center: \"It's well known we get half of our DNA from each of our biological parents. Every day we are learning more about how a person's DNA influences their physical traits and behavioral traits. It's certainly possible that a person could inherit the genes to be an entrepreneur--I say genes because it's likely a combination of genes, not a single gene. It could be a combination of genes that makes a person a leader, a risk taker, or other entrepreneurial traits that are potentially inherited from our parents. Environmental factors combined with the DNA we inherit could also trigger entrepreneurial characteristics.\"\n\nWhile the scientific evidence is persuasive, studies agree that genetics isn't the end-all-be-all for entrepreneurs. There are many other factors, such as upbringing, but even more so some factors outside of the person. For example, economics in a particular location, culture, education, taxes, and even natural resource abundance could all affect someone's ability to be a successful entrepreneur. In other words, whether or not you think genetics is a factor, it's hard to argue that it is the only factor.",
+			"questionNumber": 69,
+			"questionText": "Entrepreneurial spirit is usually reflected in DNA through:",
+			"answer": "A combination of genes",
+			"option1": "Both physical and behavioural genetics",
+			"option2": "A combination of genes",
+			"option3": "Being a risk taker",
+			"option4": "What we inherit from our parents"
+		},
+		{
+			"resource": "According to Dr. Michael Baird, chief science officer of DNA Diagnostics Center: \"It's well known we get half of our DNA from each of our biological parents. Every day we are learning more about how a person's DNA influences their physical traits and behavioral traits. It's certainly possible that a person could inherit the genes to be an entrepreneur--I say genes because it's likely a combination of genes, not a single gene. It could be a combination of genes that makes a person a leader, a risk taker, or other entrepreneurial traits that are potentially inherited from our parents. Environmental factors combined with the DNA we inherit could also trigger entrepreneurial characteristics.\"\n\nWhile the scientific evidence is persuasive, studies agree that genetics isn't the end-all-be-all for entrepreneurs. There are many other factors, such as upbringing, but even more so some factors outside of the person. For example, economics in a particular location, culture, education, taxes, and even natural resource abundance could all affect someone's ability to be a successful entrepreneur. In other words, whether or not you think genetics is a factor, it's hard to argue that it is the only factor.",
+			"questionNumber": 70,
+			"questionText": "Which sentence best summarises the quote in the first paragraph?",
+			"answer": "There are plenty of traits, which when found in the right combination, in the right circumstances can lead to a person becoming an entrepreneur",
+			"option1": "Dr Michael Baird believes that a specific genetic make-up can result in a successful entrepreneur",
+			"option2": "Somebody who is: a leader and a risk taker is likely to be an entrepreneur, in the right circumstances.",
+			"option3": "Entrepreneurial traits are inherited from our parents, those who have said traits are likely to become entrepreneurs, in the right environment.",
+			"option4": "There are plenty of traits, which when found in the right combination, in the right circumstances can lead to a person becoming an entrepreneur"
+		},
+		{
+			"resource": "According to Dr. Michael Baird, chief science officer of DNA Diagnostics Center: \"It's well known we get half of our DNA from each of our biological parents. Every day we are learning more about how a person's DNA influences their physical traits and behavioral traits. It's certainly possible that a person could inherit the genes to be an entrepreneur--I say genes because it's likely a combination of genes, not a single gene. It could be a combination of genes that makes a person a leader, a risk taker, or other entrepreneurial traits that are potentially inherited from our parents. Environmental factors combined with the DNA we inherit could also trigger entrepreneurial characteristics.\"\n\nWhile the scientific evidence is persuasive, studies agree that genetics isn't the end-all-be-all for entrepreneurs. There are many other factors, such as upbringing, but even more so some factors outside of the person. For example, economics in a particular location, culture, education, taxes, and even natural resource abundance could all affect someone's ability to be a successful entrepreneur. In other words, whether or not you think genetics is a factor, it's hard to argue that it is the only factor.",
+			"questionNumber": 71,
+			"questionText": "Natural resource abundance could:",
+			"answer": "Influence your upbringing",
+			"option1": "Push you towards becoming an entrepreneur",
+			"option2": "Push you away from becoming an entrepreneur",
+			"option3": "Mean you will be more successful as an entrepreneur",
+			"option4": "Influence your upbringing"
+		},
+		{
+			"resource": "According to Dr. Michael Baird, chief science officer of DNA Diagnostics Center: \"It's well known we get half of our DNA from each of our biological parents. Every day we are learning more about how a person's DNA influences their physical traits and behavioral traits. It's certainly possible that a person could inherit the genes to be an entrepreneur--I say genes because it's likely a combination of genes, not a single gene. It could be a combination of genes that makes a person a leader, a risk taker, or other entrepreneurial traits that are potentially inherited from our parents. Environmental factors combined with the DNA we inherit could also trigger entrepreneurial characteristics.\"\n\nWhile the scientific evidence is persuasive, studies agree that genetics isn't the end-all-be-all for entrepreneurs. There are many other factors, such as upbringing, but even more so some factors outside of the person. For example, economics in a particular location, culture, education, taxes, and even natural resource abundance could all affect someone's ability to be a successful entrepreneur. In other words, whether or not you think genetics is a factor, it's hard to argue that it is the only factor.",
+			"questionNumber": 72,
+			"questionText": "According to the text, the author of the text:",
+			"answer": "None of the above",
+			"option1": "Works for the DNA diagnostics center",
+			"option2": "Believes genetics have the strongest influence on whether you will be an entrepreneur",
+			"option3": "Is an entrepreneur",
+			"option4": "None of the above"
+		},
+		{
+			"resource": "Not all birds sing, but those that do are in a class of birds known as passerines, or perching birds. (The term \"passerine\" is sometimes incorrectly used as a synonym for \"songbird,\" but this is inaccurate, since passerine status is defined by the structure of the bird's feet. All songbirds are passerines, but not all passerines are songbirds.) Many familiar backyard birds are songbirds, including sparrows, wrens, warblers and thrushes. The males of the species often sing more than the females. The males sing to announce their presence and to let females know that they are available for mating. They also sing to defend the territory in which they mate, nest or feed. Females do not sing as frequently as the males. A song is often a multi-noted phrase that is repeated over and over. Some species only have one song in their repertoire, while other species may have several. Some birds, such as starlings, will mimic the songs of other species of birds, and they may be able to produce dozens of different songs.\nA more common form of communication among birds are call notes. Most birds communicate aurally, although some are more vocal than others, and each species of bird has a variety of call notes to convey different messages. Birds use call notes to alert other birds of danger, and some species may have different call notes for different threats (for example, they may have one note to sound the alarm for an airborne predator like a hawk or owl and another note for a land predator like a cat).",
+			"questionNumber": 73,
+			"questionText": "Perching birds are grouped by the similarity of their feet",
+			"answer": "True",
+			"option1": "True",
+			"option2": "False",
+			"option3": "",
+			"option4": ""
+		},
+		{
+			"resource": "Not all birds sing, but those that do are in a class of birds known as passerines, or perching birds. (The term \"passerine\" is sometimes incorrectly used as a synonym for \"songbird,\" but this is inaccurate, since passerine status is defined by the structure of the bird's feet. All songbirds are passerines, but not all passerines are songbirds.) Many familiar backyard birds are songbirds, including sparrows, wrens, warblers and thrushes. The males of the species often sing more than the females. The males sing to announce their presence and to let females know that they are available for mating. They also sing to defend the territory in which they mate, nest or feed. Females do not sing as frequently as the males. A song is often a multi-noted phrase that is repeated over and over. Some species only have one song in their repertoire, while other species may have several. Some birds, such as starlings, will mimic the songs of other species of birds, and they may be able to produce dozens of different songs.\nA more common form of communication among birds are call notes. Most birds communicate aurally, although some are more vocal than others, and each species of bird has a variety of call notes to convey different messages. Birds use call notes to alert other birds of danger, and some species may have different call notes for different threats (for example, they may have one note to sound the alarm for an airborne predator like a hawk or owl and another note for a land predator like a cat).",
+			"questionNumber": 74,
+			"questionText": "Sparrows and wrens have similar feet structure",
+			"answer": "True",
+			"option1": "True",
+			"option2": "False",
+			"option3": "",
+			"option4": ""
+		},
+		{
+			"resource": "Not all birds sing, but those that do are in a class of birds known as passerines, or perching birds. (The term \"passerine\" is sometimes incorrectly used as a synonym for \"songbird,\" but this is inaccurate, since passerine status is defined by the structure of the bird's feet. All songbirds are passerines, but not all passerines are songbirds.) Many familiar backyard birds are songbirds, including sparrows, wrens, warblers and thrushes. The males of the species often sing more than the females. The males sing to announce their presence and to let females know that they are available for mating. They also sing to defend the territory in which they mate, nest or feed. Females do not sing as frequently as the males. A song is often a multi-noted phrase that is repeated over and over. Some species only have one song in their repertoire, while other species may have several. Some birds, such as starlings, will mimic the songs of other species of birds, and they may be able to produce dozens of different songs.\nA more common form of communication among birds are call notes. Most birds communicate aurally, although some are more vocal than others, and each species of bird has a variety of call notes to convey different messages. Birds use call notes to alert other birds of danger, and some species may have different call notes for different threats (for example, they may have one note to sound the alarm for an airborne predator like a hawk or owl and another note for a land predator like a cat).",
+			"questionNumber": 75,
+			"questionText": "It is more common for birds to communicate for mating purposes than to alert other birds of danger",
+			"answer": "False",
+			"option1": "True",
+			"option2": "False",
+			"option3": "",
+			"option4": ""
+		},
+		{
+			"resource": "Not all birds sing, but those that do are in a class of birds known as passerines, or perching birds. (The term \"passerine\" is sometimes incorrectly used as a synonym for \"songbird,\" but this is inaccurate, since passerine status is defined by the structure of the bird's feet. All songbirds are passerines, but not all passerines are songbirds.) Many familiar backyard birds are songbirds, including sparrows, wrens, warblers and thrushes. The males of the species often sing more than the females. The males sing to announce their presence and to let females know that they are available for mating. They also sing to defend the territory in which they mate, nest or feed. Females do not sing as frequently as the males. A song is often a multi-noted phrase that is repeated over and over. Some species only have one song in their repertoire, while other species may have several. Some birds, such as starlings, will mimic the songs of other species of birds, and they may be able to produce dozens of different songs.\nA more common form of communication among birds are call notes. Most birds communicate aurally, although some are more vocal than others, and each species of bird has a variety of call notes to convey different messages. Birds use call notes to alert other birds of danger, and some species may have different call notes for different threats (for example, they may have one note to sound the alarm for an airborne predator like a hawk or owl and another note for a land predator like a cat).",
+			"questionNumber": 76,
+			"questionText": "According to the text, Females sing to defend their territory.",
+			"answer": "False",
+			"option1": "True",
+			"option2": "False",
+			"option3": "",
+			"option4": ""
+		},
+		{
+			"resource": "In the early years of the Roman Republic, the army was a volunteer, citizen army. Only Roman citizens could possibly serve at this time, as well. However, by the end of the Republic and into the years of the Roman Empire, the lands possessed by the Romans became so large that it became difficult to maintain this sort of army. Instead of signing up for specific lengths of time in the army, prospective soldiers now promised a certain number of years of service. While volunteers could still be accepted, many young men were now conscripted into the military, and many of them were not Roman citizens. As the borders of Rome expanded, the military had to rely on the men from the Roman provinces to serve. The only requirement at this time was that they were free citizens.\n\nThere were several layers to the typical armor worn by the legionnaires of the Roman military. It's estimated that the average legionnaire carried 60 to 100 pounds of armor and weapons. The first layer was the tunica, or tunic worn under all the layers of armor. A scarf, called a focale would also be worn to protect the neck from rubbing against the metal armor. Worn around the waist were two items. The first was a leather belt, called a balteus. The second was a leather apron with some metal plates, called a sporran. The actual functionality of the sporran is unknown. While pants or trousers were not typically worn, those soldiers traveling to colder climates sometimes wore a bracae, or skin tight wool or leather trousers that reached only to the knees. As for shoes, sturdy, leather sandals with iron treads, called caligae were worn.",
+			"questionNumber": 77,
+			"questionText": "Roman army soldiers were all:",
+			"answer": "Free citizens",
+			"option1": "Volunteers",
+			"option2": "Free citizens",
+			"option3": "Conscripted",
+			"option4": "Young men"
+		},
+		{
+			"resource": "In the early years of the Roman Republic, the army was a volunteer, citizen army. Only Roman citizens could possibly serve at this time, as well. However, by the end of the Republic and into the years of the Roman Empire, the lands possessed by the Romans became so large that it became difficult to maintain this sort of army. Instead of signing up for specific lengths of time in the army, prospective soldiers now promised a certain number of years of service. While volunteers could still be accepted, many young men were now conscripted into the military, and many of them were not Roman citizens. As the borders of Rome expanded, the military had to rely on the men from the Roman provinces to serve. The only requirement at this time was that they were free citizens.\n\nThere were several layers to the typical armor worn by the legionnaires of the Roman military. It's estimated that the average legionnaire carried 60 to 100 pounds of armor and weapons. The first layer was the tunica, or tunic worn under all the layers of armor. A scarf, called a focale would also be worn to protect the neck from rubbing against the metal armor. Worn around the waist were two items. The first was a leather belt, called a balteus. The second was a leather apron with some metal plates, called a sporran. The actual functionality of the sporran is unknown. While pants or trousers were not typically worn, those soldiers traveling to colder climates sometimes wore a bracae, or skin tight wool or leather trousers that reached only to the knees. As for shoes, sturdy, leather sandals with iron treads, called caligae were worn.",
+			"questionNumber": 78,
+			"questionText": "Which area of the body is not said to be covered by armor:",
+			"answer": "Lower legs",
+			"option1": "Torso",
+			"option2": "Head and neck",
+			"option3": "Feet",
+			"option4": "Lower legs"
+		},
+		{
+			"resource": "In the early years of the Roman Republic, the army was a volunteer, citizen army. Only Roman citizens could possibly serve at this time, as well. However, by the end of the Republic and into the years of the Roman Empire, the lands possessed by the Romans became so large that it became difficult to maintain this sort of army. Instead of signing up for specific lengths of time in the army, prospective soldiers now promised a certain number of years of service. While volunteers could still be accepted, many young men were now conscripted into the military, and many of them were not Roman citizens. As the borders of Rome expanded, the military had to rely on the men from the Roman provinces to serve. The only requirement at this time was that they were free citizens.\n\nThere were several layers to the typical armor worn by the legionnaires of the Roman military. It's estimated that the average legionnaire carried 60 to 100 pounds of armor and weapons. The first layer was the tunica, or tunic worn under all the layers of armor. A scarf, called a focale would also be worn to protect the neck from rubbing against the metal armor. Worn around the waist were two items. The first was a leather belt, called a balteus. The second was a leather apron with some metal plates, called a sporran. The actual functionality of the sporran is unknown. While pants or trousers were not typically worn, those soldiers traveling to colder climates sometimes wore a bracae, or skin tight wool or leather trousers that reached only to the knees. As for shoes, sturdy, leather sandals with iron treads, called caligae were worn.",
+			"questionNumber": 79,
+			"questionText": "According to the text, how many of the Roman armor pieces do we know the use of?",
+			"answer": "3",
+			"option1": "3",
+			"option2": "4",
+			"option3": "5",
+			"option4": "None of the above"
+		},
+		{
+			"resource": "In the early years of the Roman Republic, the army was a volunteer, citizen army. Only Roman citizens could possibly serve at this time, as well. However, by the end of the Republic and into the years of the Roman Empire, the lands possessed by the Romans became so large that it became difficult to maintain this sort of army. Instead of signing up for specific lengths of time in the army, prospective soldiers now promised a certain number of years of service. While volunteers could still be accepted, many young men were now conscripted into the military, and many of them were not Roman citizens. As the borders of Rome expanded, the military had to rely on the men from the Roman provinces to serve. The only requirement at this time was that they were free citizens.\n\nThere were several layers to the typical armor worn by the legionnaires of the Roman military. It's estimated that the average legionnaire carried 60 to 100 pounds of armor and weapons. The first layer was the tunica, or tunic worn under all the layers of armor. A scarf, called a focale would also be worn to protect the neck from rubbing against the metal armor. Worn around the waist were two items. The first was a leather belt, called a balteus. The second was a leather apron with some metal plates, called a sporran. The actual functionality of the sporran is unknown. While pants or trousers were not typically worn, those soldiers traveling to colder climates sometimes wore a bracae, or skin tight wool or leather trousers that reached only to the knees. As for shoes, sturdy, leather sandals with iron treads, called caligae were worn.",
+			"questionNumber": 80,
+			"questionText": "There were always two items around which body part?",
+			"answer": "Waist",
+			"option1": "Neck",
+			"option2": "Legs",
+			"option3": "Waist",
+			"option4": "None of the above"
+		},
+		{
+			"resource": "In general, it is rare for a philosopher's positions and arguments to remain the same across an entire life. This means that, in reading philosophers' works and reconstructing their arguments, one must pay attention to the place of each work in the philosophical development of the author in question. Readers of the philosophical works of Immanuel Kant are aware of the basic distinction between his critical and precritical periods. Readers of the works of G. W. Leibniz are also aware of his philosophical development, although in his case there is less agreement on how to place his writings into a developmental scheme.\n\nScholars have proposed various schemes for dividing Descartes' life into periods. This entry adopts a relatively simple division between the era when mathematics provided the model for his method and the period after the “metaphysical turn” of 1629, when his conception of the role of the intellect in acquiring knowledge changed and when he came to conceive the truth of his special or particular hypotheses in natural philosophy as less than certain and so as subject to the scheme of confirmation through consequences mentioned above. In effect, he adopted a hypothetico-deductive scheme of confirmation, but with this difference: the range of hypotheses was limited by his metaphysical conclusions concerning the essence of mind and matter, their union, and the role of God in creating and conserving the universe. Consequently, some hypotheses, such as the “substantial forms” of scholastics, were ruled out.",
+			"questionNumber": 81,
+			"questionText": "What is similar between Leibniz and Descartes that is different to Kant:",
+			"answer": "There is debate surrounding how to divide their philosophical development",
+			"option1": "Their is debate surrounding how to divide their philosophical development",
+			"option2": "The time period that they produced their philosophical works",
+			"option3": "The use of mathematics as the basis of their philosophies",
+			"option4": "They became more critical about their own philosophies as their lives continued."
+		},
+		{
+			"resource": "In general, it is rare for a philosopher's positions and arguments to remain the same across an entire life. This means that, in reading philosophers' works and reconstructing their arguments, one must pay attention to the place of each work in the philosophical development of the author in question. Readers of the philosophical works of Immanuel Kant are aware of the basic distinction between his critical and precritical periods. Readers of the works of G. W. Leibniz are also aware of his philosophical development, although in his case there is less agreement on how to place his writings into a developmental scheme.\n\nScholars have proposed various schemes for dividing Descartes' life into periods. This entry adopts a relatively simple division between the era when mathematics provided the model for his method and the period after the “metaphysical turn” of 1629, when his conception of the role of the intellect in acquiring knowledge changed and when he came to conceive the truth of his special or particular hypotheses in natural philosophy as less than certain and so as subject to the scheme of confirmation through consequences mentioned above. In effect, he adopted a hypothetico-deductive scheme of confirmation, but with this difference: the range of hypotheses was limited by his metaphysical conclusions concerning the essence of mind and matter, their union, and the role of God in creating and conserving the universe. Consequently, some hypotheses, such as the “substantial forms” of scholastics, were ruled out.",
+			"questionNumber": 82,
+			"questionText": "After 1629 Descartes became:",
+			"answer": "Began to doubt a core theory, which debunked other theories",
+			"option1": "Less sceptical of his philosophical beliefs, with particular regard to essence of mind and matter.",
+			"option2": "Began to doubt a core theory, which debunked other theories",
+			"option3": "Began to doubt many of his theories as part of a wider increase in scepticism",
+			"option4": "Used less mathematics in his philosophical theories."
+		},
+		{
+			"resource": "In general, it is rare for a philosopher's positions and arguments to remain the same across an entire life. This means that, in reading philosophers' works and reconstructing their arguments, one must pay attention to the place of each work in the philosophical development of the author in question. Readers of the philosophical works of Immanuel Kant are aware of the basic distinction between his critical and precritical periods. Readers of the works of G. W. Leibniz are also aware of his philosophical development, although in his case there is less agreement on how to place his writings into a developmental scheme.\n\nScholars have proposed various schemes for dividing Descartes' life into periods. This entry adopts a relatively simple division between the era when mathematics provided the model for his method and the period after the “metaphysical turn” of 1629, when his conception of the role of the intellect in acquiring knowledge changed and when he came to conceive the truth of his special or particular hypotheses in natural philosophy as less than certain and so as subject to the scheme of confirmation through consequences mentioned above. In effect, he adopted a hypothetico-deductive scheme of confirmation, but with this difference: the range of hypotheses was limited by his metaphysical conclusions concerning the essence of mind and matter, their union, and the role of God in creating and conserving the universe. Consequently, some hypotheses, such as the “substantial forms” of scholastics, were ruled out.",
+			"questionNumber": 83,
+			"questionText": "“Scholastics” as used in the text is best defined as:",
+			"answer": "Mainstream schools of thought",
+			"option1": "Old schools of thought",
+			"option2": "Visionary schools of thought",
+			"option3": "Niche schools of thought",
+			"option4": "Mainstream schools of thought"
+		},
+		{
+			"resource": "In general, it is rare for a philosopher's positions and arguments to remain the same across an entire life. This means that, in reading philosophers' works and reconstructing their arguments, one must pay attention to the place of each work in the philosophical development of the author in question. Readers of the philosophical works of Immanuel Kant are aware of the basic distinction between his critical and precritical periods. Readers of the works of G. W. Leibniz are also aware of his philosophical development, although in his case there is less agreement on how to place his writings into a developmental scheme.\n\nScholars have proposed various schemes for dividing Descartes' life into periods. This entry adopts a relatively simple division between the era when mathematics provided the model for his method and the period after the “metaphysical turn” of 1629, when his conception of the role of the intellect in acquiring knowledge changed and when he came to conceive the truth of his special or particular hypotheses in natural philosophy as less than certain and so as subject to the scheme of confirmation through consequences mentioned above. In effect, he adopted a hypothetico-deductive scheme of confirmation, but with this difference: the range of hypotheses was limited by his metaphysical conclusions concerning the essence of mind and matter, their union, and the role of God in creating and conserving the universe. Consequently, some hypotheses, such as the “substantial forms” of scholastics, were ruled out.",
+			"questionNumber": 84,
+			"questionText": "According to the text, Descartes' belief in God:",
+			"answer": "Was used as a basis for his philosophical theories",
+			"option1": "Limited his ability to act optimally as a philosopher",
+			"option2": "Stayed with him throughout his philosophical career",
+			"option3": "Decreased as time passed",
+			"option4": "Was used as a basis for his philosophical theories"
+		},
+		{
+			"resource": "NHS research suggests that cannabis is a relatively low-risk drug with only around 10% of its users developing an addiction. For more perspective, it is estimated that 32% of tobacco users will become addicted and 15% of alcohol users will become addicted. Furthermore, there have been no cases in the UK where death was caused as direct consequence of Cannabis use.\nThe most common argument put forward for the inclusion of cannabis as an illegal substance is a concern that cannabis may have a detrimental effect on mental health or act as a gateway to more harmful substances. THC is the main chemical in cannabis which can change your mood and make you anxious/paranoid, and it is the use of the types of cannabis that have higher amounts of THC that creates the legitimate concern that legalising the drug might not be in the public’s best interest.\nOn the other hand, activists of cannabis use would argue that it is this concern over THC that supports the regulation of cannabis so that safer versions of the drug can be utilised for medicinal purposes or for recreational use to actually aid mental health issues such as anxiety.",
+			"questionNumber": 85,
+			"questionText": "Why might the government refrain from legalising cannabis?",
+			"answer": "It is considered a gateway drug",
+			"option1": "10% of users develop an addiction",
+			"option2": "It is considered a gateway drug",
+			"option3": "Different types of cannabis have different levels of THC",
+			"option4": "THC, inherent in all cannabis can make the user anxious/paranoid"
+		},
+		{
+			"resource": "NHS research suggests that cannabis is a relatively low-risk drug with only around 10% of its users developing an addiction. For more perspective, it is estimated that 32% of tobacco users will become addicted and 15% of alcohol users will become addicted. Furthermore, there have been no cases in the UK where death was caused as direct consequence of Cannabis use.\nThe most common argument put forward for the inclusion of cannabis as an illegal substance is a concern that cannabis may have a detrimental effect on mental health or act as a gateway to more harmful substances. THC is the main chemical in cannabis which can change your mood and make you anxious/paranoid, and it is the use of the types of cannabis that have higher amounts of THC that creates the legitimate concern that legalising the drug might not be in the public’s best interest.\nOn the other hand, activists of cannabis use would argue that it is this concern over THC that supports the regulation of cannabis so that safer versions of the drug can be utilised for medicinal purposes or for recreational use to actually aid mental health issues such as anxiety.",
+			"questionNumber": 86,
+			"questionText": "According to the text, why might some argue that cannabis should be legalised?",
+			"answer": "It is less addictive than tobacco or alcohol",
+			"option1": "It is less addictive than tobacco or alcohol",
+			"option2": "Tax revenues could aid the economy",
+			"option3": "So we can regulate the levels of THC within cannabis",
+			"option4": "Cannabis has medicinal benefits."
+		},
+		{
+			"resource": "NHS research suggests that cannabis is a relatively low-risk drug with only around 10% of its users developing an addiction. For more perspective, it is estimated that 32% of tobacco users will become addicted and 15% of alcohol users will become addicted. Furthermore, there have been no cases in the UK where death was caused as direct consequence of Cannabis use.\nThe most common argument put forward for the inclusion of cannabis as an illegal substance is a concern that cannabis may have a detrimental effect on mental health or act as a gateway to more harmful substances. THC is the main chemical in cannabis which can change your mood and make you anxious/paranoid, and it is the use of the types of cannabis that have higher amounts of THC that creates the legitimate concern that legalising the drug might not be in the public’s best interest.\nOn the other hand, activists of cannabis use would argue that it is this concern over THC that supports the regulation of cannabis so that safer versions of the drug can be utilised for medicinal purposes or for recreational use to actually aid mental health issues such as anxiety.",
+			"questionNumber": 87,
+			"questionText": "It can be inferred from the text that:",
+			"answer": "None of the above",
+			"option1": "People have died as a direct result of alcohol consumption",
+			"option2": "People have died as a direct result of tobacco consumption",
+			"option3": "Cannabis is less likely to cause death than alcohol or tobacco",
+			"option4": "None of the above"
+		},
+		{
+			"resource": "NHS research suggests that cannabis is a relatively low-risk drug with only around 10% of its users developing an addiction. For more perspective, it is estimated that 32% of tobacco users will become addicted and 15% of alcohol users will become addicted. Furthermore, there have been no cases in the UK where death was caused as direct consequence of Cannabis use.\nThe most common argument put forward for the inclusion of cannabis as an illegal substance is a concern that cannabis may have a detrimental effect on mental health or act as a gateway to more harmful substances. THC is the main chemical in cannabis which can change your mood and make you anxious/paranoid, and it is the use of the types of cannabis that have higher amounts of THC that creates the legitimate concern that legalising the drug might not be in the public’s best interest.\nOn the other hand, activists of cannabis use would argue that it is this concern over THC that supports the regulation of cannabis so that safer versions of the drug can be utilised for medicinal purposes or for recreational use to actually aid mental health issues such as anxiety.",
+			"questionNumber": 88,
+			"questionText": "According to the text, cannabis use can:",
+			"answer": "Both aid and inhibit mental health",
+			"option1": "Both aid and inhibit mental health",
+			"option2": "Be considered medical",
+			"option3": "Be considered dangerous",
+			"option4": "Controversial and illicit"
+		}
+	]
+}

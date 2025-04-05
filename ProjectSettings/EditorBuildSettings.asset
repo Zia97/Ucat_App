@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Menu/MainMenu.unity
+    guid: 9b51455393e14014894e02dedc3ef094
+  - enabled: 0
+    path: Assets/Scenes/PracticeSections/AbstractReasoningScene.unity
+    guid: 5ab831e2249ed774b9022c101e54e413
+  - enabled: 1
+    path: Assets/Scenes/Menu/AboutUcat.unity
+    guid: 2ba7f3fcbc2ce184485735aa944701d1
+  - enabled: 1
+    path: Assets/Scenes/PracticeSections/SituationalJudgementScene.unity
+    guid: d3286f9460f57804d94ca6472e20b85d
+  - enabled: 1
+    path: Assets/Scenes/PracticeSections/QuantitativeReasoningScene.unity
+    guid: 3051be877f66baa4e916b24839c0af7e
+  - enabled: 1
+    path: Assets/Scenes/PracticeSections/VerbalReasoningScene.unity
+    guid: c1cdd2f30ec12e94a9d6803e3143d8d5
+  - enabled: 1
+    path: Assets/Scenes/PracticeSections/DecisionMakingScene.unity
+    guid: cc412b7726e2bcb46912817d68e35d61
+  - enabled: 0
+    path: Assets/Scenes/Menu/PracticeTest.unity
+    guid: 2c99c17b77140ea4da333b3199c8b575
+  - enabled: 0
+    path: Assets/Scenes/TimedTests/VerbalReasoningTimedScene.unity
+    guid: dad016f2d4fb88a45892b595732e9f78
+  - enabled: 0
+    path: Assets/Scenes/TimedTests/DecisionMakingTimedScene.unity
+    guid: ad39aca194e3cea42847270e2c818d66
+  - enabled: 0
+    path: Assets/Scenes/TimedTests/AbstractReasoningTimedScene.unity
+    guid: 659ffba274e0247499f1e7b8f9e9a496
+  - enabled: 0
+    path: Assets/Scenes/TimedTests/SituationalJudgementTimedScene.unity
+    guid: a83393d40d1665e44937ef17981b00f2
+  - enabled: 0
+    path: Assets/Scenes/TimedTests/QuantitativeReasoningTimedScene.unity
+    guid: ed283e823bd38ec49bdf524ae7e0a7e3
+  m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "941123912082",
+    "project_id": "ucatapp-7f24d",
+    "storage_bucket": "ucatapp-7f24d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:941123912082:android:f56a452bcd4731d881814b",
+        "android_client_info": {
+          "package_name": "com.ZApps.UcatApp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVsA1cX4_OyMF5jUEQMSsLeJJ2KejndM0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
