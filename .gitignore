@@ -1,0 +1,17 @@
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]serSettings/
+/.vs/
+/*.csproj
+/*.sln
+/*.userprefs
+*.apk
+*.ipa
+*.env
+*.key
+secrets.json
+.DS_Store
