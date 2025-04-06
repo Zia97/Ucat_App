@@ -36,7 +36,6 @@ public class GooglePlayGamesManager : MonoBehaviour
                 Debug.Log("Login with Google Play games successful.");
                 PlayGamesPlatform.Instance.RequestServerSideAccess(true, code =>
                 {
-                    Debug.Log("Authorization code: " + code);
                     Token = code;
                     // This token serves as an example to be used for SignInWithGooglePlayGames
                     tcs.SetResult(null);
@@ -64,8 +63,6 @@ public class GooglePlayGamesManager : MonoBehaviour
         }
         catch (AuthenticationException ex)
         {
-            // Compare error code to AuthenticationErrorCodes
-            // Notify the player with the proper error message
             Debug.LogException(ex);
         }
         catch (RequestFailedException ex)

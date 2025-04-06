@@ -152,9 +152,6 @@ public class ChatGPTManager : MonoBehaviour
                 KeyResponse data = JsonUtility.FromJson<KeyResponse>(request.downloadHandler.text);
                 apiKey = data.openai_key;
                 assistantId = data.verbalReasoningAssistantId;
-
-                Debug.Log("OpenAI Key: " + apiKey);
-                Debug.Log("Another Key: " + assistantId);
             }
             else
             {
