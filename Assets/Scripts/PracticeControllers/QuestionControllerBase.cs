@@ -145,7 +145,7 @@ public abstract class QuestionControllerBase<TQuestion, TQuestionData> : MonoBeh
         LoadQuestionResources();
     }
 
-    public void LoadQuestionLabels()
+    public virtual void LoadQuestionLabels()
     {
         Answer1Toggle.GetComponentInChildren<Text>().text = GetOption1();
         Answer2Toggle.GetComponentInChildren<Text>().text = GetOption2();
@@ -260,7 +260,7 @@ public abstract class QuestionControllerBase<TQuestion, TQuestionData> : MonoBeh
         chosenToggle.colors = cb;
     }
 
-    private void SetToggleColourIncorrect(Toggle chosenToggle)
+    public void SetToggleColourIncorrect(Toggle chosenToggle)
     {
         ColorBlock cb = chosenToggle.colors;
 

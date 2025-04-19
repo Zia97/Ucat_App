@@ -7,92 +7,17 @@ using Unity.Services.Core;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SituationalJudgementControllerScript : MonoBehaviour
+class SituationalJudgementControllerScript : QuestionControllerBase<SituationalJudgementQuestion, SJQuestions>
 {
+    private const string SituationalJudgementAnsweredQuestions = "SituationalJudgementAnsweredQuestions";
 
-    public Text HeaderPanelText;
-    public Text QuestionCounterText;
-    public TextAsset jsonFile;
-
-    public Text QuestionText;
-    public Text preText;
-
-    private String SituationalJudgementAnsweredQuestions = "SituationalJudgementAnsweredQuestions";
-
-    public Text answerText;
-    public GameObject answerPanel;
-    public Button answerPanelCloseButton;
-
-    public Toggle Answer1Toggle;
-    public Toggle Answer2Toggle;
-    public Toggle Answer3Toggle;
-    public Toggle Answer4Toggle;
-
-    public Button NextButton;
-    public Button PreviousButton;
-
-    public Button AnswerButton;
-
-    private List<SJQuestions> allQuestions;
-    private List<SituationalJudgementQuestion> situationalJudgementQuestionList = new List<SituationalJudgementQuestion>();
-    private SituationalJudgementQuestion[] questionList;
-    private List<UserSavedAnswerModel> userSaveDataModels = new List<UserSavedAnswerModel>();
-
-
-    private int currentlySelectedQuestion;
-
-    private static ColorBlock correctColours;
-    private static ColorBlock incorrectColours;
-
-    private SwipeDetector swipeDetector;
-
-
-    // Start is called before the first frame update
-    private async Task Start()
+    protected override void SetQuestionList()
     {
-        GlobalVariables.selectedExercise = "Practice";
-
-        HeaderPanelText.text = GlobalVariables.SelectedPracticeQuestion;
-
-        answerPanel.SetActive(false);
-
-        addButtonListeners();
-
-        SetQuestionList();
-
-        await InstantiateQuestions();
-
-        initiateToggleColours();
-
-        loadQuestion(0);
-
-        updateQuestionCounter();
-
-        swipeDetector = gameObject.AddComponent<SwipeDetector>();
-        swipeDetector.OnSwipeLeft += SwipeLeft;
-        swipeDetector.OnSwipeRight += SwipeRight;
-    }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    void SetQuestionList()
-    {
-        TextAsset json = new TextAsset();
-
-        json = jsonFile;
-
-        SJAllQuestions allQuestionsFromJson = JsonUtility.FromJson<SJAllQuestions>(json.text);
+        SJAllQuestions allQuestionsFromJson = JsonUtility.FromJson<SJAllQuestions>(jsonFile.text);
         allQuestions = allQuestionsFromJson.allQuestions;
-
     }
 
-    //Creates actual decision making question objects from the list loaded from the json
-    private async Task InstantiateQuestions()
+    protected override async Task InstantiateQuestions()
     {
         Dictionary<int, UserSavedAnswerModel> userAnswers = new Dictionary<int, UserSavedAnswerModel>();
 
@@ -103,7 +28,7 @@ public class SituationalJudgementControllerScript : MonoBehaviour
 
         try
         {
-            var cloudData = await CloudSaveService.Instance.Data.LoadAsync(new HashSet<string> { SituationalJudgementAnsweredQuestions });
+            var cloudData = await CloudSaveService.Instance.Data.LoadAsync(new HashSet<string> { "SituationalJudgementAnsweredQuestions" });
 
             if (cloudData != null && cloudData.TryGetValue(SituationalJudgementAnsweredQuestions, out string jsonData) && !string.IsNullOrEmpty(jsonData))
             {
@@ -118,12 +43,12 @@ public class SituationalJudgementControllerScript : MonoBehaviour
             }
             else
             {
-                Debug.Log("No data found for key 'SituationalJudgementAnsweredQuestions'.");
+                Debug.Log($"No data found for key '{SituationalJudgementAnsweredQuestions}'.");
             }
         }
         catch (Exception e)
         {
-            Debug.LogError("Failed to load data from cloud: " + e.Message);
+            Debug.LogError($"Failed to load data from cloud: {e.Message}");
         }
 
         if (allQuestions != null)
@@ -132,125 +57,63 @@ public class SituationalJudgementControllerScript : MonoBehaviour
             {
                 if (s != null)
                 {
-                    // Add check to load user data and see if the question has already been answered 
-                    SituationalJudgementQuestion sjQuestion = new SituationalJudgementQuestion(s.resource, s.questionNumber, s.questionText, s.answerReasoning, s.answer, s.labelSet);
+                    // Create a SituationalJudgementQuestion object
+                    SituationalJudgementQuestion question = new SituationalJudgementQuestion(
+                        s.resource,
+                        s.questionNumber,
+                        s.questionText,
+                        s.answerReasoning,
+                        s.answer,
+                        s.labelSet
+                    );
 
-                    if (userAnswers.ContainsKey(s.questionNumber))
+                    // Check if the question has been answered and load user data
+                    if (userAnswers.TryGetValue(s.questionNumber, out UserSavedAnswerModel userData))
                     {
-                        UserSavedAnswerModel userData = userAnswers[s.questionNumber];
-                        if (userData != null)
-                        {
-                            sjQuestion.usersAnswer = userData.usersAnswer;
-                            sjQuestion.answerClicked = true;
-                        }
+                        question.usersAnswer = userData.usersAnswer;
+                        question.answerClicked = true;
                     }
 
-                    situationalJudgementQuestionList.Add(sjQuestion);
+                    // Add the question to the list
+                    questionList.Add(question);
                 }
             }
         }
     }
 
-    private async Task SaveUserAnswerToCloud()
+
+    public override void LoadQuestion(int questionNumber)
     {
-        UserSavedAnswerModel savedAnswer = new UserSavedAnswerModel.Builder()
-            //need to add 1 to question number as questions dont start from 0 
-            .SetQuestionNumber(currentlySelectedQuestion + 1)
-            .SetUsersAnswer(questionList[currentlySelectedQuestion].usersAnswer)
-            .Build();
+        currentlySelectedQuestion = questionNumber;
 
-        userSaveDataModels.Add(savedAnswer);
+        questionsArray = questionList.ToArray();
 
-        // Load existing data
-        Dictionary<string, string> cloudData = null;
-        try
+        ResetColours();
+
+        QuestionText.text = questionsArray[currentlySelectedQuestion].resource;
+        preText.text = questionsArray[currentlySelectedQuestion].questionText;
+
+        LoadQuestionLabels();
+
+        SetUsersSelectedAnswerForButton();
+
+        if (questionsArray[currentlySelectedQuestion].answerClicked)
         {
-            cloudData = await CloudSaveService.Instance.Data.LoadAsync(new HashSet<string> { SituationalJudgementAnsweredQuestions });
-        }
-        catch (Exception e)
-        {
-            Debug.LogError("Failed to load data from cloud: " + e.Message);
-            cloudData = new Dictionary<string, string>();
-        }
-
-        List<UserSavedAnswerModel> existingUserData = new List<UserSavedAnswerModel>();
-
-        if (cloudData != null && cloudData.TryGetValue("SituationalJudgementAnsweredQuestions", out string jsonData) && !string.IsNullOrEmpty(jsonData))
-        {
-            try
-            {
-                UserSaveDataModelListWrapper existingDataWrapper = JsonUtility.FromJson<UserSaveDataModelListWrapper>(jsonData);
-                if (existingDataWrapper != null && existingDataWrapper.userSavedAnswers != null)
-                {
-                    existingUserData = existingDataWrapper.userSavedAnswers;
-                }
-            }
-            catch (Exception e)
-            {
-                Debug.LogError("Failed to parse JSON data: " + e.Message);
-            }
-        }
-
-        // Update the list with new data, overwriting existing answers
-        foreach (var newUserAnswer in userSaveDataModels)
-        {
-            var existingAnswer = existingUserData.Find(answer => answer.questionNumber == newUserAnswer.questionNumber);
-            if (existingAnswer != null)
-            {
-                // Overwrite the existing answer
-                existingAnswer.usersAnswer = newUserAnswer.usersAnswer;
-            }
-            else
-            {
-                // Add new answer
-                existingUserData.Add(newUserAnswer);
-            }
-        }
-
-        UserSaveDataModelListWrapper userSaveDataModelListWrapper = new UserSaveDataModelListWrapper { userSavedAnswers = existingUserData };
-
-        // Serialize the updated list
-        string updatedJsonData = JsonUtility.ToJson(userSaveDataModelListWrapper);
-        Dictionary<string, object> data = new Dictionary<string, object> { { "SituationalJudgementAnsweredQuestions", updatedJsonData } };
-
-        try
-        {
-            await CloudSaveService.Instance.Data.Player.SaveAsync(data);
-        }
-        catch (Exception e)
-        {
-            Debug.LogError("Failed to save user data to cloud: " + e.Message);
+            ShowAnswerOnToggles();
+            HighlightWrongAnswer(currentlySelectedQuestion);
         }
     }
 
-    void loadQuestion(int questionNumber)
+    public override void LoadQuestionLabels()
     {
-        questionList = situationalJudgementQuestionList.ToArray();
-
-        resetColours();
-
-        QuestionText.text = questionList[questionNumber].resource;
-        preText.text = questionList[questionNumber].questionText;
-
-        loadQuestionLabels();
-
-        if (questionList[currentlySelectedQuestion].answerClicked)
-        {
-            showAnswerOnToggles();
-            highlightWrongAnswer(currentlySelectedQuestion);
-        }
-    }
-
-    void loadQuestionLabels()
-    {
-        if (questionList[currentlySelectedQuestion].labelSet == 1)
+        if (questionsArray[currentlySelectedQuestion].labelSet == 1)
         {
             Answer1Toggle.GetComponentInChildren<Text>().text = "Very important";
             Answer2Toggle.GetComponentInChildren<Text>().text = "Important";
             Answer3Toggle.GetComponentInChildren<Text>().text = "Of minor importance";
             Answer4Toggle.GetComponentInChildren<Text>().text = "Not important at all";
         }
-        else if (questionList[currentlySelectedQuestion].labelSet == 2)
+        else if (questionsArray[currentlySelectedQuestion].labelSet == 2)
         {
             Answer1Toggle.GetComponentInChildren<Text>().text = "A very appropriate thing to do";
             Answer2Toggle.GetComponentInChildren<Text>().text = "Appropriate, but not ideal";
@@ -259,347 +122,103 @@ public class SituationalJudgementControllerScript : MonoBehaviour
         }
     }
 
-    void addButtonListeners()
+    protected override void LoadQuestionResources()
     {
-        PreviousButton.onClick.AddListener(PreviousButtonClicked);
-        NextButton.onClick.AddListener(NextButtonClicked);
-
-        AnswerButton.onClick.AddListener(AnswerButtonClicked);
-
-        answerPanelCloseButton.onClick.AddListener(answerPanelCloseButtonClicked);
-
-        Answer1Toggle.onValueChanged.AddListener(Answer1ToggleClicked);
-        Answer2Toggle.onValueChanged.AddListener(Answer2ToggleClicked);
-        Answer3Toggle.onValueChanged.AddListener(Answer3ToggleClicked);
-        Answer4Toggle.onValueChanged.AddListener(Answer4ToggleClicked);
-
+        // No specific resources to load for Verbal Reasoning
     }
 
-    private void answerPanelCloseButtonClicked()
+    private void HighlightWrongAnswer(int questionNumber)
     {
-        answerPanel.SetActive(false);
-    }
+        var currentQuestion = questionsArray[currentlySelectedQuestion];
+        var userAnswer = currentQuestion.usersAnswer;
+        var correctAnswer = currentQuestion.questionAnswer;
 
-    void updateQuestionCounter()
+        // Define the label sets for comparison
+        Dictionary<int, string[]> labelSets = new Dictionary<int, string[]>
     {
-        QuestionCounterText.text = (currentlySelectedQuestion + 1) + "/" + questionList.Length;
-    }
+        { 1, new[] { "Very important", "Important", "Of minor importance", "Not important at all" } },
+        { 2, new[] { "A very appropriate thing to do", "Appropriate, but not ideal", "Inappropriate, but not awful", "A very inappropriate thing to do" } }
+    };
 
-
-    void saveAnswer(String selectedAnswer)
-    {
-        questionList[currentlySelectedQuestion].usersAnswer = selectedAnswer;
-    }
-
-    private void resetColours()
-    {
-        setColours(false, Answer1Toggle);
-        setColours(false, Answer2Toggle);
-        setColours(false, Answer3Toggle);
-        setColours(false, Answer4Toggle);
-    }
-
-
-    private void setColours(bool isOn, Toggle chosenToggle)
-    {
-        chosenToggle.isOn = isOn;
-        ColorBlock cb = chosenToggle.colors;
-
-        if (isOn)
+        // Check if the label set exists
+        if (labelSets.TryGetValue(currentQuestion.labelSet, out string[] labels))
         {
-            cb.normalColor = Color.yellow;
-            cb.selectedColor = Color.yellow;
-            cb.highlightedColor = Color.yellow;
-        }
-        else
-        {
-            cb.normalColor = Color.white;
-            cb.selectedColor = Color.white;
-            cb.highlightedColor = Color.white;
-        }
-        chosenToggle.colors = cb;
-    }
-
-    private void resetButtonColours()
-    {
-        setColours(false, Answer1Toggle);
-        setColours(false, Answer2Toggle);
-        setColours(false, Answer3Toggle);
-        setColours(false, Answer4Toggle);
-    }
-
-    private void initiateToggleColours()
-    {
-        correctColours.normalColor = Color.green;
-        correctColours.selectedColor = Color.green;
-        correctColours.highlightedColor = Color.green;
-
-        incorrectColours.normalColor = Color.red;
-        incorrectColours.selectedColor = Color.red;
-        incorrectColours.highlightedColor = Color.red;
-    }
-
-    private void setToggleColourCorrect(Toggle chosenToggle)
-    {
-        ColorBlock cb = chosenToggle.colors;
-
-        cb.normalColor = Color.green;
-        cb.selectedColor = Color.green;
-        cb.highlightedColor = Color.green;
-
-        chosenToggle.colors = cb;
-    }
-
-    private void setToggleColourIncorrect(Toggle chosenToggle)
-    {
-        ColorBlock cb = chosenToggle.colors;
-
-        cb.normalColor = Color.red;
-        cb.selectedColor = Color.red;
-        cb.highlightedColor = Color.red;
-
-        chosenToggle.colors = cb;
-    }
-
-    #region Button clicks
-    private void NextButtonClicked()
-    {
-        resetColours();
-
-        if (currentlySelectedQuestion != questionList.Length - 1)
-        {
-            currentlySelectedQuestion++;
-            loadQuestion(currentlySelectedQuestion);
-        }
-        else
-        {
-            currentlySelectedQuestion = 0;
-            loadQuestion(currentlySelectedQuestion);
-        }
-
-        resetButtonColours();
-
-        updateQuestionCounter();
-
-        setUsersSelectedAnswerForButton();
-
-        loadQuestionLabels();
-
-        showAnswerOnToggles();
-
-        if (questionList[currentlySelectedQuestion].answerClicked)
-        {
-            highlightWrongAnswer(currentlySelectedQuestion);
-        }
-
-    }
-
-    private void PreviousButtonClicked()
-    {
-        resetColours();
-
-        if (currentlySelectedQuestion != 0)
-        {
-            currentlySelectedQuestion--;
-            loadQuestion(currentlySelectedQuestion);
-        }
-        else
-        {
-            currentlySelectedQuestion = questionList.Length - 1;
-            loadQuestion(currentlySelectedQuestion);
-
-        }
-
-        resetButtonColours();
-
-        updateQuestionCounter();
-
-        setUsersSelectedAnswerForButton();
-
-        loadQuestionLabels();
-
-        showAnswerOnToggles();
-
-        if (questionList[currentlySelectedQuestion].answerClicked)
-        {
-            highlightWrongAnswer(currentlySelectedQuestion);
-        }
-
-    }
-
-
-    private void Answer1ToggleClicked(bool isOn)
-    {
-        if (questionList[currentlySelectedQuestion].labelSet == 1)
-        {
-            saveAnswer("Very important");
-        }
-        else if (questionList[currentlySelectedQuestion].labelSet == 2)
-        {
-            saveAnswer("A very appropriate thing to do");
-        }
-        setColours(isOn, Answer1Toggle);
-    }
-
-    private void Answer2ToggleClicked(bool isOn)
-    {
-        if (questionList[currentlySelectedQuestion].labelSet == 1)
-        {
-            saveAnswer("Important");
-        }
-        else if (questionList[currentlySelectedQuestion].labelSet == 2)
-        {
-            saveAnswer("Appropriate, but not ideal");
-        }
-        setColours(isOn, Answer2Toggle);
-    }
-
-    private void Answer3ToggleClicked(bool isOn)
-    {
-        if (questionList[currentlySelectedQuestion].labelSet == 1)
-        {
-            saveAnswer("Of minor importance");
-        }
-        else if (questionList[currentlySelectedQuestion].labelSet == 2)
-        {
-            saveAnswer("Inappropriate, but not awful");
-        }
-        setColours(isOn, Answer3Toggle);
-    }
-
-    private void Answer4ToggleClicked(bool isOn)
-    {
-        if (questionList[currentlySelectedQuestion].labelSet == 1)
-        {
-            saveAnswer("Not important at all");
-        }
-        else if (questionList[currentlySelectedQuestion].labelSet == 2)
-        {
-            saveAnswer("A very inappropriate thing to do");
-        }
-        setColours(isOn, Answer4Toggle);
-    }
-
-
-    private void setUsersSelectedAnswerForButton()
-    {
-        if (questionList[currentlySelectedQuestion].usersAnswer != null)
-        {
-            if (questionList[currentlySelectedQuestion].usersAnswer.Equals("Very important") || questionList[currentlySelectedQuestion].usersAnswer.Equals("A very appropriate thing to do"))
+            // Iterate through the labels and check for mismatches
+            for (int i = 0; i < labels.Length; i++)
             {
-                Answer1ToggleClicked(true);
-            }
-            else if (questionList[currentlySelectedQuestion].usersAnswer.Equals("Important") || questionList[currentlySelectedQuestion].usersAnswer.Equals("Appropriate, but not ideal"))
-            {
-                Answer2ToggleClicked(true);
-            }
-            else if (questionList[currentlySelectedQuestion].usersAnswer.Equals("Of minor importance") || questionList[currentlySelectedQuestion].usersAnswer.Equals("Inappropriate, but not awful"))
-            {
-                Answer3ToggleClicked(true);
-            }
-            else if (questionList[currentlySelectedQuestion].usersAnswer.Equals("Not important at all") || questionList[currentlySelectedQuestion].usersAnswer.Equals("A very inappropriate thing to do"))
-            {
-                Answer4ToggleClicked(true);
-            }
-        }
-    }
-
-    private void highlightWrongAnswer(int questionNumber)
-    {
-        if (questionList[currentlySelectedQuestion].labelSet == 1)
-        {
-            if (questionList[currentlySelectedQuestion].answerClicked)
-            {
-                if (questionList[currentlySelectedQuestion].usersAnswer.Equals("Very important") && !questionList[currentlySelectedQuestion].questionAnswer.Equals("Very important"))
+                if (userAnswer.Equals(labels[i]) && !correctAnswer.Equals(labels[i]))
                 {
-                    setToggleColourIncorrect(Answer1Toggle);
-                }
-                else if (questionList[currentlySelectedQuestion].usersAnswer.Equals("Important") && !questionList[currentlySelectedQuestion].questionAnswer.Equals("Important"))
-                {
-                    setToggleColourIncorrect(Answer2Toggle);
-                }
-                else if (questionList[currentlySelectedQuestion].usersAnswer.Equals("Of minor importance") && !questionList[currentlySelectedQuestion].questionAnswer.Equals("Of minor importance"))
-                {
-                    setToggleColourIncorrect(Answer3Toggle);
-                }
-
-                else if (questionList[currentlySelectedQuestion].usersAnswer.Equals("Not important at all") && !questionList[currentlySelectedQuestion].questionAnswer.Equals("Not important at all"))
-                {
-                    setToggleColourIncorrect(Answer4Toggle);
-                }
-            }
-        }
-        else if (questionList[currentlySelectedQuestion].labelSet == 2)
-        {
-            if (questionList[currentlySelectedQuestion].answerClicked)
-            {
-                if (questionList[currentlySelectedQuestion].usersAnswer.Equals("A very appropriate thing to do") && !questionList[currentlySelectedQuestion].questionAnswer.Equals("A very appropriate thing to do"))
-                {
-                    setToggleColourIncorrect(Answer1Toggle);
-                }
-                else if (questionList[currentlySelectedQuestion].usersAnswer.Equals("Appropriate, but not ideal") && !questionList[currentlySelectedQuestion].questionAnswer.Equals("Appropriate, but not ideal"))
-                {
-                    setToggleColourIncorrect(Answer2Toggle);
-                }
-                else if (questionList[currentlySelectedQuestion].usersAnswer.Equals("Inappropriate, but not awful") && !questionList[currentlySelectedQuestion].questionAnswer.Equals("Inappropriate, but not awful"))
-                {
-                    setToggleColourIncorrect(Answer3Toggle);
-                }
-                else if (questionList[currentlySelectedQuestion].usersAnswer.Equals("A very inappropriate thing to do") && !questionList[currentlySelectedQuestion].questionAnswer.Equals("A very inappropriate thing to do"))
-                {
-                    setToggleColourIncorrect(Answer4Toggle);
+                    SetToggleColourIncorrect(GetToggleByIndex(i + 1));
                 }
             }
         }
     }
 
-    private void showAnswerOnToggles()
+    // Helper method to get the toggle by index
+    private Toggle GetToggleByIndex(int index)
     {
-        if (questionList[currentlySelectedQuestion].answerClicked)
+        return index switch
         {
-            if (questionList[currentlySelectedQuestion].questionAnswer.Equals("Very important") || questionList[currentlySelectedQuestion].questionAnswer.Equals("A very appropriate thing to do"))
-            {
-                setToggleColourCorrect(Answer1Toggle);
-            }
-            else if (questionList[currentlySelectedQuestion].questionAnswer.Equals("Important") || questionList[currentlySelectedQuestion].questionAnswer.Equals("Appropriate, but not ideal"))
-            {
-                setToggleColourCorrect(Answer2Toggle);
-            }
-            else if (questionList[currentlySelectedQuestion].questionAnswer.Equals("Of minor importance") || questionList[currentlySelectedQuestion].questionAnswer.Equals("Inappropriate, but not awful"))
-            {
-                setToggleColourCorrect(Answer3Toggle);
-            }
-            else if (questionList[currentlySelectedQuestion].questionAnswer.Equals("Not important at all") || questionList[currentlySelectedQuestion].questionAnswer.Equals("A very inappropriate thing to do"))
-            {
-                setToggleColourCorrect(Answer4Toggle);
-            }
+            1 => Answer1Toggle,
+            2 => Answer2Toggle,
+            3 => Answer3Toggle,
+            4 => Answer4Toggle,
+            _ => null
+        };
+    }
+
+    protected override string GetInitialQuestion()
+    {
+        // Determine the option labels based on the labelSet
+        string option1Label, option2Label, option3Label, option4Label;
+        switch (questionsArray[currentlySelectedQuestion].labelSet)
+        {
+            case 1:
+                option1Label = "Very important";
+                option2Label = "Important";
+                option3Label = "Of minor importance";
+                option4Label = "Not important at all";
+                break;
+            case 2:
+                option1Label = "A very appropriate thing to do";
+                option2Label = "Appropriate, but not ideal";
+                option3Label = "Inappropriate, but not awful";
+                option4Label = "A very inappropriate thing to do";
+                break;
+            default:
+                option1Label = "Option 1";
+                option2Label = "Option 2";
+                option3Label = "Option 3";
+                option4Label = "Option 4";
+                break;
         }
 
+        // Construct the reasoning string
+        return $"Explain why I got this question right/wrong. Passage: {questionsArray[currentlySelectedQuestion].resource} " +
+               $"Question: {questionsArray[currentlySelectedQuestion].questionText} " +
+               $"Answer: {questionsArray[currentlySelectedQuestion].questionAnswer} " +
+               $"My Answer: {questionsArray[currentlySelectedQuestion].usersAnswer} " +
+               $"Reasoning: {questionsArray[currentlySelectedQuestion].answerReasoning} " +
+               $"Options: 1: {option1Label}, 2: {option2Label}, 3: {option3Label}, 4: {option4Label}";
     }
 
-    private void AnswerButtonClicked()
-    {
-        SaveUserAnswerToCloud();
-        questionList[currentlySelectedQuestion].answerClicked = true;
-        highlightWrongAnswer(currentlySelectedQuestion);
-        answerText.text = questionList[currentlySelectedQuestion].answerReasoning;
-        answerPanel.SetActive(true);
-        showAnswerOnToggles();
-    }
-    #endregion
+    protected override string GetAssistantType() => "situationalJudgement";
+    protected override string GetCloudSaveKey() => SituationalJudgementAnsweredQuestions;
+    protected override string GetQuestionResource() => questionsArray[currentlySelectedQuestion].resource;
+    protected override string GetQuestionText() => questionsArray[currentlySelectedQuestion].questionText;
+    protected override string GetOption1() => Answer1Toggle.GetComponentInChildren<Text>().text;
+    protected override string GetOption2() => Answer2Toggle.GetComponentInChildren<Text>().text;
+    protected override string GetOption3() => Answer3Toggle.GetComponentInChildren<Text>().text;
+    protected override string GetOption4() => Answer4Toggle.GetComponentInChildren<Text>().text;
+    protected override string GetQuestionAnswer() => questionsArray[currentlySelectedQuestion].questionAnswer;
+    protected override string GetUserAnswer() => questionsArray[currentlySelectedQuestion].usersAnswer;
+    protected override void SetUserAnswer(string answer) => questionsArray[currentlySelectedQuestion].usersAnswer = answer;
+    protected override bool IsAnswerClicked() => questionsArray[currentlySelectedQuestion].answerClicked;
+    protected override void SetAnswerClickedTrue() => questionsArray[currentlySelectedQuestion].answerClicked = true;
+    protected override string GetAnswerReasoning() => questionsArray[currentlySelectedQuestion].answerReasoning;
 
-    private void SwipeRight()
-    {
-        Debug.Log("Swiped Right!");
-        PreviousButtonClicked();
-    }
-
-    private void SwipeLeft()
-    {
-        Debug.Log("Swiped Left!");
-        NextButtonClicked();
-    }
 }
+
 
 
 
