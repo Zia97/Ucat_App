@@ -11,8 +11,11 @@ using System.Threading.Tasks;
 public class ChatGPTManager : MonoBehaviour
 {
     private const string firebaseFunctionUrl = "https://us-central1-ucatapp-7f24d.cloudfunctions.net/getConfigValue";
-    private string apiKey = ""; 
-    private string assistantId = ""; 
+    private string apiKey = "";
+    private string verbalReasoningAssistantId;
+    private string decisionMakingAssistantId;
+    private string sitJudgeAssistantId;
+    private string quantJudgeAssistantId;
     private string threadId;
 
     private string threadEndpoint = "https://api.openai.com/v1/threads";
@@ -58,7 +61,7 @@ public class ChatGPTManager : MonoBehaviour
         }
     }
 
-    public void AskChatGPT(string userMessage, System.Action<string> callback)
+    public void AskChatGPT(string userMessage, System.Action<string> callback, String assistantType)
     {
         if (string.IsNullOrEmpty(threadId))
         {
@@ -67,10 +70,10 @@ public class ChatGPTManager : MonoBehaviour
             return;
         }
 
-        StartCoroutine(SendMessageToAssistant(userMessage, callback));
+        StartCoroutine(SendMessageToAssistant(userMessage, callback, assistantType));
     }
 
-    private IEnumerator SendMessageToAssistant(string userMessage, System.Action<string> callback)
+    private IEnumerator SendMessageToAssistant(string userMessage, System.Action<string> callback, String assistantType)
     {
         string messageEndpoint = string.Format(messageEndpointTemplate, threadId);
 
@@ -103,17 +106,18 @@ public class ChatGPTManager : MonoBehaviour
             }
         }
 
-        StartCoroutine(StartRun(callback));
+        StartCoroutine(StartRun(callback, assistantType));
     }
 
 
-    private IEnumerator StartRun(System.Action<string> callback)
+    private IEnumerator StartRun(System.Action<string> callback, String assistantType)
     {
         string runEndpoint = string.Format(runEndpointTemplate, threadId);
 
         string runJson = JsonConvert.SerializeObject(new
         {
-            assistant_id = assistantId 
+
+            assistant_id = GetAssistantId(assistantType)
         });
 
         using (UnityWebRequest request = new UnityWebRequest(runEndpoint, "POST"))
@@ -141,6 +145,24 @@ public class ChatGPTManager : MonoBehaviour
         }
     }
 
+    private String GetAssistantId(String assistantType)
+    {
+        switch (assistantType)
+        {
+            case "verbalReasoning":
+                return verbalReasoningAssistantId;
+            case "decisionMaking":
+                return decisionMakingAssistantId;
+            case "sitJudge":
+                return sitJudgeAssistantId;
+            case "quantJudge":
+                return quantJudgeAssistantId;
+            default:
+                Debug.LogError("Invalid assistant type: " + assistantType);
+                return null;
+        }
+    }
+
     private async Task FetchAllKeys()
     {
         using (UnityWebRequest request = UnityWebRequest.Get(firebaseFunctionUrl))
@@ -151,7 +173,10 @@ public class ChatGPTManager : MonoBehaviour
             {
                 KeyResponse data = JsonUtility.FromJson<KeyResponse>(request.downloadHandler.text);
                 apiKey = data.openai_key;
-                assistantId = data.verbalReasoningAssistantId;
+                verbalReasoningAssistantId = data.verbalReasoningAssistantId;
+                decisionMakingAssistantId = data.decisionMakingAssistantId;
+                sitJudgeAssistantId = data.sitJudgeAssistantId;
+                quantJudgeAssistantId = data.quantJudgeAssistantId;
             }
             else
             {
@@ -228,9 +253,8 @@ public class ChatGPTManager : MonoBehaviour
                                     if (content.Type == "text")
                                     {
                                         string assistantResponse = content.Text.Value;
-                                        Debug.Log("Assistant Response: " + assistantResponse);
                                         callback?.Invoke(assistantResponse);
-                                        yield break; // Exit after processing the first assistant message
+                                        yield break; 
                                     }
                                 }
                             }
