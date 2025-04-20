@@ -202,7 +202,7 @@ class SituationalJudgementControllerScript : QuestionControllerBase<SituationalJ
                $"Options: 1: {option1Label}, 2: {option2Label}, 3: {option3Label}, 4: {option4Label}";
     }
 
-    protected override string GetAssistantType() => "situationalJudgement";
+    protected override string GetAssistantType() => "sitJudge";
     protected override string GetCloudSaveKey() => SituationalJudgementAnsweredQuestions;
     protected override string GetQuestionResource() => questionsArray[currentlySelectedQuestion].resource;
     protected override string GetQuestionText() => questionsArray[currentlySelectedQuestion].questionText;
