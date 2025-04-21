@@ -8,6 +8,9 @@ namespace Assets.Scripts
         public bool HasImage { get; private set; }
         public bool AnswerClicked { get; set; } = false;
         public string ImageURI { get; private set; }
+
+        public string ImageLocation { get; private set; }
+
         public int QuestionNumber { get; private set; }
         public string QuestionText { get; private set; }
         public string QuestionAnswer { get; private set; }
@@ -24,11 +27,12 @@ namespace Assets.Scripts
 
         public bool Flagged { get; set; } = false;
 
-        public DecisionMakingQuestion(string resource, bool hasImage, string imageUri, int questionNumber, string questionText, string answer, string answerReasoning, string option1, string option2, string option3, string option4)
+        public DecisionMakingQuestion(string resource, bool hasImage, string imageUri, string imageLocation, int questionNumber, string questionText, string answer, string answerReasoning, string option1, string option2, string option3, string option4)
         {
             Resource = resource;
             HasImage = hasImage;
             ImageURI = imageUri;
+            ImageLocation = imageLocation;
             QuestionNumber = questionNumber;
             QuestionText = questionText;
             QuestionAnswer = answer;

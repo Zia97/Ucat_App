@@ -61,7 +61,7 @@ public class ChatGPTManager : MonoBehaviour
         }
     }
 
-    public void AskChatGPT(string userMessage, System.Action<string> callback, String assistantType)
+    public void AskChatGPT(String message, System.Action<string> callback, String assistantType)
     {
         if (string.IsNullOrEmpty(threadId))
         {
@@ -70,21 +70,54 @@ public class ChatGPTManager : MonoBehaviour
             return;
         }
 
-        StartCoroutine(SendMessageToAssistant(userMessage, callback, assistantType));
+        StartCoroutine(SendMessageToAssistant(message, callback, assistantType));
     }
 
-    private IEnumerator SendMessageToAssistant(string userMessage, System.Action<string> callback, String assistantType)
+    public void AskChatGPT(QuestionAndImageHolder data, System.Action<string> callback, String assistantType)
+    {
+        if (string.IsNullOrEmpty(threadId))
+        {
+            Debug.LogError("Thread ID is missing! Restarting session.");
+            LoadOrCreateThread();
+            return;
+        }
+
+        StartCoroutine(SendMessageToAssistant(data.Question, callback, assistantType, data.Image));
+    }
+
+
+    private IEnumerator SendMessageToAssistant(string userMessage, System.Action<string> callback, string assistantType, string imageUrl = null)
     {
         string messageEndpoint = string.Format(messageEndpointTemplate, threadId);
 
-        // Modify user message to explicitly ask for JSON response
-        string modifiedUserMessage = userMessage;
+        // Prepare the content list for the message
+        var contentList = new List<object>
+    {
+        new { type = "text", text = userMessage }
+    };
 
-        string messageJson = JsonConvert.SerializeObject(new
+        // If a valid image URL is provided, add it to the content list
+        if (!string.IsNullOrEmpty(imageUrl))
+        {
+            contentList.Add(new
+            {
+                type = "image_url",
+                image_url = new
+                {
+                    url = imageUrl,
+                    detail = "high"
+                }
+            });
+        }
+
+        // Create the message body
+        var messageBody = new
         {
             role = "user",
-            content = modifiedUserMessage
-        });
+            content = contentList
+        };
+
+        string messageJson = JsonConvert.SerializeObject(messageBody);
 
         using (UnityWebRequest request = new UnityWebRequest(messageEndpoint, "POST"))
         {
@@ -106,8 +139,10 @@ public class ChatGPTManager : MonoBehaviour
             }
         }
 
+        // Start the assistant run
         StartCoroutine(StartRun(callback, assistantType));
     }
+
 
 
     private IEnumerator StartRun(System.Action<string> callback, String assistantType)

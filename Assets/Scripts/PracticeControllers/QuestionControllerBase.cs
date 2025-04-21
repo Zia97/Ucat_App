@@ -49,7 +49,7 @@ public abstract class QuestionControllerBase<TQuestion, TQuestionData> : MonoBeh
 
     protected abstract void SetQuestionList();
     protected abstract Task InstantiateQuestions();
-    protected abstract string GetInitialQuestion();
+    protected abstract QuestionAndImageHolder GetInitialQuestion();
     protected abstract void LoadQuestionResources();
 
     private async Task Start()

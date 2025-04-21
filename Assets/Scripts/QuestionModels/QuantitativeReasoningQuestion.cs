@@ -10,6 +10,7 @@ namespace Assets.Scripts
     {
         public String resource;
         public bool hasImage;
+        public string imageLocation;
         public bool answerClicked = false;
         public int questionNumber;
         public string imageUri;
@@ -27,11 +28,12 @@ namespace Assets.Scripts
         public bool flagged = false;
 
 
-        public QuantitativeReasoningQuestion(String _resource, bool _hasImage, string _imageUri, int _questionNumber, string _questionText, string _answerReasoning, string _answer, string _option1, string _option2, string _option3, string _option4, string _option5)
+        public QuantitativeReasoningQuestion(String _resource, bool _hasImage, string _imageUri, string _imageLocation, int _questionNumber, string _questionText, string _answerReasoning, string _answer, string _option1, string _option2, string _option3, string _option4, string _option5)
         {
             resource = _resource;
             hasImage = _hasImage;
             imageUri = _imageUri;
+            imageLocation = _imageLocation;
             questionNumber = _questionNumber;
             questionText = _questionText;
             answerReasoning = _answerReasoning;
