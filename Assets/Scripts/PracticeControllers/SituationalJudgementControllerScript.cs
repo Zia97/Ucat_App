@@ -167,8 +167,10 @@ class SituationalJudgementControllerScript : QuestionControllerBase<SituationalJ
         };
     }
 
-    protected override string GetInitialQuestion()
+    protected override QuestionAndImageHolder GetInitialQuestion()
     {
+
+        QuestionAndImageHolder initialQuestion = new QuestionAndImageHolder();
         // Determine the option labels based on the labelSet
         string option1Label, option2Label, option3Label, option4Label;
         switch (questionsArray[currentlySelectedQuestion].labelSet)
@@ -194,12 +196,14 @@ class SituationalJudgementControllerScript : QuestionControllerBase<SituationalJ
         }
 
         // Construct the reasoning string
-        return $"Explain why I got this question right/wrong. Passage: {questionsArray[currentlySelectedQuestion].resource} " +
+        initialQuestion.Question =  $"Explain why I got this question right/wrong. Passage: {questionsArray[currentlySelectedQuestion].resource} " +
                $"Question: {questionsArray[currentlySelectedQuestion].questionText} " +
                $"Answer: {questionsArray[currentlySelectedQuestion].questionAnswer} " +
                $"My Answer: {questionsArray[currentlySelectedQuestion].usersAnswer} " +
                $"Reasoning: {questionsArray[currentlySelectedQuestion].answerReasoning} " +
                $"Options: 1: {option1Label}, 2: {option2Label}, 3: {option3Label}, 4: {option4Label}";
+
+        return initialQuestion;
     }
 
     protected override string GetAssistantType() => "sitJudge";

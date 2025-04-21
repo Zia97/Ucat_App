@@ -66,6 +66,7 @@ class QuantitativeReasoningControllerScript : QuestionControllerBase<Quantitativ
                         s.resource,
                         s.hasImage,
                         s.imageURI,
+                        s.imageLocation,
                         s.questionNumber,
                         s.questionText,
                         s.answerReasoning,
@@ -174,9 +175,19 @@ class QuantitativeReasoningControllerScript : QuestionControllerBase<Quantitativ
     }
 
 
-    protected override string GetInitialQuestion()
+    protected override QuestionAndImageHolder GetInitialQuestion()
     {
-        return "Explain why I got this question right/wrong. Passage: " + questionsArray[currentlySelectedQuestion].resource + " Question: " + questionsArray[currentlySelectedQuestion].questionText + " Answer: " + questionsArray[currentlySelectedQuestion].answer + " My Answer: " + questionsArray[currentlySelectedQuestion].userAnswer + " Reasoning: " + questionsArray[currentlySelectedQuestion].answerReasoning + " Options 1: " + questionsArray[currentlySelectedQuestion].option1 + ", Option 2: " + questionsArray[currentlySelectedQuestion].option2 + ", Option 3: " + questionsArray[currentlySelectedQuestion].option3 + ", Option 4: " + questionsArray[currentlySelectedQuestion].option4  +", Option 5: " + questionsArray[currentlySelectedQuestion].option5;
+        QuestionAndImageHolder initialQuestion = new QuestionAndImageHolder();
+        if (questionsArray[currentlySelectedQuestion].hasImage)
+        {
+            initialQuestion.Image = questionsArray[currentlySelectedQuestion].imageLocation;
+            initialQuestion.Question = "Explain why I got this question right/wrong, based on the provided diagram/image. Passage: " + questionsArray[currentlySelectedQuestion].resource + " Question: " + questionsArray[currentlySelectedQuestion].questionText + " Answer: " + questionsArray[currentlySelectedQuestion].answer + " My Answer: " + questionsArray[currentlySelectedQuestion].userAnswer + " Reasoning: " + questionsArray[currentlySelectedQuestion].answerReasoning + " Options 1: " + questionsArray[currentlySelectedQuestion].option1 + ", Option 2: " + questionsArray[currentlySelectedQuestion].option2 + ", Option 3: " + questionsArray[currentlySelectedQuestion].option3 + ", Option 4: " + questionsArray[currentlySelectedQuestion].option4;
+        }
+        else
+        {
+            initialQuestion.Question = "Explain why I got this question right/wrong. Passage: " + questionsArray[currentlySelectedQuestion].resource + " Question: " + questionsArray[currentlySelectedQuestion].questionText + " Answer: " + questionsArray[currentlySelectedQuestion].answer + " My Answer: " + questionsArray[currentlySelectedQuestion].userAnswer + " Reasoning: " + questionsArray[currentlySelectedQuestion].answerReasoning + " Options 1: " + questionsArray[currentlySelectedQuestion].option1 + ", Option 2: " + questionsArray[currentlySelectedQuestion].option2 + ", Option 3: " + questionsArray[currentlySelectedQuestion].option3 + ", Option 4: " + questionsArray[currentlySelectedQuestion].option4 + ", Option 5: " + questionsArray[currentlySelectedQuestion].option5;
+        }
+        return initialQuestion;
     }
 
     protected override string GetAssistantType() => "quantJudge";
@@ -215,6 +226,7 @@ public class QRQuestion
     public string resource;
     public bool hasImage;
     public string imageURI;
+    public string imageLocation;
     public int questionNumber;
     public string questionText;
     public string answer;

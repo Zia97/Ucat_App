@@ -72,9 +72,11 @@ class VerbalReasoningControllerScript : QuestionControllerBase<VerbalReasoningQu
         }
     }
 
-    protected override string GetInitialQuestion()
+    protected override QuestionAndImageHolder GetInitialQuestion()
     {
-        return "Explain why I got this question right/wrong. Passage: " + questionsArray[currentlySelectedQuestion].resource + " Question: " + questionsArray[currentlySelectedQuestion].questionText + " Answer: " + questionsArray[currentlySelectedQuestion].questionAnswer + " My Answer: " + questionsArray[currentlySelectedQuestion].usersAnswer + " Reasoning: " + questionsArray[currentlySelectedQuestion].answeringReason + " Options 1: " + questionsArray[currentlySelectedQuestion].option1Label + ", Option 2: " + questionsArray[currentlySelectedQuestion].option2Label + ", Option 3: " + questionsArray[currentlySelectedQuestion].option3Label + ", Option 4: " + questionsArray[currentlySelectedQuestion].option4Label;
+        QuestionAndImageHolder initialQuestion = new QuestionAndImageHolder();
+        initialQuestion.Question = "Explain why I got this question right/wrong. Passage: " + questionsArray[currentlySelectedQuestion].resource + " Question: " + questionsArray[currentlySelectedQuestion].questionText + " Answer: " + questionsArray[currentlySelectedQuestion].questionAnswer + " My Answer: " + questionsArray[currentlySelectedQuestion].usersAnswer + " Reasoning: " + questionsArray[currentlySelectedQuestion].answeringReason + " Options 1: " + questionsArray[currentlySelectedQuestion].option1Label + ", Option 2: " + questionsArray[currentlySelectedQuestion].option2Label + ", Option 3: " + questionsArray[currentlySelectedQuestion].option3Label + ", Option 4: " + questionsArray[currentlySelectedQuestion].option4Label;
+        return initialQuestion;
     }
 
     protected override void LoadQuestionResources()

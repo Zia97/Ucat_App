@@ -59,7 +59,7 @@ class DecisionMakingControllerScript : QuestionControllerBase<DecisionMakingQues
             {
                 if (s != null)
                 {
-                    DecisionMakingQuestion question = new DecisionMakingQuestion(s.resource, s.hasImage, s.imageURI, s.questionNumber, s.questionText, s.questionAnswer, s.answerReasoning, s.option1, s.option2, s.option3, s.option4);
+                    DecisionMakingQuestion question = new DecisionMakingQuestion(s.resource, s.hasImage, s.imageURI, s.imageLocation, s.questionNumber, s.questionText, s.questionAnswer, s.answerReasoning, s.option1, s.option2, s.option3, s.option4);
 
                     if (userAnswers.ContainsKey(s.questionNumber))
                     {
@@ -77,9 +77,23 @@ class DecisionMakingControllerScript : QuestionControllerBase<DecisionMakingQues
         }
     }
 
-    protected override string GetInitialQuestion()
+    protected override QuestionAndImageHolder GetInitialQuestion()
     {
-        return "Explain why I got this question right/wrong. Passage: " + questionsArray[currentlySelectedQuestion].Resource + " Question: " + questionsArray[currentlySelectedQuestion].QuestionText + " Answer: " + questionsArray[currentlySelectedQuestion].QuestionAnswer + " My Answer: " + questionsArray[currentlySelectedQuestion].UserAnswer + " Reasoning: " + questionsArray[currentlySelectedQuestion].AnswerReasoning + " Options 1: " + questionsArray[currentlySelectedQuestion].Option1 + ", Option 2: " + questionsArray[currentlySelectedQuestion].Option2 + ", Option 3: " + questionsArray[currentlySelectedQuestion].Option3 + ", Option 4: " + questionsArray[currentlySelectedQuestion].Option4;
+        QuestionAndImageHolder initialQuestion = new QuestionAndImageHolder();
+
+        if (questionsArray[currentlySelectedQuestion].HasImage)
+        {
+            initialQuestion.Image = questionsArray[currentlySelectedQuestion].ImageLocation;
+            initialQuestion.Question =  "Explain why I got this question right/wrong, based on the provided diagram/image located here . Passage: " + questionsArray[currentlySelectedQuestion].Resource + " Question: " + questionsArray[currentlySelectedQuestion].QuestionText + " Answer: " + questionsArray[currentlySelectedQuestion].QuestionAnswer + " My Answer: " + questionsArray[currentlySelectedQuestion].UserAnswer + " Reasoning: " + questionsArray[currentlySelectedQuestion].AnswerReasoning + " Options 1: " + questionsArray[currentlySelectedQuestion].Option1 + ", Option 2: " + questionsArray[currentlySelectedQuestion].Option2 + ", Option 3: " + questionsArray[currentlySelectedQuestion].Option3 + ", Option 4: " + questionsArray[currentlySelectedQuestion].Option4;
+        }
+        else
+        {
+            initialQuestion.Question = "Explain why I got this question right/wrong. Passage: " + questionsArray[currentlySelectedQuestion].Resource + " Question: " + questionsArray[currentlySelectedQuestion].QuestionText + " Answer: " + questionsArray[currentlySelectedQuestion].QuestionAnswer + " My Answer: " + questionsArray[currentlySelectedQuestion].UserAnswer + " Reasoning: " + questionsArray[currentlySelectedQuestion].AnswerReasoning + " Options 1: " + questionsArray[currentlySelectedQuestion].Option1 + ", Option 2: " + questionsArray[currentlySelectedQuestion].Option2 + ", Option 3: " + questionsArray[currentlySelectedQuestion].Option3 + ", Option 4: " + questionsArray[currentlySelectedQuestion].Option4;
+
+        }
+
+        return initialQuestion;
+
     }
 
     protected override void LoadQuestionResources()
@@ -125,7 +139,6 @@ class DecisionMakingControllerScript : QuestionControllerBase<DecisionMakingQues
         LoadQuestionResources();
     }
 
-
     protected override string GetAssistantType() => "decisionMaking";
     protected override string GetCloudSaveKey() => "DecisionMakingAnsweredQuestions";
     protected override string GetQuestionResource() => questionsArray[currentlySelectedQuestion].Resource;
@@ -160,6 +173,7 @@ public class DMQuestions
     public string resource;
     public bool hasImage;
     public string imageURI;
+    public string imageLocation;
     public int questionNumber;
     public string questionText;
     public string questionAnswer;
