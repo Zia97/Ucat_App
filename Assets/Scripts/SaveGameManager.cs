@@ -1,5 +1,6 @@
 using UnityEngine;
 using GooglePlayGames;
+using GooglePlayGames.Android;
 using GooglePlayGames.BasicApi;
 using System;
 using TMPro;
@@ -36,6 +37,7 @@ public class GooglePlayGamesManager : MonoBehaviour
                 Debug.Log("Login with Google Play games successful.");
                 PlayGamesPlatform.Instance.RequestServerSideAccess(true, code =>
                 {
+                    Debug.Log("Authorization code: " + code);
                     Token = code;
                     // This token serves as an example to be used for SignInWithGooglePlayGames
                     tcs.SetResult(null);
@@ -58,11 +60,12 @@ public class GooglePlayGamesManager : MonoBehaviour
         {
             await AuthenticationService.Instance.SignInWithGooglePlayGamesAsync(authCode);
             Debug.Log($"PlayerID: {AuthenticationService.Instance.PlayerId}"); //Display the Unity Authentication PlayerID
-            SavePlayerIdAndNameToUnityCloud(AuthenticationService.Instance.PlayerId, AuthenticationService.Instance.PlayerName);
             Debug.Log("SignIn is successful.");
         }
         catch (AuthenticationException ex)
         {
+            // Compare error code to AuthenticationErrorCodes
+            // Notify the player with the proper error message
             Debug.LogException(ex);
         }
         catch (RequestFailedException ex)
@@ -71,16 +74,5 @@ public class GooglePlayGamesManager : MonoBehaviour
             // Notify the player with the proper error message
             Debug.LogException(ex);
         }
-    }
-
-
-    public async void SavePlayerIdAndNameToUnityCloud(String playerId, String playerName)
-    {
-        var playerData = new Dictionary<string, object>{
-          {"PlayerId", playerId},
-          {"PlayerName", playerName}
-        };
-        var result = await CloudSaveService.Instance.Data.Player.SaveAsync(playerData);
-        Debug.Log($"Saved data {string.Join(',', playerData)}");
     }
 }
