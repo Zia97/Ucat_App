@@ -44,5 +44,8 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/TimedTests/QuantitativeReasoningTimedScene.unity
     guid: ed283e823bd38ec49bdf524ae7e0a7e3
+  - enabled: 1
+    path: Assets/Scenes/Menu/AccountSettings.unity
+    guid: 4232082e82142314386305d5d2bda44b
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
